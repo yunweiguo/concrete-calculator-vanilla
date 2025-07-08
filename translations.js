@@ -26,6 +26,7 @@ const translations = {
     results_placeholder_title: "Your results will appear here.",
     results_placeholder_subtitle: "Enter dimensions and press Calculate.",
     calculate_button: "Calculate",
+    calculator_disclaimer: "* Price estimations are based on market averages and are for reference purposes only. Please consult local suppliers for accurate quotes.",
     
     // Results
     result_total_volume: "Total Volume",
@@ -138,6 +139,7 @@ const translations = {
     results_placeholder_title: "您的结果将显示在此处。",
     results_placeholder_subtitle: "输入尺寸并按“计算”。",
     calculate_button: "计算",
+    calculator_disclaimer: "* 价格估算基于市场平均值，仅供参考。请咨询当地供应商以获取准确报价。",
     
     // Results
     result_total_volume: "总体积",
@@ -250,6 +252,7 @@ const translations = {
     results_placeholder_title: "Sus resultados aparecerán aquí.",
     results_placeholder_subtitle: "Ingrese las dimensiones y presione Calcular.",
     calculate_button: "Calcular",
+    calculator_disclaimer: "* Las estimaciones de precios se basan en promedios del mercado y son solo para fines de referencia. Consulte a los proveedores locales para obtener cotizaciones precisas.",
     
     // Results
     result_total_volume: "Volumen Total",

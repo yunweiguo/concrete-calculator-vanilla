@@ -118,7 +118,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputs = getInputs();
         const results = calculateResults(inputs);
         displayResults(results);
-        addToHistory(results);
+        // We will now use the save button for this
+        // addToHistory(results);
+    });
+
+    // Save button
+    document.getElementById('save-btn').addEventListener('click', () => {
+        if (window.latestResults) {
+            addToHistory(window.latestResults);
+            alert('Calculation saved to history!');
+        }
+    });
+
+    // Reset button
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        // Reset form inputs to their default values
+        document.getElementById('length').value = '10';
+        document.getElementById('width').value = '12';
+        document.getElementById('radius').value = '2';
+        document.getElementById('height').value = '0.5';
+        document.getElementById('grade').value = 'C25';
+
+        // Reset unit and shape selectors to default (imperial, rectangle)
+        document.querySelector('#unit-system button[data-value="imperial"]').click();
+        document.querySelector('#shape-selector button[data-value="rectangle"]').click();
+        
+        // Clear the results area
+        clearResults();
     });
 
     // Clear history button
@@ -234,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function displayResults(results) {
         const lang = getLanguage();
-        const t = (key) => translations[lang][key] || translations['en'][key];
+        const t = (key) => translations[lang]?.[key] || translations['en'][key];
         const resultsOutput = document.getElementById('results-output');
 
         const volumeDisplay = results.unit === 'imperial' ? `${results.volumeFt3.toFixed(2)} ft³` : `${results.volumeM3.toFixed(2)} m³`;
@@ -251,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div><p class="text-sm text-slate-500 font-medium">${t('result_cost_estimation')}</p><ul class="mt-2 space-y-1 text-slate-700"><li>${t('result_materials_subtotal')}: $${results.materialsCost.toFixed(2)}</li><li>${t('result_labor')}: $${results.laborCost.toFixed(2)}</li><li class="font-bold text-lg text-slate-900">${t('result_total_cost')}: $${results.totalCost.toFixed(2)}</li></ul></div>
             </div>`;
         document.getElementById('copy-btn').disabled = false;
+        document.getElementById('save-btn').disabled = false;
     }
     
     function addToHistory(results) {
