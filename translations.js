@@ -419,7 +419,7 @@ const translations = {
     guide_step1_column_h4: "对于柱子或圆形地基（圆柱形）",
     guide_step1_column_p1: "对于圆柱体，您需要半径（直径的一半）和高度。公式是：<strong>体积 = π (Pi) × 半径² × 高度</strong>. 对于一个直径为1英尺（即半径为0.5英尺）、深3英尺的柱洞，计算为 3.14159 × (0.5 ft)² × 3 ft = 2.36 立方英尺。",
     guide_step2_h3: "第二步：转换为立方码或立方米",
-    guide_step2_p1: "混凝土是按立方码（在美国）或立方米订购的。您必须转换您的立方英尺或立方米测量值。关键换算：<br> - <strong>1立方码 = 27立方英尺</strong> <br> - <strong>1立方米 = 1 m³</strong> (if you measured in meters initially). <br> From our slab example, 33.3 cubic feet ÷ 27 = 1.23 cubic yards.",
+    guide_step2_p1: "混凝土是按立方码（在美国）或立方米订购的。您必须转换您的立方英尺或立方米测量值。关键换算：<br> - <strong>1立方码 = 27立方英尺</strong> <br> - <strong>1立方米 = 1 m³</strong>（如果您最初以米为单位测量）。<br>根据我们的板示例，33.3立方英尺 ÷ 27 = 1.23立方码。",
     guide_step3_h3: "第三步：考虑损耗（5-10%规则）",
     guide_step3_p1: "始终订购比您精确计算多一点的量。这个\"损耗系数\"考虑了地面不平、溢出以及残留在独轮手推车或卡车中的混凝土。一个标准规则是在最终体积上增加5%到10%。对于我们1.23立方码的板，10%的损耗系数意味着应订购 1.23 × 1.10 = 1.35 cubic yards.",
     guide_conclusion_h2: "充满信心地规划、测量和浇筑",
