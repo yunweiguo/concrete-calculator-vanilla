@@ -125,20 +125,20 @@
                             <div id="rectangle-inputs">
                                 <div>
                                     <label for="length" class="text-sm font-medium text-slate-700"><span data-i18n-key="label_length">Length</span> (<span class="unit-label-dist">ft</span>)</label>
-                                    <input type="number" id="length" placeholder="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                    <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                                 </div>
                                 <div class="mt-4">
                                     <label for="width" class="text-sm font-medium text-slate-700"><span data-i18n-key="label_width">Width</span> (<span class="unit-label-dist">ft</span>)</label>
-                                    <input type="number" id="width" placeholder="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                    <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                                 </div>
                             </div>
                             <div id="circle-inputs" class="hidden">
                                 <label for="diameter" class="text-sm font-medium text-slate-700"><span data-i18n-key="label_diameter">Diameter</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="diameter" placeholder="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <input type="number" id="diameter" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div>
                                 <label for="height" class="text-sm font-medium text-slate-700"><span data-i18n-key="label_height">Height / Thickness</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="height" placeholder="0.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <input type="number" id="height" placeholder="0.5" value="0.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                         </div>
                     </div>
@@ -151,6 +151,11 @@
                            <p data-i18n-key="results_placeholder_subtitle" class="text-sm text-slate-400">Enter dimensions to see the required bags.</p>
                         </div>
                     </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" data-i18n-key="calculate_button" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+                        Calculate
+                    </button>
                 </div>
             </div>
         </section>
@@ -206,9 +211,9 @@
         </div>
     </footer>
 
-    <script src="/translations.js"></script>
+    <script src="translations.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
 
             // --- STATE MANAGEMENT ---
             let currentUnit = 'imperial';
@@ -222,6 +227,10 @@
 
             // --- I18N (Internationalization) ---
             const setLanguage = (lang) => {
+                if (typeof translations === 'undefined') {
+                    console.error('Translations object is not loaded. Cannot set language.');
+                    return;
+                }
                 if (!translations[lang]) {
                     console.warn(`Language "${lang}" not found. Falling back to 'en'.`);
                     lang = 'en';
@@ -258,6 +267,7 @@
             const diameterInput = document.getElementById('diameter');
             const resultsOutput = document.getElementById('results-output');
             const unitLabelsDist = document.querySelectorAll('.unit-label-dist');
+            const calculateBtn = document.getElementById('calculate-btn');
 
             // --- BAG YIELD CONSTANTS (volume in ft³ per bag) ---
             const BAG_YIELDS_FT3 = {
@@ -274,28 +284,39 @@
             };
 
             const calculateResults = () => {
-                const len = parseFloat(lengthInput.value);
-                const wid = parseFloat(widthInput.value);
-                const hgt = parseFloat(heightInput.value);
-                const dia = parseFloat(diameterInput.value);
+                console.log('Calculating...');
+                const len = parseFloat(lengthInput.value) || 0;
+                const wid = parseFloat(widthInput.value) || 0;
+                const hgt = parseFloat(heightInput.value) || 0;
+                const dia = parseFloat(diameterInput.value) || 0;
 
-                let volumeFt3 = 0;
+                let volume = 0;
+                console.log('Inputs:', { shape: currentShape, unit: currentUnit, len, wid, hgt, dia });
                 if (currentShape === 'rectangle' && len > 0 && wid > 0 && hgt > 0) {
-                    volumeFt3 = len * wid * hgt;
+                    volume = len * wid * hgt;
                 } else if (currentShape === 'circle' && dia > 0 && hgt > 0) {
                     const radius = dia / 2;
-                    volumeFt3 = Math.PI * radius * radius * hgt;
+                    volume = Math.PI * radius * radius * hgt;
                 }
 
-                if (volumeFt3 <= 0) {
+                if (volume <= 0) {
+                    console.log('Volume is zero or invalid, resetting results.');
                     resetResults();
                     return;
                 }
                 
-                let volumeM3 = volumeFt3 / Math.pow(3.28084, 3);
+                let volumeFt3, volumeM3;
+                if (currentUnit === 'imperial') {
+                    volumeFt3 = volume;
+                    volumeM3 = volume / Math.pow(3.28084, 3);
+                } else { // Metric
+                    volumeM3 = volume;
+                    volumeFt3 = volume * Math.pow(3.28084, 3);
+                }
                 
                 let bagResults;
                 let volumeDisplay;
+                console.log('Calculated Volumes:', { volumeFt3, volumeM3 });
 
                 if (currentUnit === 'imperial') {
                     volumeDisplay = `${volumeFt3.toFixed(2)} ft³`;
@@ -309,6 +330,7 @@
                     });
                 }
                 
+                console.log('Displaying results:', { volumeDisplay, bagResults });
                 displayResults(volumeDisplay, bagResults);
             };
 
@@ -319,7 +341,7 @@
 
                 let bagsHTML = bags.map(b => `
                     <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg">
-                        <span class="font-bold text-slate-700">${b.weight} ${weightUnit} ${t('result_bags')}</span>
+                        <span class="font-bold text-slate-700">${b.weight} ${weightUnit} ${t('result_cement_bags')}</span>
                         <span class="text-2xl font-extrabold text-brand-primary">${b.count}</span>
                     </div>
                 `).join('');
@@ -345,7 +367,7 @@
             const updateUIForUnit = () => {
                 const distUnit = currentUnit === 'imperial' ? 'ft' : 'm';
                 unitLabelsDist.forEach(label => label.textContent = distUnit);
-                calculateResults(); // Recalculate when units change
+                resetResults();
             };
 
             const updateUIForShape = () => {
@@ -356,7 +378,7 @@
                     document.getElementById('rectangle-inputs').classList.add('hidden');
                     document.getElementById('circle-inputs').classList.remove('hidden');
                 }
-                calculateResults(); // Recalculate when shape changes
+                resetResults();
             };
             
             // --- EVENT LISTENERS ---
@@ -378,8 +400,9 @@
                 });
             });
 
-            [lengthInput, widthInput, heightInput, diameterInput].forEach(input => {
-                input.addEventListener('input', calculateResults);
+            calculateBtn.addEventListener('click', () => {
+                console.log('Calculate button clicked.');
+                calculateResults();
             });
 
             // --- INITIALIZATION ---
@@ -388,7 +411,7 @@
             updateUIForUnit();
             updateUIForShape();
             resetResults();
-        });
+        };
     </script>
 </body>
 </html> 

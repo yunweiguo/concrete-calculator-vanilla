@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const setLanguage = (lang) => {
+        if (typeof translations === 'undefined') {
+            console.error('Shared script: Translations object not loaded.');
+            return;
+        }
         if (!translations[lang]) return;
 
         // 1. Save preference FIRST - this is the key fix.
@@ -115,11 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Main calculation button
     document.getElementById('calculate-btn').addEventListener('click', () => {
+        console.log('Calculate button clicked on a page using script.js');
         const inputs = getInputs();
+        console.log('Inputs received:', inputs);
+        if (!inputs) return;
+
         const results = calculateResults(inputs);
+        console.log('Calculation results:', results);
+        if (!results) return;
+
         displayResults(results);
-        // We will now use the save button for this
-        // addToHistory(results);
     });
 
     // Save button
@@ -166,6 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- FUNCTIONS ---
     
+    function parseOrDefault(elementId, defaultValue) {
+        const value = parseFloat(document.getElementById(elementId).value);
+        return isNaN(value) || value <= 0 ? defaultValue : value;
+    };
+
     function clearResults() {
         const resultsOutput = document.getElementById('results-output');
         const lang = getLanguage();
@@ -184,11 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear the global results object
         window.latestResults = null;
     }
-
-    const parseOrDefault = (elementId, defaultValue) => {
-        const value = parseFloat(document.getElementById(elementId).value);
-        return isNaN(value) || value <= 0 ? defaultValue : value;
-    };
 
     function updateLabels() {
         const distUnit = currentUnit === 'imperial' ? 'ft' : 'm';
@@ -222,19 +231,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculateResults(inputs) {
-        let volumeFt3 = 0;
+        let volume = 0;
         if (inputs.shape === 'rectangle') {
-            const length = (inputs.unit === 'imperial') ? inputs.length : inputs.length * 3.28084;
-            const width = (inputs.unit === 'imperial') ? inputs.width : inputs.width * 3.28084;
-            const height = (inputs.unit === 'imperial') ? inputs.height : inputs.height * 3.28084;
-            volumeFt3 = length * width * height;
+            volume = inputs.length * inputs.width * inputs.height;
         } else { // Circle
-            const radius = (inputs.unit === 'imperial') ? inputs.radius : inputs.radius * 3.28084;
-            const height = (inputs.unit === 'imperial') ? inputs.height : inputs.height * 3.28084;
-            volumeFt3 = Math.PI * Math.pow(radius, 2) * height;
+            volume = Math.PI * Math.pow(inputs.radius, 2) * inputs.height;
         }
 
-        const volumeM3 = volumeFt3 * 0.0283168;
+        let volumeFt3, volumeM3;
+
+        if (inputs.unit === 'imperial') {
+            volumeFt3 = volume;
+            volumeM3 = volume * 0.0283168;
+        } else { // Metric
+            volumeM3 = volume;
+            volumeFt3 = volume / 0.0283168;
+        }
 
         const gradeRatios = {
             C15: { cement: 240, sand: 620, gravel: 1280 },
@@ -355,7 +367,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLabels();
         toggleInputs();
         renderHistory();
+        clearResults();
     }
 
-    init();
+    // Initialize the app
+    if (document.readyState === 'loading') {
+        window.onload = init;
+    } else {
+        init();
+    }
+
 }); 

@@ -225,11 +225,11 @@
         </div>
     </footer>
 
-    <script src="/translations.js"></script>
+    <script src="translations.js"></script>
     <script>
         // This is a simplified script for the slab calculator page.
         // It removes the shape selector logic.
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
 
             // --- STATE MANAGEMENT ---
             let currentUnit = 'imperial';
@@ -249,6 +249,10 @@
             
             // --- I18N (Internationalization) ---
             const setLanguage = (lang) => {
+                if (typeof translations === 'undefined') {
+                    console.error('Slab calculator: Translations object not loaded.');
+                    return;
+                }
                 if (!translations[lang]) {
                     console.warn(`Language "${lang}" not found in translations. Falling back to 'en'.`);
                     lang = 'en';
@@ -315,61 +319,44 @@
                 CUBIC_M_TO_CUBIC_YD: 1.30795,
             };
 
-            const BAG_WEIGHTS = {
-                imperial: [40, 60, 80], // in lbs
-                metric: [20, 30, 40]    // in kg
-            };
-
             const calculateVolume = (length, width, height) => {
                 return length * width * height;
-            };
-
-            const getBagYield = (bagWeightKg) => {
-                 // Standard yield: a 40kg bag yields about 0.011 cubic meters.
-                return (bagWeightKg / 40) * 0.011;
-            };
-
-            const calculateBags = (volumeM3, unit) => {
-                const weights = BAG_WEIGHTS[unit];
-                return weights.map(weight => {
-                    const weightInKg = (unit === 'imperial') ? weight / CONVERSION_FACTORS.KG_TO_LB : weight;
-                    const yieldM3 = getBagYield(weightInKg);
-                    const numBags = Math.ceil(volumeM3 / yieldM3);
-                    return { weight, numBags };
-                });
             };
             
             const generateResultHTML = (result) => {
                 const lang = localStorage.getItem('language') || 'en';
-                const t = (key) => translations[lang][key] || translations['en'][key];
+                const t = (key) => translations[lang]?.[key] || translations['en']?.[key];
 
                 const isImperial = result.unit === 'imperial';
                 const volUnit = isImperial ? `yd³` : `m³`;
                 const weightUnit = isImperial ? `lb` : `kg`;
+                const rawVolUnit = isImperial ? 'ft³' : 'm³';
 
-                let bagsHTML = result.bags.map(b => `
-                    <p class="text-sm">
-                        <span class="font-semibold">${b.numBags}</span> ${t('result_bags_of')} <span class="font-semibold">${b.weight}${weightUnit}</span> ${t('result_bags')}
-                    </p>
-                `).join('');
+                const materialsHTML = `
+                    <div class="space-y-1 text-sm">
+                        <div class="flex justify-between"><span>${t('result_cement')} (${t('result_cement_bags')})</span> <span class="font-semibold">${result.materials.cementBags}</span></div>
+                        <div class="flex justify-between"><span>${t('result_sand')}</span> <span class="font-semibold">${result.materials.sand.toFixed(1)} ${weightUnit}</span></div>
+                        <div class="flex justify-between"><span>${t('result_gravel')}</span> <span class="font-semibold">${result.materials.gravel.toFixed(1)} ${weightUnit}</span></div>
+                    </div>
+                `;
 
                 const costPerUnit = isImperial ? t('cost_per_cubic_yard') : t('cost_per_cubic_meter');
 
                 return `
                     <div class="w-full text-left">
                         <div class="mb-4 pb-2 border-b border-slate-200">
-                            <p class="text-lg font-bold text-slate-600">${t('result_volume')}</p>
+                            <p class="text-lg font-bold text-slate-600">${t('result_total_volume')}</p>
                             <p class="text-3xl font-extrabold text-brand-primary">${result.volume.toFixed(2)} <span class="text-2xl">${volUnit}</span></p>
-                            <p class="text-xs text-slate-400 mt-1">${result.rawVolume.toFixed(2)} ${volUnit} ${t('result_before_waste')}</p>
+                            <p class="text-xs text-slate-400 mt-1">${result.rawVolume.toFixed(2)} ${rawVolUnit}</p>
                         </div>
                         <div class="mb-4">
-                             <p class="text-lg font-bold text-slate-600">${t('result_concrete_bags')}</p>
-                             <div class="mt-1 space-y-1">${bagsHTML}</div>
+                             <p class="text-lg font-bold text-slate-600">${t('result_materials_needed')}</p>
+                             <div class="mt-1">${materialsHTML}</div>
                         </div>
                          <div class="bg-slate-50/80 rounded-lg p-3">
                             <p class="text-lg font-bold text-slate-600 mb-2">${t('result_cost_estimation')}</p>
                             <div class="text-sm space-y-1">
-                                <div class="flex justify-between"><span>${t('result_materials_subtotal')} (${result.volume.toFixed(2)} ${volUnit} @ ${result.costPerUnit.toFixed(2)}/${volUnit})</span> <span class="font-semibold">$${result.materialCost.toFixed(2)}</span></div>
+                                <div class="flex justify-between"><span>${t('result_materials_subtotal')}</span> <span class="font-semibold">$${result.materialCost.toFixed(2)}</span></div>
                                 <div class="flex justify-between"><span>${t('result_labor')}</span> <span class="font-semibold">$${result.laborCost.toFixed(2)}</span></div>
                                 <div class="flex justify-between border-t border-slate-300 mt-1 pt-1">
                                     <span class="font-bold">${t('result_total_cost')}</span>
@@ -416,47 +403,68 @@
             });
 
             calculateBtn.addEventListener('click', () => {
+                console.log('Slab calculator button clicked.');
                 const len = parseFloat(lengthInput.value) || 0;
                 const wid = parseFloat(widthInput.value) || 0;
                 const hgt = parseFloat(heightInput.value) || 0;
+                console.log('Inputs:', { len, wid, hgt, unit: currentUnit });
 
                 if (len <= 0 || wid <= 0 || hgt <= 0) {
                     alert('Please enter valid, positive dimensions.');
                     return;
                 }
 
-                let lengthM, widthM, heightM;
+                let length = len, width = wid, height = hgt;
+                const grade = gradeSelect.value;
+                
+                const rawVolume = calculateVolume(length, width, height);
+                
+                let rawVolumeFt3, rawVolumeM3;
 
                 if (currentUnit === 'imperial') {
-                    lengthM = len / CONVERSION_FACTORS.M_TO_FT;
-                    widthM = wid / CONVERSION_FACTORS.M_TO_FT;
-                    heightM = hgt / CONVERSION_FACTORS.M_TO_FT;
+                    rawVolumeFt3 = rawVolume;
+                    rawVolumeM3 = rawVolume * 0.0283168;
                 } else {
-                    lengthM = len;
-                    widthM = wid;
-                    heightM = hgt;
+                    rawVolumeM3 = rawVolume;
+                    rawVolumeFt3 = rawVolume / 0.0283168;
                 }
                 
-                const rawVolumeM3 = calculateVolume(lengthM, widthM, heightM);
-                const volumeM3WithWaste = rawVolumeM3 * 1.075; // 7.5% waste factor
+                const volumeForCosting = rawVolumeM3 * 1.075; // Add waste factor for cost calculation
 
-                const costPerCubicMeter = 120; // Example cost
-                const laborCostPerCubicMeter = 80; // Example cost
+                const gradeRatios = {
+                    C15: { cement: 240, sand: 620, gravel: 1280 },
+                    C20: { cement: 320, sand: 580, gravel: 1260 },
+                    C25: { cement: 360, sand: 550, gravel: 1250 },
+                    C30: { cement: 400, sand: 520, gravel: 1240 }
+                };
+
+                const ratios = gradeRatios[grade];
+                const cementKg = rawVolumeM3 * ratios.cement;
+                const sandKg = rawVolumeM3 * ratios.sand;
+                const gravelKg = rawVolumeM3 * ratios.gravel;
+
+                const costPerCubicMeter = 120; 
+                const laborCostPerCubicMeter = 80;
                 
                 const result = {
                     unit: currentUnit,
                     shape: 'Slab',
                     dimensions: `L: ${len}, W: ${wid}, H: ${hgt}`,
-                    rawVolume: currentUnit === 'imperial' ? rawVolumeM3 * CONVERSION_FACTORS.CUBIC_M_TO_CUBIC_YD : rawVolumeM3,
-                    volume: currentUnit === 'imperial' ? volumeM3WithWaste * CONVERSION_FACTORS.CUBIC_M_TO_CUBIC_YD : volumeM3WithWaste,
-                    bags: calculateBags(volumeM3WithWaste, currentUnit),
-                    costPerUnit: currentUnit === 'imperial' ? costPerCubicMeter / CONVERSION_FACTORS.CUBIC_M_TO_CUBIC_YD : costPerCubicMeter,
-                    materialCost: volumeM3WithWaste * costPerCubicMeter,
-                    laborCost: volumeM3WithWaste * laborCostPerCubicMeter,
-                    totalCost: volumeM3WithWaste * (costPerCubicMeter + laborCostPerCubicMeter),
+                    rawVolume: currentUnit === 'imperial' ? rawVolumeFt3 : rawVolumeM3,
+                    volume: currentUnit === 'imperial' ? rawVolumeFt3 / 27 : rawVolumeM3,
+                    materials: {
+                        cement: currentUnit === 'imperial' ? cementKg * CONVERSION_FACTORS.KG_TO_LB : cementKg,
+                        sand: currentUnit === 'imperial' ? sandKg * CONVERSION_FACTORS.KG_TO_LB : sandKg,
+                        gravel: currentUnit === 'imperial' ? gravelKg * CONVERSION_FACTORS.KG_TO_LB : gravelKg,
+                        cementBags: Math.ceil(cementKg / 50)
+                    },
+                    materialCost: volumeForCosting * costPerCubicMeter,
+                    laborCost: volumeForCosting * laborCostPerCubicMeter,
+                    totalCost: volumeForCosting * (costPerCubicMeter + laborCostPerCubicMeter),
                     timestamp: new Date().toISOString(),
                 };
 
+                console.log('Final result object:', result);
                 displayResults(result);
             });
             
@@ -478,7 +486,7 @@
             setLanguage(preferredLang);
             updateUIForUnit(); // Initial UI setup
             resetResults(); // Start with a clean slate
-        });
+        };
     </script>
 </body>
 </html> 
