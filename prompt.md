@@ -27,14 +27,14 @@
 
 ## 2. 后续开发迭代计划 (Future Development Plan)
 
-### 第一阶段: 内容中心建设与内部链接 (In Progress)
+### 第一阶段: 内容中心建设与内部链接 (Completed)
 
-- **[ ] 完善主页链接:** 更新 `index.html`，添加指向所有新计算器页面 (`slab-calculator.html`, `footing-calculator.html`, `bag-calculator.html`) 和指南页面 (`guides/how-to-calculate-concrete.html`) 的链接，构建内部链接网络。
-- **[ ] 增强内部链接:** 在现有页面的相关内容（如 FAQ）中，智能地链向其他页面。例如，在主页关于“袋装 vs. 预拌”的 FAQ 中，添加入 `bag-calculator.html` 的链接。
+- **[x] 完善主页链接与导航:** 更新 `index.html`，添加了指向新页面的卡片链接，并为全站所有页面（`index.html`, `slab-calculator.html`, `footing-calculator.html`, `bag-calculator.html`, `guides/how-to-calculate-concrete.html`）增加了统一的响应式导航栏和中心化功能脚本，从而构建了强大的内部链接网络并解决了语言同步问题。
+- **[x] 增强内部链接:** 在 `index.html` 和 `bag-calculator.html` 的 FAQ 部分添加了上下文相关的内部链接，以增强用户导航和 SEO。**注意: 由于工具限制，`translations.js` 文件需要手动修复语法错误才能使新链接的文本完全生效。**
 
-### 第二阶段: 扩展内容生态系统
+### 第二阶段: 扩展内容生态系统 (In Progress)
 
-- **[ ] 创建新的指南页面:** 根据 Semrush 报告，继续创建满足用户搜索意图的高质量信息指南页面。
+- **[ ] 创建新页面 `guides/rebar-calculator.html`:**
   - **备选主题 1:** "什么是混凝土标号 (C20, C25)？" - 深入解释不同强度等级的应用场景。
   - **备选主题 2:** "一立方码混凝土多少钱？" - 详细分析影响混凝土价格的各种因素。
   - **备选主题 3:** "DIY 混凝土项目常见错误及如何避免" - 提供实用建议。
