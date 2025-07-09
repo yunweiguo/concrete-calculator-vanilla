@@ -180,11 +180,6 @@ const translations = {
     guide_conclusion_h2: "Plan, Measure, and Pour with Confidence",
     guide_conclusion_p1: "By carefully measuring your project, converting units correctly, and accounting for waste, you can confidently order the right amount of concrete. For easy, instant calculations, use our specialized calculators for <a href='/slab-calculator.html' class='text-brand-secondary hover:underline'>slabs</a>, <a href='/footing-calculator.html' class='text-brand-secondary hover:underline'>footings</a>, and <a href='/bag-calculator.html' class='text-brand-secondary hover:underline'>bags</a>.",
 
-    // History
-    history_title: "Recent Calculations",
-    history_clear: "Clear History",
-    history_slab: "Slab",
-    history_column: "Column",
   },
   zh: {
     // Header & Hero
@@ -367,11 +362,6 @@ const translations = {
     guide_conclusion_h2: "充满信心地规划、测量和浇筑",
     guide_conclusion_p1: "通过仔细测量您的项目、正确转换单位并考虑损耗，您可以自信地订购适量的混凝土。要进行简单、即时的计算，请使用我们专业的<a href='/slab-calculator.html' class='text-brand-secondary hover:underline'>板计算器</a>、<a href='/footing-calculator.html' class='text-brand-secondary hover:underline'>地基计算器</a>和<a href='/bag-calculator.html' class='text-brand-secondary hover:underline'>袋装计算器</a>。",
 
-    // History
-    history_title: "最近计算",
-    history_clear: "清除历史",
-    history_slab: "板",
-    history_column: "柱",
   },
   es: {
     // Header & Hero
@@ -554,10 +544,5 @@ const translations = {
     guide_conclusion_h2: "Planifique, Mida y Vierta con Confianza",
     guide_conclusion_p1: "Al medir cuidadosamente su proyecto, convertir las unidades correctamente y tener en cuenta el desperdicio, puede pedir con confianza la cantidad correcta de concreto. Para cálculos fáciles e instantáneos, use nuestras calculadoras especializadas para <a href='/slab-calculator.html' class='text-brand-secondary hover:underline'>losas</a>, <a href='/footing-calculator.html' class='text-brand-secondary hover:underline'>cimientos</a> y <a href='/bag-calculator.html' class='text-brand-secondary hover:underline'>sacos</a>.",
 
-    // History
-    history_title: "Cálculos Recientes",
-    history_clear: "Limpiar Historial",
-    history_slab: "Losa",
-    history_column: "Columna",
   }
 }; 
