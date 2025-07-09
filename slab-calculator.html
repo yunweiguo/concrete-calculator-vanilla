@@ -61,14 +61,30 @@
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
         <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
-            <a href="/index.html" class="flex items-center gap-2">
-                <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                <span class="font-bold text-xl text-slate-900">Concrete Calculator</span>
-            </a>
-            <div class="flex items-center gap-4">
-                <a href="/index.html#calculator" data-i18n-key="header_nav_link" class="bg-brand-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-brand-primary/90 transition-colors">
-                    Use Calculator
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">Concrete Calculator</span>
                 </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span data-i18n-key="nav_calculators">Calculators</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="slab-calculator.html" data-i18n-key="nav_slab_calculator" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Slab Calculator</a>
+                            <a href="footing-calculator.html" data-i18n-key="nav_footing_calculator" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Footing Calculator</a>
+                            <a href="bag-calculator.html" data-i18n-key="nav_bag_calculator" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Bag Calculator</a>
+                        </div>
+                    </div>
+                    <a href="guides/how-to-calculate-concrete.html" data-i18n-key="nav_guides" class="font-semibold text-slate-600 hover:text-brand-primary">Guides</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
                 <!-- Language Switcher -->
                 <div id="language-switcher" class="relative">
                     <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
@@ -82,8 +98,19 @@
                         <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100" data-lang="es">Español</a>
                     </div>
                 </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="slab-calculator.html" data-i18n-key="nav_slab_calculator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Slab Calculator</a>
+            <a href="footing-calculator.html" data-i18n-key="nav_footing_calculator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Footing Calculator</a>
+            <a href="bag-calculator.html" data-i18n-key="nav_bag_calculator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Bag Calculator</a>
+            <a href="guides/how-to-calculate-concrete.html" data-i18n-key="nav_guides" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Guides</a>
+        </div>
     </header>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
@@ -225,268 +252,7 @@
         </div>
     </footer>
 
-    <script src="translations.js"></script>
-    <script>
-        // This is a simplified script for the slab calculator page.
-        // It removes the shape selector logic.
-        window.onload = () => {
-
-            // --- STATE MANAGEMENT ---
-            let currentUnit = 'imperial';
-            // Shape is always 'rectangle' on this page
-            const currentShape = 'rectangle'; 
-            let history = JSON.parse(localStorage.getItem('concreteHistory')) || [];
-
-            const languageData = {
-                en: { name: 'English' },
-                zh: { name: '中文' },
-                es: { name: 'Español' },
-            };
-
-            // --- DOM ELEMENT SELECTORS ---
-            const languageMenu = document.getElementById('language-menu');
-            const languageMenuButton = document.getElementById('language-menu-button');
-            
-            // --- I18N (Internationalization) ---
-            const setLanguage = (lang) => {
-                if (typeof translations === 'undefined') {
-                    console.error('Slab calculator: Translations object not loaded.');
-                    return;
-                }
-                if (!translations[lang]) {
-                    console.warn(`Language "${lang}" not found in translations. Falling back to 'en'.`);
-                    lang = 'en';
-                }
-                localStorage.setItem('language', lang);
-                document.documentElement.lang = lang;
-
-                document.getElementById('current-language-name').textContent = languageData[lang]?.name || 'English';
-
-                document.querySelectorAll('[data-i18n-key]').forEach(elem => {
-                    const key = elem.getAttribute('data-i18n-key');
-                    const translation = translations[lang][key] || translations['en'][key];
-                    if (translation !== undefined) {
-                        elem.innerHTML = translation;
-                    } else {
-                        console.warn(`Translation key "${key}" not found for language "${lang}" or fallback 'en'.`);
-                    }
-                });
-
-                // Manually update placeholders for inputs
-                updatePlaceholders(lang);
-                // After setting language, re-render the result area if it has content
-                const resultsOutput = document.getElementById('results-output');
-                if(resultsOutput.dataset.lastResult) { // Check if there's a stored result
-                    const lastResult = JSON.parse(resultsOutput.dataset.lastResult);
-                    displayResults(lastResult);
-                }
-            };
-
-            const updatePlaceholders = (lang) => {
-                // Placeholder updates if needed. None for this calculator currently.
-            };
-
-            languageMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    const lang = e.target.getAttribute('data-lang');
-                    setLanguage(lang);
-                    languageMenu.classList.add('hidden');
-                }
-            });
-            
-            languageMenuButton.addEventListener('click', () => {
-                languageMenu.classList.toggle('hidden');
-            });
-
-            // --- UI ELEMENT SELECTORS ---
-            const unitSystemButtons = document.querySelectorAll('#unit-system button');
-            const lengthInput = document.getElementById('length');
-            const widthInput = document.getElementById('width');
-            const heightInput = document.getElementById('height');
-            const gradeSelect = document.getElementById('grade');
-            const calculateBtn = document.getElementById('calculate-btn');
-            const resultsOutput = document.getElementById('results-output');
-            const copyBtn = document.getElementById('copy-btn');
-            const saveBtn = document.getElementById('save-btn');
-            const resetBtn = document.getElementById('reset-btn');
-            
-            const unitLabelsDist = document.querySelectorAll('.unit-label-dist');
-
-            // --- BUSINESS LOGIC ---
-            const CONVERSION_FACTORS = {
-                M_TO_FT: 3.28084,
-                KG_TO_LB: 2.20462,
-                CUBIC_M_TO_CUBIC_YD: 1.30795,
-            };
-
-            const calculateVolume = (length, width, height) => {
-                return length * width * height;
-            };
-            
-            const generateResultHTML = (result) => {
-                const lang = localStorage.getItem('language') || 'en';
-                const t = (key) => translations[lang]?.[key] || translations['en']?.[key];
-
-                const isImperial = result.unit === 'imperial';
-                const volUnit = isImperial ? `yd³` : `m³`;
-                const weightUnit = isImperial ? `lb` : `kg`;
-                const rawVolUnit = isImperial ? 'ft³' : 'm³';
-
-                const materialsHTML = `
-                    <div class="space-y-1 text-sm">
-                        <div class="flex justify-between"><span>${t('result_cement')} (${t('result_cement_bags')})</span> <span class="font-semibold">${result.materials.cementBags}</span></div>
-                        <div class="flex justify-between"><span>${t('result_sand')}</span> <span class="font-semibold">${result.materials.sand.toFixed(1)} ${weightUnit}</span></div>
-                        <div class="flex justify-between"><span>${t('result_gravel')}</span> <span class="font-semibold">${result.materials.gravel.toFixed(1)} ${weightUnit}</span></div>
-                    </div>
-                `;
-
-                const costPerUnit = isImperial ? t('cost_per_cubic_yard') : t('cost_per_cubic_meter');
-
-                return `
-                    <div class="w-full text-left">
-                        <div class="mb-4 pb-2 border-b border-slate-200">
-                            <p class="text-lg font-bold text-slate-600">${t('result_total_volume')}</p>
-                            <p class="text-3xl font-extrabold text-brand-primary">${result.volume.toFixed(2)} <span class="text-2xl">${volUnit}</span></p>
-                            <p class="text-xs text-slate-400 mt-1">${result.rawVolume.toFixed(2)} ${rawVolUnit}</p>
-                        </div>
-                        <div class="mb-4">
-                             <p class="text-lg font-bold text-slate-600">${t('result_materials_needed')}</p>
-                             <div class="mt-1">${materialsHTML}</div>
-                        </div>
-                         <div class="bg-slate-50/80 rounded-lg p-3">
-                            <p class="text-lg font-bold text-slate-600 mb-2">${t('result_cost_estimation')}</p>
-                            <div class="text-sm space-y-1">
-                                <div class="flex justify-between"><span>${t('result_materials_subtotal')}</span> <span class="font-semibold">$${result.materialCost.toFixed(2)}</span></div>
-                                <div class="flex justify-between"><span>${t('result_labor')}</span> <span class="font-semibold">$${result.laborCost.toFixed(2)}</span></div>
-                                <div class="flex justify-between border-t border-slate-300 mt-1 pt-1">
-                                    <span class="font-bold">${t('result_total_cost')}</span>
-                                    <span class="font-bold text-brand-primary">$${result.totalCost.toFixed(2)}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            };
-
-            const displayResults = (result) => {
-                resultsOutput.innerHTML = generateResultHTML(result);
-                resultsOutput.dataset.lastResult = JSON.stringify(result); // Store for language changes
-                copyBtn.disabled = false;
-                saveBtn.disabled = false;
-            };
-
-            const resetResults = () => {
-                const lang = localStorage.getItem('language') || 'en';
-                const t = (key) => translations[lang][key] || translations['en'][key];
-                resultsOutput.innerHTML = `
-                    <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
-                    <p class="font-semibold text-slate-500">${t('results_placeholder_title')}</p>
-                    <p class="text-sm text-slate-400">${t('results_placeholder_subtitle')}</p>`;
-                copyBtn.disabled = true;
-                saveBtn.disabled = true;
-                delete resultsOutput.dataset.lastResult;
-            };
-
-            // --- EVENT LISTENERS ---
-            unitSystemButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    currentUnit = button.dataset.value;
-                    updateUIForUnit();
-                    resetResults();
-                    unitSystemButtons.forEach(btn => {
-                        btn.classList.remove('bg-white', 'text-brand-primary', 'shadow');
-                        btn.classList.add('text-slate-600', 'hover:text-brand-primary');
-                    });
-                    button.classList.add('bg-white', 'text-brand-primary', 'shadow');
-                    button.classList.remove('text-slate-600', 'hover:text-brand-primary');
-                });
-            });
-
-            calculateBtn.addEventListener('click', () => {
-                console.log('Slab calculator button clicked.');
-                const len = parseFloat(lengthInput.value) || 0;
-                const wid = parseFloat(widthInput.value) || 0;
-                const hgt = parseFloat(heightInput.value) || 0;
-                console.log('Inputs:', { len, wid, hgt, unit: currentUnit });
-
-                if (len <= 0 || wid <= 0 || hgt <= 0) {
-                    alert('Please enter valid, positive dimensions.');
-                    return;
-                }
-
-                let length = len, width = wid, height = hgt;
-                const grade = gradeSelect.value;
-                
-                const rawVolume = calculateVolume(length, width, height);
-                
-                let rawVolumeFt3, rawVolumeM3;
-
-                if (currentUnit === 'imperial') {
-                    rawVolumeFt3 = rawVolume;
-                    rawVolumeM3 = rawVolume * 0.0283168;
-                } else {
-                    rawVolumeM3 = rawVolume;
-                    rawVolumeFt3 = rawVolume / 0.0283168;
-                }
-                
-                const volumeForCosting = rawVolumeM3 * 1.075; // Add waste factor for cost calculation
-
-                const gradeRatios = {
-                    C15: { cement: 240, sand: 620, gravel: 1280 },
-                    C20: { cement: 320, sand: 580, gravel: 1260 },
-                    C25: { cement: 360, sand: 550, gravel: 1250 },
-                    C30: { cement: 400, sand: 520, gravel: 1240 }
-                };
-
-                const ratios = gradeRatios[grade];
-                const cementKg = rawVolumeM3 * ratios.cement;
-                const sandKg = rawVolumeM3 * ratios.sand;
-                const gravelKg = rawVolumeM3 * ratios.gravel;
-
-                const costPerCubicMeter = 120; 
-                const laborCostPerCubicMeter = 80;
-                
-                const result = {
-                    unit: currentUnit,
-                    shape: 'Slab',
-                    dimensions: `L: ${len}, W: ${wid}, H: ${hgt}`,
-                    rawVolume: currentUnit === 'imperial' ? rawVolumeFt3 : rawVolumeM3,
-                    volume: currentUnit === 'imperial' ? rawVolumeFt3 / 27 : rawVolumeM3,
-                    materials: {
-                        cement: currentUnit === 'imperial' ? cementKg * CONVERSION_FACTORS.KG_TO_LB : cementKg,
-                        sand: currentUnit === 'imperial' ? sandKg * CONVERSION_FACTORS.KG_TO_LB : sandKg,
-                        gravel: currentUnit === 'imperial' ? gravelKg * CONVERSION_FACTORS.KG_TO_LB : gravelKg,
-                        cementBags: Math.ceil(cementKg / 50)
-                    },
-                    materialCost: volumeForCosting * costPerCubicMeter,
-                    laborCost: volumeForCosting * laborCostPerCubicMeter,
-                    totalCost: volumeForCosting * (costPerCubicMeter + laborCostPerCubicMeter),
-                    timestamp: new Date().toISOString(),
-                };
-
-                console.log('Final result object:', result);
-                displayResults(result);
-            });
-            
-            resetBtn.addEventListener('click', () => {
-                lengthInput.value = '10';
-                widthInput.value = '12';
-                heightInput.value = '0.5';
-                resetResults();
-            });
-
-            // --- UI UPDATE FUNCTIONS ---
-            const updateUIForUnit = () => {
-                const distUnit = currentUnit === 'imperial' ? 'ft' : 'm';
-                unitLabelsDist.forEach(label => label.textContent = distUnit);
-            };
-
-            // --- INITIALIZATION ---
-            const preferredLang = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
-            setLanguage(preferredLang);
-            updateUIForUnit(); // Initial UI setup
-            resetResults(); // Start with a clean slate
-        };
-    </script>
+    <script src="../translations.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html> 

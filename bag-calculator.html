@@ -61,14 +61,30 @@
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
         <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
-            <a href="/index.html" class="flex items-center gap-2">
-                <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                <span class="font-bold text-xl text-slate-900">Concrete Calculator</span>
-            </a>
-            <div class="flex items-center gap-4">
-                <a href="/index.html#calculator" data-i18n-key="header_nav_link" class="bg-brand-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-brand-primary/90 transition-colors">
-                    Use Calculator
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">Concrete Calculator</span>
                 </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span data-i18n-key="nav_calculators">Calculators</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="slab-calculator.html" data-i18n-key="nav_slab_calculator" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Slab Calculator</a>
+                            <a href="footing-calculator.html" data-i18n-key="nav_footing_calculator" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Footing Calculator</a>
+                            <a href="bag-calculator.html" data-i18n-key="nav_bag_calculator" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Bag Calculator</a>
+                        </div>
+                    </div>
+                    <a href="guides/how-to-calculate-concrete.html" data-i18n-key="nav_guides" class="font-semibold text-slate-600 hover:text-brand-primary">Guides</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
                 <!-- Language Switcher -->
                 <div id="language-switcher" class="relative">
                     <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
@@ -82,8 +98,19 @@
                         <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100" data-lang="es">Español</a>
                     </div>
                 </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="slab-calculator.html" data-i18n-key="nav_slab_calculator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Slab Calculator</a>
+            <a href="footing-calculator.html" data-i18n-key="nav_footing_calculator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Footing Calculator</a>
+            <a href="bag-calculator.html" data-i18n-key="nav_bag_calculator" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Bag Calculator</a>
+            <a href="guides/how-to-calculate-concrete.html" data-i18n-key="nav_guides" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Guides</a>
+        </div>
     </header>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
@@ -211,207 +238,8 @@
         </div>
     </footer>
 
-    <script src="translations.js"></script>
-    <script>
-        window.onload = () => {
-
-            // --- STATE MANAGEMENT ---
-            let currentUnit = 'imperial';
-            let currentShape = 'rectangle';
-
-            const languageData = {
-                en: { name: 'English' },
-                zh: { name: '中文' },
-                es: { name: 'Español' },
-            };
-
-            // --- I18N (Internationalization) ---
-            const setLanguage = (lang) => {
-                if (typeof translations === 'undefined') {
-                    console.error('Translations object is not loaded. Cannot set language.');
-                    return;
-                }
-                if (!translations[lang]) {
-                    console.warn(`Language "${lang}" not found. Falling back to 'en'.`);
-                    lang = 'en';
-                }
-                localStorage.setItem('language', lang);
-                document.documentElement.lang = lang;
-                document.getElementById('current-language-name').textContent = languageData[lang]?.name || 'English';
-                document.querySelectorAll('[data-i18n-key]').forEach(elem => {
-                    const key = elem.getAttribute('data-i18n-key');
-                    const translation = translations[lang][key] || translations['en'][key];
-                    if (translation) {
-                        elem.innerHTML = translation;
-                    }
-                });
-            };
-
-            const languageMenu = document.getElementById('language-menu');
-            const languageMenuButton = document.getElementById('language-menu-button');
-            languageMenuButton.addEventListener('click', () => languageMenu.classList.toggle('hidden'));
-            languageMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    const lang = e.target.getAttribute('data-lang');
-                    setLanguage(lang);
-                    languageMenu.classList.add('hidden');
-                }
-            });
-
-            // --- UI ELEMENT SELECTORS ---
-            const unitSystemButtons = document.querySelectorAll('#unit-system button');
-            const shapeSelectorButtons = document.querySelectorAll('#shape-selector button');
-            const lengthInput = document.getElementById('length');
-            const widthInput = document.getElementById('width');
-            const heightInput = document.getElementById('height');
-            const diameterInput = document.getElementById('diameter');
-            const resultsOutput = document.getElementById('results-output');
-            const unitLabelsDist = document.querySelectorAll('.unit-label-dist');
-            const calculateBtn = document.getElementById('calculate-btn');
-
-            // --- BAG YIELD CONSTANTS (volume in ft³ per bag) ---
-            const BAG_YIELDS_FT3 = {
-                80: 0.60,
-                60: 0.45,
-                50: 0.375,
-                40: 0.30,
-            };
-            const BAG_YIELDS_M3 = {
-                40: 0.017,
-                30: 0.0127,
-                25: 0.0106,
-                20: 0.0085
-            };
-
-            const calculateResults = () => {
-                console.log('Calculating...');
-                const len = parseFloat(lengthInput.value) || 0;
-                const wid = parseFloat(widthInput.value) || 0;
-                const hgt = parseFloat(heightInput.value) || 0;
-                const dia = parseFloat(diameterInput.value) || 0;
-
-                let volume = 0;
-                console.log('Inputs:', { shape: currentShape, unit: currentUnit, len, wid, hgt, dia });
-                if (currentShape === 'rectangle' && len > 0 && wid > 0 && hgt > 0) {
-                    volume = len * wid * hgt;
-                } else if (currentShape === 'circle' && dia > 0 && hgt > 0) {
-                    const radius = dia / 2;
-                    volume = Math.PI * radius * radius * hgt;
-                }
-
-                if (volume <= 0) {
-                    console.log('Volume is zero or invalid, resetting results.');
-                    resetResults();
-                    return;
-                }
-                
-                let volumeFt3, volumeM3;
-                if (currentUnit === 'imperial') {
-                    volumeFt3 = volume;
-                    volumeM3 = volume / Math.pow(3.28084, 3);
-                } else { // Metric
-                    volumeM3 = volume;
-                    volumeFt3 = volume * Math.pow(3.28084, 3);
-                }
-                
-                let bagResults;
-                let volumeDisplay;
-                console.log('Calculated Volumes:', { volumeFt3, volumeM3 });
-
-                if (currentUnit === 'imperial') {
-                    volumeDisplay = `${volumeFt3.toFixed(2)} ft³`;
-                    bagResults = Object.entries(BAG_YIELDS_FT3).map(([weight, yieldVol]) => {
-                        return { weight, count: Math.ceil(volumeFt3 / yieldVol) };
-                    });
-                } else { // Metric
-                    volumeDisplay = `${volumeM3.toFixed(3)} m³`;
-                    bagResults = Object.entries(BAG_YIELDS_M3).map(([weight, yieldVol]) => {
-                        return { weight, count: Math.ceil(volumeM3 / yieldVol) };
-                    });
-                }
-                
-                console.log('Displaying results:', { volumeDisplay, bagResults });
-                displayResults(volumeDisplay, bagResults);
-            };
-
-            const displayResults = (volume, bags) => {
-                const lang = localStorage.getItem('language') || 'en';
-                const t = (key) => translations[lang][key] || translations['en'][key];
-                const weightUnit = currentUnit === 'imperial' ? 'lb' : 'kg';
-
-                let bagsHTML = bags.map(b => `
-                    <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg">
-                        <span class="font-bold text-slate-700">${b.weight} ${weightUnit} ${t('result_cement_bags')}</span>
-                        <span class="text-2xl font-extrabold text-brand-primary">${b.count}</span>
-                    </div>
-                `).join('');
-
-                resultsOutput.innerHTML = `
-                    <div class="w-full text-left">
-                        <p class="text-slate-600">${t('result_total_volume')}</p>
-                        <p class="text-3xl font-bold text-slate-900 mb-4">${volume}</p>
-                        <div class="space-y-2">${bagsHTML}</div>
-                    </div>
-                `;
-            };
-            
-            const resetResults = () => {
-                 const lang = localStorage.getItem('language') || 'en';
-                const t = (key) => translations[lang][key] || translations['en'][key];
-                resultsOutput.innerHTML = `
-                    <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
-                    <p class="text-sm text-slate-400">${t('results_placeholder_subtitle')}</p>
-                `;
-            };
-
-            const updateUIForUnit = () => {
-                const distUnit = currentUnit === 'imperial' ? 'ft' : 'm';
-                unitLabelsDist.forEach(label => label.textContent = distUnit);
-                resetResults();
-            };
-
-            const updateUIForShape = () => {
-                if (currentShape === 'rectangle') {
-                    document.getElementById('rectangle-inputs').classList.remove('hidden');
-                    document.getElementById('circle-inputs').classList.add('hidden');
-                } else {
-                    document.getElementById('rectangle-inputs').classList.add('hidden');
-                    document.getElementById('circle-inputs').classList.remove('hidden');
-                }
-                resetResults();
-            };
-            
-            // --- EVENT LISTENERS ---
-            unitSystemButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    currentUnit = button.dataset.value;
-                    unitSystemButtons.forEach(btn => btn.classList.remove('bg-white', 'text-brand-primary', 'shadow'));
-                    button.classList.add('bg-white', 'text-brand-primary', 'shadow');
-                    updateUIForUnit();
-                });
-            });
-
-            shapeSelectorButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    currentShape = button.dataset.value;
-                    shapeSelectorButtons.forEach(btn => btn.classList.remove('bg-white', 'text-brand-primary', 'shadow'));
-                    button.classList.add('bg-white', 'text-brand-primary', 'shadow');
-                    updateUIForShape();
-                });
-            });
-
-            calculateBtn.addEventListener('click', () => {
-                console.log('Calculate button clicked.');
-                calculateResults();
-            });
-
-            // --- INITIALIZATION ---
-            const preferredLang = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
-            setLanguage(preferredLang);
-            updateUIForUnit();
-            updateUIForShape();
-            resetResults();
-        };
-    </script>
+    <script src="../translations.js"></script>
+    <script src="../script.js"></script>
 </body>
+
 </html> 

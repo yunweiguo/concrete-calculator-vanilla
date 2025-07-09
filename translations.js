@@ -56,6 +56,21 @@ const translations = {
     benefit_3_title: "Increase Accuracy",
     benefit_3_text: "Based on standard industry formulas, our tool helps prevent costly errors from inaccurate concrete and material estimates.",
     
+    // Other Calculators Section
+    other_calculators_title: "Explore Our Specialized Calculators",
+    other_calculators_subtitle: "Find the perfect tool for your specific project needs.",
+    home_card_slab_title: "Slab Calculator",
+    home_card_slab_desc: "Perfect for patios, floors, and foundations. Calculate volume and materials for any rectangular concrete slab.",
+    home_card_footing_title: "Footing Calculator",
+    home_card_footing_desc: "Estimate concrete for wall footings or foundation pads. Ensures a stable and secure base for your structures.",
+    home_card_bag_title: "Concrete Bag Calculator",
+    home_card_bag_desc: "Working with pre-mixed bags? Calculate exactly how many bags of concrete mix you'll need for your project.",
+
+    // Guide Section
+    guides_title: "Learn More About Concrete",
+    guides_subtitle: "Check out our guides to help you plan and execute your project perfectly.",
+    guide_link_text: "How to Calculate Concrete: A Step-by-Step Guide",
+
     // How It Works Section
     how_title: "How It Works in 3 Simple Steps",
     how_1_title: "Select Units & Shape",
@@ -111,6 +126,13 @@ const translations = {
 
     // Footer
     footer_text: "A lightweight, fast, and accurate tool for all your concrete estimation needs.",
+
+    // Navigation
+    nav_calculators: "Calculators",
+    nav_slab_calculator: "Slab Calculator",
+    nav_footing_calculator: "Footing Calculator",
+    nav_bag_calculator: "Bag Calculator",
+    nav_guides: "Guides",
 
     // Slab Page Content
     slab_page_title: "Concrete Slab / Pad Calculator",
@@ -237,6 +259,21 @@ const translations = {
     benefit_2_text: "无需复杂的手动计算，即时获得体积、材料和成本的估算。更有效地规划您的项目进度。",
     benefit_3_title: "提高准确性",
     benefit_3_text: "基于标准行业公式，我们的工具有助于防止因不准确的混凝土和材料估算而导致的昂贵错误。",
+    
+    // Other Calculators Section
+    other_calculators_title: "探索我们的专业计算器",
+    other_calculators_subtitle: "为您的特定项目需求找到完美的工具。",
+    home_card_slab_title: "平板计算器",
+    home_card_slab_desc: "非常适合庭院、地板和地基。计算任何矩形混凝土板的体积和材料。",
+    home_card_footing_title: "地基计算器",
+    home_card_footing_desc: "估算墙基或基础垫的混凝土。确保您的结构有稳定和安全的基座。",
+    home_card_bag_title: "混凝土袋装计算器",
+    home_card_bag_desc: "需要使用预拌混凝土袋？精确计算您的项目需要多少袋混凝土。",
+
+    // Guide Section
+    guides_title: "学习更多关于混凝土的知识",
+    guides_subtitle: "查看我们的指南，帮助您完美地规划和执行您的项目。",
+    guide_link_text: "如何计算混凝土：分步指南",
 
     // How It Works Section
     how_title: "三步搞定",
@@ -293,6 +330,13 @@ const translations = {
     
     // Footer
     footer_text: "一个轻量、快速、准确的工具，满足您所有的混凝土估算需求。",
+
+    // Navigation
+    nav_calculators: "计算器",
+    nav_slab_calculator: "平板计算器",
+    nav_footing_calculator: "地基计算器",
+    nav_bag_calculator: "袋装计算器",
+    nav_guides: "指南",
 
     // Slab Page Content
     slab_page_title: "混凝土板/地坪计算器",
@@ -354,7 +398,7 @@ const translations = {
     guide_step1_slab_h4: "对于板、地基和墙（矩形）",
     guide_step1_slab_p1: "这是最常见的计算。公式是：<strong>体积 = 长 × 宽 × 厚度</strong>。例如，一个10英尺长、10英尺宽、4英寸厚的庭院，体积为 10 ft × 10 ft × 0.333 ft = 33.3 立方英尺。（注意：我们将4英寸转换为了0.333英尺）。",
     guide_step1_column_h4: "对于柱子或圆形地基（圆柱形）",
-    guide_step1_column_p1: "对于圆柱体，您需要半径（直径的一半）和高度。公式是：<strong>体积 = π (Pi) × 半径² × 高度</strong>。对于一个直径为1英尺（即半径为0.5英尺）、深3英尺的柱洞，计算为 3.14159 × (0.5 ft)² × 3 ft = 2.36 立方英尺。",
+    guide_step1_column_p1: "对于圆柱体，您需要半径（直径的一半）和高度。公式是：<strong>体积 = π (Pi) × 半径² × 高度</strong>. 对于一个直径为1英尺（即半径为0.5英尺）、深3英尺的柱洞，计算为 3.14159 × (0.5 ft)² × 3 ft = 2.36 立方英尺。",
     guide_step2_h3: "第二步：转换为立方码或立方米",
     guide_step2_p1: "混凝土是按立方码（在美国）或立方米订购的。您必须转换您的立方英尺或立方米测量值。关键换算：<br> - <strong>1立方码 = 27立方英尺</strong> <br> - <strong>1立方米 = 1 m³</strong>（如果您最初以米为单位测量）。<br>根据我们的板示例，33.3立方英尺 ÷ 27 = 1.23立方码。",
     guide_step3_h3: "第三步：考虑损耗（5-10%规则）",
@@ -418,10 +462,25 @@ const translations = {
     benefit_2_title: "Ahorre Tiempo",
     benefit_2_text: "Obtenga estimaciones instantáneas de volumen, materiales y costos sin cálculos manuales complejos. Planifique el cronograma de su proyecto de manera más efectiva.",
     benefit_3_title: "Aumente la Precisión",
-    benefit_3_text: "Basado en fórmulas estándar de la industria, nuestra herramienta ayuda a prevenir errores costosos por estimaciones incorrectas de concreto y materiales.",
+    benefit_3_text: "Basado en fórmulas estándar de la industria, nuestra herramienta ayuda a prevenir errores costosos por estimaciones inexactas de concreto y materiales.",
+    
+    // Other Calculators Section
+    other_calculators_title: "Explore Nuestras Calculadoras Especializadas",
+    other_calculators_subtitle: "Encuentre la herramienta perfecta para las necesidades específicas de su proyecto.",
+    home_card_slab_title: "Calculadora de Losa",
+    home_card_slab_desc: "Perfecta para patios, pisos y cimientos. Calcule el volumen y los materiales para cualquier losa de concreto rectangular.",
+    home_card_footing_title: "Calculadora de Zapata",
+    home_card_footing_desc: "Estime el concreto para zapatas de muros o cimientos. Asegura una base estable y segura para sus estructuras.",
+    home_card_bag_title: "Calculadora de Sacos de Concreto",
+    home_card_bag_desc: "¿Trabaja con sacos de mezcla preparada? Calcule exactamente cuántos sacos de concreto necesitará para su proyecto.",
+
+    // Guide Section
+    guides_title: "Aprenda Más Sobre el Concreto",
+    guides_subtitle: "Consulte nuestras guías para ayudarlo a planificar y ejecutar su proyecto a la perfección.",
+    guide_link_text: "Cómo Calcular Concreto: Una Guía Paso a Paso",
     
     // How It Works Section
-    how_title: "Cómo Funciona en 3 Pasos Simples",
+    how_title: "Cómo Funciona en 3 Simples Pasos",
     how_1_title: "Seleccione Unidades y Forma",
     how_1_text: "Elija entre los sistemas Imperial (pies, libras) y Métrico (metros, kilogramos). Luego, seleccione la forma de su vertido: una losa rectangular o una columna circular.",
     how_2_title: "Ingrese Dimensiones",
@@ -476,8 +535,15 @@ const translations = {
     // Footer
     footer_text: "Una herramienta ligera, rápida y precisa para todas sus necesidades de estimación de concreto.",
 
+    // Navigation
+    nav_calculators: "Calculadoras",
+    nav_slab_calculator: "Calculadora de Losa",
+    nav_footing_calculator: "Calculadora de Zapata",
+    nav_bag_calculator: "Calculadora de Sacos",
+    nav_guides: "Guías",
+
     // Slab Page Content
-    slab_page_title: "Calculadora de Losas y Placas de Concreto",
+    slab_page_title: "Calculadora de Losa / Pad de Concreto",
     slab_page_subtitle: "Estime la cantidad exacta de concreto que necesita para cualquier proyecto de losa rectangular o cuadrada, incluyendo volumen, sacos y costo.",
     slab_calculator_title: "1. Ingrese Dimensiones de la Losa",
     slab_calculator_subtitle: "Seleccione su sistema de unidades para comenzar.",
