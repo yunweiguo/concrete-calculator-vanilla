@@ -24,7 +24,7 @@ const translations = {
     grade_c30: "C30 (~5000 psi)",
     calculator_title_2: "2. Get Results",
     results_placeholder_title: "Your results will appear here.",
-    results_placeholder_subtitle: "Enter dimensions and press Calculate.",
+    results_placeholder_subtitle: "Enter dimensions and press \"Calculate\".",
     calculate_button: "Calculate",
     calculator_disclaimer: "* Price estimations are based on market averages and are for reference purposes only. Please consult local suppliers for accurate quotes.",
     
@@ -48,7 +48,7 @@ const translations = {
 
     // Benefits Section
     benefits_title: "Why Use Our Concrete Calculator?",
-    benefits_subtitle: "From DIY patio projects to professional construction footings, accuracy is key. Here’s how our tool helps you succeed.",
+    benefits_subtitle: "From DIY patio projects to professional construction footings, accuracy is key. Here's how our tool helps you succeed.",
     benefit_1_title: "Save Money",
     benefit_1_text: "Avoid over-ordering materials. Our precise calculations ensure you buy only what you need, reducing waste and saving you money.",
     benefit_2_title: "Save Time",
@@ -120,7 +120,9 @@ const translations = {
     faq_2_q: "How accurate is this calculator?",
     faq_2_a: "Our calculator uses standard industry formulas. The results are highly accurate for estimation. However, always consider factors like waste and spillage. It's common practice to order 5-10% extra concrete to be safe.",
     faq_3_q: "Can I use this for both ready-mix and hand-mixing?",
-    faq_3_a: "Yes. For ready-mix, the total volume figure is what you need. If you're mixing it yourself, the detailed material breakdown (cement, sand, gravel) tells you what components to buy.",
+    faq_3_a: "Yes. The results show the total volume needed, which you can order from a ready-mix supplier. The material breakdown (cement, sand, gravel) is for those who prefer to mix it themselves. For smaller jobs, you might use pre-mixed bags.",
+    faq_3_a_link: "Try our Concrete Bag Calculator",
+    faq_3_a_link_text: " to find out exactly how many bags you need.",
     faq_4_q: "Are the prices in the cost estimation current?",
     faq_4_a: "The prices used are based on general market averages for estimation purposes only. Material and labor costs can vary significantly based on your location. We recommend contacting local suppliers for precise quotes.",
 
@@ -149,6 +151,8 @@ const translations = {
     slab_faq1_a: "Generally, the terms are used interchangeably. \"Slab\" often refers to larger areas like floors or driveways, while \"pad\" might be used for smaller bases, such as for an AC unit or a small shed. The calculation method is identical for both.",
     slab_faq2_q: "How thick should my concrete slab be?",
     slab_faq2_a: "It depends on the load it will support:<br>- <strong>4 inches (0.33 ft)</strong> is standard for patios, sidewalks, and shed foundations.<br>- <strong>5-6 inches (0.42-0.5 ft)</strong> is recommended for driveways and garage floors that will support cars and light trucks.",
+    slab_faq2_a_link_text: "For a deeper understanding of how thickness and other dimensions affect the total volume, check out our ",
+    slab_faq2_a_link: "detailed concrete calculation guide",
 
     // Footing Page Content
     footing_page_title: "Concrete Footing Calculator",
@@ -165,6 +169,8 @@ const translations = {
     footing_faq1_a: "A footing is a concrete base that supports a structure's foundation. It spreads the weight of the structure over a wider area, providing stability and preventing the foundation from settling or shifting. They are essential for almost all permanent structures, from decks to houses.",
     footing_faq2_q: "Should I use a circular or square footing?",
     footing_faq2_a: "Both are common. Square footings are often easier to form with lumber. Circular footings, often made using cardboard form tubes (like Sonotubes), can be easier to dig with an auger. The choice often depends on your construction method and local practices. This calculator is for square or rectangular footings.",
+    footing_faq2_a_link_text: "To learn more about the fundamental principles of concrete calculation for any shape, visit our ",
+    footing_faq2_a_link: "comprehensive guide",
 
     // Bag Page Content
     bag_page_title: "Concrete Bag Calculator",
@@ -182,6 +188,8 @@ const translations = {
     bag_faq1_a: "It varies by bag weight. As a general rule:<br>- An 80 lb bag yields about 0.60 cubic feet.<br>- A 60 lb bag yields about 0.45 cubic feet.<br>- A 40 lb bag yields about 0.30 cubic feet.<br>This calculator does this math for you automatically.",
     bag_faq2_q: "Is it cheaper to buy bags or order ready-mix concrete?",
     bag_faq2_a: "For small projects (less than 1 cubic yard), bagged concrete is almost always cheaper and more convenient. For large projects, ready-mix concrete delivered by a truck is more cost-effective and saves significant labor.",
+    bag_faq2_a_link_text: "To understand the math behind volume calculations, check out our ",
+    bag_faq2_a_link: "step-by-step guide",
 
     // General Guide Content
     guide_main_title: "A Comprehensive Guide to Calculating Concrete",
@@ -200,7 +208,10 @@ const translations = {
     guide_step3_h3: "Step 3: Account for Waste (The 5-10% Rule)",
     guide_step3_p1: "Always order slightly more than your exact calculation. This 'waste factor' accounts for uneven ground, spillage, and concrete left in the wheelbarrow or truck. A standard rule is to add between 5% and 10% to your final volume. For our 1.23 cubic yard slab, a 10% waste factor would mean ordering 1.23 × 1.10 = 1.35 cubic yards.",
     guide_conclusion_h2: "Plan, Measure, and Pour with Confidence",
-    guide_conclusion_p1: "By carefully measuring your project, converting units correctly, and accounting for waste, you can confidently order the right amount of concrete. For easy, instant calculations, use our specialized calculators for <a href='/slab-calculator.html' class='text-brand-secondary hover:underline'>slabs</a>, <a href='/footing-calculator.html' class='text-brand-secondary hover:underline'>footings</a>, and <a href='/bag-calculator.html' class='text-brand-secondary hover:underline'>bags</a>.",
+    guide_conclusion_p1: "By carefully measuring your project, converting units correctly, and accounting for waste, you can confidently order the right amount of concrete. For easy, instant calculations, use our specialized calculators:",
+    guide_conclusion_link_slab: "Slab & Pad Calculator",
+    guide_conclusion_link_footing: "Footing Calculator",
+    guide_conclusion_link_bag: "Concrete Bag Calculator",
 
   },
   zh: {
@@ -228,7 +239,7 @@ const translations = {
     grade_c30: "C30 (~5000 psi)",
     calculator_title_2: "2. 获取结果",
     results_placeholder_title: "您的结果将显示在此处。",
-    results_placeholder_subtitle: "输入尺寸并按“计算”。",
+    results_placeholder_subtitle: "输入尺寸并按\"计算\"。",
     calculate_button: "计算",
     calculator_disclaimer: "* 价格估算基于市场平均值，仅供参考。请咨询当地供应商以获取准确报价。",
     
@@ -282,7 +293,7 @@ const translations = {
     how_2_title: "输入尺寸",
     how_2_text: "输入板的长、宽、厚，或圆柱的半径和高。选择所需的混凝土强度（标号）。",
     how_3_title: "获取即时结果",
-    how_3_text: "点击“计算”，查看所需体积、详细的材料清单（水泥、沙子、石子）和完整的成本明细。",
+    how_3_text: "点击\"计算\"，查看所需体积、详细的材料清单（水泥、沙子、石子）和完整的成本明细。",
 
     // Key Features Section
     features_title: "您需要的一切，尽在此处",
@@ -297,11 +308,11 @@ const translations = {
 
     // Testimonials Section
     testimonials_title: "深受建筑商和DIY爱好者的信赖",
-    testimonial_1_text: "“这个计算器是救星。它简单、准确，成本估算帮助我的新庭院项目保持在预算内。”",
+    testimonial_1_text: "这个计算器是救星。它简单、准确，成本估算帮助我的新庭院项目保持在预算内。",
     testimonial_1_author: "张伟，房主",
-    testimonial_2_text: "“作为一名小承包商，时间就是金钱。这个工具让我在现场快速估价。历史功能对于管理多个项目来说非常出色。”",
+    testimonial_2_text: "作为一名小承包商，时间就是金钱。这个工具让我在现场快速估价。历史功能对于管理多个项目来说非常出色。",
     testimonial_2_author: "李娜，LN建筑",
-    testimonial_3_text: "“终于有了一个在手机上易于使用并提供我需要的所有细节的混凝土计算器。强烈推荐。”",
+    testimonial_3_text: "终于有了一个在手机上易于使用并提供我需要的所有细节的混凝土计算器。强烈推荐。",
     testimonial_3_author: "王强，DIY爱好者",
 
     // Pricing Section
@@ -322,14 +333,16 @@ const translations = {
     faq_1_q: "混凝土标号（C15, C20, C25）是什么意思？",
     faq_1_a: "'C'代表抗压强度，数字代表混凝土28天后的特征抗压强度（兆帕，MPa）。例如，C25的强度为25 MPa（约3625 psi）。数字越大，混凝土越强。",
     faq_2_q: "这个计算器有多准确？",
-    faq_2_a: "我们的计算器使用标准的行业公式。结果对于估算目的非常准确。但是，请始终考虑浪费、溢出等因素。通常做法是多订购5-10%的混凝土以确保安全。",
-    faq_3_q: "我可以将它用于预拌混凝土和手动搅拌吗？",
-    faq_3_a: "是的。如果您订购预拌混凝土，您需要的是总体积数据。如果您自己搅拌，详细的材料分解（水泥袋、沙子、石子）会告诉您需要购买哪些组分。",
+    faq_2_a: "我们的计算器使用标准的行业公式。计算结果对于估算而言非常准确。但是，请务必考虑到浪费和溢出等因素。为了安全起见，通常会多订购5-10%的混凝土。",
+    faq_3_q: "这个计算器既可以用于预拌混凝土，也可以用于手动搅拌吗？",
+    faq_3_a: "是的。计算结果显示了您需要的总体积，您可以直接从预拌混凝土供应商那里订购。而材料明细（水泥、沙子、石子）则是为那些喜欢自己动手搅拌的用户准备的。对于较小的工作，您可能会使用预混合的袋装混凝土。",
+    faq_3_a_link: "试试我们的混凝土袋装计算器",
+    faq_3_a_link_text: "，准确算出您需要多少袋。",
     faq_4_q: "成本估算中的价格是当前的吗？",
-    faq_4_a: "所用价格基于一般市场平均水平，仅供估算。材料和人工成本会因您所在地区和供应商而有很大差异。我们建议联系当地供应商获取精确报价。",
+    faq_4_a: "所使用的价格仅为基于市场平均水平的估算值。材料和人工成本会因您所在的地区而有很大差异。我们建议您联系当地供应商以获取精确报价。",
     
     // Footer
-    footer_text: "一个轻量、快速、准确的工具，满足您所有的混凝土估算需求。",
+    footer_text: "一个轻量、快速且准确的工具，满足您所有的混凝土估算需求。",
 
     // Navigation
     nav_calculators: "计算器",
@@ -350,9 +363,11 @@ const translations = {
     slab_guide_li2: "<strong>损耗因素：</strong> 在最终体积上增加5-10%的损耗是标准做法。这部分考虑了溢出、过度挖掘以及搅拌车或搅拌机中残留的少量混凝土。",
     slab_guide_li3: "<strong>钢筋：</strong> 如果您使用螺纹钢或钢丝网，其体积通常可以忽略不计，在估算时无需从混凝土总体积中减去。",
     slab_faq1_q: "Slab（板）和 Pad（地坪）有什么区别？",
-    slab_faq1_a: "通常情况下，这两个术语可以互换使用。“Slab”通常指较大的区域，如地板或车道，而“Pad”可能用于较小的基础，例如空调机组或小屋的底座。两者的计算方法是相同的。",
+    slab_faq1_a: "通常情况下，这两个术语可以互换使用。\"Slab\"通常指较大的区域，如地板或车道，而\"Pad\"可能用于较小的基础，例如空调机组或小屋的底座。两者的计算方法是相同的。",
     slab_faq2_q: "我的混凝土板应该多厚？",
     slab_faq2_a: "这取决于它将承受的荷载：<br>- <strong>4英寸（0.33英尺）</strong>是庭院、人行道和棚屋地基的标准厚度。<br>- <strong>5-6英寸（0.42-0.5英尺）</strong>推荐用于支撑汽车和轻型卡车的车道和车库地板。",
+    slab_faq2_a_link_text: "要更深入地了解厚度和其他尺寸如何影响总体积，请查看我们的",
+    slab_faq2_a_link: "详细混凝土计算指南",
 
     // Footing Page Content
     footing_page_title: "混凝土地基计算器",
@@ -369,6 +384,8 @@ const translations = {
     footing_faq1_a: "地基是支撑结构基础的混凝土底座。它将结构的重量分散到更宽的区域上，提供稳定性并防止基础沉降或移位。对于几乎所有永久性结构，从甲板到房屋，它们都是必不可少的。",
     footing_faq2_q: "我应该使用一个圆形地基还是方形地基？",
     footing_faq2_a: "两者都很常见。方形地基通常更容易用木材来制作模板。圆形地基通常使用纸板管模（如Sonotube）制成，用螺旋钻更容易挖掘。选择通常取决于您的施工方法和当地惯例。此计算器适用于方形或矩形地基。",
+    footing_faq2_a_link_text: "要了解适用于任何形状的混凝土计算基本原则，请访问我们的",
+    footing_faq2_a_link: "综合指南",
 
     // Bag Page Content
     bag_page_title: "袋装混凝土计算器",
@@ -379,32 +396,41 @@ const translations = {
     bag_guide_title: "购买和使用袋装混凝土指南",
     bag_guide_p1: "袋装的预拌混凝土非常适合中小型项目，在这些项目中订购商品混凝土不太现实。它提供了便利和可控性，确保您只混合您需要的分量。像Quikrete或Sakrete这样的常见品牌在大多数五金店都很容易买到。",
     bag_guide_h3: "使用袋装混凝土的技巧：",
-    bag_guide_li1: "<strong>检查产出量：</strong> 并非所有的袋子都一样。单袋可生产的混凝土体积（即“产出量”）会印在包装袋上。我们的计算器使用标准产出量，但请务必核对您具体产品的信息。",
+    bag_guide_li1: "<strong>检查产出量：</strong> 并非所有的袋子都一样。单袋可生产的混凝土体积（即\"产出量\"）会印在包装袋上。我们的计算器使用标准产出量，但请务必核对您具体产品的信息。",
     bag_guide_li2: "<strong>搅拌均匀性：</strong> 遵循制造商的加水说明。水太少会使混凝土难以施工，水太多则会削弱其强度。目标是达到像花生酱一样顺滑的稠度。",
     bag_guide_li3: "<strong>分批作业：</strong> 一次只混合您能在约20-30分钟内浇筑和完成的袋数。混凝土凝固得很快，尤其是在温暖、多风的日子里。",
     bag_faq1_q: "一袋混凝土能产生多少体积？",
-    bag_faq1_a: "这取决于袋子的重量。作为一般规则：<br>- 80磅的袋子约产出0.60立方英尺。<br>- 60磅的袋子约产出0.45立方英尺。<br>- 40磅的袋子约产出0.30立方英尺。<br>本计算器会自动为您进行此计算。",
-    bag_faq2_q: "买袋装混凝土便宜还是订购商品混凝土便宜？",
-    bag_faq2_a: "对于小型项目（小于1立方码），袋装混凝土几乎总是更便宜、更方便。对于大型项目，由卡车运送的商品混凝土更具成本效益，并能节省大量人工。",
+    bag_faq1_a: "这取决于袋子的重量。一般来说：<br>- 80磅的袋子大约能产出0.60立方英尺。<br>- 60磅的袋子大约能产出0.45立方英尺。<br>- 40磅的袋子大约能产出0.30立方英尺。<br>本计算器会自动为您完成这些计算。",
+    bag_faq2_q: "买袋装混凝土和订购商品混凝土哪个更便宜？",
+    bag_faq2_a: "对于小型项目（小于1立方码），袋装混凝土几乎总是更便宜、更方便。对于大型项目，通过卡车运送的商品混凝土更具成本效益，并能节省大量劳动力。",
+    bag_faq2_a_link_text: "要了解体积计算背后的数学原理，请查看我们的",
+    bag_faq2_a_link: "分步指南",
+    footing_faq2_q: "我应该使用一个圆形地基还是方形地基？",
+    footing_faq2_a: "两者都很常见。方形地基通常更容易用木材来制作模板。圆形地基通常使用纸板管模（如Sonotube）制成，用螺旋钻更容易挖掘。选择通常取决于您的施工方法和当地惯例。此计算器适用于方形或矩形地基。",
+    footing_faq2_a_link_text: "要了解适用于任何形状的混凝土计算基本原则，请访问我们的",
+    footing_faq2_a_link: "综合指南",
 
     // General Guide Content
     guide_main_title: "混凝土计算综合指南",
     guide_main_subtitle: "学习估算任何项目混凝土量的基本原理，从理解体积和单位到考虑损耗。",
     guide_intro_h2: "为什么精确计算很重要",
-    guide_intro_p1: "无论您是浇筑一个小庭院、一个新棚子的地基，还是设置栅栏柱，计算正确的混凝土用量都是最关键的第一步。订购太少会导致“冷缝”——即新旧混凝土交接处的结构薄弱点。订购太多则是材料和金钱的昂贵浪费。本指南将引导您完成关键步骤以确保计算准确。",
+    guide_intro_p1: "无论您是浇筑一个小庭院、一个新棚子的地基，还是设置栅栏柱，计算正确的混凝土用量都是最关键的第一步。订购太少会导致\"冷缝\"——即新旧混凝土交接处的结构薄弱点。订购太多则是材料和金钱的昂贵浪费。本指南将引导您完成关键步骤以确保计算准确。",
     guide_steps_h2: "分步计算流程",
     guide_step1_h3: "第一步：确定项目体积",
     guide_step1_p1: "体积的基本公式是长、宽、高（或深度/厚度）相乘。关键是在相乘之前，确保所有测量值都使用相同的单位。",
     guide_step1_slab_h4: "对于板、地基和墙（矩形）",
-    guide_step1_slab_p1: "这是最常见的计算。公式是：<strong>体积 = 长 × 宽 × 厚度</strong>。例如，一个10英尺长、10英尺宽、4英寸厚的庭院，体积为 10 ft × 10 ft × 0.333 ft = 33.3 立方英尺。（注意：我们将4英寸转换为了0.333英尺）。",
+    guide_step1_slab_p1: "这是最常见的计算。公式是：<strong>体积 = 长 × 宽 × 厚度</strong>. 例如，一个10英尺长、10英尺宽、4英寸厚的庭院，体积为 10 ft × 10 ft × 0.333 ft = 33.3 立方英尺。（注意：我们将4英寸转换为了0.333英尺）。",
     guide_step1_column_h4: "对于柱子或圆形地基（圆柱形）",
     guide_step1_column_p1: "对于圆柱体，您需要半径（直径的一半）和高度。公式是：<strong>体积 = π (Pi) × 半径² × 高度</strong>. 对于一个直径为1英尺（即半径为0.5英尺）、深3英尺的柱洞，计算为 3.14159 × (0.5 ft)² × 3 ft = 2.36 立方英尺。",
     guide_step2_h3: "第二步：转换为立方码或立方米",
     guide_step2_p1: "混凝土是按立方码（在美国）或立方米订购的。您必须转换您的立方英尺或立方米测量值。关键换算：<br> - <strong>1立方码 = 27立方英尺</strong> <br> - <strong>1立方米 = 1 m³</strong>（如果您最初以米为单位测量）。<br>根据我们的板示例，33.3立方英尺 ÷ 27 = 1.23立方码。",
     guide_step3_h3: "第三步：考虑损耗（5-10%规则）",
-    guide_step3_p1: "始终订购比您精确计算多一点的量。这个“损耗系数”考虑了地面不平、溢出以及残留在独轮手推车或卡车中的混凝土。一个标准规则是在最终体积上增加5%到10%。对于我们1.23立方码的板，10%的损耗系数意味着应订购 1.23 × 1.10 = 1.35立方码。",
+    guide_step3_p1: "始终订购比您精确计算多一点的量。这个\"损耗系数\"考虑了地面不平、溢出以及残留在独轮手推车或卡车中的混凝土。一个标准规则是在最终体积上增加5%到10%。对于我们1.23立方码的板，10%的损耗系数意味着应订购 1.23 × 1.10 = 1.35立方码。",
     guide_conclusion_h2: "充满信心地规划、测量和浇筑",
-    guide_conclusion_p1: "通过仔细测量您的项目、正确转换单位并考虑损耗，您可以自信地订购适量的混凝土。要进行简单、即时的计算，请使用我们专业的<a href='/slab-calculator.html' class='text-brand-secondary hover:underline'>板计算器</a>、<a href='/footing-calculator.html' class='text-brand-secondary hover:underline'>地基计算器</a>和<a href='/bag-calculator.html' class='text-brand-secondary hover:underline'>袋装计算器</a>。",
+    guide_conclusion_p1: "通过仔细测量您的项目、正确转换单位并考虑损耗，您可以自信地订购适量的混凝土。要进行简单、即时的计算，请使用我们专业的计算器：",
+    guide_conclusion_link_slab: "平板与地坪计算器",
+    guide_conclusion_link_footing: "地基计算器",
+    guide_conclusion_link_bag: "袋装混凝土计算器",
 
   },
   es: {
@@ -526,9 +552,11 @@ const translations = {
     faq_1_q: "¿Qué significan los grados de concreto (C15, C20, C25)?",
     faq_1_a: "La 'C' significa Resistencia a la Compresión, y el número representa la resistencia a la compresión característica del concreto en megapascales (MPa) después de 28 días. C25, por ejemplo, tiene una resistencia de 25 MPa (~3625 psi). Números más altos significan un concreto más fuerte.",
     faq_2_q: "¿Qué tan precisa es esta calculadora?",
-    faq_2_a: "Nuestra calculadora utiliza fórmulas estándar de la industria. Los resultados son muy precisos para la estimación. Sin embargo, siempre considere factores como el desperdicio y los derrames. Es una práctica común pedir un 5-10% extra de concreto para estar seguro.",
+    faq_2_a: "Nuestra calculadora utiliza fórmulas estándar de la industria. Los resultados son muy precisos para la estimación. Sin embargo, siempre considere factores como el desperdicio y los derrames. Es una práctica común pedir entre un 5% y un 10% de concreto extra para estar seguros.",
     faq_3_q: "¿Puedo usar esto tanto para concreto premezclado como para mezcla manual?",
-    faq_3_a: "Sí. Para el concreto premezclado, la cifra de volumen total es lo que necesita. Si lo está mezclando usted mismo, el desglose detallado de materiales (cemento, arena, grava) le dice qué componentes comprar.",
+    faq_3_a: "Sí. Los resultados muestran el volumen total necesario, que puede pedir a un proveedor de premezclado. El desglose de materiales (cemento, arena, grava) es para quienes prefieren mezclarlo ellos mismos. Para trabajos más pequeños, puede usar sacos premezclados.",
+    faq_3_a_link: "Pruebe nuestra Calculadora de Sacos de Concreto",
+    faq_3_a_link_text: " para saber exactamente cuántos sacos necesita.",
     faq_4_q: "¿Son actuales los precios en la estimación de costos?",
     faq_4_a: "Los precios utilizados se basan en promedios generales del mercado solo para fines de estimación. Los costos de materiales y mano de obra pueden variar significativamente según su ubicación. Recomendamos contactar a proveedores locales para obtener cotizaciones precisas.",
     
@@ -557,6 +585,8 @@ const translations = {
     slab_faq1_a: "Generalmente, los términos se usan indistintamente. \"Losa\" a menudo se refiere a áreas más grandes como pisos o entradas de vehículos, mientras que \"placa\" podría usarse para bases más pequeñas, como para una unidad de aire acondicionado o un pequeño cobertizo. El método de cálculo es idéntico para ambos.",
     slab_faq2_q: "¿Qué espesor debe tener mi losa de concreto?",
     slab_faq2_a: "Depende de la carga que soportará:<br>- <strong>4 pulgadas (0.33 pies)</strong> es el estándar para patios, aceras y cimientos de cobertizos.<br>- <strong>5-6 pulgadas (0.42-0.5 pies)</strong> se recomienda para entradas de vehículos y pisos de garaje que soportarán automóviles y camiones ligeros.",
+    slab_faq2_a_link_text: "Para comprender mejor cómo el espesor y otras dimensiones afectan el volumen total, consulte nuestra ",
+    slab_faq2_a_link: "guía detallada de cálculo de concreto",
 
     // Footing Page Content
     footing_page_title: "Calculadora de Cimientos de Concreto",
@@ -573,6 +603,8 @@ const translations = {
     footing_faq1_a: "Un cimiento es una base de concreto que soporta la cimentación de una estructura. Distribuye el peso de la estructura sobre un área más amplia, proporcionando estabilidad y evitando que la cimentación se asiente o se desplace. Son esenciales para casi todas las estructuras permanentes, desde terrazas hasta casas.",
     footing_faq2_q: "¿Debo usar un cimiento circular o cuadrado?",
     footing_faq2_a: "Ambos son comunes. Los cimientos cuadrados suelen ser más fáciles de encofrar con madera. Los cimientos circulares, a menudo hechos con tubos de encofrado de cartón (como los Sonotubes), pueden ser más fáciles de excavar con una barrena. La elección a menudo depende de su método de construcción y las prácticas locales. Esta calculadora es para cimientos cuadrados o rectangulares.",
+    footing_faq2_a_link_text: "Para obtener más información sobre los principios fundamentales del cálculo de concreto para cualquier forma, visite nuestra ",
+    footing_faq2_a_link: "guía completa",
 
     // Bag Page Content
     bag_page_title: "Calculadora de Sacos de Concreto",
@@ -587,13 +619,15 @@ const translations = {
     bag_guide_li2: "<strong>Consistencia de la Mezcla:</strong> Siga las instrucciones del fabricante para agregar agua. Poca agua hace que el concreto sea difícil de trabajar, mientras que demasiada lo debilita. Apunte a una consistencia suave, similar a la mantequilla de maní.",
     bag_guide_li3: "<strong>Trabaje en Lotes:</strong> Solo mezcle la cantidad de sacos que pueda colocar y terminar en unos 20-30 minutos. El concreto comienza a fraguar rápidamente, especialmente en días cálidos y ventosos.",
     bag_faq1_q: "¿Qué volumen produce un saco de concreto?",
-    bag_faq1_a: "Varía según el peso del saco. Como regla general:<br>- Un saco de 80 lb rinde aproximadamente 0.60 pies cúbicos.<br>- Un saco de 60 lb rinde aproximadamente 0.45 pies cúbicos.<br>- Un saco de 40 lb rinde aproximadamente 0.30 pies cúbicos.<br>Esta calculadora hace este cálculo por usted automáticamente.",
+    bag_faq1_a: "Varía según el peso del saco. Como regla general:<br>- Un saco de 80 lb rinde aproximadamente 0.60 pies cúbicos.<br>- Un saco de 60 lb rinde aproximadamente 0.45 pies cúbicos.<br>- Un saco de 40 lb rinde aproximadamente 0.30 pies cúbicos.<br>Esta calculadora hace estos cálculos por usted automáticamente.",
     bag_faq2_q: "¿Es más barato comprar sacos u ordenar concreto premezclado?",
     bag_faq2_a: "Para proyectos pequeños (menos de 1 yarda cúbica), el concreto en sacos es casi siempre más barato y conveniente. Para proyectos grandes, el concreto premezclado entregado por un camión es más rentable y ahorra una cantidad significativa de mano de obra.",
+    bag_faq2_a_link_text: "Para entender las matemáticas detrás de los cálculos de volumen, consulte nuestra ",
+    bag_faq2_a_link: "guía paso a paso",
 
     // General Guide Content
     guide_main_title: "Una Guía Completa para Calcular Concreto",
-    guide_main_subtitle: "Aprenda los fundamentos para estimar el concreto para cualquier proyecto, desde comprender el volumen y las unidades hasta tener en cuenta el desperdicio.",
+    guide_main_subtitle: "Aprenda los fundamentos de la estimación de concreto para cualquier proyecto, desde la comprensión del volumen y las unidades hasta la contabilidad del desperdicio.",
     guide_intro_h2: "Por Qué es Importante un Cálculo Preciso",
     guide_intro_p1: "Ya sea que esté vertiendo un pequeño patio, una base para un nuevo cobertizo o colocando postes para una cerca, calcular la cantidad correcta de concreto es el primer paso más crítico. Pedir muy poco puede llevar a una 'junta fría'—un punto débil en la estructura donde el concreto fresco se vierte contra el concreto ya endurecido. Pedir demasiado es un desperdicio costoso de materiales y dinero. Esta guía lo guiará a través de los pasos esenciales para hacerlo bien.",
     guide_steps_h2: "Proceso de Cálculo Paso a Paso",
@@ -608,7 +642,10 @@ const translations = {
     guide_step3_h3: "Paso 3: Tenga en Cuenta el Desperdicio (La Regla del 5-10%)",
     guide_step3_p1: "Siempre pida un poco más de su cálculo exacto. Este 'factor de desperdicio' tiene en cuenta el terreno irregular, los derrames y el concreto que queda en la carretilla o el camión. Una regla estándar es agregar entre un 5% y un 10% a su volumen final. Para nuestra losa de 1.23 yardas cúbicas, un factor de desperdicio del 10% significaría pedir 1.23 × 1.10 = 1.35 yardas cúbicas.",
     guide_conclusion_h2: "Planifique, Mida y Vierta con Confianza",
-    guide_conclusion_p1: "Al medir cuidadosamente su proyecto, convertir las unidades correctamente y tener en cuenta el desperdicio, puede pedir con confianza la cantidad correcta de concreto. Para cálculos fáciles e instantáneos, use nuestras calculadoras especializadas para <a href='/slab-calculator.html' class='text-brand-secondary hover:underline'>losas</a>, <a href='/footing-calculator.html' class='text-brand-secondary hover:underline'>cimientos</a> y <a href='/bag-calculator.html' class='text-brand-secondary hover:underline'>sacos</a>.",
+    guide_conclusion_p1: "Al medir cuidadosamente su proyecto, convertir las unidades correctamente y tener en cuenta el desperdicio, puede pedir con confianza la cantidad correcta de concreto. Para cálculos fáciles e instantáneos, use nuestras calculadoras especializadas:",
+    guide_conclusion_link_slab: "Calculadora de Losa y Pad",
+    guide_conclusion_link_footing: "Calculadora de Zapata",
+    guide_conclusion_link_bag: "Calculadora de Sacos de Concreto",
 
   }
 }; 
