@@ -59,20 +59,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- Language Switch Notification -->
-    <div id="language-notification" class="hidden bg-slate-800 text-white text-center p-3 fixed top-0 left-0 right-0 z-50">
-        <p>
-            检测到中文浏览器。
-            <a href="/zh/" class="font-bold underline hover:text-blue-300">是否切换到中文版网站？</a>
-            <button id="close-notification" class="ml-4 font-bold text-lg" aria-label="Close">&times;</button>
-        </p>
-    </div>
-
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
         <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-8">
-                <a href="/" class="flex items-center gap-2">
+                <a href="/en/" class="flex items-center gap-2">
                     <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                     <span class="font-bold text-xl text-slate-900 shrink-0">Concrete Calculator</span>
                 </a>
@@ -106,7 +97,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                     </button>
                     <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
-                        <a href="/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">English</a>
+                        <a href="/en/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">English</a>
                         <a href="/zh/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">中文</a>
                     </div>
                 </div>
@@ -495,26 +486,6 @@
     </footer>
 
     <script src="/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Language detection logic
-            const userLang = navigator.language || navigator.userLanguage;
-            const notification = document.getElementById('language-notification');
-            const closeBtn = document.getElementById('close-notification');
-
-            if (userLang.toLowerCase().startsWith('zh')) {
-                // Show notification if not already dismissed in this session
-                if (sessionStorage.getItem('languageNotificationDismissed') !== 'true') {
-                    notification.classList.remove('hidden');
-                }
-            }
-
-            closeBtn.addEventListener('click', function() {
-                notification.classList.add('hidden');
-                // Remember dismissal for this session
-                sessionStorage.setItem('languageNotificationDismissed', 'true');
-            });
-        });
-    </script>
 </body>
+
 </html> 
