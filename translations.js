@@ -213,6 +213,24 @@ const translations = {
     guide_conclusion_link_footing: "Footing Calculator",
     guide_conclusion_link_bag: "Concrete Bag Calculator",
 
+    // Formula Page Content
+    formula_page_title: "Concrete Calculation Formulas",
+    formula_page_subtitle: "Understand the basic mathematical formulas our calculator uses to estimate concrete volume for various shapes.",
+    formula_core_concept_title: "The Core Concept: Volume",
+    formula_core_concept_p1: "Calculating the amount of concrete needed for a project is essentially a problem of calculating the <strong>volume</strong> of the space you need to fill. The basic formula for volume is always related to the area of the surface multiplied by its height (or thickness).",
+    formula_core_concept_p2: "The key is to first calculate the area of the shape (like a rectangle or circle) and then multiply it by the thickness of the concrete pour. Below are the specific formulas for common project shapes.",
+    formula_slab_title: "1. Rectangular Slab / Footing Formula",
+    formula_slab_p1: "This is the most common shape for projects like patios, driveways, or foundations. The formula is straightforward:",
+    formula_circle_title: "2. Circular Slab / Column Formula",
+    formula_circle_p1: "For circular shapes like deck footings, piers, or round patios, the formula involves the mathematical constant Pi (π ≈ 3.14159).",
+    formula_circle_p2: "To get the radius, simply measure the diameter (the full width of the circle) and divide it by two.",
+    formula_conversion_title: "Converting to Cubic Yards or Cubic Meters",
+    formula_conversion_p1: "The formulas above will give you a volume in cubic units based on your input measurements (e.g., cubic feet or cubic meters). However, concrete is typically ordered in <strong>cubic yards</strong> or <strong>cubic meters</strong>.",
+    formula_ft_to_yd_title: "From Cubic Feet to Cubic Yards",
+    formula_ft_to_yd_p1: "Since there are 3 feet in a yard, a cubic yard is 3 ft × 3 ft × 3 ft = 27 cubic feet.",
+    formula_in_to_yd_title: "From Cubic Inches to Cubic Yards",
+    formula_in_to_yd_p1: "If you measured in inches, the conversion is larger: 1 yard = 36 inches, so 1 cubic yard = 36³ = 46,656 cubic inches.",
+
   },
   zh: {
     // Header & Hero
@@ -428,6 +446,24 @@ const translations = {
     guide_conclusion_link_footing: "Footing Calculator",
     guide_conclusion_link_bag: "Concrete Bag Calculator",
 
+    // Formula Page Content
+    formula_page_title: "混凝土计算公式",
+    formula_page_subtitle: "了解我们的计算器用于估算各种形状混凝土体积的基本数学公式。",
+    formula_core_concept_title: "核心概念：体积",
+    formula_core_concept_p1: "计算项目所需的混凝土量，本质上是计算需要填充空间<strong>体积</strong>的问题。体积的基本公式总是与表面积乘以其高度（或厚度）有关。",
+    formula_core_concept_p2: "关键是首先计算形状的面积（如矩形或圆形），然后乘以混凝土浇筑的厚度。以下是常见项目形状的具体公式。",
+    formula_slab_title: "1. 矩形板/基础公式",
+    formula_slab_p1: "这是庭院、车道或地基等项目最常见的形状。公式非常简单：",
+    formula_circle_title: "2. 圆形板/柱子公式",
+    formula_circle_p1: "对于圆形形状，如甲板基础、桥墩或圆形庭院，公式涉及数学常数圆周率（π ≈ 3.14159）。",
+    formula_circle_p2: "要获得半径，只需测量圆形的总宽度（直径），然后除以二即可。",
+    formula_conversion_title: "转换为立方码或立方米",
+    formula_conversion_p1: "上述公式将根据您的输入测量单位（例如，立方英尺或立方米）给出立方单位的体积。然而，混凝土通常按<strong>立方码</strong>或<strong>立方米</strong>订购。",
+    formula_ft_to_yd_title: "从立方英尺到立方码",
+    formula_ft_to_yd_p1: "因为一码等于三英尺，所以一立方码等于 3英尺 × 3英尺 × 3英尺 = 27立方英尺。",
+    formula_in_to_yd_title: "从立方英寸到立方码",
+    formula_in_to_yd_p1: "如果您用英寸测量，换算系数会更大：1码 = 36英寸，所以1立方码 = 36³ = 46,656立方英寸。",
+
   },
   es: {
     // Header & Hero
@@ -642,6 +678,24 @@ const translations = {
     guide_conclusion_link_slab: "Calculadora de Losa y Pad",
     guide_conclusion_link_footing: "Calculadora de Zapata",
     guide_conclusion_link_bag: "Calculadora de Sacos de Concreto",
+
+    // Formula Page Content
+    formula_page_title: "Fórmulas para Calcular Concreto",
+    formula_page_subtitle: "Comprenda las fórmulas matemáticas básicas que nuestra calculadora utiliza para estimar el volumen de concreto para diversas formas.",
+    formula_core_concept_title: "El Concepto Central: Volumen",
+    formula_core_concept_p1: "Calcular la cantidad de concreto necesaria para un proyecto es esencialmente un problema de calcular el <strong>volumen</strong> del espacio que necesita llenar. La fórmula básica para el volumen siempre está relacionada con el área de la superficie multiplicada por su altura (o espesor).",
+    formula_core_concept_p2: "La clave es calcular primero el área de la forma (como un rectángulo o un círculo) y luego multiplicarla por el espesor del vertido de concreto. A continuación se presentan las fórmulas específicas para las formas de proyecto comunes.",
+    formula_slab_title: "1. Fórmula para Losa / Cimiento Rectangular",
+    formula_slab_p1: "Esta es la forma más común para proyectos como patios, entradas de vehículos o cimientos. La fórmula es sencilla:",
+    formula_circle_title: "2. Fórmula para Losa / Columna Circular",
+    formula_circle_p1: "Para formas circulares como bases de cubierta, pilares o patios redondos, la fórmula involucra la constante matemática Pi (π ≈ 3.14159).",
+    formula_circle_p2: "Para obtener el radio, simplemente mida el diámetro (el ancho completo del círculo) y divídalo por dos.",
+    formula_conversion_title: "Conversión a Yardas Cúbicas o Metros Cúbicos",
+    formula_conversion_p1: "Las fórmulas anteriores le darán un volumen en unidades cúbicas según sus medidas de entrada (por ejemplo, pies cúbicos o metros cúbicos). Sin embargo, el concreto se suele pedir en <strong>yardas cúbicas</strong> o <strong>metros cúbicos</strong>.",
+    formula_ft_to_yd_title: "De Pies Cúbicos a Yardas Cúbicas",
+    formula_ft_to_yd_p1: "Como hay 3 pies en una yarda, una yarda cúbica es 3 pies × 3 pies × 3 pies = 27 pies cúbicos.",
+    formula_in_to_yd_title: "De Pulgadas Cúbicas a Yardas Cúbicas",
+    formula_in_to_yd_p1: "Si midió en pulgadas, la conversión es mayor: 1 yarda = 36 pulgadas, por lo que 1 yarda cúbica = 36³ = 46,656 pulgadas cúbicas.",
 
   }
 }; 
