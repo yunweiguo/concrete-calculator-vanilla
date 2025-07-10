@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3T1C6ZTJJY');
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>Concrete Calculator Formula | How to Calculate Concrete Volume</title>
+    <meta name="description" content="Learn the formulas used to calculate the volume of concrete needed for slabs, footings, and columns. Understand the math behind our concrete calculator.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/concrete-calculator-formula.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="Concrete Calculator Formula | How to Calculate Concrete Volume">
+    <meta property="og:description" content="Learn the formulas used to calculate the volume of concrete needed for slabs, footings, and columns. Understand the math behind our concrete calculator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/concrete-calculator-formula.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Concrete Calculator Formula | How to Calculate Concrete Volume">
+    <meta name="twitter:description" content="Learn the formulas used to calculate the volume of concrete needed for slabs, footings, and columns. Understand the math behind our concrete calculator.">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+        .formula {
+            background-color: #f3f4f6; /* bg-slate-100 */
+            border: 1px solid #e5e7eb; /* border-slate-200 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            color: #1e40af; /* brand-primary */
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <a href="/en/" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">Concrete Calculator</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span>Calculators</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="/en/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Slab Calculator</a>
+                            <a href="/en/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Footing Calculator</a>
+                            <a href="/en/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Bag Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/en/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">Guides</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Switcher -->
+                <div id="language-switcher" class="relative">
+                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span id="current-language-name">English</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
+                        <a href="/en/concrete-calculator-formula.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">English</a>
+                        <a href="/zh/concrete-calculator-formula.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">中文</a>
+                    </div>
+                </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="/en/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Slab Calculator</a>
+            <a href="/en/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Footing Calculator</a>
+            <a href="/en/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Bag Calculator</a>
+            <a href="/en/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Guides</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Concrete Calculation Formulas
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Understand the basic mathematical formulas our calculator uses to estimate concrete volume for various shapes.
+            </p>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            
+            <h2>The Core Concept: Volume</h2>
+            <p>Calculating the amount of concrete needed for a project is essentially a problem of calculating the <strong>volume</strong> of the space you need to fill. The basic formula for volume is always related to the area of the surface multiplied by its height (or thickness).</p>
+            <blockquote>Volume = Area × Height (Thickness)</blockquote>
+            <p>The key is to first calculate the area of the shape (like a rectangle or circle) and then multiply it by the thickness of the concrete pour. Below are the specific formulas for common project shapes.</p>
+
+            <hr class="my-8">
+
+            <h3>1. Rectangular Slab / Footing Formula</h3>
+            <p>This is the most common shape for projects like patios, driveways, or foundations. The formula is straightforward:</p>
+            <div class="formula">
+                Volume = Length × Width × Thickness
+            </div>
+            <ul>
+                <li><strong>Length:</strong> The longest side of the rectangle.</li>
+                <li><strong>Width:</strong> The shorter side of the rectangle.</li>
+                <li><strong>Thickness (or Height):</strong> The depth of the concrete pour.</li>
+            </ul>
+            <p><strong>Important:</strong> Ensure all measurements are in the same unit (e.g., all in feet or all in meters) before you multiply them. Our calculator handles unit conversions automatically, but if you're doing it by hand, this is a critical step.</p>
+
+            <h3>2. Circular Slab / Column Formula</h3>
+            <p>For circular shapes like deck footings, piers, or round patios, the formula involves the mathematical constant Pi (π ≈ 3.14159).</p>
+            <div class="formula">
+                Volume = π × (Radius)² × Height
+            </div>
+            <ul>
+                <li><strong>π (Pi):</strong> A constant approximately equal to 3.14159.</li>
+                <li><strong>Radius:</strong> The distance from the center of the circle to its edge. It is half of the diameter.</li>
+                <li><strong>Height (or Thickness):</strong> The height of the column or the thickness of the circular slab.</li>
+            </ul>
+            <p>To get the radius, simply measure the diameter (the full width of the circle) and divide it by two.</p>
+            
+            <hr class="my-8">
+
+            <h2>Converting to Cubic Yards or Cubic Meters</h2>
+            <p>The formulas above will give you a volume in cubic units based on your input measurements (e.g., cubic feet or cubic meters). However, concrete is typically ordered in <strong>cubic yards</strong> or <strong>cubic meters</strong>.</p>
+            
+            <h4>From Cubic Feet to Cubic Yards</h4>
+            <p>Since there are 3 feet in a yard, a cubic yard is 3 ft × 3 ft × 3 ft = 27 cubic feet.</p>
+            <div class="formula">
+                Cubic Yards = (Volume in Cubic Feet) / 27
+            </div>
+
+            <h4>From Cubic Inches to Cubic Yards</h4>
+            <p>If you measured in inches, the conversion is larger: 1 yard = 36 inches, so 1 cubic yard = 36³ = 46,656 cubic inches.</p>
+             <div class="formula">
+                Cubic Yards = (Volume in Cubic Inches) / 46,656
+            </div>
+
+            <p>Our <a href="/en/#calculator" class="text-brand-primary font-semibold hover:underline">main concrete calculator</a> takes care of all these conversions for you, providing an accurate estimate in the standard units you need for ordering.</p>
+
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
+                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html> 

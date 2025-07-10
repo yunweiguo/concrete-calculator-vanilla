@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3T1C6ZTJJY');
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>混凝土板/垫计算器 - 体积与成本</title>
+    <meta name="description" content="精确计算混凝土板或垫的体积、混凝土袋数和总成本。适用于露台、车道和地基。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/slab-calculator.html">
+
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/slab-calculator.html">
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/slab-calculator.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/slab-calculator.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="混凝土板/垫计算器 - 体积与成本">
+    <meta property="og:description" content="精确计算混凝土板或垫的体积、混凝土袋数和总成本。适用于露台、车道和地基。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/slab-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="混凝土板/垫计算器 - 体积与成本">
+    <meta name="twitter:description" content="精确计算混凝土板或垫的体积、混凝土袋数和总成本。适用于露台、车道和地基。">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <a href="/zh/" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">混凝土计算器</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span>计算器</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="/zh/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">板计算器</a>
+                            <a href="/zh/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">基脚计算器</a>
+                            <a href="/zh/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">袋装混凝土计算器</a>
+                        </div>
+                    </div>
+                    <a href="/zh/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">指南</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Switcher -->
+                <div id="language-switcher" class="relative">
+                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span id="current-language-name">中文</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
+                        <a href="/en/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">English</a>
+                        <a href="/zh/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">中文</a>
+                    </div>
+                </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="/zh/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">板计算器</a>
+            <a href="/zh/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">基脚计算器</a>
+            <a href="/zh/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">袋装混凝土计算器</a>
+            <a href="/zh/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">指南</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                混凝土板 / 垫计算器
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                估算任何矩形或方形混凝土板项目的体积、混凝土袋数和总成本。
+            </p>
+        </section>
+
+        <!-- Main Calculator Section -->
+        <section id="calculator" class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Left Side: Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入混凝土板尺寸</h2>
+                            <p class="text-slate-500 mt-1">选择您的单位系统开始。</p>
+                        </div>
+
+                        <!-- Unit System -->
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">英制 (ft, lb)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">公制 (m, kg)</button>
+                        </div>
+                        
+                        <!-- Dimension Inputs -->
+                        <div class="space-y-4">
+                            <div>
+                                <label for="length" class="text-sm font-medium text-slate-700"><span>长度</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                             <div>
+                                <label for="width" class="text-sm font-medium text-slate-700"><span>宽度</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="height" class="text-sm font-medium text-slate-700"><span>厚度</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="height" placeholder="0.5" value="0.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </div>
+
+                        <!-- Grade -->
+                         <div>
+                            <label for="grade" class="text-sm font-medium text-slate-700">混凝土强度等级</label>
+                            <select id="grade" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <option value="C25">C25 (~4000 psi)</option>
+                                <option value="C20">C20 (~3000 psi)</option>
+                                <option value="C15">C15 (~2500 psi)</option>
+                                <option value="C30">C30 (~5000 psi)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-slate-900">2. 获取结果</h2>
+                             <div class="flex gap-2">
+                                <button id="copy-btn" title="复制结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </button>
+                                <button id="save-btn" title="保存计算" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+                                </button>
+                                 <button id="reset-btn" title="重置表单" class="text-slate-500 hover:text-brand-primary">
+                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
+                                 </button>
+                            </div>
+                        </div>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
+                           <p class="font-semibold text-slate-500">您的结果将显示在这里。</p>
+                           <p class="text-sm text-slate-400">输入尺寸并点击计算。</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+                        计算
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto"></p>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>混凝土板和垫计算指南</h2>
+            <p>计算混凝土板所需的准确量对于露台、小屋地基、车道或地板等项目至关重要。用量不足可能会影响结构，而用量过多则会造成浪费。本计算器简化了这一过程，但了解细节可以帮助您更好地规划。</p>
+            
+            <h3>混凝土板计算关键考虑因素：</h3>
+            <ul>
+                <li><strong>均匀厚度：</strong>确保开挖区域具有一致、平整的深度。不均匀的基础是导致估算不准确的最常见原因。我们的计算器假设整个混凝土板具有均匀的厚度。</li>
+                <li><strong>浪费系数：</strong>添加5-10%的浪费系数是标准做法。这考虑了溢出、超挖以及卡车或搅拌机中剩余的小部分混凝土。</li>
+                <li><strong>钢筋：</strong>如果您使用钢筋或钢丝网，其体积通常可以忽略不计，在估算总混凝土体积时不需要减去。</li>
+            </ul>
+
+            <h3>常见问题 (FAQ)</h3>
+            <details class="bg-slate-100/50 p-4 rounded-lg group" open>
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>混凝土板和垫有什么区别？</span>
+                    <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <p class="text-slate-600 mt-2">通常，这两个术语可以互换使用。"混凝土板"通常指较大的区域，如地板或车道，而"垫"可能用于较小的基础，例如空调单元或小型小屋。两种计算方法完全相同。</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>我的混凝土板应该多厚？</span>
+                    <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <p class="text-slate-600 mt-2">这取决于它将承受的负荷：<br>- <strong>4英寸（0.33英尺）</strong>是露台、人行道和地基的标准厚度。<br>- <strong>5-6英寸（0.42-0.5英尺）</strong>建议用于将承受汽车和轻型卡车负荷的车道和车库地板。</p>
+                <p class="text-slate-600 mt-2">
+                    <span>要深入了解厚度和其他尺寸如何影响总体积，请查看我们的 </span>
+                    <a href="/zh/guides/how-to-calculate-concrete.html" class="text-brand-primary font-semibold hover:underline">详细混凝土计算指南</a>。
+                </p>
+            </details>
+
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <p class="font-bold text-lg text-white">混凝土计算器</p>
+                    <p class="text-sm text-slate-400 mt-1">一个轻量级、快速且准确的混凝土估算工具。</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="/zh/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">隐私政策</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="/zh/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">服务条款</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 混凝土计算器. 版权所有。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html> 

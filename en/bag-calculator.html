@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3T1C6ZTJJY');
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>Concrete Bag Calculator - How Many Bags Do I Need?</title>
+    <meta name="description" content="Determine the exact number of pre-mixed concrete bags (e.g., 40, 60, or 80 lbs) required for your slab, footing, or post project.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/bag-calculator.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="Concrete Bag Calculator - How Many Bags Do I Need?">
+    <meta property="og:description" content="Determine the exact number of pre-mixed concrete bags (e.g., 40, 60, or 80 lbs) required for your slab, footing, or post project.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/bag-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Concrete Bag Calculator - How Many Bags Do I Need?">
+    <meta name="twitter:description" content="Determine the exact number of pre-mixed concrete bags (e.g., 40, 60, or 80 lbs) required for your slab, footing, or post project.">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <a href="/en/" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">Concrete Calculator</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span>Calculators</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="/en/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Slab Calculator</a>
+                            <a href="/en/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Footing Calculator</a>
+                            <a href="/en/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Bag Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/en/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">Guides</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Switcher -->
+                <div id="language-switcher" class="relative">
+                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span id="current-language-name">English</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
+                        <a href="/en/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">English</a>
+                        <a href="/zh/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">中文</a>
+                    </div>
+                </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="/en/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Slab Calculator</a>
+            <a href="/en/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Footing Calculator</a>
+            <a href="/en/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Bag Calculator</a>
+            <a href="/en/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Guides</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Concrete Bag Calculator
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Determine the exact number of pre-mixed concrete bags (e.g., 40, 60, or 80 lbs) required for your slab, footing, or post project.
+            </p>
+        </section>
+
+        <!-- Main Calculator Section -->
+        <section id="calculator" class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Left Side: Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">Calculate Required Bags</h2>
+                            <p class="text-slate-500 mt-1">Enter project dimensions to find the required volume, then see how many bags you need.</p>
+                        </div>
+
+                        <!-- Unit System -->
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Imperial (ft, lb)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, kg)</button>
+                        </div>
+                        
+                        <!-- Shape -->
+                        <div id="shape-selector" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                             <button data-value="rectangle" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Slab / Rectangle</button>
+                             <button data-value="circle" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Column / Circle</button>
+                        </div>
+
+                        <!-- Dimension Inputs -->
+                        <div class="space-y-4">
+                            <div id="rectangle-inputs">
+                                <div>
+                                    <label for="length" class="text-sm font-medium text-slate-700"><span>Length</span> (<span class="unit-label-dist">ft</span>)</label>
+                                    <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                </div>
+                                <div class="mt-4">
+                                    <label for="width" class="text-sm font-medium text-slate-700"><span>Width</span> (<span class="unit-label-dist">ft</span>)</label>
+                                    <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                </div>
+                            </div>
+                            <div id="circle-inputs" class="hidden">
+                                <label for="diameter" class="text-sm font-medium text-slate-700"><span>Diameter</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="diameter" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="height" class="text-sm font-medium text-slate-700"><span>Height / Thickness</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="height" placeholder="0.5" value="0.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <h2 class="text-2xl font-bold text-slate-900">Required Bags</h2>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+                           <p class="text-sm text-slate-400">Enter dimensions to see the required bags.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+                        Calculate
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>Guide to Buying & Using Bagged Concrete</h2>
+            <p>Pre-mixed concrete in bags is perfect for small to medium-sized projects where ordering ready-mix is not practical. It offers convenience and control, ensuring you only mix what you need. Common brands like Quikrete or Sakrete are readily available at most hardware stores.</p>
+            
+            <h3>Tips for Working with Bagged Concrete:</h3>
+            <ul>
+                <li><strong>Check the Yield:</strong> Not all bags are created equal. The 'yield' (the volume of concrete a single bag produces) is printed on the bag. Our calculator uses standard yields, but always double-check your specific product.</li>
+                <li><strong>Mixing Consistency:</strong> Follow the manufacturer's instructions for adding water. Too little water makes the concrete unworkable, while too much weakens it. Aim for a smooth, peanut-butter-like consistency.</li>
+                <li><strong>Work in Batches:</strong> Only mix as many bags as you can place and finish within about 20-30 minutes. Concrete begins to cure quickly, especially on warm, windy days.</li>
+            </ul>
+
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <details class="bg-slate-100/50 p-4 rounded-lg group" open>
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>How much volume does one bag of concrete make?</span>
+                    <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <p class="text-slate-600 mt-2">It varies by bag weight. As a general rule:<br>- An 80 lb bag yields about 0.60 cubic feet.<br>- A 60 lb bag yields about 0.45 cubic feet.<br>- A 40 lb bag yields about 0.30 cubic feet.<br>This calculator does this math for you automatically.</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>Is it cheaper to buy bags or order ready-mix concrete?</span>
+                    <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <p class="text-slate-600 mt-2">For small projects (less than 1 cubic yard), bagged concrete is almost always cheaper and more convenient. For large projects, ready-mix concrete delivered by a truck is more cost-effective and saves significant labor.</p>
+                <p class="text-slate-600 mt-2">
+                    <span>To understand the math behind volume calculations, check out our </span>
+                    <a href="/en/guides/how-to-calculate-concrete.html" class="text-brand-primary font-semibold hover:underline">step-by-step guide</a>.
+                </p>
+            </details>
+
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
+                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html> 

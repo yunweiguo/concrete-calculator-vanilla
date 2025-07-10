@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3T1C6ZTJJY');
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>如何计算混凝土 - 分步指南</title>
+    <meta name="description" content="学习如何为任何项目计算混凝土。我们的指南涵盖了板、柱的公式，以及如何考虑损耗。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/guides/how-to-calculate-concrete.html">
+
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/guides/how-to-calculate-concrete.html">
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/guides/how-to-calculate-concrete.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/guides/how-to-calculate-concrete.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="如何计算混凝土 - 分步指南">
+    <meta property="og:description" content="学习如何为任何项目计算混凝土。我们的指南涵盖了板、柱的公式，以及如何考虑损耗。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/guides/how-to-calculate-concrete.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="如何计算混凝土 - 分步指南">
+    <meta name="twitter:description" content="学习如何为任何项目计算混凝土。我们的指南涵盖了板、柱的公式，以及如何考虑损耗。">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+        .prose a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <a href="/zh/" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">混凝土计算器</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span>计算器</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="/zh/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">板计算器</a>
+                            <a href="/zh/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">基脚计算器</a>
+                            <a href="/zh/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">袋装混凝土计算器</a>
+                        </div>
+                    </div>
+                    <a href="/zh/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">指南</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Switcher -->
+                <div id="language-switcher" class="relative">
+                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span id="current-language-name">中文</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
+                        <a href="/en/guides/how-to-calculate-concrete.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">English</a>
+                        <a href="/zh/guides/how-to-calculate-concrete.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">中文</a>
+                    </div>
+                </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="/zh/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">板计算器</a>
+            <a href="/zh/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">基脚计算器</a>
+            <a href="/zh/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">袋装混凝土计算器</a>
+            <a href="/zh/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">指南</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <article class="prose max-w-4xl mx-auto">
+            <header>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">混凝土计算综合指南</h1>
+                <p class="text-lg md:text-xl text-slate-600">学习估算任何项目混凝土的基础知识，从理解体积和单位到考虑浪费。</p>
+            </header>
+
+            <section class="mt-12">
+                <h2>为什么精确计算很重要</h2>
+                <p>无论您是浇筑一个小庭院、一个新棚屋的地基，还是设置栅栏柱，正确计算混凝土用量都是最关键的第一步。订购太少会导致“冷缝”——结构中的薄弱点，即新混凝土浇筑在已经硬化的混凝土上。订购太多则是材料和金钱的昂贵浪费。本指南将引导您完成正确的关键步骤。</p>
+            </section>
+            
+            <section class="mt-8">
+                <h2>分步计算过程</h2>
+
+                <h3>步骤1：确定您项目的体积</h3>
+                <p>体积的基本公式是长、宽、高（或深/厚）相乘。关键是确保在相乘之前，所有测量值都使用相同的单位。</p>
+
+                <h4>对于板、基础和墙（矩形）</h4>
+                <p>这是最常见的计算。公式是：<strong>体积 = 长 × 宽 × 厚</strong>。例如，一个10英尺长、10英尺宽、4英寸厚的庭院，体积为 10英尺 × 10英尺 × 0.333英尺 = 33.3立方英尺。（注意：我们将4英寸转换为0.333英尺）。</p>
+
+                <h4>对于柱或圆形基础（圆柱形）</h4>
+                <p>对于圆柱体，您需要半径（直径的一半）和高度。公式是：<strong>体积 = π (Pi) × 半径² × 高度</strong>。例如，一个直径1英尺（半径0.5英尺）、深3英尺的柱孔，计算结果是 3.14159 × (0.5英尺)² × 3英尺 = 2.36立方英尺。</p>
+
+                <h3>步骤2：转换为立方码或立方米</h3>
+                <p>混凝土以立方码（在美国）或立方米订购。您必须转换您的立方英尺或立方米测量值。关键转换：<br> - <strong>1立方码 = 27立方英尺</strong> <br> - <strong>1立方米 = 1立方米</strong>（如果您最初以米为单位测量）。<br> 从我们的板示例中，33.3立方英尺 ÷ 27 = 1.23立方码。</p>
+
+                <h3>步骤3：考虑损耗（5-10%规则）</h3>
+                <p>总是比您的精确计算多订购一点。这个“损耗系数”考虑了地面不平、溢出以及留在独轮车或卡车中的混凝土。一个标准规则是在您的最终体积上增加5%到10%。对于我们1.23立方码的板，10%的损耗系数意味着订购 1.23 × 1.10 = 1.35立方码。</p>
+            </section>
+            
+            <section class="mt-12 bg-slate-100/50 p-6 rounded-lg">
+                 <h2 class="!mt-0">充满信心地规划、测量和浇筑</h2>
+                 <p class="!mb-0">通过仔细测量您的项目、正确转换单位并考虑损耗，您可以自信地订购适量的混凝土。为了方便、即时地计算，请使用我们的专业计算器：</p>
+                 <ul class="!my-4">
+                    <li><a href="/zh/slab-calculator.html" class="font-semibold text-brand-secondary hover:underline">板计算器</a></li>
+                    <li><a href="/zh/footing-calculator.html" class="font-semibold text-brand-secondary hover:underline">基脚计算器</a></li>
+                    <li><a href="/zh/bag-calculator.html" class="font-semibold text-brand-secondary hover:underline">袋装混凝土计算器</a></li>
+                 </ul>
+            </section>
+        </article>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <p class="font-bold text-lg text-white">混凝土计算器</p>
+                    <p class="text-sm text-slate-400 mt-1">一个轻量、快速、准确的工具，满足您所有的混凝土估算需求。</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="/zh/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">隐私政策</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="/zh/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">服务条款</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 混凝土计算器. 版权所有。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html> 
