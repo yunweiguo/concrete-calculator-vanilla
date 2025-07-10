@@ -123,19 +123,19 @@
                 混凝土基础计算器
             </h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-                快速计算方形或矩形基础所需混凝土的确切体积。适用于甲板、柱子和地基。
+                快速计算方形、矩形或圆形基础所需混凝土的确切体积。
             </p>
         </section>
 
         <!-- Main Calculator Section -->
-        <section id="calculator" class="mt-16 max-w-4xl mx-auto">
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Side: Inputs -->
                     <div class="space-y-6">
                         <div>
                             <h2 class="text-2xl font-bold text-slate-900">1. 输入基础尺寸</h2>
-                            <p class="text-slate-500 mt-1">输入单个基础的尺寸。</p>
+                            <p class="text-slate-500 mt-1">选择您的单位系统和基础形状。</p>
                         </div>
 
                         <!-- Unit System -->
@@ -153,17 +153,19 @@
                         <!-- Dimension Inputs -->
                         <div class="space-y-4">
                             <div id="rectangle-inputs">
-                                <label for="length" class="text-sm font-medium text-slate-700">基础长度 (<span class="unit-label-dist">ft</span>)</label>
+                                <label for="length" class="text-sm font-medium text-slate-700"><span>基础长度</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="length" placeholder="40" value="40" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                                <label for="width" class="text-sm font-medium text-slate-700 mt-4 block">基础宽度 (<span class="unit-label-dist">ft</span>)</label>
+                            </div>
+                             <div id="width-inputs">
+                                <label for="width" class="text-sm font-medium text-slate-700"><span>基础宽度</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="width" placeholder="1.5" value="1.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div id="circle-inputs" class="hidden">
-                                <label for="radius" class="text-sm font-medium text-slate-700">桩半径 (<span class="unit-label-dist">ft</span>)</label>
+                                <label for="radius" class="text-sm font-medium text-slate-700"><span>桩半径</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="radius" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div>
-                                <label for="height" class="text-sm font-medium text-slate-700">基础厚度 / 深度 (<span class="unit-label-dist">ft</span>)</label>
+                                <label for="height" class="text-sm font-medium text-slate-700"><span>基础厚度 / 深度</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="height" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                         </div>
@@ -209,6 +211,20 @@
                     </button>
                 </div>
                 <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto">* 价格估算基于市场平均水平，仅供参考。请咨询当地供应商以获取准确报价。</p>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history-section" class="mt-16 md:mt-24 max-w-4xl mx-auto hidden">
+            <div class="flex justify-between items-center mb-4">
+                 <h2 class="text-2xl font-bold text-slate-900">最近的计算</h2>
+                 <button id="clear-history-btn" class="text-sm font-semibold text-slate-500 hover:text-red-500 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    <span>清除历史</span>
+                 </button>
+            </div>
+            <div id="history-output" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- History items will be injected here -->
             </div>
         </section>
 

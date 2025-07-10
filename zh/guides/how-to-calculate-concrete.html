@@ -166,6 +166,40 @@
             </section>
         </article>
         
+        <!-- Hidden Calculator Section for JS compatibility -->
+        <div class="hidden">
+            <section id="calculator">
+                <div id="unit-system">
+                    <button data-value="imperial"></button>
+                    <button data-value="metric"></button>
+                </div>
+                <div id="shape-selector">
+                     <button data-value="rectangle"></button>
+                     <button data-value="circle"></button>
+                </div>
+                <div id="rectangle-inputs">
+                    <input type="number" id="length">
+                    <input type="number" id="width">
+                </div>
+                <div id="circle-inputs">
+                    <input type="number" id="radius">
+                </div>
+                <input type="number" id="height">
+                <select id="grade">
+                    <option value="C25"></option>
+                </select>
+                <div id="results-output"></div>
+                <button id="calculate-btn"></button>
+                <button id="copy-btn"></button>
+                <button id="save-btn"></button>
+                <button id="reset-btn"></button>
+            </section>
+            <section id="history-section">
+                <button id="clear-history-btn"></button>
+                <div id="history-output"></div>
+            </section>
+        </div>
+
     </main>
     
     <!-- Footer -->

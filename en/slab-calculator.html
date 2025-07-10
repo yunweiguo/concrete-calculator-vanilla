@@ -124,7 +124,7 @@
         </section>
 
         <!-- Main Calculator Section -->
-        <section id="calculator" class="mt-16 max-w-4xl mx-auto">
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Side: Inputs -->
@@ -140,15 +140,25 @@
                             <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, kg)</button>
                         </div>
                         
+                        <!-- Shape (Hidden for this page) -->
+                        <div id="shape-selector" class="hidden">
+                             <button data-value="rectangle" class="bg-white text-brand-primary shadow">Rectangle</button>
+                             <button data-value="circle">Circle</button>
+                        </div>
+
                         <!-- Dimension Inputs -->
                         <div class="space-y-4">
-                            <div>
+                            <div id="rectangle-inputs">
                                 <label for="length" class="text-sm font-medium text-slate-700"><span>Length</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
-                             <div>
+                             <div id="width-inputs">
                                 <label for="width" class="text-sm font-medium text-slate-700"><span>Width</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div id="circle-inputs" class="hidden">
+                                <label for="radius" class="text-sm font-medium text-slate-700"><span>Radius</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="radius" placeholder="2" value="2" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div>
                                 <label for="height" class="text-sm font-medium text-slate-700"><span>Thickness</span> (<span class="unit-label-dist">ft</span>)</label>
@@ -181,7 +191,7 @@
                                 </button>
                                  <button id="reset-btn" title="Reset Form" class="text-slate-500 hover:text-brand-primary">
                                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
-                                 </button>
+                                </button>
                             </div>
                         </div>
                         <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
@@ -200,6 +210,20 @@
             </div>
         </section>
 
+        <!-- History Section -->
+        <section id="history-section" class="mt-16 md:mt-24 max-w-4xl mx-auto hidden">
+            <div class="flex justify-between items-center mb-4">
+                 <h2 class="text-2xl font-bold text-slate-900">Recent Calculations</h2>
+                 <button id="clear-history-btn" class="text-sm font-semibold text-slate-500 hover:text-red-500 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    <span>Clear History</span>
+                 </button>
+            </div>
+            <div id="history-output" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- History items will be injected here -->
+            </div>
+        </section>
+        
         <section class="mt-16 prose max-w-4xl mx-auto">
             <h2>Guide to Calculating Concrete for Slabs & Pads</h2>
             <p>Calculating the right amount of concrete for a slab is crucial for the success of projects like patios, shed foundations, driveways, or floorings. Using too little can compromise the structure, while ordering too much is a waste of money. This calculator simplifies the process, but understanding the details can help you plan better.</p>

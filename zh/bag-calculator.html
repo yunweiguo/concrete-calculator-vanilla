@@ -128,14 +128,14 @@
         </section>
 
         <!-- Main Calculator Section -->
-        <section id="calculator" class="mt-16 max-w-4xl mx-auto">
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Side: Inputs -->
                     <div class="space-y-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-slate-900">计算所需袋数</h2>
-                            <p class="text-slate-500 mt-1">输入项目尺寸以查找所需体积，然后查看需要多少袋。</p>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入尺寸</h2>
+                            <p class="text-slate-500 mt-1">选择您的单位系统和形状。</p>
                         </div>
 
                         <!-- Unit System -->
@@ -153,32 +153,52 @@
                         <!-- Dimension Inputs -->
                         <div class="space-y-4">
                             <div id="rectangle-inputs">
-                                <div>
-                                    <label for="length" class="text-sm font-medium text-slate-700"><span>长度</span> (<span class="unit-label-dist">ft</span>)</label>
-                                    <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                                </div>
-                                <div class="mt-4">
-                                    <label for="width" class="text-sm font-medium text-slate-700"><span>宽度</span> (<span class="unit-label-dist">ft</span>)</label>
-                                    <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                                </div>
+                                <label for="length" class="text-sm font-medium text-slate-700"><span>长度</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                             <div id="width-inputs">
+                                <label for="width" class="text-sm font-medium text-slate-700"><span>宽度</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div id="circle-inputs" class="hidden">
-                                <label for="diameter" class="text-sm font-medium text-slate-700"><span>直径</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="diameter" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <label for="radius" class="text-sm font-medium text-slate-700"><span>半径</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="radius" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div>
                                 <label for="height" class="text-sm font-medium text-slate-700"><span>高度/厚度</span> (<span class="unit-label-dist">ft</span>)</label>
                                 <input type="number" id="height" placeholder="0.5" value="0.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                         </div>
+
+                        <!-- Grade (Hidden) -->
+                         <div class="hidden">
+                            <label for="grade" class="text-sm font-medium text-slate-700">混凝土强度等级</label>
+                            <select id="grade" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <option value="C20">C20</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Right Side: Results -->
                     <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
-                        <h2 class="text-2xl font-bold text-slate-900">所需袋数</h2>
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-slate-900">2. 所需袋数</h2>
+                             <div class="flex gap-2">
+                                <button id="copy-btn" title="复制结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </button>
+                                <button id="save-btn" title="保存计算" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+                                </button>
+                                 <button id="reset-btn" title="重置表单" class="text-slate-500 hover:text-brand-primary">
+                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
+                                 </button>
+                            </div>
+                        </div>
                         <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
-                           <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
-                           <p class="text-sm text-slate-400">输入尺寸以查看所需袋数。</p>
+                           <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
+                           <p class="font-semibold text-slate-500">您的结果将显示在这里。</p>
+                           <p class="text-sm text-slate-400">输入尺寸并按“计算”。</p>
                         </div>
                     </div>
                 </div>
@@ -187,6 +207,21 @@
                         计算
                     </button>
                 </div>
+                <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto"></p>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history-section" class="mt-16 md:mt-24 max-w-4xl mx-auto hidden">
+            <div class="flex justify-between items-center mb-4">
+                 <h2 class="text-2xl font-bold text-slate-900">最近的计算</h2>
+                 <button id="clear-history-btn" class="text-sm font-semibold text-slate-500 hover:text-red-500 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    <span>清除历史</span>
+                 </button>
+            </div>
+            <div id="history-output" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- History items will be injected here -->
             </div>
         </section>
 
