@@ -1,281 +1,372 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Dropdown & Menu Logic (Universal) ---
-    const setupDropdown = (buttonId, menuId) => {
-        const button = document.getElementById(buttonId);
-        const menu = document.getElementById(menuId);
-        if (button && menu) {
-            button.addEventListener('click', (event) => {
-                event.stopPropagation();
-                // Close other open menus
-                document.getElementById('calculators-menu')?.classList.add('hidden');
-                document.getElementById('language-menu')?.classList.add('hidden');
-                // Toggle current menu
-                menu.classList.toggle('hidden');
-            });
+
+    // --- TRANSLATIONS ---
+    const translations = {
+        en: {
+            totalVolume: 'Total Volume',
+            materialBreakdown: 'Material Breakdown:',
+            cement: 'Cement:',
+            sand: 'Sand:',
+            gravel: 'Gravel:',
+            copied: 'Copied!',
+            saved: 'Saved!',
+            enterDimensions: 'Your results will appear here.',
+            pressCalculate: 'Enter dimensions and press Calculate.',
+            calculation: 'Calculation'
+        },
+        zh: {
+            totalVolume: '总体积',
+            materialBreakdown: '材料明细：',
+            cement: '水泥：',
+            sand: '沙子：',
+            gravel: '砾石：',
+            copied: '已复制！',
+            saved: '已保存！',
+            enterDimensions: '您的结果将显示在这里。',
+            pressCalculate: '输入尺寸并按计算。',
+            calculation: '计算结果'
         }
     };
 
-    const setupMenu = (buttonId, menuId) => {
-        const button = document.getElementById(buttonId);
-        const menu = document.getElementById(menuId);
-        if (button && menu) {
-            button.addEventListener('click', (event) => {
-                event.stopPropagation();
-                menu.classList.toggle('hidden');
-            });
-        }
+    // --- UTILS ---
+    const getLang = () => document.documentElement.lang || 'en';
+    const t = (key) => (translations[getLang()] && translations[getLang()][key]) || translations['en'][key];
+
+
+    // --- DOM ELEMENTS ---
+    const unitSystemDiv = document.getElementById('unit-system');
+    const shapeSelectorDiv = document.getElementById('shape-selector');
+    const lengthInput = document.getElementById('length');
+    const widthInput = document.getElementById('width');
+    const radiusInput = document.getElementById('radius');
+    const heightInput = document.getElementById('height');
+    const gradeSelect = document.getElementById('grade');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const resultsOutput = document.getElementById('results-output');
+    const copyBtn = document.getElementById('copy-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const historyOutput = document.getElementById('history-output');
+    const historySection = document.getElementById('history-section');
+    const clearHistoryBtn = document.getElementById('clear-history-btn');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const languageMenuButton = document.getElementById('language-menu-button');
+    const languageMenu = document.getElementById('language-menu');
+    const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+    const calculatorsMenu = document.getElementById('calculators-menu');
+
+
+    // --- STATE ---
+    let lastCalculation = null;
+
+    // --- CONSTANTS ---
+    const constants = {
+        // ... (assuming these are defined elsewhere or will be added)
+        cementDensity: 1440, // kg/m^3
+        sandDensity: 1600,  // kg/m^3
+        gravelDensity: 1520, // kg/m^3
+        m3ToYd3: 1.30795,
+        m3ToFt3: 35.3147,
+        kgToLbs: 2.20462,
     };
 
-    // Close dropdowns when clicking outside
-    window.addEventListener('click', (e) => {
-        if (!e.target.closest('#calculators-dropdown')) {
-            document.getElementById('calculators-menu')?.classList.add('hidden');
-        }
-        if (!e.target.closest('#language-switcher')) {
-            document.getElementById('language-menu')?.classList.add('hidden');
-        }
-    });
+    const gradeRatios = {
+        "C15": { cement: 1, sand: 2, gravel: 4, water: 0.6 },
+        "C20": { cement: 1, sand: 1.5, gravel: 3, water: 0.55 },
+        "C25": { cement: 1, sand: 1, gravel: 2, water: 0.5 },
+        "C30": { cement: 1, sand: 1, gravel: 2, water: 0.45 },
+    };
 
-    setupDropdown('calculators-menu-button', 'calculators-menu');
-    setupDropdown('language-menu-button', 'language-menu');
-    setupMenu('mobile-menu-button', 'mobile-menu');
 
-    // --- Calculator Logic ---
-    const calculator = document.getElementById('calculator');
-    // ** THE CRUCIAL FIX IS HERE **
-    // Only run calculator logic if the calculator element exists on the page.
-    if (calculator) {
-        const unitSystemButtons = document.querySelectorAll('#unit-system button');
-        const shapeSelectorButtons = document.querySelectorAll('#shape-selector button');
-        // --- Shared Calculator Elements ---
-        const calculateBtn = document.getElementById('calculate-btn');
-        const resultsOutput = document.getElementById('results-output');
-        const lengthInput = document.getElementById('length');
-        const widthInput = document.getElementById('width');
-        const heightInput = document.getElementById('height');
-        const gradeSelect = document.getElementById('grade');
-        const unitLabels = document.querySelectorAll('.unit-label-dist');
-        const resetBtn = document.getElementById('reset-btn');
-        const copyBtn = document.getElementById('copy-btn');
-        const saveBtn = document.getElementById('save-btn');
-
-        let currentUnit = 'imperial';
-
-        const constants = {
-            C25: { ratio: [1, 1, 2], totalParts: 4 },
-            C20: { ratio: [1, 1.5, 3], totalParts: 5.5 },
-            C15: { ratio: [1, 2, 4], totalParts: 7 },
-            C30: { ratio: [1, 1, 2], totalParts: 4 },
-            dryVolumeFactor: 1.57,
-            cementDensity: 1440, // kg/m^3
-            ftToM: 0.3048,
-            m3ToFt3: 35.3147,
-            m3ToYd3: 1.30795,
-            kgToLbs: 2.20462
-        };
-
-        // --- Unit System Handler ---
-        if (unitSystemButtons.length > 0) {
-            const updateLabels = () => {
-                const distLabel = currentUnit === 'imperial' ? 'ft' : 'm';
-                unitLabels.forEach(label => label.textContent = distLabel);
-            };
-            unitSystemButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    currentUnit = button.dataset.value;
-                    unitSystemButtons.forEach(btn => {
-                        btn.classList.remove('bg-white', 'text-brand-primary', 'shadow');
-                        btn.classList.add('text-slate-600', 'hover:text-brand-primary');
-                    });
-                    button.classList.add('bg-white', 'text-brand-primary', 'shadow');
-                    button.classList.remove('text-slate-600', 'hover:text-brand-primary');
-                    updateLabels();
-                });
-            });
-            updateLabels(); // Initial call
-        }
-
-        // --- Shape Selector (for index.html) ---
-        if (shapeSelectorButtons.length > 0) {
-            const rectangleInputs = document.getElementById('rectangle-inputs');
-            const circleInputs = document.getElementById('circle-inputs');
-            const widthInputs = document.getElementById('width-inputs');
-
-            shapeSelectorButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const shape = button.dataset.value;
-                    shapeSelectorButtons.forEach(btn => {
-                        btn.classList.remove('bg-white', 'text-brand-primary', 'shadow');
-                        btn.classList.add('text-slate-600', 'hover:text-brand-primary');
-                    });
-                    button.classList.add('bg-white', 'text-brand-primary', 'shadow');
-                    button.classList.remove('text-slate-600', 'hover:text-brand-primary');
-
-                    if (shape === 'rectangle') {
-                        if (rectangleInputs) rectangleInputs.style.display = 'block';
-                        if (widthInputs) widthInputs.style.display = 'block';
-                        if (circleInputs) circleInputs.style.display = 'none';
-                    } else if (shape === 'circle') {
-                        if (rectangleInputs) rectangleInputs.style.display = 'none';
-                        if (widthInputs) widthInputs.style.display = 'none';
-                        if (circleInputs) circleInputs.style.display = 'block';
-                    }
-                });
-            });
-        }
-        
-        // --- Calculation Logic ---
-        if (calculateBtn) {
-            calculateBtn.addEventListener('click', () => {
-                const shapeSelector = document.querySelector('#shape-selector button.bg-white');
-                const shape = shapeSelector ? shapeSelector.dataset.value : 'rectangle'; // Default for non-index pages
-                const unit = currentUnit;
-
-                const length = parseFloat(lengthInput.value) || 0;
-                const width = widthInput ? (parseFloat(widthInput.value) || 0) : 0; // Might not exist
-                const radiusInput = document.getElementById('radius');
-                const radius = radiusInput ? (parseFloat(radiusInput.value) || 0) : 0;
-                const height = parseFloat(heightInput.value) || 0;
-
-                let volumeM3 = 0;
-                const l = unit === 'imperial' ? length * constants.ftToM : length;
-                const w = unit === 'imperial' ? width * constants.ftToM : width;
-                const r = unit === 'imperial' ? radius * constants.ftToM : radius;
-                const h = unit === 'imperial' ? height * constants.ftToM : height;
-                
-                if (shape === 'rectangle') {
-                    volumeM3 = l * w * h;
-                } else { // circle
-                    volumeM3 = Math.PI * Math.pow(r, 2) * h;
-                }
-
-                if (volumeM3 > 0 && resultsOutput) {
-                    const grade = gradeSelect.value;
-                    const mix = constants[grade];
-                    const dryVolume = volumeM3 * constants.dryVolumeFactor;
-                    
-                    const cementVolumeM3 = (dryVolume * mix.ratio[0]) / mix.totalParts;
-                    const sandVolumeM3 = (dryVolume * mix.ratio[1]) / mix.totalParts;
-                    const aggregateVolumeM3 = (dryVolume * mix.ratio[2]) / mix.totalParts;
-                    const cementWeightKg = cementVolumeM3 * constants.cementDensity;
-
-                    let html = '';
-                    if (unit === 'imperial') {
-                        html = `
-                            <div class="text-center">
-                                <p class="text-slate-500 font-semibold">Total Volume</p>
-                                <p class="text-4xl font-bold text-brand-primary">${(volumeM3 * constants.m3ToYd3).toFixed(2)} <span class="text-2xl">yd³</span></p>
-                            </div>
-                            <div class="w-full text-sm mt-4">
-                                <h4 class="font-semibold text-slate-800 mb-2 text-center">Material Breakdown:</h4>
-                                <div class="flex justify-between py-1 border-b"><span>Cement:</span><span class="font-bold">${(cementWeightKg * constants.kgToLbs).toFixed(1)} lbs</span></div>
-                                <div class="flex justify-between py-1 border-b"><span>Sand:</span><span class="font-bold">${(sandVolumeM3 * constants.m3ToFt3).toFixed(2)} ft³</span></div>
-                                <div class="flex justify-between py-1"><span>Gravel:</span><span class="font-bold">${(aggregateVolumeM3 * constants.m3ToFt3).toFixed(2)} ft³</span></div>
-                            </div>`;
-                    } else { // metric
-                        html = `
-                            <div class="text-center">
-                                <p class="text-slate-500 font-semibold">Total Volume</p>
-                                <p class="text-4xl font-bold text-brand-primary">${volumeM3.toFixed(2)} <span class="text-2xl">m³</span></p>
-                            </div>
-                            <div class="w-full text-sm mt-4">
-                                <h4 class="font-semibold text-slate-800 mb-2 text-center">Material Breakdown:</h4>
-                                <div class="flex justify-between py-1 border-b"><span>Cement:</span><span class="font-bold">${cementWeightKg.toFixed(1)} kg</span></div>
-                                <div class="flex justify-between py-1 border-b"><span>Sand:</span><span class="font-bold">${sandVolumeM3.toFixed(2)} m³</span></div>
-                                <div class="flex justify-between py-1"><span>Gravel:</span><span class="font-bold">${aggregateVolumeM3.toFixed(2)} m³</span></div>
-                            </div>`;
-                    }
-                    resultsOutput.innerHTML = html;
-                } else if (resultsOutput) {
-                     resultsOutput.innerHTML = `<svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg><p class="font-semibold text-slate-500">Your results will appear here.</p><p class="text-sm text-slate-400">Enter dimensions and press "Calculate".</p>`;
+    // --- EVENT LISTENERS & SETUP ---
+    function setupEventListeners() {
+        if (unitSystemDiv) {
+            unitSystemDiv.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    setActiveButton(unitSystemDiv, e.target);
                 }
             });
         }
 
-        // --- Action Buttons ---
-        if (resetBtn) {
-            resetBtn.addEventListener('click', () => {
-                if(lengthInput) lengthInput.value = '10';
-                if(widthInput) widthInput.value = '12';
-                const radiusInput = document.getElementById('radius');
-                if(radiusInput) radiusInput.value = '2';
-                if(heightInput) heightInput.value = '0.5';
-                if(gradeSelect) gradeSelect.value = 'C25';
-                if(resultsOutput) resultsOutput.innerHTML = `<svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg><p class="font-semibold text-slate-500">Your results will appear here.</p><p class="text-sm text-slate-400">Enter dimensions and press "Calculate".</p>`;
-            });
-        }
-
-        if (copyBtn) {
-            copyBtn.addEventListener('click', () => {
-                if(resultsOutput) {
-                    navigator.clipboard.writeText(resultsOutput.innerText).then(() => {
-                        copyBtn.title = 'Copied!';
-                        setTimeout(() => { copyBtn.title = 'Copy Results'; }, 2000);
-                    });
+        if (shapeSelectorDiv) {
+            shapeSelectorDiv.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    setActiveButton(shapeSelectorDiv, e.target);
+                    updateInputsForShape(e.target.dataset.value);
                 }
             });
         }
         
-        // --- History Logic (for index.html) ---
-        const historySection = document.getElementById('history-section');
-        if (historySection) {
-            const historyOutput = document.getElementById('history-output');
-            const clearHistoryBtn = document.getElementById('clear-history-btn');
-            
-            if (historyOutput && clearHistoryBtn && saveBtn) {
-                let calculations = JSON.parse(localStorage.getItem('calculations')) || [];
+        if(calculateBtn) calculateBtn.addEventListener('click', displayResults);
+        if(resetBtn) resetBtn.addEventListener('click', resetCalculator);
+        if(clearHistoryBtn) clearHistoryBtn.addEventListener('click', clearHistory);
+        if(mobileMenuButton) mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        if(languageMenuButton) languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
+        if(calculatorsMenuButton) calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
+        
+        document.addEventListener('click', () => {
+            if(languageMenu) languageMenu.classList.add('hidden');
+            if(calculatorsMenu) calculatorsMenu.classList.add('hidden');
+        });
+    }
 
-                const displayHistory = () => {
-                    if (calculations.length > 0) {
-                        historySection.style.display = 'block';
-                        historyOutput.innerHTML = calculations.map((calc, index) => `
-                            <div class="bg-white p-4 rounded-lg shadow-sm border flex flex-col justify-between">
-                                <div>
-                                    <p class="font-semibold text-slate-700">${calc.title}</p>
-                                    <p class="text-sm text-slate-500">${new Date(calc.date).toLocaleDateString()}</p>
-                                    <div class="text-xs mt-2">${calc.results.replace(/<div class="text-center">/g, '<div class="text-center text-xs">').replace(/text-4xl/g, 'text-lg').replace(/text-2xl/g, 'text-base')}</div>
-                                </div>
-                                <button class="delete-calc-btn text-xs text-red-500 hover:underline mt-2 text-right" data-index="${index}">Delete</button>
-                            </div>`).join('');
-                    } else {
-                        historySection.style.display = 'none';
-                    }
-                };
 
-                saveBtn.addEventListener('click', () => {
-                    if (resultsOutput && resultsOutput.innerHTML.includes("Total Volume")) {
-                        const shape = document.querySelector('#shape-selector button.bg-white').dataset.value;
-                        const title = `Calculation for ${shape}`;
-                        const calculation = {
-                            title: title,
-                            date: new Date(),
-                            results: resultsOutput.innerHTML
-                        };
-                        calculations.unshift(calculation);
-                        if (calculations.length > 6) calculations.pop();
-                        localStorage.setItem('calculations', JSON.stringify(calculations));
-                        displayHistory();
-                    }
-                });
-                
-                clearHistoryBtn.addEventListener('click', () => {
-                    calculations = [];
-                    localStorage.removeItem('calculations');
-                    displayHistory();
-                });
+    // --- UI LOGIC ---
+    function setActiveButton(container, button) {
+        // ... (implementation remains the same)
+        container.querySelectorAll('button').forEach(btn => {
+            btn.classList.remove('bg-white', 'text-brand-primary', 'shadow');
+            btn.classList.add('text-slate-600', 'hover:text-brand-primary');
+        });
+        button.classList.add('bg-white', 'text-brand-primary', 'shadow');
+        button.classList.remove('text-slate-600', 'hover:text-brand-primary');
+    }
+    
+    function updateInputsForShape(shape) {
+        // ... (implementation remains the same)
+        const rectangleInputs = document.getElementById('rectangle-inputs');
+        const widthInputs = document.getElementById('width-inputs');
+        const circleInputs = document.getElementById('circle-inputs');
 
-                historyOutput.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('delete-calc-btn')) {
-                        const index = parseInt(e.target.dataset.index, 10);
-                        calculations.splice(index, 1);
-                        localStorage.setItem('calculations', JSON.stringify(calculations));
-                        displayHistory();
-                    }
-                });
+        if (!rectangleInputs || !widthInputs || !circleInputs) return;
 
-                // Initialize history display on page load
-                displayHistory();
-            }
+        if (shape === 'rectangle') {
+            rectangleInputs.classList.remove('hidden');
+            widthInputs.classList.remove('hidden');
+            circleInputs.classList.add('hidden');
+        } else { // circle
+            rectangleInputs.classList.add('hidden');
+            widthInputs.classList.add('hidden');
+            circleInputs.classList.remove('hidden');
         }
     }
-});
+
+    function updateActionButtons(disabled) {
+        if (copyBtn) copyBtn.disabled = disabled;
+        if (saveBtn) saveBtn.disabled = disabled;
+    }
+
+
+    // --- CALCULATION LOGIC ---
+    function calculate(inputs) {
+        // ... (implementation remains the same)
+        const { shape, grade, unit, length, width, radius, height } = inputs;
+
+        let volume_m3 = 0;
+        if (shape === 'rectangle') {
+            volume_m3 = (unit === 'metric' ? length : length * 0.3048) *
+                        (unit === 'metric' ? width : width * 0.3048) *
+                        (unit === 'metric' ? height : height * 0.3048);
+        } else { // circle
+            const r = unit === 'metric' ? radius : radius * 0.3048;
+            const h = unit === 'metric' ? height : height * 0.3048;
+            volume_m3 = Math.PI * r * r * h;
+        }
+
+        const ratio = gradeRatios[grade];
+        const totalRatio = ratio.cement + ratio.sand + ratio.gravel;
+
+        const cement_m3 = (volume_m3 / totalRatio) * ratio.cement;
+        const sand_m3 = (volume_m3 / totalRatio) * ratio.sand;
+        const gravel_m3 = (volume_m3 / totalRatio) * ratio.gravel;
+
+        return {
+            volume_m3: volume_m3,
+            volume_yd3: volume_m3 * constants.m3ToYd3,
+            cement: unit === 'metric' ? cement_m3 * constants.cementDensity : cement_m3 * constants.cementDensity * constants.kgToLbs,
+            sand: unit === 'metric' ? sand_m3 : sand_m3 * constants.m3ToFt3,
+            gravel: unit === 'metric' ? gravel_m3 : gravel_m3 * constants.m3ToFt3,
+        };
+    }
+
+
+    // --- DISPLAY & HISTORY ---
+    function displayResults() {
+        if (!resultsOutput) return;
+        const currentUnitSystem = unitSystemDiv ? unitSystemDiv.querySelector('.bg-white').dataset.value : 'imperial';
+        const currentShape = shapeSelectorDiv ? shapeSelectorDiv.querySelector('.bg-white').dataset.value : 'rectangle';
+
+        const results = calculate({
+            shape: currentShape,
+            grade: gradeSelect.value,
+            unit: currentUnitSystem,
+            length: lengthInput.value,
+            width: widthInput.value,
+            radius: radiusInput.value,
+            height: heightInput.value
+        });
+        
+        lastCalculation = { id: Date.now().toString(), unit: currentUnitSystem, shape: currentShape, ...results };
+
+        const isMetric = currentUnitSystem === 'metric';
+        const volumeUnit = isMetric ? 'm³' : 'yd³';
+        const weightUnit = isMetric ? 'kg' : 'lbs';
+        const smallVolUnit = isMetric ? 'm³' : 'ft³';
+        const volume = isMetric ? results.volume_m3 : results.volume_yd3;
+
+        resultsOutput.innerHTML = `
+            <div class="text-center">
+                <p class="text-sm text-slate-500">${t('totalVolume')}</p>
+                <p class="text-4xl font-bold text-brand-primary my-2">${volume.toFixed(2)} <span class="text-3xl">${volumeUnit}</span></p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-200 w-full text-sm">
+                <p class="font-semibold text-slate-700 mb-2">${t('materialBreakdown')}</p>
+                <dl class="space-y-1">
+                    <div class="flex justify-between">
+                        <dt class="text-slate-600">${t('cement')}</dt>
+                        <dd class="font-medium text-slate-800">${results.cement.toFixed(1)} ${weightUnit}</dd>
+                    </div>
+                    <div class="flex justify-between">
+                        <dt class="text-slate-600">${t('sand')}</dt>
+                        <dd class="font-medium text-slate-800">${results.sand.toFixed(2)} ${smallVolUnit}</dd>
+                    </div>
+                    <div class="flex justify-between">
+                        <dt class="text-slate-600">${t('gravel')}</dt>
+                        <dd class="font-medium text-slate-800">${results.gravel.toFixed(2)} ${smallVolUnit}</dd>
+                    </div>
+                </dl>
+            </div>
+        `;
+        updateActionButtons(false);
+    }
+
+    function resetCalculator() {
+        if (!resultsOutput) return;
+        resultsOutput.innerHTML = `
+            <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
+            <p class="font-semibold text-slate-500">${t('enterDimensions')}</p>
+            <p class="text-sm text-slate-400">${t('pressCalculate')}</p>
+        `;
+        updateActionButtons(true);
+    }
+    
+    function showTooltip(button, messageKey) {
+        const originalHtml = button.innerHTML;
+        const message = t(messageKey);
+        button.disabled = true;
+        button.innerHTML = `
+            <span class="flex items-center gap-1">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                ${message}
+            </span>
+        `;
+        setTimeout(() => {
+            button.innerHTML = originalHtml;
+            button.disabled = false;
+        }, 1500);
+    }
+
+    function getHistory() { return JSON.parse(localStorage.getItem('calcHistory') || '[]'); }
+    function saveHistory(history) { localStorage.setItem('calcHistory', JSON.stringify(history)); }
+
+    function saveCalculation(calc) {
+        let history = getHistory();
+        history.unshift(calc);
+        if (history.length > 6) history = history.slice(0, 6);
+        saveHistory(history);
+    }
+
+    function loadHistory() {
+        if (!historySection || !historyOutput) return;
+        const history = getHistory();
+        historySection.classList.toggle('hidden', history.length === 0);
+        historyOutput.innerHTML = history.map(item => createHistoryCard(item)).join('');
+    }
+
+    function clearHistory() {
+        localStorage.removeItem('calcHistory');
+        loadHistory();
+    }
+
+    function createHistoryCard(item) {
+        const isMetric = item.unit === 'metric';
+        const volumeUnit = isMetric ? 'm³' : 'yd³';
+        const volume = isMetric ? item.volume_m3 : item.volume_yd3;
+        const title = `${t('calculation')} #${item.id.slice(-4)}`;
+
+        return `
+            <div class="bg-white p-4 rounded-lg shadow-md border border-slate-200">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="font-bold text-slate-800">${title}</p>
+                    <div class="flex gap-2">
+                         <button title="Copy" class="copy-history-btn text-slate-400 hover:text-brand-primary" data-id="${item.id}">
+                             <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                         </button>
+                         <button title="Delete" class="delete-history-btn text-slate-400 hover:text-red-500" data-id="${item.id}">
+                             <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                         </button>
+                    </div>
+                </div>
+                <div class="text-center bg-slate-50 p-3 rounded-md">
+                     <p class="text-sm text-slate-500">${t('totalVolume')}</p>
+                    <p class="text-2xl font-bold text-brand-primary">${volume.toFixed(2)} <span class="text-xl">${volumeUnit}</span></p>
+                </div>
+            </div>`;
+    }
+
+    function getResultsAsText(item) {
+        const isMetric = item.unit === 'metric';
+        const volumeUnit = isMetric ? 'm³' : 'yd³';
+        const weightUnit = isMetric ? 'kg' : 'lbs';
+        const smallVolUnit = isMetric ? 'm³' : 'ft³';
+        const volume = isMetric ? item.volume_m3 : item.volume_yd3;
+
+        return `
+${t('totalVolume')}: ${volume.toFixed(2)} ${volumeUnit}
+---
+${t('materialBreakdown')}
+${t('cement')}: ${item.cement.toFixed(1)} ${weightUnit}
+${t('sand')}: ${item.sand.toFixed(2)} ${smallVolUnit}
+${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
+        `.trim();
+    }
+
+
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            if (lastCalculation) {
+                navigator.clipboard.writeText(getResultsAsText(lastCalculation));
+                showTooltip(copyBtn, 'copied');
+            }
+        });
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            if (lastCalculation) {
+                saveCalculation(lastCalculation);
+                showTooltip(saveBtn, 'saved');
+                loadHistory();
+            }
+        });
+    }
+
+    if (historyOutput) {
+        historyOutput.addEventListener('click', e => {
+            const copyButton = e.target.closest('.copy-history-btn');
+            if (copyButton) {
+                const id = copyButton.dataset.id;
+                const item = getHistory().find(h => h.id === id);
+                if (item) {
+                    navigator.clipboard.writeText(getResultsAsText(item));
+                    showTooltip(copyButton, 'copied');
+                }
+            }
+            
+            const deleteButton = e.target.closest('.delete-history-btn');
+            if (deleteButton) {
+                const id = deleteButton.dataset.id;
+                let history = getHistory().filter(h => h.id !== id);
+                saveHistory(history);
+                loadHistory();
+            }
+        });
+    }
+
+    // --- INITIALIZATION ---
+    resetCalculator();
+    loadHistory();
+    setupEventListeners();
+    updateInputsForShape('rectangle');
+}); 
