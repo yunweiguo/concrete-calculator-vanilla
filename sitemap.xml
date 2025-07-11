@@ -1,77 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-<url>
-  <loc>https://concrete-calculator.pro/index.html</loc>
-  <lastmod>2025-07-11T00:09:16+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/footing-calculator.html</loc>
-  <lastmod>2025-07-10T23:47:19+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/index.html</loc>
-  <lastmod>2025-07-10T23:47:00+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/privacy-policy.html</loc>
-  <lastmod>2025-07-10T23:47:52+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/slab-calculator.html</loc>
-  <lastmod>2025-07-10T23:47:10+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/guides/how-to-calculate-concrete.html</loc>
-  <lastmod>2025-07-10T23:47:41+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/terms-of-service.html</loc>
-  <lastmod>2025-07-10T23:48:03+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/bag-calculator.html</loc>
-  <lastmod>2025-07-10T23:47:31+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/zh/concrete-calculator-formula.html</loc>
-  <lastmod>2025-07-10T23:11:22+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/footing-calculator.html</loc>
-  <lastmod>2025-07-10T23:45:38+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/index.html</loc>
-  <lastmod>2025-07-10T23:45:13+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/privacy-policy.html</loc>
-  <lastmod>2025-07-10T23:46:39+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/slab-calculator.html</loc>
-  <lastmod>2025-07-10T23:45:24+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/guides/how-to-calculate-concrete.html</loc>
-  <lastmod>2025-07-10T23:46:28+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/terms-of-service.html</loc>
-  <lastmod>2025-07-10T23:46:49+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/bag-calculator.html</loc>
-  <lastmod>2025-07-10T23:46:18+00:00</lastmod>
-</url>
-<url>
-  <loc>https://concrete-calculator.pro/en/concrete-calculator-formula.html</loc>
-  <lastmod>2025-07-10T23:07:24+00:00</lastmod>
-</url>
-
-</urlset> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://concrete-calculator.pro/en/bag-calculator.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/concrete-calculator-formula.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/footing-calculator.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/guides/how-to-calculate-concrete.html</loc>
+    <lastmod>2025-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/</loc>
+    <lastmod>2025-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/privacy-policy.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/slab-calculator.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/en/terms-of-service.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/</loc>
+    <lastmod>2025-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/bag-calculator.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/concrete-calculator-formula.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/footing-calculator.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/guides/how-to-calculate-concrete.html</loc>
+    <lastmod>2025-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/</loc>
+    <lastmod>2025-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/privacy-policy.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/slab-calculator.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://concrete-calculator.pro/zh/terms-of-service.html</loc>
+    <lastmod>2025-07-10</lastmod>
+  </url>
+</urlset>
