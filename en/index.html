@@ -61,63 +61,51 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
-
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
-        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-8">
-                <a href="/en/" class="flex items-center gap-2">
-                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                    <span class="font-bold text-xl text-slate-900 shrink-0">Concrete Calculator</span>
-                </a>
-                
-                <div class="hidden lg:flex items-center gap-6">
-                     <!-- Calculators Dropdown -->
-                    <div class="relative" id="calculators-dropdown">
-                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
-                            <span>Calculators</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                        </button>
-                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
-                            <a href="/en/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Slab Calculator</a>
-                            <a href="/en/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Footing Calculator</a>
-                            <a href="/en/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Bag Calculator</a>
-                        </div>
-                    </div>
-                    <a href="/en/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">Guides</a>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="#calculator" class="hidden sm:block bg-brand-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-brand-primary/90 transition-colors">
-                    Use Calculator
-                </a>
-                <!-- Language Switcher -->
-                <div id="language-switcher" class="relative">
-                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
-                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                        <span id="current-language-name">English</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                    </button>
-                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
-                        <a href="/en/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">English</a>
-                        <a href="/zh/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">中文</a>
-                    </div>
-                </div>
-                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
-            <a href="/en/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Slab Calculator</a>
-            <a href="/en/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Footing Calculator</a>
-            <a href="/en/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Bag Calculator</a>
-            <a href="/en/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">Guides</a>
-        </div>
-    </header>
+    <div id="header-include"></div>
+    <script>
+      fetch('/en/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+      // 动态高亮当前菜单项
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+          link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
+        } else {
+          link.classList.remove('text-brand-primary', 'font-bold', 'bg-slate-100');
+        }
+      });
+    </script>
 
     <main class="container mx-auto px-4 lg:px-6 py-12 md:py-20">
         
