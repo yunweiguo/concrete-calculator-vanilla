@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>404 - 页面未找到</title>
+    <meta name="description" content="您要查找的页面可能已被删除、名称已更改或暂时不可用。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/404.html">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <a href="/zh/" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900 shrink-0">混凝土计算器</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center gap-6">
+                     <!-- Calculators Dropdown -->
+                    <div class="relative" id="calculators-dropdown">
+                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                            <span>计算器</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                            <a href="/zh/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">板计算器</a>
+                            <a href="/zh/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">基脚计算器</a>
+                            <a href="/zh/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">袋装混凝土计算器</a>
+                        </div>
+                    </div>
+                    <a href="/zh/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">指南</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#calculator" class="hidden sm:block bg-brand-primary text-white font-semibold px-5 py-2 rounded-lg hover:bg-brand-primary/90 transition-colors">
+                    使用计算器
+                </a>
+                <!-- Language Switcher -->
+                <div id="language-switcher" class="relative">
+                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span id="current-language-name">中文</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
+                        <a href="/en/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">English</a>
+                        <a href="/zh/" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">中文</a>
+                    </div>
+                </div>
+                 <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="/zh/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">板计算器</a>
+            <a href="/zh/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">基脚计算器</a>
+            <a href="/zh/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">袋装混凝土计算器</a>
+            <a href="/zh/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">指南</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12 md:py-20 text-center">
+        <h1 class="text-6xl md:text-8xl font-extrabold text-slate-900 mb-4">404</h1>
+        <p class="text-xl md:text-2xl text-slate-600 mb-8">页面未找到</p>
+        <p class="text-lg text-slate-600 mb-12">您要查找的页面可能已被删除、名称已更改或暂时不可用。</p>
+        <a href="/zh/" class="bg-brand-primary text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+            返回主页
+        </a>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <p class="font-bold text-lg text-white">混凝土计算器</p>
+                    <p class="text-sm text-slate-400 mt-1">一个轻量、快速、准确的工具，满足您所有的混凝土估算需求。</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="/zh/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">隐私政策</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="/zh/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">服务条款</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="https://kimi-k2.app/" class="text-slate-400 hover:text-white transition-colors px-3" target="_blank" rel="noopener noreferrer">Kimi Chat</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 混凝土计算器. 版权所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>

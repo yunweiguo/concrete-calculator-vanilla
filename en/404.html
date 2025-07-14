@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>404 - Page Not Found</title>
+    <meta name="description" content="The page you are looking for could not be found.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/404.html">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/en/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+      // 动态高亮当前菜单项
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+          link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
+        } else {
+          link.classList.remove('text-brand-primary', 'font-bold', 'bg-slate-100');
+        }
+      });
+    </script>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12 md:py-20 text-center">
+        <h1 class="text-6xl md:text-8xl font-extrabold text-slate-900 mb-4">404</h1>
+        <p class="text-xl md:text-2xl text-slate-600 mb-8">Page Not Found</p>
+        <p class="text-lg text-slate-600 mb-12">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <a href="/en/" class="bg-brand-primary text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+            Go to Homepage
+        </a>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
+                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
+                    <span class="text-slate-500">|</span>
+                    <a href="https://kimi-k2.app/" class="text-slate-400 hover:text-white transition-colors px-3" target="_blank" rel="noopener noreferrer">Kimi Chat</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
