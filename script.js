@@ -56,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const calculatorsMenuButton = document.getElementById('calculators-menu-button');
     const calculatorsMenu = document.getElementById('calculators-menu');
 
+    // New elements for Bag Calculator
+    const bagSizeSelect = document.getElementById('bag-size');
+    const customBagInputs = document.getElementById('custom-bag-inputs');
+    const customBagWeightInput = document.getElementById('custom-bag-weight');
+    const customBagYieldInput = document.getElementById('custom-bag-yield');
 
     // --- STATE ---
     let lastCalculation = null;
@@ -76,6 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         "C20": { cement: 1, sand: 1.5, gravel: 3, water: 0.55 },
         "C25": { cement: 1, sand: 1, gravel: 2, water: 0.5 },
         "C30": { cement: 1, sand: 1, gravel: 2, water: 0.45 },
+    };
+    
+    const bagYields = { // in ft^3
+        "80": 0.60,
+        "60": 0.45,
+        "50": 0.38,
+        "40": 0.30,
     };
 
 
@@ -109,6 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if(languageMenu) languageMenu.classList.add('hidden');
             if(calculatorsMenu) calculatorsMenu.classList.add('hidden');
         });
+
+        // Event listener for bag size dropdown
+        if (bagSizeSelect) {
+            bagSizeSelect.addEventListener('change', (e) => {
+                if (e.target.value === 'custom') {
+                    customBagInputs.classList.remove('hidden');
+                } else {
+                    customBagInputs.classList.add('hidden');
+                }
+            });
+        }
     }
 
 
@@ -150,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CALCULATION LOGIC ---
     function calculate(inputs) {
-        // ... (implementation remains the same)
         const { shape, grade, unit, length, width, radius, height } = inputs;
 
         let volume_m3 = 0;
@@ -184,6 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DISPLAY & HISTORY ---
     function displayResults() {
         if (!resultsOutput) return;
+
+        // Page-specific logic: Check if it's the bag calculator page
+        if (document.getElementById('bag-size')) {
+            displayBagResults();
+        } else {
+            displayMaterialResults();
+        }
+    }
+
+    function displayMaterialResults() {
         const currentUnitSystem = unitSystemDiv ? unitSystemDiv.querySelector('.bg-white').dataset.value : 'imperial';
         const currentShape = shapeSelectorDiv ? shapeSelectorDiv.querySelector('.bg-white').dataset.value : 'rectangle';
 
@@ -191,10 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
             shape: currentShape,
             grade: gradeSelect.value,
             unit: currentUnitSystem,
-            length: lengthInput.value,
-            width: widthInput.value,
-            radius: radiusInput.value,
-            height: heightInput.value
+            length: parseFloat(lengthInput.value),
+            width: parseFloat(widthInput.value),
+            radius: parseFloat(radiusInput.value),
+            height: parseFloat(heightInput.value)
         });
         
         lastCalculation = { id: Date.now().toString(), unit: currentUnitSystem, shape: currentShape, ...results };
@@ -226,6 +258,74 @@ document.addEventListener('DOMContentLoaded', () => {
                         <dd class="font-medium text-slate-800">${results.gravel.toFixed(2)} ${smallVolUnit}</dd>
                     </div>
                 </dl>
+            </div>
+        `;
+        updateActionButtons(false);
+    }
+
+    function displayBagResults() {
+        const currentUnitSystem = unitSystemDiv.querySelector('.bg-white').dataset.value;
+        const currentShape = shapeSelectorDiv.querySelector('.bg-white').dataset.value;
+        const bagSize = bagSizeSelect.value;
+
+        let length_ft = currentUnitSystem === 'imperial' ? parseFloat(lengthInput.value) : parseFloat(lengthInput.value) * 3.28084;
+        let width_ft = currentUnitSystem === 'imperial' ? parseFloat(widthInput.value) : parseFloat(widthInput.value) * 3.28084;
+        let radius_ft = currentUnitSystem === 'imperial' ? parseFloat(radiusInput.value) : parseFloat(radiusInput.value) * 3.28084;
+        let height_ft = currentUnitSystem === 'imperial' ? parseFloat(heightInput.value) : parseFloat(heightInput.value) * 3.28084;
+        
+        let volume_ft3 = 0;
+        if (currentShape === 'rectangle') {
+            volume_ft3 = length_ft * width_ft * height_ft;
+        } else { // circle
+            volume_ft3 = Math.PI * radius_ft * radius_ft * height_ft;
+        }
+
+        let yield_ft3 = 0;
+        let bagWeight = 0;
+        
+        if (bagSize === 'custom') {
+            yield_ft3 = parseFloat(customBagYieldInput.value);
+            bagWeight = parseFloat(customBagWeightInput.value);
+        } else {
+            yield_ft3 = bagYields[bagSize];
+            bagWeight = parseInt(bagSize, 10);
+        }
+
+        if (isNaN(volume_ft3) || volume_ft3 <= 0 || isNaN(yield_ft3) || yield_ft3 <= 0) {
+             resultsOutput.innerHTML = `<p class="text-red-500">Please enter valid dimensions and bag information.</p>`;
+             return;
+        }
+
+        const bagsNeeded = Math.ceil(volume_ft3 / yield_ft3);
+        const totalWeight = bagsNeeded * bagWeight;
+        
+        lastCalculation = {
+            id: Date.now().toString(),
+            unit: currentUnitSystem,
+            shape: currentShape,
+            bags: bagsNeeded,
+            bagWeight: bagWeight,
+            totalWeight: totalWeight
+        };
+        
+        const weightUnit = currentUnitSystem === 'metric' ? 'kg' : 'lbs';
+        const displayTotalWeight = currentUnitSystem === 'metric' ? (totalWeight * 0.453592).toFixed(1) : totalWeight.toFixed(1);
+
+        resultsOutput.innerHTML = `
+            <div class="text-center">
+                <p class="text-lg text-slate-600">You will need:</p>
+                <p class="text-5xl font-extrabold text-brand-primary my-2">${bagsNeeded}</p>
+                <p class="text-lg text-slate-600">bags (${bagWeight} ${weightUnit} each)</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-200 w-full text-sm">
+                 <div class="flex justify-between">
+                    <dt class="text-slate-600">Total Volume:</dt>
+                    <dd class="font-medium text-slate-800">${volume_ft3.toFixed(2)} ft³</dd>
+                </div>
+                 <div class="flex justify-between mt-1">
+                    <dt class="text-slate-600">Total Weight:</dt>
+                    <dd class="font-medium text-slate-800">~${displayTotalWeight} ${weightUnit}</dd>
+                </div>
             </div>
         `;
         updateActionButtons(false);
