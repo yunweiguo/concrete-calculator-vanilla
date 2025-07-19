@@ -193,18 +193,10 @@
 
     </main>
     
-    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
-        <div class="container mx-auto px-4 lg:px-6 py-8">
-            <div class="text-center md:text-left">
-                <a href="/zh/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">隐私政策</a>
-                <span class="text-slate-500">|</span>
-                <a href="/zh/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">服务条款</a>
-            </div>
-            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
-                 <p>&copy; 2024 混凝土计算器. 保留所有权利。</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-include"></div>
+    <script>
+        fetch('/zh/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').outerHTML=html);
+    </script>
 
     <script src="/script.js"></script>
 

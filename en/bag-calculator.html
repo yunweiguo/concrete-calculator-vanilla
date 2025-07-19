@@ -305,25 +305,10 @@
         
     </main>
     
-    <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
-        <div class="container mx-auto px-4 lg:px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div>
-                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
-                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
-                    <span class="text-slate-500">|</span>
-                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
-                </div>
-            </div>
-            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
-                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-include"></div>
+    <script>
+        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').outerHTML=html);
+    </script>
 
     <script src="/script.js"></script>
 </body>
