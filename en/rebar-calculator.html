@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>Rebar Calculator for Concrete Slabs</title>
+    <meta name="description" content="Quickly calculate the total length, number of pieces, and weight of rebar needed for your concrete slab project. Supports various rebar sizes and spacing.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/rebar-calculator.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Rebar Calculator for Concrete Slabs">
+    <meta property="og:description" content="Calculate the rebar needed for concrete slabs, including total length, weight, and number of bars based on your dimensions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/rebar-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rebar Calculator for Concrete Slabs">
+    <meta name="twitter:description" content="Calculate the rebar needed for concrete slabs, including total length, weight, and number of bars based on your dimensions.">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': { 'primary': '#1e40af', 'secondary': '#3b82f6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/en/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton) {
+          calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
+          document.addEventListener('click', () => calculatorsMenu.classList.add('hidden'));
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton) {
+          languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
+          document.addEventListener('click', () => languageMenu.classList.add('hidden'));
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton) {
+          mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+        // Highlight current page link
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
+            }
+        });
+      });
+    </script>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Rebar Calculator
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Estimate the amount of steel rebar needed for a concrete slab grid.
+            </p>
+        </section>
+
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Left Side: Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Slab & Rebar Details</h2>
+                            <p class="text-slate-500 mt-1">Select units and enter your project specifications.</p>
+                        </div>
+
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Imperial (ft, lb)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, kg)</button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                             <div>
+                                <label for="slab-length" class="text-sm font-medium text-slate-700">Slab Length (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="slab-length" value="20" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="slab-width" class="text-sm font-medium text-slate-700">Slab Width (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="slab-width" value="20" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="rebar-spacing" class="text-sm font-medium text-slate-700">Rebar Spacing, Center-to-Center (<span class="unit-label-small-dist">in</span>)</label>
+                                <input type="number" id="rebar-spacing" value="18" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                             <div>
+                                <label for="rebar-size" class="text-sm font-medium text-slate-700">Rebar Size</label>
+                                <select id="rebar-size" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                    <!-- Imperial Options -->
+                                    <optgroup label="Imperial (US)">
+                                        <option value="3">#3 (3/8")</option>
+                                        <option value="4" selected>#4 (1/2")</option>
+                                        <option value="5">#5 (5/8")</option>
+                                        <option value="6">#6 (3/4")</option>
+                                    </optgroup>
+                                    <!-- Metric Options (initially hidden) -->
+                                    <optgroup label="Metric" class="hidden">
+                                        <option value="10M">10M (11.3mm)</option>
+                                        <option value="15M">15M (16.0mm)</option>
+                                        <option value="20M">20M (19.5mm)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-slate-900">2. Rebar Estimate</h2>
+                             <div class="flex gap-2">
+                                <button id="copy-btn" title="Copy Results" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </button>
+                                 <button id="reset-btn" title="Reset Form" class="text-slate-500 hover:text-brand-primary">
+                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" /></svg>
+                           <p class="font-semibold text-slate-500">Your results will appear here.</p>
+                           <p class="text-sm text-slate-400">Enter dimensions to calculate.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+                        Calculate
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto">* Estimates are for a single layer grid and do not include lap splice length or waste. Always consult an engineer for structural projects.</p>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>How to Calculate Rebar for a Slab</h2>
+            <p>Rebar (reinforcing bar) is crucial for adding tensile strength to concrete, preventing cracks and structural failure. This calculator helps you estimate the total amount of rebar needed for a standard grid pattern in a concrete slab.</p>
+            
+            <h3>Calculation Steps:</h3>
+            <ol>
+                <li><strong>Determine Grid Area:</strong> Enter the total length and width of your concrete slab.</li>
+                <li><strong>Set Spacing:</strong> Input the on-center spacing for your rebar grid (e.g., 18 inches). This is the distance from the center of one bar to the center of the next.</li>
+                <li><strong>Calculate Bar Count:</strong> The calculator determines how many rebar pieces are needed for each direction of the grid. For example, for a 20ft slab with 18-inch spacing, you need `(20 ft * 12 in/ft) / 18 in = 13.33`, which rounds up to 14 bars. An extra bar is often added, so we calculate `floor(dimension / spacing) + 1`.</li>
+                <li><strong>Total Length & Weight:</strong> It multiplies the number of bars by the length of each run to find the total linear footage. Using the selected rebar size's standard weight-per-foot, it calculates the total weight.</li>
+            </ol>
+
+            <h3>Key Considerations:</h3>
+            <ul>
+                <li><strong>Lap Splice:</strong> Rebar comes in standard lengths (e.g., 20 or 40 feet). If your slab's dimension exceeds this, you must overlap or "splice" bars. The required lap length (typically 40-60 times the bar diameter) should be added to your total. This calculator currently assumes continuous runs.</li>
+                <li><strong>Cover:</strong> Ensure the rebar grid is elevated by "chairs" so it's surrounded by at least 1.5-3 inches of concrete on all sides (top, bottom, and edges). Do not lay it directly on the ground.</li>
+                <li><strong>Structural Requirements:</strong> For load-bearing structures like foundations or garage slabs, always follow the plans specified by a structural engineer.</li>
+            </ul>
+
+        </section>
+
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="text-center md:text-left">
+                <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
+                <span class="text-slate-500">|</span>
+                <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+
+</body>
+</html> 

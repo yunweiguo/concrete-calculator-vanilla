@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>钢筋计算器 - 计算混凝土板中的钢筋用量</title>
+    <meta name="description" content="快速计算您的混凝土板项目所需的钢筋总长度、根数和重量。支持多种钢筋尺寸和间距。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/rebar-calculator.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="钢筋计算器 - 计算混凝土板中的钢筋用量">
+    <meta property="og:description" content="根据您的尺寸计算混凝土板所需的钢筋，包括总长度、重量和钢筋根数。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/rebar-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="钢筋计算器 - 计算混凝土板中的钢筋用量">
+    <meta name="twitter:description" content="根据您的尺寸计算混凝土板所需的钢筋，包括总长度、重量和钢筋根数。">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': { 'primary': '#1e40af', 'secondary': '#3b82f6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/zh/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton) {
+          calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
+          document.addEventListener('click', () => calculatorsMenu.classList.add('hidden'));
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton) {
+          languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
+          document.addEventListener('click', () => languageMenu.classList.add('hidden'));
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton) {
+          mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+        // Highlight current page link
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
+            }
+        });
+      });
+    </script>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                钢筋计算器
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                估算混凝土板网格中所需的钢筋用量。
+            </p>
+        </section>
+
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Left Side: Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入板坯和钢筋详情</h2>
+                            <p class="text-slate-500 mt-1">选择单位并输入您的项目规格。</p>
+                        </div>
+
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">英制 (ft, lb)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">公制 (m, kg)</button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                             <div>
+                                <label for="slab-length" class="text-sm font-medium text-slate-700">板坯长度 (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="slab-length" value="6" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="slab-width" class="text-sm font-medium text-slate-700">板坯宽度 (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="slab-width" value="6" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="rebar-spacing" class="text-sm font-medium text-slate-700">钢筋间距 (中到中) (<span class="unit-label-small-dist">mm</span>)</label>
+                                <input type="number" id="rebar-spacing" value="300" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                             <div>
+                                <label for="rebar-size" class="text-sm font-medium text-slate-700">钢筋尺寸</label>
+                                <select id="rebar-size" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                    <optgroup label="公制">
+                                        <option value="10M">10M (11.3mm)</option>
+                                        <option value="15M" selected>15M (16.0mm)</option>
+                                        <option value="20M">20M (19.5mm)</option>
+                                    </optgroup>
+                                    <optgroup label="英制 (US)" class="hidden">
+                                        <option value="3">#3 (3/8")</option>
+                                        <option value="4">#4 (1/2")</option>
+                                        <option value="5">#5 (5/8")</option>
+                                        <option value="6">#6 (3/4")</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-slate-900">2. 钢筋估算结果</h2>
+                             <div class="flex gap-2">
+                                <button id="copy-btn" title="复制结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </button>
+                                 <button id="reset-btn" title="重置表单" class="text-slate-500 hover:text-brand-primary">
+                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" /></svg>
+                           <p class="font-semibold text-slate-500">您的结果将显示在这里。</p>
+                           <p class="text-sm text-slate-400">输入尺寸以进行计算。</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105">
+                        计算
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto">* 估算值为单层网格，不包括搭接长度或损耗。对于结构性项目，请务必咨询工程师。</p>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>如何计算板坯的钢筋</h2>
+            <p>钢筋（Rebar）对于增加混凝土的抗拉强度、防止裂缝和结构失效至关重要。本计算器可帮助您估算混凝土板中标准网格布局所需的钢筋总量。</p>
+            
+            <h3>计算步骤：</h3>
+            <ol>
+                <li><strong>确定网格面积：</strong> 输入您的混凝土板的总长度和宽度。</li>
+                <li><strong>设置间距：</strong> 输入钢筋网格的中心间距（例如 300 毫米）。这是从一根钢筋的中心到下一根钢筋中心的距离。</li>
+                <li><strong>计算钢筋数量：</strong> 计算器确定网格每个方向需要多少根钢筋。例如，对于一个 6 米的板，间距为 300 毫米，您需要 `6000mm / 300mm = 20` 根。通常会额外增加一根，所以我们计算 `floor(尺寸 / 间距) + 1`。</li>
+                <li><strong>总长度和重量：</strong> 它将钢筋数量乘以每次运行的长度，以得出总线性长度。然后使用所选钢筋尺寸的标准每米重量计算总重量。</li>
+            </ol>
+
+            <h3>关键注意事项：</h3>
+            <ul>
+                <li><strong>搭接：</strong> 钢筋有标准长度（例如 9米或 12 米）。如果您的板尺寸超过此长度，您必须重叠或“搭接”钢筋。所需的搭接长度（通常是钢筋直径的40-60倍）应加到您的总数中。本计算器目前假设是连续运行。</li>
+                <li><strong>保护层：</strong> 确保钢筋网格由“马凳”抬高，使其四周（顶部、底部和边缘）至少有40-75毫米的混凝土。不要将其直接放在地面上。</li>
+                <li><strong>结构要求：</strong> 对于承重结构，如地基或车库板，请始终遵循结构工程师指定的图纸。</li>
+            </ul>
+
+        </section>
+
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="text-center md:text-left">
+                <a href="/zh/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">隐私政策</a>
+                <span class="text-slate-500">|</span>
+                <a href="/zh/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">服务条款</a>
+            </div>
+            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
+                 <p>&copy; 2024 混凝土计算器. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+
+</body>
+</html> 
