@@ -160,7 +160,30 @@
                             </div>
                         </div>
 
-                        <!-- Grade -->
+                        <!-- Bag Size Selection -->
+                         <div>
+                            <label for="bag-size" class="text-sm font-medium text-slate-700">Select Bag Size (or enter custom)</label>
+                            <select id="bag-size" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <option value="80">80 lb bag (~0.60 ft³)</option>
+                                <option value="60">60 lb bag (~0.45 ft³)</option>
+                                <option value="50">50 lb bag (~0.38 ft³)</option>
+                                <option value="40">40 lb bag (~0.30 ft³)</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        <div id="custom-bag-inputs" class="hidden space-y-4">
+                             <div>
+                                <label for="custom-bag-weight" class="text-sm font-medium text-slate-700">Custom Bag Weight (<span class="unit-label-mass">lb</span>)</label>
+                                <input type="number" id="custom-bag-weight" placeholder="55" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="custom-bag-yield" class="text-sm font-medium text-slate-700">Custom Bag Yield (<span class="unit-label-vol">ft³</span>)</label>
+                                <input type="number" id="custom-bag-yield" placeholder="0.42" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </div>
+
+
+                        <!-- Grade (Hidden but kept for JS compatibility) -->
                          <div class="hidden">
                             <label for="grade" class="text-sm font-medium text-slate-700">Concrete Grade / Strength</label>
                             <select id="grade" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
@@ -226,13 +249,45 @@
                 <li><strong>Work in Batches:</strong> Only mix as many bags as you can place and finish within about 20-30 minutes. Concrete begins to cure quickly, especially on warm, windy days.</li>
             </ul>
 
-            <h3>Frequently Asked Questions (FAQ)</h3>
+            <h3 class="!mt-10">Using as a Quikrete Bag Estimator</h3>
+            <p>Many users look for a "Quikrete bag estimator," and this calculator is designed to serve that purpose perfectly. While bag yields can vary slightly by product type (e.g., fast-setting vs. high-strength), the values in our dropdown are based on the most common products like Quikrete® Concrete Mix (No. 1101).</p>
+            <p>For maximum accuracy, check the "yield" printed on the side of the Quikrete bag you intend to use and enter it into the "Custom" fields above. Here is a quick reference for common Quikrete products:</p>
+            <div class="overflow-x-auto">
+                 <table class="table-auto w-full !mt-2">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 bg-slate-100 text-left">Quikrete Product</th>
+                            <th class="px-4 py-2 bg-slate-100 text-left">Bag Weight</th>
+                            <th class="px-4 py-2 bg-slate-100 text-left">Approximate Yield</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-4 py-2">Concrete Mix (No. 1101)</td>
+                            <td class="px-4 py-2">80 lb / 60 lb / 40 lb</td>
+                            <td class="px-4 py-2">0.60 / 0.45 / 0.30 ft³</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2">Fast-Setting Concrete Mix (No. 1004)</td>
+                            <td class="px-4 py-2">50 lb</td>
+                            <td class="px-4 py-2">0.375 ft³</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">High-Strength Concrete Mix (No. 1007)</td>
+                            <td class="px-4 py-2">80 lb</td>
+                            <td class="px-4 py-2">0.60 ft³</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="!mt-10">Frequently Asked Questions (FAQ)</h3>
             <details class="bg-slate-100/50 p-4 rounded-lg group" open>
                 <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
                     <span>How much volume does one bag of concrete make?</span>
                     <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <p class="text-slate-600 mt-2">It varies by bag weight. As a general rule:<br>- An 80 lb bag yields about 0.60 cubic feet.<br>- A 60 lb bag yields about 0.45 cubic feet.<br>- A 40 lb bag yields about 0.30 cubic feet.<br>This calculator does this math for you automatically.</p>
+                <p class="text-slate-600 mt-2">It varies by bag weight. As a general rule:<br>- An 80 lb bag yields about 0.60 cubic feet.<br>- A 60 lb bag yields about 0.45 cubic feet.<br>- A 50 lb bag yields about 0.38 cubic feet.<br>- A 40 lb bag yields about 0.30 cubic feet.<br>This calculator does this math for you, and for ultimate precision, you can use the "Custom" option to enter the exact yield from your bag.</p>
             </details>
             <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
                 <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
