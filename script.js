@@ -62,6 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const customBagWeightInput = document.getElementById('custom-bag-weight');
     const customBagYieldInput = document.getElementById('custom-bag-yield');
 
+    // New elements for Rebar Calculator
+    const slabLengthInput = document.getElementById('slab-length');
+    const slabWidthInput = document.getElementById('slab-width');
+    const rebarSpacingInput = document.getElementById('rebar-spacing');
+    const rebarSizeSelect = document.getElementById('rebar-size');
+
+
     // --- STATE ---
     let lastCalculation = null;
 
@@ -90,6 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
         "40": 0.30,
     };
 
+    const rebarData = {
+        // Imperial sizes (weight in lbs per foot)
+        "3": { weight: 0.376 }, // #3
+        "4": { weight: 0.668 }, // #4
+        "5": { weight: 1.043 }, // #5
+        "6": { weight: 1.502 }, // #6
+        // Metric sizes (weight in kg per meter)
+        "10M": { weight: 0.785 },
+        "15M": { weight: 1.570 },
+        "20M": { weight: 2.355 }
+    };
+
 
     // --- EVENT LISTENERS & SETUP ---
     function setupEventListeners() {
@@ -97,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
             unitSystemDiv.addEventListener('click', (e) => {
                 if (e.target.tagName === 'BUTTON') {
                     setActiveButton(unitSystemDiv, e.target);
+                    // Also update rebar options if on rebar page
+                    if(rebarSizeSelect) updateRebarOptions(e.target.dataset.value);
                 }
             });
         }
@@ -144,8 +165,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         button.classList.add('bg-white', 'text-brand-primary', 'shadow');
         button.classList.remove('text-slate-600', 'hover:text-brand-primary');
+        updateUnitLabels(button.dataset.value);
     }
     
+    function updateUnitLabels(unit) {
+        document.querySelectorAll('.unit-label-dist').forEach(el => el.textContent = unit === 'metric' ? 'm' : 'ft');
+        document.querySelectorAll('.unit-label-mass').forEach(el => el.textContent = unit === 'metric' ? 'kg' : 'lb');
+        document.querySelectorAll('.unit-label-small-dist').forEach(el => el.textContent = unit === 'metric' ? 'mm' : 'in');
+    }
+
+    function updateRebarOptions(unit) {
+        const imperialGroup = rebarSizeSelect.querySelector('optgroup[label="Imperial (US)"]');
+        const metricGroup = rebarSizeSelect.querySelector('optgroup[label="Metric"]');
+
+        if (unit === 'metric') {
+            imperialGroup.classList.add('hidden');
+            metricGroup.classList.remove('hidden');
+            rebarSizeSelect.value = '15M'; // Default to a common metric size
+        } else {
+            imperialGroup.classList.remove('hidden');
+            metricGroup.classList.add('hidden');
+            rebarSizeSelect.value = '4'; // Default to a common imperial size
+        }
+    }
+
     function updateInputsForShape(shape) {
         // ... (implementation remains the same)
         const rectangleInputs = document.getElementById('rectangle-inputs');
@@ -207,9 +250,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayResults() {
         if (!resultsOutput) return;
 
-        // Page-specific logic: Check if it's the bag calculator page
+        // Page-specific logic
         if (document.getElementById('bag-size')) {
             displayBagResults();
+        } else if (document.getElementById('rebar-size')) {
+            displayRebarResults();
         } else {
             displayMaterialResults();
         }
@@ -331,10 +376,82 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActionButtons(false);
     }
 
+    function displayRebarResults() {
+        const unit = unitSystemDiv.querySelector('.bg-white').dataset.value;
+        const length = parseFloat(slabLengthInput.value);
+        const width = parseFloat(slabWidthInput.value);
+        let spacing = parseFloat(rebarSpacingInput.value);
+        const rebarSize = rebarSizeSelect.value;
+        
+        if (isNaN(length) || isNaN(width) || isNaN(spacing) || length <= 0 || width <= 0 || spacing <= 0) {
+            resultsOutput.innerHTML = `<p class="text-red-500">Please enter valid dimensions and spacing.</p>`;
+            return;
+        }
+
+        // Convert all dimensions to a common unit (inches) for calculation
+        const length_in = unit === 'metric' ? length * 39.3701 : length * 12;
+        const width_in = unit === 'metric' ? width * 39.3701 : width * 12;
+        if (unit === 'metric') spacing = spacing / 25.4; // mm to inches
+
+        const numBarsLengthwise = Math.floor(width_in / spacing) + 1;
+        const numBarsWidthwise = Math.floor(length_in / spacing) + 1;
+
+        const totalLength_ft = (numBarsLengthwise * length) + (numBarsWidthwise * width);
+        const totalLength_m = unit === 'metric' ? totalLength_ft * 0.3048 : totalLength_ft / 3.28084;
+
+        const totalWeight = unit === 'metric'
+            ? totalLength_m * rebarData[rebarSize].weight
+            : totalLength_ft * rebarData[rebarSize].weight;
+            
+        const totalPieces = numBarsLengthwise + numBarsWidthwise;
+        
+        const displayLength = unit === 'metric' ? totalLength_m.toFixed(1) : totalLength_ft.toFixed(1);
+        const displayWeight = totalWeight.toFixed(1);
+        const lengthUnit = unit === 'metric' ? 'm' : 'ft';
+        const weightUnit = unit === 'metric' ? 'kg' : 'lbs';
+
+        resultsOutput.innerHTML = `
+            <div class="space-y-4 w-full">
+                <div class="text-center">
+                    <p class="text-lg text-slate-600">Total Rebar Length</p>
+                    <p class="text-4xl font-extrabold text-brand-primary my-1">${displayLength} <span class="text-3xl">${lengthUnit}</span></p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-200 w-full text-sm">
+                     <dl class="space-y-1">
+                        <div class="flex justify-between">
+                            <dt class="text-slate-600">Total Weight:</dt>
+                            <dd class="font-medium text-slate-800">${displayWeight} ${weightUnit}</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-600">Total Pieces:</dt>
+                            <dd class="font-medium text-slate-800">${totalPieces} pcs</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-600">Lengthwise:</dt>
+                            <dd class="font-medium text-slate-800">${numBarsLengthwise} pcs</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-600">Widthwise:</dt>
+                            <dd class="font-medium text-slate-800">${numBarsWidthwise} pcs</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        `;
+        updateActionButtons(false);
+    }
+
+
     function resetCalculator() {
         if (!resultsOutput) return;
+        const isRebarPage = !!document.getElementById('rebar-size');
+        let initialSvg = `<svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>`;
+        if (isRebarPage) {
+            initialSvg = `<svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" /></svg>`;
+        }
+        
         resultsOutput.innerHTML = `
-            <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
+            ${initialSvg}
             <p class="font-semibold text-slate-500">${t('enterDimensions')}</p>
             <p class="text-sm text-slate-400">${t('pressCalculate')}</p>
         `;
