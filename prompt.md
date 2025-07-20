@@ -32,7 +32,7 @@
 - **[x] 完善主页链接与导航:** 更新 `index.html`，添加了指向新页面的卡片链接，并为全站所有页面（`index.html`, `slab-calculator.html`, `footing-calculator.html`, `bag-calculator.html`, `guides/how-to-calculate-concrete.html`）增加了统一的响应式导航栏和中心化功能脚本，从而构建了强大的内部链接网络并解决了语言同步问题。
 - **[x] 增强内部链接:** 在 `index.html` 和 `bag-calculator.html` 的 FAQ 部分添加了上下文相关的内部链接，以增强用户导航和 SEO。**注意: 由于工具限制，`translations.js` 文件需要手动修复语法错误才能使新链接的文本完全生效。**
 
-### 第二阶段: 扩展内容生态系统 (In Progress)
+### 第二阶段: 扩展内容生态系统 (Completed)
 
 - **[x] 创建新页面 `rebar-calculator.html`:**
   - **主题:** 钢筋计算器（Rebar Calculator），支持用户根据混凝土结构尺寸、钢筋间距、直径等参数，快速计算所需钢筋的总长度、根数和理论重量。
@@ -43,11 +43,11 @@
     - 交互式输入校验。
   - **多语言支持:** 英文（`en/rebar-calculator.html`）、中文（`zh/rebar-calculator.html`）。
 
-- **[ ] 创建新的专业计算器:**
-  - **备选计算器 1:** 混凝土圆柱/圆管 (Column/Sonotube) 计算器。
+- **[x] 创建新的专业计算器:**
+  - **[x] 混凝土圆柱/圆管 (Column/Sonotube) 计算器。**
     - 支持输入直径、高度、数量，自动计算体积和材料需求。
     - 多语言支持。
-  - **备选计算器 2:** 混凝土台阶 (Stairs) 计算器。
+  - **[x] 混凝土台阶 (Stairs) 计算器。**
     - 支持多级台阶参数输入，自动分段计算体积。
     - 多语言支持。
 
@@ -62,9 +62,9 @@
   - 为问答部分添加 `FAQPage` schema。
   - 适配所有新内容页面，提升搜索引擎富媒体摘要（Rich Snippets）概率。
 
-### 第三阶段: 功能增强与用户体验优化
+### 第三阶段: 功能增强与用户体验优化 (In Progress)
 
-- **[ ] "分享" 功能:**
+- **[x] "分享" 功能:**
   - 在结果区增加“分享”按钮，支持一键复制链接、分享到主流社交平台（如微信、WhatsApp、Facebook、Twitter等）。
   - 可选：生成带参数的短链，便于分享具体计算结果。
 
@@ -128,4 +128,44 @@
 
 - **[ ] 用户反馈收集与迭代:**
   - 增加用户反馈入口，定期整理和评估。
-  - 快速响应高频需求和痛点。 
+  - 快速响应高频需求和痛点。
+
+---
+
+### 新增页面时需要同步修改的部分：
+
+当您需要新增一个计算器页面（例如 `new-calculator.html`）时，除了创建新的 HTML 文件和实现其特定逻辑外，还需要在以下几个关键部分进行同步修改，以确保网站的完整性和一致性：
+
+1.  **创建新的 HTML 文件：**
+    *   在 `en/` 目录下创建 `new-calculator.html`。
+    *   如果支持多语言，在 `zh/` 目录下创建 `new-calculator.html`。
+    *   确保新页面的 `head` 部分包含正确的 SEO Meta Tags（`title`, `description`, `canonical`, `hreflang`, `og:` 和 `twitter:` 标签），并动态加载 `header.html` 和 `footer.html`。
+
+2.  **更新 `sitemap.xml`：**
+    *   手动或通过脚本（如果已自动化）将新页面的 URL 添加到 `sitemap.xml` 中，以便搜索引擎抓取。
+
+3.  **更新 `robots.txt`：**
+    *   如果新页面需要被搜索引擎索引，请确保 `robots.txt` 文件允许其抓取。
+
+4.  **更新导航菜单 (`header.html`)：**
+    *   修改 `en/header.html` 和 `zh/header.html` 文件，在计算器下拉菜单 (`#calculators-menu`) 中添加新计算器的链接。
+
+5.  **更新首页 (`index.html`)：**
+    *   修改 `index.html` 和 `zh/index.html` 文件，在“Explore Our Specialized Calculators”部分添加新计算器的卡片链接。
+
+6.  **更新指南页面 (`how-to-calculate-concrete.html`)：**
+    *   如果新计算器与“How to Calculate Concrete”指南相关，请在 `en/guides/how-to-calculate-concrete.html` 和 `zh/guides/how-to-calculate-concrete.html` 中添加指向新计算器的链接。
+
+7.  **更新公式页面 (`concrete-calculator-formula.html`)：**
+    *   如果新计算器引入了新的计算公式，请在 `en/concrete-calculator-formula.html` 和 `zh/concrete-calculator-formula.html` 中添加这些公式的解释。
+
+8.  **更新核心 JavaScript (`script.js`)：**
+    *   如果新页面是计算器，可能需要在 `script.js` 中添加新的 DOM 元素引用。
+    *   实现新计算器的核心计算逻辑。
+    *   更新 `displayResults` 函数，使其能够调用新计算器的显示逻辑。
+    *   在 `translations` 对象中添加新页面所需的翻译键值对。
+
+9.  **更新 `generate_sitemap.sh` (如果存在)：**
+    *   如果站点地图是自动生成的，请确保 `generate_sitemap.sh` 脚本能够正确识别并包含新的 HTML 文件。
+
+这些步骤将确保新页面不仅功能完善，而且能够无缝集成到现有网站结构中，并对用户和搜索引擎都可见。
