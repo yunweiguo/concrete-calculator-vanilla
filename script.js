@@ -12,7 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
             saved: 'Saved!',
             enterDimensions: 'Your results will appear here.',
             pressCalculate: 'Enter dimensions and press Calculate.',
-            calculation: 'Calculation'
+            calculation: 'Calculation',
+            columnCalculatorTitle: 'Concrete Column Calculator',
+            columnCalculatorDescription: 'Calculate the concrete volume and material needed for round columns, piers, or Sonotubes.',
+            columnDiameter: 'Diameter',
+            columnHeight: 'Height',
+            quantity: 'Quantity',
+            calculator: 'Calculator',
+            results: 'Results',
+            requiredVolume: 'Required Concrete Volume',
+            concreteBagCalculator: 'Concrete Bag Calculator',
+            unit: 'Unit',
+            imperial: 'Imperial',
+            metric: 'Metric',
+            calculate: 'Calculate',
+            bagEstimation: 'Bag Estimation',
+            stairsCalculatorTitle: 'Concrete Stairs Calculator',
+            stairsCalculatorDescription: 'Estimate the concrete volume and material needed for your steps.',
+            stairsWidth: 'Stairs Width',
+            numberOfSteps: 'Number of Steps',
+            riserHeight: 'Riser Height',
+            treadDepth: 'Tread Depth',
+            landingDepth: 'Landing Depth (Optional)',
+            share: 'Share',
         },
         zh: {
             totalVolume: '总体积',
@@ -24,7 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
             saved: '已保存！',
             enterDimensions: '您的结果将显示在这里。',
             pressCalculate: '输入尺寸并按计算。',
-            calculation: '计算结果'
+            calculation: '计算结果',
+            columnCalculatorTitle: '混凝土圆柱计算器',
+            columnCalculatorDescription: '计算圆形立柱、桥墩或 Sonotube 所需的混凝土体积和材料。',
+            columnDiameter: '直径',
+            columnHeight: '高度',
+            quantity: '数量',
+            calculator: '计算器',
+            results: '计算结果',
+            requiredVolume: '所需混凝土体积',
+            concreteBagCalculator: '预拌混凝土袋计算器',
+            unit: '单位',
+            imperial: '英制',
+            metric: '公制',
+            calculate: '计算',
+            bagEstimation: '袋数估算',
+            stairsCalculatorTitle: '混凝土台阶计算器',
+            stairsCalculatorDescription: '估算台阶所需的混凝土体积和材料。',
+            stairsWidth: '台阶宽度',
+            numberOfSteps: '台阶数量',
+            riserHeight: '踢面高度',
+            treadDepth: '踏步深度',
+            landingDepth: '平台深度 (可选)',
         }
     };
 
@@ -55,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageMenu = document.getElementById('language-menu');
     const calculatorsMenuButton = document.getElementById('calculators-menu-button');
     const calculatorsMenu = document.getElementById('calculators-menu');
+    const shareBtn = document.getElementById('share-btn');
 
     // New elements for Bag Calculator
     const bagSizeSelect = document.getElementById('bag-size');
@@ -67,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const slabWidthInput = document.getElementById('slab-width');
     const rebarSpacingInput = document.getElementById('rebar-spacing');
     const rebarSizeSelect = document.getElementById('rebar-size');
+
+    // New elements for Stairs Calculator
+    const stairsWidthInput = document.getElementById('stairs-width');
+    const numberOfStepsInput = document.getElementById('number-of-steps');
+    const riserHeightInput = document.getElementById('riser-height');
+    const treadDepthInput = document.getElementById('tread-depth');
+    const landingDepthInput = document.getElementById('landing-depth');
 
 
     // --- STATE ---
@@ -118,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     setActiveButton(unitSystemDiv, e.target);
                     // Also update rebar options if on rebar page
                     if(rebarSizeSelect) updateRebarOptions(e.target.dataset.value);
+                    resetCalculator(); // Clear results on unit change
                 }
             });
         }
@@ -137,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mobileMenuButton) mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         if(languageMenuButton) languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
         if(calculatorsMenuButton) calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
+        if(shareBtn) shareBtn.addEventListener('click', shareResults);
         
         document.addEventListener('click', () => {
             if(languageMenu) languageMenu.classList.add('hidden');
@@ -255,6 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
             displayBagResults();
         } else if (document.getElementById('rebar-size')) {
             displayRebarResults();
+        } else if (document.getElementById('column-calculator-form')) {
+            displayColumnResults();
+        } else if (document.getElementById('stairs-calculator-form')) {
+            displayStairsResults();
         } else {
             displayMaterialResults();
         }
@@ -441,9 +498,117 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActionButtons(false);
     }
 
+    function displayColumnResults() {
+        const unit = unitSystemDiv.querySelector('.bg-white').dataset.value;
+        const diameter = parseFloat(document.getElementById('column-diameter').value);
+        const height = parseFloat(document.getElementById('column-height').value);
+        const quantity = parseInt(document.getElementById('column-quantity').value, 10);
+
+        if (isNaN(diameter) || isNaN(height) || isNaN(quantity) || diameter <= 0 || height <= 0 || quantity <= 0) {
+            resultsOutput.innerHTML = `<p class="text-red-500">Please enter valid dimensions.</p>`;
+            return;
+        }
+
+        // Convert dimensions to feet for a consistent calculation base
+        const diameter_ft = unit === 'metric' ? diameter / 30.48 : diameter / 12;
+        const height_ft = unit === 'metric' ? height * 3.28084 : height;
+        const radius_ft = diameter_ft / 2;
+
+        const volume_ft3_single = Math.PI * Math.pow(radius_ft, 2) * height_ft;
+        const total_volume_ft3 = volume_ft3_single * quantity;
+        const total_volume_yd3 = total_volume_ft3 / 27;
+        const total_volume_m3 = total_volume_ft3 * 0.0283168;
+
+        let bagHtml = '';
+        for (const [weight, yield_ft3] of Object.entries(bagYields)) {
+            const bagsNeeded = Math.ceil(total_volume_ft3 / yield_ft3);
+            bagHtml += `
+                <div class="flex justify-between items-center bg-slate-200/50 p-2 rounded-md">
+                    <span class="font-medium text-slate-800">${bagsNeeded} bags</span>
+                    <span class="text-sm text-slate-600">@ ${weight} lb/bag</span>
+                </div>
+            `;
+        }
+
+        resultsOutput.innerHTML = `
+            <div class="w-full">
+                <div class="text-center">
+                    <p class="text-sm text-slate-500" data-translate="requiredVolume">Required Volume</p>
+                    <p class="text-4xl font-bold text-brand-primary my-2">${unit === 'metric' ? total_volume_m3.toFixed(2) : total_volume_yd3.toFixed(2)} <span class="text-3xl">${unit === 'metric' ? 'm³' : 'yd³'}</span></p>
+                    <p class="text-sm text-slate-500">${total_volume_ft3.toFixed(2)} ft³</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-200 w-full text-sm">
+                    <p class="font-semibold text-slate-700 mb-2" data-translate="bagEstimation">Bag Estimation</p>
+                    <div class="space-y-2">${bagHtml}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function displayStairsResults() {
+        const unit = unitSystemDiv.querySelector('.bg-white').dataset.value;
+        const stairsWidth = parseFloat(document.getElementById('stairs-width').value);
+        const numberOfSteps = parseInt(document.getElementById('number-of-steps').value, 10);
+        const riserHeight = parseFloat(document.getElementById('riser-height').value);
+        const treadDepth = parseFloat(document.getElementById('tread-depth').value);
+        const landingDepth = parseFloat(document.getElementById('landing-depth').value);
+
+        if (isNaN(stairsWidth) || isNaN(numberOfSteps) || isNaN(riserHeight) || isNaN(treadDepth) || stairsWidth <= 0 || numberOfSteps <= 0 || riserHeight <= 0 || treadDepth <= 0) {
+            resultsOutput.innerHTML = `<p class="text-red-500">Please enter valid dimensions for all stair fields.</p>`;
+            return;
+        }
+
+        // Convert all inputs to feet for calculation base
+        let stairsWidth_ft = unit === 'metric' ? stairsWidth * 3.28084 : stairsWidth;
+        let riserHeight_ft = unit === 'metric' ? riserHeight / 100 * 3.28084 : riserHeight / 12;
+        let treadDepth_ft = unit === 'metric' ? treadDepth / 100 * 3.28084 : treadDepth / 12;
+        let landingDepth_ft = unit === 'metric' ? landingDepth * 3.28084 : landingDepth;
+
+        // Calculate volume of the steps (each step is a right-angle triangle prism)
+        // Volume of one step = 0.5 * base (tread depth) * height (riser height) * width (stairs width)
+        const volume_steps_ft3 = numberOfSteps * (0.5 * treadDepth_ft * riserHeight_ft * stairsWidth_ft);
+
+        // Calculate volume of the landing (if any)
+        let volume_landing_ft3 = 0;
+        if (landingDepth_ft > 0) {
+            // Landing width is the same as stairs width
+            // Landing thickness is the same as the top riser height
+            volume_landing_ft3 = stairsWidth_ft * landingDepth_ft * riserHeight_ft;
+        }
+
+        const total_volume_ft3 = volume_steps_ft3 + volume_landing_ft3;
+        const total_volume_yd3 = total_volume_ft3 / 27;
+        const total_volume_m3 = total_volume_ft3 * 0.0283168;
+
+        let bagHtml = '';
+        for (const [weight, yield_ft3] of Object.entries(bagYields)) {
+            const bagsNeeded = Math.ceil(total_volume_ft3 / yield_ft3);
+            bagHtml += `
+                <div class="flex justify-between items-center bg-slate-200/50 p-2 rounded-md">
+                    <span class="font-medium text-slate-800">${bagsNeeded} bags</span>
+                    <span class="text-sm text-slate-600">@ ${weight} lb/bag</span>
+                </div>
+            `;
+        }
+
+        resultsOutput.innerHTML = `
+            <div class="w-full">
+                <div class="text-center">
+                    <p class="text-sm text-slate-500" data-translate="requiredVolume">Required Volume</p>
+                    <p class="text-4xl font-bold text-brand-primary my-2">${unit === 'metric' ? total_volume_m3.toFixed(2) : total_volume_yd3.toFixed(2)} <span class="text-3xl">${unit === 'metric' ? 'm³' : 'yd³'}</span></p>
+                    <p class="text-sm text-slate-500">${total_volume_ft3.toFixed(2)} ft³</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-200 w-full text-sm">
+                    <p class="font-semibold text-slate-700 mb-2" data-translate="bagEstimation">Bag Estimation</p>
+                    <div class="space-y-2">${bagHtml}</div>
+                </div>
+            </div>
+        `;
+        updateActionButtons(false);
+    }
+
 
     function resetCalculator() {
-        if (!resultsOutput) return;
         const isRebarPage = !!document.getElementById('rebar-size');
         let initialSvg = `<svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>`;
         if (isRebarPage) {
@@ -472,6 +637,23 @@ document.addEventListener('DOMContentLoaded', () => {
             button.innerHTML = originalHtml;
             button.disabled = false;
         }, 1500);
+    }
+
+    function shareResults() {
+        if (navigator.share) {
+            let shareText = "Check out this concrete calculator!";
+            if (lastCalculation) {
+                shareText = `I calculated my concrete needs using this calculator!\n\n${getResultsAsText(lastCalculation)}\n\nCheck it out: ${window.location.href}`;
+            }
+            navigator.share({
+                title: document.title,
+                text: shareText,
+                url: window.location.href,
+            }).catch((error) => console.error('Error sharing:', error));
+        } else {
+            // Fallback for browsers that do not support Web Share API
+            alert("Web Share API is not supported in your browser. You can copy the URL from the address bar.");
+        }
     }
 
     function getHistory() { return JSON.parse(localStorage.getItem('calcHistory') || '[]'); }
@@ -582,7 +764,7 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
     }
 
     // --- INITIALIZATION ---
-    resetCalculator();
+    resetCalculator(); // Display initial message
     loadHistory();
     setupEventListeners();
     updateInputsForShape('rectangle');

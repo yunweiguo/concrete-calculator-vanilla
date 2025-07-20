@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Concrete Column Calculator: Estimate Volume, Bags, & Cost for Sonotubes & Piers</title>
+    <meta name="description" content="Use our free concrete column calculator to accurately estimate the concrete volume, number of bags, and total cost for round columns, Sonotubes, concrete piers, and footings. Supports both imperial (feet, inches) and metric (meters, centimeters) units.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/column-calculator.html">
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/column-calculator.html">
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/column-calculator.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/column-calculator.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Concrete Column Calculator: Estimate Volume, Bags, & Cost for Sonotubes & Piers">
+    <meta property="og:description" content="Accurately calculate concrete volume, bags, and cost for round columns, Sonotubes, and piers with our free online tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/column-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon and Styles -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af',
+                            'secondary': '#3b82f6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <div id="header-include"></div>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="columnCalculatorTitle">Concrete Column Calculator</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="columnCalculatorDescription">Your essential tool for calculating concrete volume and material needs for round columns, piers, and Sonotubes.</p>
+        </section>
+
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Column Dimensions</h2>
+                        </div>
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Imperial (ft, in)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, cm)</button>
+                        </div>
+                        <form id="column-calculator-form" class="space-y-4">
+                            <div>
+                                <label for="column-diameter" class="text-sm font-medium text-slate-700"><span data-translate="columnDiameter">Diameter</span> (<span class="unit-label-small-dist">in</span>)</label>
+                                <input type="number" id="column-diameter" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="column-height" class="text-sm font-medium text-slate-700"><span data-translate="columnHeight">Height</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="column-height" placeholder="8" value="8" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="column-quantity" class="text-sm font-medium text-slate-700" data-translate="quantity">Quantity</label>
+                                <input type="number" id="column-quantity" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <h2 class="text-2xl font-bold text-slate-900">2. Get Your Concrete Estimate</h2>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <!-- Results injected here -->
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105" data-translate="calculate">Calculate Concrete</button>
+                </div>
+                <div class="mt-4 text-center">
+                    <button id="share-btn" class="w-full md:w-auto bg-gray-200 text-gray-700 font-bold text-lg px-12 py-3 rounded-lg hover:bg-gray-300 transition-transform transform hover:scale-105" data-translate="share">Share</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>Guide to Calculating Concrete for Columns, Piers, and Sonotubes</h2>
+            <p>Whether you're setting deck posts, installing a fence, or creating structural piers, accurately calculating the <strong>concrete volume</strong> for columns is essential. This free online <strong>concrete column calculator</strong> is designed for any cylindrical concrete pour, including those using <a href="#what-is-sonotube" class="text-brand-primary font-semibold hover:underline">Sonotubes</a>, and helps you estimate the required <strong>concrete bags</strong> and overall material needs. Ensure your project has a solid foundation by getting your concrete estimates right.</p>
+            <h3>How to Measure for Concrete Columns:</h3>
+            <ul>
+                <li><strong>Diameter:</strong> Measure the internal diameter of your tube, form, or hole. This is crucial for accurate <strong>concrete volume calculation</strong>.</li>
+                <li><strong>Height/Depth:</strong> Measure the total height or depth of the concrete pour. For piers, this might be the depth below grade.</li>
+                <li><strong>Quantity:</strong> Count the total number of identical columns or piers you need to fill. Our calculator can handle multiple columns for a comprehensive <strong>concrete estimate</strong>.</li>
+            </ul>
+            
+            <h3 id="what-is-sonotube">Frequently Asked Questions (FAQ) about Concrete Columns</h3>
+            <details class="bg-slate-100/50 p-4 rounded-lg group" open>
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>What is a Sonotube and how does it relate to concrete columns?</span>
+                </summary>
+                <p class="text-slate-600 mt-2">A Sonotube is a popular brand name for a heavy-duty, disposable cardboard tube used as a formwork for pouring round concrete columns or piers. Our <strong>Sonotube calculator</strong> is specifically designed to help you determine how much concrete you need to fill these forms, ensuring you order the correct amount of ready-mix or concrete bags.</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>What are the common types of concrete columns and their uses?</span>
+                </summary>
+                <p class="text-slate-600 mt-2">Concrete columns serve various structural purposes. Common types include:</p>
+                <ul class="list-disc list-inside ml-4 text-slate-600">
+                    <li><strong>Structural Columns:</strong> Main load-bearing elements in buildings, often reinforced with rebar.</li>
+                    <li><strong>Deck Piers:</strong> Used to support elevated decks, often poured into Sonotubes.</li>
+                    <li><strong>Fence Posts:</strong> Concrete is poured around fence posts for stability.</li>
+                    <li><strong>Light Pole Bases:</strong> Cylindrical concrete bases for street lights or flagpoles.</li>
+                    <li><strong>Footing Piers:</strong> Deep, narrow concrete columns that extend from a footing to stable soil, especially in areas with poor surface soil.</li>
+                </ul>
+                <p class="text-slate-600 mt-2">This <strong>concrete volume calculator</strong> can be used for all these applications to get an accurate <strong>concrete estimate</strong>.</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>How accurate is this concrete column calculator?</span>
+                </summary>
+                <p class="text-slate-600 mt-2">Our <strong>concrete column calculator</strong> uses standard geometric formulas to provide highly accurate <strong>concrete volume calculations</strong>. For best results, ensure your measurements are precise. Always consider adding a small waste factor (5-10%) to your final order to account for spillage or uneven forms.</p>
+            </details>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>Understanding Concrete Volume for Round Structures</h2>
+            <p>Calculating the <strong>concrete volume</strong> for cylindrical shapes like columns or piers involves a simple formula: <code>Volume = π × (radius)² × height</code>. Our <strong>concrete calculator</strong> automates this, converting your inputs into cubic yards or cubic meters, and then estimating the number of <strong>concrete bags</strong> you'll need based on standard bag yields. This makes planning your concrete pour efficient and helps prevent over-ordering or under-ordering materials.</p>
+            <p>Whether you're working on a small DIY project or a larger construction, getting an accurate <strong>concrete estimate</strong> for your columns and piers is crucial for both budget and structural integrity. Our tool simplifies this complex task, providing quick and reliable results for your <strong>concrete calculation</strong> needs.</p>
+        </section>
+
+    </main>
+
+    <div id="footer-include"></div>
+
+    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load Header & Footer
+        fetch('/en/header.html').then(r=>r.text()).then(html=>document.getElementById('header-include').innerHTML=html).then(() => setupNav());
+        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+
+        // Setup navigation events
+        function setupNav() {
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton) {
+                calculatorsMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    calculatorsMenu.classList.toggle('hidden');
+                });
+            }
+
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton) {
+                languageMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    languageMenu.classList.toggle('hidden');
+                });
+            }
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            document.addEventListener('click', () => {
+                if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
+                if (languageMenu) languageMenu.classList.add('hidden');
+            });
+        }
+      });
+    </script>
+</body>
+</html>

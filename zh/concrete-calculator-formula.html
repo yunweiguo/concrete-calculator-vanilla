@@ -78,59 +78,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
-        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-8">
-                <a href="/zh/" class="flex items-center gap-2">
-                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                    <span class="font-bold text-xl text-slate-900 shrink-0">混凝土计算器</span>
-                </a>
-                
-                <div class="hidden lg:flex items-center gap-6">
-                     <!-- Calculators Dropdown -->
-                    <div class="relative" id="calculators-dropdown">
-                        <button id="calculators-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
-                            <span>计算器</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                        </button>
-                        <div id="calculators-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
-                            <a href="/zh/slab-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">板计算器</a>
-                            <a href="/zh/footing-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">基脚计算器</a>
-                            <a href="/zh/bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">袋装混凝土计算器</a>
-                        </div>
-                    </div>
-                    <a href="/zh/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">指南</a>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <!-- Language Switcher -->
-                <div id="language-switcher" class="relative">
-                    <button id="language-menu-button" class="flex items-center gap-2 text-slate-600 hover:text-brand-primary font-semibold">
-                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                        <span id="current-language-name">中文</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                    </button>
-                    <div id="language-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border border-slate-200">
-                        <a href="/en/concrete-calculator-formula.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">English</a>
-                        <a href="/zh/concrete-calculator-formula.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 font-bold">中文</a>
-                    </div>
-                </div>
-                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="lg:hidden text-slate-600 hover:text-brand-primary">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden px-4 pt-2 pb-4 space-y-2">
-            <a href="/zh/slab-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">板计算器</a>
-            <a href="/zh/footing-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">基脚计算器</a>
-            <a href="/zh/bag-calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">袋装混凝土计算器</a>
-            <a href="/zh/guides/how-to-calculate-concrete.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-primary hover:bg-slate-100">指南</a>
-        </div>
-    </header>
+    <div id="header-include"></div>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
@@ -178,6 +126,85 @@
             
             <hr class="my-8">
 
+            <h3>3. 袋装混凝土计算公式</h3>
+            <p>此公式可帮助您根据项目所需的总体积和单个袋子的产量来确定所需的预拌混凝土袋数。</p>
+            <div class="formula">
+                袋数 = 向上取整(总体积 / 袋产量)
+            </div>
+            <ul>
+                <li><strong>总体积:</strong> 项目的计算体积（例如，立方英尺）。</li>
+                <li><strong>袋产量:</strong> 单个袋子产生的混凝土体积（例如，每袋立方英尺）。这因袋子尺寸和混合物而异。</li>
+                <li><strong>向上取整():</strong> 向上取整函数，将数字向上舍入到最接近的整数，确保您有足够的袋子。</li>
+            </ul>
+            <p>一旦您有了袋数，您还可以估算总重量：</p>
+            <div class="formula">
+                总重量 = 袋数 × 每袋重量
+            </div>
+
+            <hr class="my-8">
+
+            <h3>4. 钢筋计算公式</h3>
+            <p>钢筋计算涉及根据板或基础的尺寸以及钢筋网格的所需间距来确定所需的钢筋总长度。</p>
+            <h4>钢筋数量（长度方向和宽度方向）</h4>
+            <div class="formula">
+                钢筋数量（长度方向） = 向下取整(板宽度 / 间距) + 1 <br>
+                钢筋数量（宽度方向） = 向下取整(板长度 / 间距) + 1
+            </div>
+            <ul>
+                <li><strong>板宽度/长度:</strong> 混凝土板的尺寸。</li>
+                <li><strong>间距:</strong> 平行钢筋之间的距离。</li>
+                <li><strong>向下取整():</strong> 向下取整函数，将数字向下舍入到最接近的整数。我们加1是为了计算第一根钢筋。</li>
+            </ul>
+            <p><strong>重要提示:</strong> 在计算之前，请确保所有测量值（板宽度/长度和间距）都使用相同的单位。</p>
+            <h4>钢筋总长度</h4>
+            <div class="formula">
+                总长度 = (长度方向钢筋数量 × 板长度) + (宽度方向钢筋数量 × 板宽度)
+            </div>
+            <p>此公式假设钢筋以简单的网格模式沿板的整个长度和宽度运行。</p>
+            <h4>钢筋总重量</h4>
+            <div class="formula">
+                总重量 = 总长度 × 每单位长度重量
+            </div>
+            <ul>
+                <li><strong>每单位长度重量:</strong> 此值取决于钢筋尺寸（例如，#3、#4、10M、15M）和单位系统（磅/英尺或千克/米）。</li>
+            </ul>
+
+            <hr class="my-8">
+
+            <h3>5. 混凝土台阶计算公式</h3>
+            <p>计算台阶混凝土涉及将台阶和（如果适用）平台的体积相加。</p>
+            <h4>台阶体积</h4>
+            <p>每个台阶可以近似为直角三角形棱镜。一个台阶的体积是：</p>
+            <div class="formula">
+                每个台阶体积 = 0.5 × 踏步深度 × 踢面高度 × 台阶宽度
+            </div>
+            <p>所有台阶的总体积是：</p>
+            <div class="formula">
+                台阶总体积 = 台阶数量 × 每个台阶体积
+            </div>
+            <ul>
+                <li><strong>踏步深度:</strong> 台阶的水平距离。</li>
+                <li><strong>踢面高度:</strong> 台阶的垂直高度。</li>
+                <li><strong>台阶宽度:</strong> 整个楼梯的宽度。</li>
+                <li><strong>台阶数量:</strong> 单个台阶的总数。</li>
+            </ul>
+            <p><strong>重要提示:</strong> 在相乘之前，请确保所有测量单位都相同（例如，全部为英尺或全部为米）。</p>
+            <h4>平台体积（可选）</h4>
+            <p>如果您的楼梯包含平台，其体积按简单的矩形棱镜计算：</p>
+            <div class="formula">
+                平台体积 = 台阶宽度 × 平台深度 × 踢面高度（或平台厚度）
+            </div>
+            <ul>
+                <li><strong>平台深度:</strong> 平台区域的深度。</li>
+                <li><strong>踢面高度（或平台厚度）:</strong> 平台的厚度，通常与台阶的踢面高度相同。</li>
+            </ul>
+            <h4>台阶混凝土总体积</h4>
+            <div class="formula">
+                台阶混凝土总体积 = 台阶总体积 + 平台体积
+            </div>
+
+            <hr class="my-8">
+
             <h2>转换为立方码或立方米</h2>
             <p>上述公式将根据您的输入测量单位（例如，立方英尺或立方米）为您提供一个体积。然而，混凝土通常以<strong>立方码</strong>或<strong>立方米</strong>为单位订购。</p>
             
@@ -199,26 +226,47 @@
         
     </main>
     
-    <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
-        <div class="container mx-auto px-4 lg:px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div>
-                    <p class="font-bold text-lg text-white">混凝土计算器</p>
-                    <p class="text-sm text-slate-400 mt-1">一个轻量、快速、准确的工具，满足您所有的混凝土估算需求。</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <a href="/zh/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">隐私政策</a>
-                    <span class="text-slate-500">|</span>
-                    <a href="/zh/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">服务条款</a>
-                </div>
-            </div>
-            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
-                 <p>&copy; 2024 混凝土计算器. 版权所有。</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-include"></div>
 
     <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load Header & Footer
+        fetch('/zh/header.html').then(r=>r.text()).then(html=>document.getElementById('header-include').innerHTML=html).then(() => setupNav());
+        fetch('/zh/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+
+        // Setup navigation events
+        function setupNav() {
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton) {
+                calculatorsMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    calculatorsMenu.classList.toggle('hidden');
+                });
+            }
+
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton) {
+                languageMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    languageMenu.classList.toggle('hidden');
+                });
+            }
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            document.addEventListener('click', () => {
+                if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
+                if (languageMenu) languageMenu.classList.add('hidden');
+            });
+        }
+      });
+    </script>
 </body>
 </html> 

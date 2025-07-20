@@ -74,50 +74,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
-    <script>
-      fetch('/en/header.html').then(r=>r.text()).then(html=>{
-        document.getElementById('header-include').outerHTML=html;
-        // 重新绑定下拉、语言、移动菜单事件
-        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
-        const calculatorsMenu = document.getElementById('calculators-menu');
-        if (calculatorsMenuButton && calculatorsMenu) {
-          calculatorsMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            calculatorsMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            calculatorsMenu.classList.add('hidden');
-          });
-        }
-        const languageMenuButton = document.getElementById('language-menu-button');
-        const languageMenu = document.getElementById('language-menu');
-        if (languageMenuButton && languageMenu) {
-          languageMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            languageMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            languageMenu.classList.add('hidden');
-          });
-        }
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-          });
-        }
-      });
-      // 动态高亮当前菜单项
-      const currentPath = window.location.pathname;
-      document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-          link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
-        } else {
-          link.classList.remove('text-brand-primary', 'font-bold', 'bg-slate-100');
-        }
-      });
-    </script>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
@@ -165,6 +121,85 @@
             
             <hr class="my-8">
 
+            <h3>3. Concrete Bag Calculation Formula</h3>
+            <p>This formula helps you determine how many bags of pre-mixed concrete you'll need based on the total volume required for your project and the yield of a single bag.</p>
+            <div class="formula">
+                Number of Bags = Ceil(Total Volume / Bag Yield)
+            </div>
+            <ul>
+                <li><strong>Total Volume:</strong> The calculated volume of your project (e.g., in cubic feet).</li>
+                <li><strong>Bag Yield:</strong> The volume of concrete a single bag produces (e.g., in cubic feet per bag). This varies by bag size and mix.</li>
+                <li><strong>Ceil():</strong> The ceiling function, which rounds a number up to the nearest whole integer, ensuring you have enough bags.</li>
+            </ul>
+            <p>Once you have the number of bags, you can also estimate the total weight:</p>
+            <div class="formula">
+                Total Weight = Number of Bags × Weight per Bag
+            </div>
+
+            <hr class="my-8">
+
+            <h3>4. Rebar Calculation Formulas</h3>
+            <p>Calculating rebar involves determining the total length of steel reinforcement needed for a slab or footing, based on its dimensions and the desired spacing of the rebar grid.</p>
+            <h4>Number of Bars (Lengthwise & Widthwise)</h4>
+            <div class="formula">
+                Num Bars (Lengthwise) = Floor(Slab Width / Spacing) + 1 <br>
+                Num Bars (Widthwise) = Floor(Slab Length / Spacing) + 1
+            </div>
+            <ul>
+                <li><strong>Slab Width/Length:</strong> The dimensions of your concrete slab.</li>
+                <li><strong>Spacing:</strong> The distance between parallel rebar pieces.</li>
+                <li><strong>Floor():</strong> The floor function, which rounds a number down to the nearest whole integer. We add 1 to account for the first bar.</li>
+            </ul>
+            <p><strong>Important:</strong> Ensure all measurements (Slab Width/Length and Spacing) are in the same unit before calculation.</p>
+            <h4>Total Rebar Length</h4>
+            <div class="formula">
+                Total Length = (Num Bars Lengthwise × Slab Length) + (Num Bars Widthwise × Slab Width)
+            </div>
+            <p>This formula assumes a simple grid pattern where bars run the full length and width of the slab.</p>
+            <h4>Total Rebar Weight</h4>
+            <div class="formula">
+                Total Weight = Total Length × Weight per Unit Length
+            </div>
+            <ul>
+                <li><strong>Weight per Unit Length:</strong> This value depends on the rebar size (e.g., #3, #4, 10M, 15M) and the unit system (lbs/ft or kg/m).</li>
+            </ul>
+
+            <hr class="my-8">
+
+            <h3>5. Concrete Stairs Calculation Formula</h3>
+            <p>Calculating concrete for stairs involves summing the volume of the steps and, if applicable, the landing.</p>
+            <h4>Volume of Steps</h4>
+            <p>Each step can be approximated as a right-angle triangular prism. The volume of one step is:</p>
+            <div class="formula">
+                Volume per Step = 0.5 × Tread Depth × Riser Height × Stairs Width
+            </div>
+            <p>The total volume for all steps is then:</p>
+            <div class="formula">
+                Total Volume of Steps = Number of Steps × Volume per Step
+            </div>
+            <ul>
+                <li><strong>Tread Depth:</strong> The horizontal distance of the step.</li>
+                <li><strong>Riser Height:</strong> The vertical height of the step.</li>
+                <li><strong>Stairs Width:</strong> The width of the entire staircase.</li>
+                <li><strong>Number of Steps:</strong> The total count of individual steps.</li>
+            </ul>
+            <p><strong>Important:</strong> Ensure all measurements are in the same unit (e.g., all in feet or all in meters) before you multiply them.</p>
+            <h4>Volume of Landing (Optional)</h4>
+            <p>If your staircase includes a landing, its volume is calculated as a simple rectangular prism:</p>
+            <div class="formula">
+                Volume of Landing = Stairs Width × Landing Depth × Riser Height (or Landing Thickness)
+            </div>
+            <ul>
+                <li><strong>Landing Depth:</strong> The depth of the landing area.</li>
+                <li><strong>Riser Height (or Landing Thickness):</strong> The thickness of the landing, typically the same as the riser height of the steps.</li>
+            </ul>
+            <h4>Total Concrete Volume for Stairs</h4>
+            <div class="formula">
+                Total Stairs Volume = Total Volume of Steps + Volume of Landing
+            </div>
+
+            <hr class="my-8">
+
             <h2>Converting to Cubic Yards or Cubic Meters</h2>
             <p>The formulas above will give you a volume in cubic units based on your input measurements (e.g., cubic feet or cubic meters). However, concrete is typically ordered in <strong>cubic yards</strong> or <strong>cubic meters</strong>.</p>
             
@@ -186,26 +221,47 @@
         
     </main>
     
-    <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
-        <div class="container mx-auto px-4 lg:px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div>
-                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
-                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
-                    <span class="text-slate-500">|</span>
-                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
-                </div>
-            </div>
-            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
-                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-include"></div>
 
     <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load Header & Footer
+        fetch('/en/header.html').then(r=>r.text()).then(html=>document.getElementById('header-include').innerHTML=html).then(() => setupNav());
+        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+
+        // Setup navigation events
+        function setupNav() {
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton) {
+                calculatorsMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    calculatorsMenu.classList.toggle('hidden');
+                });
+            }
+
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton) {
+                languageMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    languageMenu.classList.toggle('hidden');
+                });
+            }
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            document.addEventListener('click', () => {
+                if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
+                if (languageMenu) languageMenu.classList.add('hidden');
+            });
+        }
+      });
+    </script>
 </body>
 </html> 

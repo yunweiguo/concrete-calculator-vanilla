@@ -156,20 +156,20 @@
                         <!-- Dimension Inputs -->
                         <div class="space-y-4">
                             <div id="rectangle-inputs">
-                                <label for="length" class="text-sm font-medium text-slate-700"><span>长度</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="length" placeholder="10" value="10" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <label for="length" class="text-sm font-medium text-slate-700"><span>长度</span> (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="length" placeholder="3" value="3" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                              <div id="width-inputs">
-                                <label for="width" class="text-sm font-medium text-slate-700"><span>宽度</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="width" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <label for="width" class="text-sm font-medium text-slate-700"><span>宽度</span> (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="width" placeholder="4" value="4" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div id="circle-inputs" class="hidden">
-                                <label for="radius" class="text-sm font-medium text-slate-700"><span>半径</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="radius" placeholder="2" value="2" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <label for="radius" class="text-sm font-medium text-slate-700"><span>半径</span> (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="radius" placeholder="1" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div>
-                                <label for="height" class="text-sm font-medium text-slate-700"><span>厚度</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="height" placeholder="0.5" value="0.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <label for="height" class="text-sm font-medium text-slate-700"><span>厚度</span> (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="height" placeholder="0.15" value="0.15" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                         </div>
 
@@ -195,6 +195,9 @@
                                 </button>
                                 <button id="save-btn" title="保存计算" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
                                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+                                </button>
+                                <button id="share-btn" title="分享结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.865 13.995 9 14.632 9 15c0 5.145-6 6-6 6V7a3 3 0 013-3h4a2 2 0 012 2v4.586zM11.115 16.428a2.5 2.5 0 11.758.758l-2.202 2.202A2.5 2.5 0 0113.5 18.5h-2.202l2.202-2.202zM15 9a3 3 0 100-6 3 3 0 000 6z" /></svg>
                                 </button>
                                  <button id="reset-btn" title="重置表单" class="text-slate-500 hover:text-brand-primary">
                                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
