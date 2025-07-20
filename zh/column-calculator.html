@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>混凝土圆柱计算器：估算Sonotube、桥墩和基脚的体积、袋数和成本</title>
+    <meta name="description" content="使用我们免费的在线混凝土圆柱计算器，精确估算圆形立柱、Sonotube、混凝土桥墩和基脚所需的混凝土体积、袋数和总成本。支持公制和英制单位。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/column-calculator.html">
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/column-calculator.html">
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/column-calculator.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/column-calculator.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="混凝土圆柱计算器：估算Sonotube、桥墩和基脚的体积、袋数和成本">
+    <meta property="og:description" content="使用我们免费的在线混凝土圆柱计算器，精确估算圆形立柱、Sonotube、混凝土桥墩和基脚所需的混凝土体积、袋数和总成本。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/column-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon and Styles -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af',
+                            'secondary': '#3b82f6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <div id="header-include"></div>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="columnCalculatorTitle">混凝土圆柱计算器</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="columnCalculatorDescription">您的必备工具，用于计算圆形立柱、桥墩和Sonotube的混凝土体积和材料需求。</p>
+        </section>
+
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入圆柱尺寸</h2>
+                        </div>
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">英制 (ft, in)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">公制 (m, cm)</button>
+                        </div>
+                        <form id="column-calculator-form" class="space-y-4">
+                            <div>
+                                <label for="column-diameter" class="text-sm font-medium text-slate-700"><span data-translate="columnDiameter">直径</span> (<span class="unit-label-small-dist">cm</span>)</label>
+                                <input type="number" id="column-diameter" placeholder="30" value="30" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="column-height" class="text-sm font-medium text-slate-700"><span data-translate="columnHeight">高度</span> (<span class="unit-label-dist">m</span>)</label>
+                                <input type="number" id="column-height" placeholder="2.5" value="2.5" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="column-quantity" class="text-sm font-medium text-slate-700" data-translate="quantity">数量</label>
+                                <input type="number" id="column-quantity" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <h2 class="text-2xl font-bold text-slate-900">2. 获取您的混凝土估算</h2>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <!-- Results injected here -->
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105" data-translate="calculate">计算混凝土</button>
+                </div>
+                <div class="mt-4 text-center">
+                    <button id="share-btn" class="w-full md:w-auto bg-gray-200 text-gray-700 font-bold text-lg px-12 py-3 rounded-lg hover:bg-gray-300 transition-transform transform hover:scale-105" data-translate="share">分享</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>圆柱、桥墩和Sonotube混凝土计算指南</h2>
+            <p>无论您是设置甲板柱、安装栅栏，还是创建结构性桥墩，精确计算圆柱所需的<strong>混凝土体积</strong>都至关重要。这款免费的在线<strong>混凝土圆柱计算器</strong>专为任何圆柱形混凝土浇筑而设计，包括使用<a href="#what-is-sonotube" class="text-brand-primary font-semibold hover:underline">Sonotube</a>的情况，可帮助您估算所需的<strong>混凝土袋数</strong>和整体材料需求。通过正确估算混凝土，确保您的项目拥有坚实的基础。</p>
+            <h3>如何测量混凝土圆柱：</h3>
+            <ul>
+                <li><strong>直径：</strong>测量管子、模板或孔的内径。这对于准确的<strong>混凝土体积计算</strong>至关重要。</li>
+                <li><strong>高度/深度：：</strong>测量混凝土浇筑的总高度或深度。对于桥墩，这可能是地表以下的深度。</li>
+                <li><strong>数量：：</strong>计算您需要填充的相同圆柱或桥墩的总数。我们的计算器可以处理多个圆柱，提供全面的<strong>混凝土估算</strong>。</li>
+            </ul>
+            
+            <h3 id="what-is-sonotube">关于混凝土圆柱的常见问题 (FAQ)</h3>
+            <details class="bg-slate-100/50 p-4 rounded-lg group" open>
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>什么是Sonotube，它与混凝土圆柱有什么关系？</span>
+                </summary>
+                <p class="text-slate-600 mt-2">Sonotube是一种流行的品牌名称，指用于浇筑圆形混凝土圆柱或桥墩的重型一次性纸板管。我们的<strong>Sonotube计算器</strong>专门设计用于帮助您确定填充这些模板需要多少混凝土，确保您订购正确数量的预拌混凝土或混凝土袋。</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>混凝土圆柱的常见类型及其用途是什么？</span>
+                </summary>
+                <p class="text-slate-600 mt-2">混凝土圆柱具有各种结构用途。常见类型包括：</p>
+                <ul class="list-disc list-inside ml-4 text-slate-600">
+                    <li><strong>结构柱：</strong>建筑物中的主要承重构件，通常用钢筋加固。</li>
+                    <li><strong>甲板桥墩：：</strong>用于支撑高架甲板，通常浇筑到Sonotube中。</li>
+                    <li><strong>围栏柱：：</strong>混凝土浇筑在围栏柱周围以增加稳定性。</li>
+                    <li><strong>灯杆基础：：</strong>用于路灯或旗杆的圆柱形混凝土基础。</li>
+                    <li><strong>基础桥墩：：</strong>从基础延伸到稳定土壤的深而窄的混凝土圆柱，特别是在地表土壤较差的区域。</li>
+                </ul>
+                <p class="text-slate-600 mt-2">这款<strong>混凝土体积计算器</strong>可用于所有这些应用，以获得准确的<strong>混凝土估算</strong>。</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>这款混凝土圆柱计算器有多准确？</span>
+                </summary>
+                <p class="text-slate-600 mt-2">我们的<strong>混凝土圆柱计算器</strong>使用标准几何公式提供高度准确的<strong>混凝土体积计算</strong>。为获得最佳结果，请确保您的测量精确。始终考虑在最终订单中增加少量浪费系数（5-10%），以应对溢出或不平整的模板。</p>
+            </details>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>理解圆形结构混凝土体积</h2>
+            <p>计算圆柱或桥墩等圆柱形结构的<strong>混凝土体积</strong>涉及一个简单的公式：<code>体积 = π × (半径)² × 高度</code>。我们的<strong>混凝土计算器</strong>自动化了这一过程，将您的输入转换为立方码或立方米，然后根据标准袋产量估算您所需的<strong>混凝土袋数</strong>。这使得您的混凝土浇筑计划高效，并有助于避免材料的过量订购或不足。无论您是进行小型DIY项目还是大型建筑，为您的圆柱和桥墩获得准确的<strong>混凝土估算</strong>对于预算和结构完整性都至关重要。我们的工具简化了这项复杂的任务，为您的<strong>混凝土计算</strong>需求提供快速可靠的结果。</p>
+        </section>
+
+    </main>
+
+    <div id="footer-include"></div>
+
+    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load Header & Footer
+        fetch('/zh/header.html').then(r=>r.text()).then(html=>document.getElementById('header-include').innerHTML=html).then(() => setupNav());
+        fetch('/zh/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+
+        // Setup navigation events
+        function setupNav() {
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton) {
+                calculatorsMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    calculatorsMenu.classList.toggle('hidden');
+                });
+            }
+
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton) {
+                languageMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    languageMenu.classList.toggle('hidden');
+                });
+            }
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            document.addEventListener('click', () => {
+                if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
+                if (languageMenu) languageMenu.classList.add('hidden');
+            });
+        }
+      });
+    </script>
+</body>
+</html>

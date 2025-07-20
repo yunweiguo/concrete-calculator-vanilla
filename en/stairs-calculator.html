@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Concrete Stairs Calculator: Estimate Volume, Bags, & Cost for Steps</title>
+    <meta name="description" content="Use our free concrete stairs calculator to accurately estimate the concrete volume, number of bags, and total cost for your steps. Supports imperial and metric units.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/stairs-calculator.html">
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/stairs-calculator.html">
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/stairs-calculator.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/stairs-calculator.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Concrete Stairs Calculator: Estimate Volume, Bags, & Cost for Steps">
+    <meta property="og:description" content="Accurately calculate concrete volume, bags, and cost for steps with our free online tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/stairs-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon and Styles -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af',
+                            'secondary': '#3b82f6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <div id="header-include"></div>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="stairsCalculatorTitle">Concrete Stairs Calculator</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="stairsCalculatorDescription">Estimate the concrete volume and material needed for your steps.</p>
+        </section>
+
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Stair Dimensions</h2>
+                        </div>
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Imperial (ft, in)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, cm)</button>
+                        </div>
+                        <form id="stairs-calculator-form" class="space-y-4">
+                            <div>
+                                <label for="stairs-width" class="text-sm font-medium text-slate-700"><span data-translate="stairsWidth">Stairs Width</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="stairs-width" placeholder="3" value="3" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="number-of-steps" class="text-sm font-medium text-slate-700"><span data-translate="numberOfSteps">Number of Steps</span></label>
+                                <input type="number" id="number-of-steps" placeholder="3" value="3" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="riser-height" class="text-sm font-medium text-slate-700"><span data-translate="riserHeight">Riser Height</span> (<span class="unit-label-small-dist">in</span>)</label>
+                                <input type="number" id="riser-height" placeholder="7" value="7" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="tread-depth" class="text-sm font-medium text-slate-700"><span data-translate="treadDepth">Tread Depth</span> (<span class="unit-label-small-dist">in</span>)</label>
+                                <input type="number" id="tread-depth" placeholder="11" value="11" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="landing-depth" class="text-sm font-medium text-slate-700"><span data-translate="landingDepth">Landing Depth (Optional)</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="landing-depth" placeholder="0" value="0" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <h2 class="text-2xl font-bold text-slate-900">2. Get Your Concrete Estimate</h2>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <!-- Results injected here -->
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105" data-translate="calculate">Calculate Concrete</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 prose max-w-4xl mx-auto">
+            <h2>Guide to Calculating Concrete for Stairs and Steps</h2>
+            <p>Building concrete stairs requires precise calculations to ensure structural integrity and a professional finish. Our free online <strong>concrete stairs calculator</strong> simplifies this complex task, helping you estimate the exact <strong>concrete volume</strong> and the number of <strong>concrete bags</strong> needed for your project. Whether you're building a small set of steps or a larger staircase, getting your concrete estimates right is crucial for both budget and safety.</p>
+            
+            <h3>Key Terms for Stair Calculation:</h3>
+            <ul>
+                <li><strong>Riser:</strong> The vertical part of a step.</li>
+                <li><strong>Tread:</strong> The horizontal part of a step where you place your foot.</li>
+                <li><strong>Run:</strong> The horizontal distance covered by a single step (same as tread depth).</li>
+                <li><strong>Landing:</strong> A flat platform at the top or bottom of a staircase, or between flights of stairs.</li>
+                <li><strong>Total Rise:</strong> The total vertical height of the staircase from bottom to top.</li>
+                <li><strong>Total Run:</strong> The total horizontal length of the staircase.</li>
+            </ul>
+
+            <h3>How Our Concrete Stairs Calculator Works:</h3>
+            <p>Our calculator uses the dimensions of your stairs to determine the total concrete volume. It accounts for the volume of each step (riser and tread) and any optional landing. The formula essentially breaks down the staircase into a series of rectangular prisms and sums their volumes. For example, the volume of a single step is calculated as <code>(Riser Height × Tread Depth × Stairs Width)</code>, adjusted for units. This is then multiplied by the number of steps, and the landing volume is added if applicable.</p>
+
+            <h3>Important Considerations for Concrete Stairs:</h3>
+            <ul>
+                <li><strong>Building Codes:</strong> Always check local building codes for minimum and maximum riser heights, tread depths, and handrail requirements. Consistency in step dimensions is vital for safety.</li>
+                <li><strong>Reinforcement:</strong> Concrete stairs often require steel reinforcement (rebar or mesh) to prevent cracking and provide structural strength. Consult a structural engineer for specific reinforcement needs.</li>
+                <li><strong>Drainage:</strong> Ensure proper drainage to prevent water accumulation, which can lead to deterioration and safety hazards.</li>
+                <li><strong>Waste Factor:</strong> Always add a small waste factor (typically 5-10%) to your calculated concrete volume to account for spillage, uneven forms, or minor adjustments during the pour.</li>
+            </ul>
+
+            <h3>Frequently Asked Questions (FAQ) about Concrete Stairs</h3>
+            <details class="bg-slate-100/50 p-4 rounded-lg group" open>
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>What is the ideal riser height and tread depth for concrete stairs?</span>
+                </summary>
+                <p class="text-slate-600 mt-2">While local building codes vary, a common rule of thumb for comfortable and safe stairs is that the sum of two risers and one tread should be between 24 and 25 inches (61-63.5 cm). Typical riser heights are 6-7.5 inches (15-19 cm) and tread depths are 10-11 inches (25-28 cm).</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>Do concrete stairs need rebar?</span>
+                </summary>
+                <p class="text-slate-600 mt-2">Yes, for most concrete stairs, especially outdoor ones or those supporting significant loads, rebar (reinforcing steel) is highly recommended or required by code. Rebar provides tensile strength, preventing cracks due to temperature changes, settling, or heavy use. Consult a structural engineer or your local building department for specific requirements.</p>
+            </details>
+            <details class="bg-slate-100/50 p-4 rounded-lg group mt-2">
+                <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+                    <span>Can I use bagged concrete for stairs?</span>
+                </summary>
+                <p class="text-slate-600 mt-2">For small stair projects (e.g., 1-3 steps), bagged concrete can be a convenient option. For larger staircases, ordering ready-mix concrete is usually more efficient and cost-effective due to the volume and the need for continuous pouring. Our <strong>concrete stairs calculator</strong> provides estimates for both total volume (for ready-mix) and the number of bags.</p>
+            </details>
+        </section>
+
+    </main>
+
+    <div id="footer-include"></div>
+
+    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load Header & Footer
+        fetch('/en/header.html').then(r=>r.text()).then(html=>document.getElementById('header-include').innerHTML=html).then(() => setupNav());
+        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+
+        // Setup navigation events
+        function setupNav() {
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton) {
+                calculatorsMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    calculatorsMenu.classList.toggle('hidden');
+                });
+            }
+
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton) {
+                languageMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    languageMenu.classList.toggle('hidden');
+                });
+            }
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            document.addEventListener('click', () => {
+                if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
+                if (languageMenu) languageMenu.classList.add('hidden');
+            });
+        }
+      });
+    </script>
+</body>
+</html>
