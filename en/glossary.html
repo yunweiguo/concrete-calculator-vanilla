@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Concrete Glossary - Terms and Definitions</title>
+    <meta name="description" content="A comprehensive glossary of common concrete terms and definitions, from aggregate to workability.">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/glossary.html">
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/glossary.html">
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/glossary.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/glossary.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Concrete Glossary - Terms and Definitions">
+    <meta property="og:description" content="A comprehensive glossary of common concrete terms and definitions, from aggregate to workability.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/glossary.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': { 'primary': '#1e40af', 'secondary': '#3b82f6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <header class="text-center max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Concrete Glossary</h1>
+            <p class="text-lg text-slate-600">Your reference guide for common terms used in the concrete and construction industry.</p>
+        </header>
+
+        <div class="mt-12 max-w-4xl mx-auto space-y-8">
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Aggregate</h2>
+                <p class="mt-2 text-slate-600">The sand, gravel, or crushed stone that forms the main bulk of concrete. Aggregates are bound together by cement and water.</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Cement</h2>
+                <p class="mt-2 text-slate-600">A fine powder (typically Portland cement) that acts as the binding agent in concrete. When mixed with water, it forms a paste that hardens and holds the aggregate together.</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Cure</h2>
+                <p class="mt-2 text-slate-600">The process of maintaining adequate moisture and temperature in freshly poured concrete to ensure it develops its full potential strength and durability. Proper curing is critical for a quality result.</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">PSI (Pounds per Square Inch)</h2>
+                <p class="mt-2 text-slate-600">A unit of measure for the compressive strength of concrete. A 4000 PSI mix can withstand 4000 pounds of pressure per square inch without breaking.</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Rebar</h2>
+                <p class="mt-2 text-slate-600">Steel reinforcing bars embedded in concrete to improve its tensile strength. Concrete is strong in compression but weak in tension, and rebar helps overcome this weakness.</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Slump</h2>
+                <p class="mt-2 text-slate-600">A measure of the consistency or workability of fresh concrete. It is measured by filling a cone with concrete, removing the cone, and measuring how much the concrete sags or \"slumps.\"</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Workability</h2>
+                <p class="mt-2 text-slate-600">The ease with which fresh concrete can be mixed, placed, compacted, and finished without segregation. Good workability is essential for achieving a smooth, uniform surface.</p>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+            <a href="/en/" class="bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-primary/90 transition-colors">
+                Back to Home
+            </a>
+        </div>
+    </main>
+    
+    <div id="footer-include"></div>
+
+    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('/en/header.html').then(r=>r.text()).then(html=>{
+            document.getElementById('header-include').outerHTML=html;
+            // Re-bind dropdown, language, and mobile menu events
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton && calculatorsMenu) {
+              calculatorsMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                calculatorsMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                calculatorsMenu.classList.add('hidden');
+              });
+            }
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton && languageMenu) {
+              languageMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                languageMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                languageMenu.classList.add('hidden');
+              });
+            }
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+              mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+              });
+            }
+        });
+        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+      });
+    </script>
+</body>
+</html>
