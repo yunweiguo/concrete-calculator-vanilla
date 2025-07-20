@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>混凝土术语表 - 术语与定义</title>
+    <meta name="description" content="一个全面的混凝土常用术语及定义表，从骨料到和易性。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/glossary.html">
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/glossary.html">
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/glossary.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/glossary.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="混凝土术语表 - 术语与定义">
+    <meta property="og:description" content="一个全面的混凝土常用术语及定义表，从骨料到和易性。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/glossary.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': { 'primary': '#1e40af', 'secondary': '#3b82f6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <header class="text-center max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">混凝土术语表</h1>
+            <p class="text-lg text-slate-600">您在混凝土和建筑行业中常用术语的参考指南。</p>
+        </header>
+
+        <div class="mt-12 max-w-4xl mx-auto space-y-8">
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">骨料</h2>
+                <p class="mt-2 text-slate-600">构成混凝土主要体积的沙子、砾石或碎石。骨料由水泥和水粘合在一起。</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">水泥</h2>
+                <p class="mt-2 text-slate-600">一种细粉（通常是波特兰水泥），在混凝土中充当粘合剂。与水混合后，它形成一种浆体，硬化后将骨料粘合在一起。</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">养护</h2>
+                <p class="mt-2 text-slate-600">在新浇筑的混凝土中保持足够的水分和温度的过程，以确保其发挥最大的潜在强度和耐久性。适当的养护对于获得优质结果至关重要。</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">PSI (磅/平方英寸)</h2>
+                <p class="mt-2 text-slate-600">衡量混凝土抗压强度的单位。一个4000 PSI的混合料可以承受每平方英寸4000磅的压力而不断裂。</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">钢筋</h2>
+                <p class="mt-2 text-slate-600">嵌入混凝土中的钢筋，以提高其抗拉强度。混凝土在受压时很坚固，但在受拉时很脆弱，钢筋有助于克服这一弱点。</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">坍落度</h2>
+                <p class="mt-2 text-slate-600">衡量新拌混凝土稠度或和易性的指标。通过用混凝土填充一个圆锥体，移开圆锥体，然后测量混凝土下沉或“坍落”的程度来测量。</p>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">和易性</h2>
+                <p class="mt-2 text-slate-600">新拌混凝土在不离析的情况下易于搅拌、浇筑、压实和修整的程度。良好的和易性对于获得光滑、均匀的表面至关重要。</p>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+            <a href="/zh/" class="bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-primary/90 transition-colors">
+                返回首页
+            </a>
+        </div>
+    </main>
+    
+    <div id="footer-include"></div>
+
+    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('/zh/header.html').then(r=>r.text()).then(html=>{
+            document.getElementById('header-include').outerHTML=html;
+            // Re-bind dropdown, language, and mobile menu events
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton && calculatorsMenu) {
+              calculatorsMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                calculatorsMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                calculatorsMenu.classList.add('hidden');
+              });
+            }
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton && languageMenu) {
+              languageMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                languageMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                languageMenu.classList.add('hidden');
+              });
+            }
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+              mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+              });
+            }
+        });
+        fetch('/zh/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+      });
+    </script>
+</body>
+</html>

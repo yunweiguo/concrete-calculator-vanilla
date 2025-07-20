@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>案例分析 - 混凝土计算器实际应用</title>
+    <meta name="description" content="了解DIY爱好者和承包商如何使用混凝土计算器来节省项目时间和金钱。">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/case-studies.html">
+    <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/case-studies.html">
+    <link rel="alternate" hreflang="zh" href="https://concrete-calculator.pro/zh/case-studies.html">
+    <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/case-studies.html">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="案例分析 - 混凝土计算器实际应用">
+    <meta property="og:description" content="了解DIY爱好者和承包商如何使用混凝土计算器来节省项目时间和金钱。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/case-studies.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': { 'primary': '#1e40af', 'secondary': '#3b82f6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased">
+    <div id="header-include"></div>
+
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <header class="text-center max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">真实世界的成功故事</h1>
+            <p class="text-lg text-slate-600">了解我们的计算器如何帮助建筑商和DIY爱好者充满信心地规划他们的项目。</p>
+        </header>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-slate-900">张伟的庭院项目</h2>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">挑战:</span> 精确估算一个12x16英尺后院庭院所需的混凝土。</p>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">解决方案:</span> 使用<a href="/zh/slab-calculator.html" class="text-brand-secondary">板计算器</a>确定确切的体积。材料明细帮助他购买了适量的水泥、沙子和砾石。</p>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">结果:</span> 通过避免超额订购，节省了超过1000元人民币，并按预算完成了项目。</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-slate-900">李芳的基础基脚</h2>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">挑战:</span> 作为一名承包商，李芳需要为新住宅建设的基础基脚快速估算。</p>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">解决方案:</span> 在现场使用平板电脑上的<a href="/zh/footing-calculator.html" class="text-brand-secondary">基脚计算器</a>，为多个部分获得即时体积计算。</p>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">结果:</span> 将她的报价流程加快了30%，并以其效率给客户留下了深刻印象。</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-slate-900">王强的栅栏柱</h2>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">挑战:</span> 一个DIY爱好者正在设置20个栅栏柱，不确定要买多少袋混凝土。</p>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">解决方案:</span> 使用<a href="/zh/column-calculator.html" class="text-brand-secondary">圆柱计算器</a>找到每个柱孔的体积，然后使用<a href="/zh/bag-calculator.html" class="text-brand-secondary">袋计算器</a>将其转换为80磅袋的精确数量。</p>
+                    <p class="mt-2 text-slate-600"><span class="font-semibold">结果:</span> 购买了所需的确切袋数，避免了额外去商店的麻烦和材料的浪费。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+            <a href="/zh/" class="bg-brand-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-primary/90 transition-colors">
+                立即规划您的项目
+            </a>
+        </div>
+    </main>
+    
+    <div id="footer-include"></div>
+
+    <script src="/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('/zh/header.html').then(r=>r.text()).then(html=>{
+            document.getElementById('header-include').outerHTML=html;
+            // Re-bind dropdown, language, and mobile menu events
+            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+            const calculatorsMenu = document.getElementById('calculators-menu');
+            if (calculatorsMenuButton && calculatorsMenu) {
+              calculatorsMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                calculatorsMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                calculatorsMenu.classList.add('hidden');
+              });
+            }
+            const languageMenuButton = document.getElementById('language-menu-button');
+            const languageMenu = document.getElementById('language-menu');
+            if (languageMenuButton && languageMenu) {
+              languageMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                languageMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                languageMenu.classList.add('hidden');
+              });
+            }
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+              mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+              });
+            }
+        });
+        fetch('/zh/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
+      });
+    </script>
+</body>
+</html>
