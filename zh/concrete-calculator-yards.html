@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
+         crossorigin="anonymous"></script>
+
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>混凝土计算器立方码 - 计算混凝土立方码</title>
+    <meta name="description" content="为您的建筑项目计算混凝土立方码。免费的混凝土立方码计算器，适用于板、基础、柱子等。立即获得准确的立方码估算。">
+    <meta name="keywords" content="混凝土计算器立方码, 立方码混凝土计算器, 混凝土立方码计算器, 立方码计算器, 混凝土体积计算器立方码">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/concrete-calculator-yards.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="混凝土计算器立方码 - 计算混凝土立方码">
+    <meta property="og:description" content="为您的建筑项目计算混凝土立方码。免费的混凝土立方码计算器，适用于板、基础、柱子等。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/concrete-calculator-yards.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="混凝土计算器立方码 - 计算混凝土立方码">
+    <meta name="twitter:description" content="为您的建筑项目计算混凝土立方码。免费的混凝土立方码计算器，适用于板、基础、柱子等。">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "混凝土计算器立方码",
+      "description": "为建筑项目计算混凝土立方码",
+      "url": "https://concrete-calculator.pro/zh/concrete-calculator-yards.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/zh/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                混凝土计算器立方码
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                为您的建筑项目计算混凝土立方码。完美适用于订购预拌混凝土。
+            </p>
+        </section>
+        
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入尺寸</h2>
+                            <p class="text-slate-500 mt-1">所有测量值将转换为立方码。</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="shape" class="block text-sm font-medium text-slate-700 mb-2">形状类型</label>
+                                <select id="shape" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                    <option value="slab">板/基础</option>
+                                    <option value="column">柱/圆柱</option>
+                                    <option value="footing">基脚</option>
+                                    <option value="wall">墙</option>
+                                </select>
+                            </div>
+                            
+                            <div id="slab-inputs" class="space-y-4">
+                                <div>
+                                    <label for="length" class="block text-sm font-medium text-slate-700 mb-2">长度（英尺）</label>
+                                    <input type="number" id="length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入长度">
+                                </div>
+                                <div>
+                                    <label for="width" class="block text-sm font-medium text-slate-700 mb-2">宽度（英尺）</label>
+                                    <input type="number" id="width" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入宽度">
+                                </div>
+                                <div>
+                                    <label for="thickness" class="block text-sm font-medium text-slate-700 mb-2">厚度（英寸）</label>
+                                    <input type="number" id="thickness" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入厚度">
+                                </div>
+                            </div>
+                            
+                            <div id="column-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="diameter" class="block text-sm font-medium text-slate-700 mb-2">直径（英寸）</label>
+                                    <input type="number" id="diameter" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入直径">
+                                </div>
+                                <div>
+                                    <label for="height" class="block text-sm font-medium text-slate-700 mb-2">高度（英尺）</label>
+                                    <input type="number" id="height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入高度">
+                                </div>
+                            </div>
+                            
+                            <div id="footing-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="footing-length" class="block text-sm font-medium text-slate-700 mb-2">长度（英尺）</label>
+                                    <input type="number" id="footing-length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入长度">
+                                </div>
+                                <div>
+                                    <label for="footing-width" class="block text-sm font-medium text-slate-700 mb-2">宽度（英尺）</label>
+                                    <input type="number" id="footing-width" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入宽度">
+                                </div>
+                                <div>
+                                    <label for="footing-depth" class="block text-sm font-medium text-slate-700 mb-2">深度（英寸）</label>
+                                    <input type="number" id="footing-depth" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入深度">
+                                </div>
+                            </div>
+                            
+                            <div id="wall-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="wall-length" class="block text-sm font-medium text-slate-700 mb-2">长度（英尺）</label>
+                                    <input type="number" id="wall-length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入长度">
+                                </div>
+                                <div>
+                                    <label for="wall-height" class="block text-sm font-medium text-slate-700 mb-2">高度（英尺）</label>
+                                    <input type="number" id="wall-height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入高度">
+                                </div>
+                                <div>
+                                    <label for="wall-thickness" class="block text-sm font-medium text-slate-700 mb-2">厚度（英寸）</label>
+                                    <input type="number" id="wall-thickness" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入厚度">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">2. 结果</h2>
+                            <p class="text-slate-500 mt-1">您的混凝土立方码计算结果。</p>
+                        </div>
+                        
+                        <div id="results" class="space-y-4 hidden">
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">混凝土体积</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">体积：</span>
+                                        <span id="volume-yards" class="font-semibold text-slate-900">0 立方码</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">体积（立方英尺）：</span>
+                                        <span id="volume-feet" class="font-semibold text-slate-900">0 立方英尺</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">体积（立方米）：</span>
+                                        <span id="volume-meters" class="font-semibold text-slate-900">0 立方米</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">预拌混凝土</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">卡车装载量（10 立方码）：</span>
+                                        <span id="truck-loads" class="font-semibold text-slate-900">0 车</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">包含10%损耗：</span>
+                                        <span id="volume-waste" class="font-semibold text-slate-900">0 立方码</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">材料（如果自己搅拌）</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">水泥（94磅袋）：</span>
+                                        <span id="cement-bags" class="font-semibold text-slate-900">0 袋</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">砂（吨）：</span>
+                                        <span id="sand-tons" class="font-semibold text-slate-900">0 吨</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">石子（吨）：</span>
+                                        <span id="gravel-tons" class="font-semibold text-slate-900">0 吨</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-results" class="text-center py-12">
+                            <div class="text-slate-400">
+                                <svg class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-lg font-medium">输入尺寸进行计算</p>
+                                <p class="text-sm">填写上方的测量值以查看您的混凝土立方码计算结果。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">关于混凝土计算器立方码</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p class="text-lg text-slate-700 mb-4">
+                        我们的混凝土计算器立方码工具帮助您确定项目所需的混凝土立方码。这是美国预拌混凝土供应商使用的标准单位。
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">为什么计算立方码？</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 mb-6">
+                        <li>预拌混凝土通常按立方码订购</li>
+                        <li>混凝土卡车通常每车装载8-10立方码</li>
+                        <li>价格通常按每立方码报价</li>
+                        <li>美国建筑行业的标准单位</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">如何使用此计算器</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-700 mb-6">
+                        <li>选择混凝土结构的形状</li>
+                        <li>输入英尺和英寸的尺寸</li>
+                        <li>获得立方码的即时结果</li>
+                        <li>订购时添加10%损耗</li>
+                    </ol>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">常见应用</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>板：</strong>车道、露台、车库地板</li>
+                        <li><strong>基脚：</strong>基础基脚、甲板柱</li>
+                        <li><strong>柱：</strong>支撑柱、sonotube基脚</li>
+                        <li><strong>墙：</strong>挡土墙、地下室墙</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-include"></div>
+    <script>
+      fetch('/zh/footer.html').then(r=>r.text()).then(html=>{
+        document.getElementById('footer-include').outerHTML=html;
+      });
+    </script>
+    
+    <script>
+        // Concrete Calculator Yards Logic
+        const shapeSelect = document.getElementById('shape');
+        const slabInputs = document.getElementById('slab-inputs');
+        const columnInputs = document.getElementById('column-inputs');
+        const footingInputs = document.getElementById('footing-inputs');
+        const wallInputs = document.getElementById('wall-inputs');
+        const results = document.getElementById('results');
+        const noResults = document.getElementById('no-results');
+        
+        // Show/hide input sections based on shape
+        shapeSelect.addEventListener('change', function() {
+            slabInputs.classList.add('hidden');
+            columnInputs.classList.add('hidden');
+            footingInputs.classList.add('hidden');
+            wallInputs.classList.add('hidden');
+            
+            switch(this.value) {
+                case 'slab':
+                    slabInputs.classList.remove('hidden');
+                    break;
+                case 'column':
+                    columnInputs.classList.remove('hidden');
+                    break;
+                case 'footing':
+                    footingInputs.classList.remove('hidden');
+                    break;
+                case 'wall':
+                    wallInputs.classList.remove('hidden');
+                    break;
+            }
+            calculateConcrete();
+        });
+        
+        // Add event listeners to all inputs
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateConcrete);
+        });
+        
+        function calculateConcrete() {
+            const shape = shapeSelect.value;
+            let volumeCubicFeet = 0;
+            
+            switch(shape) {
+                case 'slab':
+                    const length = parseFloat(document.getElementById('length').value) || 0;
+                    const width = parseFloat(document.getElementById('width').value) || 0;
+                    const thickness = parseFloat(document.getElementById('thickness').value) || 0;
+                    volumeCubicFeet = length * width * (thickness / 12);
+                    break;
+                    
+                case 'column':
+                    const diameter = parseFloat(document.getElementById('diameter').value) || 0;
+                    const height = parseFloat(document.getElementById('height').value) || 0;
+                    const radius = diameter / 2;
+                    volumeCubicFeet = Math.PI * Math.pow(radius / 12, 2) * height;
+                    break;
+                    
+                case 'footing':
+                    const footingLength = parseFloat(document.getElementById('footing-length').value) || 0;
+                    const footingWidth = parseFloat(document.getElementById('footing-width').value) || 0;
+                    const footingDepth = parseFloat(document.getElementById('footing-depth').value) || 0;
+                    volumeCubicFeet = footingLength * footingWidth * (footingDepth / 12);
+                    break;
+                    
+                case 'wall':
+                    const wallLength = parseFloat(document.getElementById('wall-length').value) || 0;
+                    const wallHeight = parseFloat(document.getElementById('wall-height').value) || 0;
+                    const wallThickness = parseFloat(document.getElementById('wall-thickness').value) || 0;
+                    volumeCubicFeet = wallLength * wallHeight * (wallThickness / 12);
+                    break;
+            }
+            
+            if (volumeCubicFeet > 0) {
+                const volumeCubicYards = volumeCubicFeet / 27;
+                const volumeCubicMeters = volumeCubicFeet * 0.0283168;
+                const volumeWithWaste = volumeCubicYards * 1.1;
+                const truckLoads = Math.ceil(volumeWithWaste / 10);
+                
+                // Materials calculation (1:2:3 mix ratio)
+                const cementBags = Math.ceil(volumeCubicYards * 6.5); // 6.5 bags per cubic yard
+                const sandTons = (volumeCubicYards * 1.35).toFixed(1); // 1.35 tons per cubic yard
+                const gravelTons = (volumeCubicYards * 2.7).toFixed(1); // 2.7 tons per cubic yard
+                
+                // Update results
+                document.getElementById('volume-yards').textContent = volumeCubicYards.toFixed(2) + ' 立方码';
+                document.getElementById('volume-feet').textContent = volumeCubicFeet.toFixed(2) + ' 立方英尺';
+                document.getElementById('volume-meters').textContent = volumeCubicMeters.toFixed(2) + ' 立方米';
+                document.getElementById('truck-loads').textContent = truckLoads + ' 车';
+                document.getElementById('volume-waste').textContent = volumeWithWaste.toFixed(2) + ' 立方码';
+                document.getElementById('cement-bags').textContent = cementBags + ' 袋';
+                document.getElementById('sand-tons').textContent = sandTons + ' 吨';
+                document.getElementById('gravel-tons').textContent = gravelTons + ' 吨';
+                
+                results.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
