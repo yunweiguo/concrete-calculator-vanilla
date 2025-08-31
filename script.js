@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
             treadDepth: 'Tread Depth',
             landingDepth: 'Landing Depth (Optional)',
             share: 'Share',
+            estimatedTotalCost: 'Estimated Total Cost',
+            youWillNeed: 'You will need:',
+            bags: 'bags',
+            each: 'each',
+            totalWeight: 'Total Weight',
         },
         zh: {
             totalVolume: '总体积',
@@ -68,6 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
             riserHeight: '踢面高度',
             treadDepth: '踏步深度',
             landingDepth: '平台深度 (可选)',
+            estimatedTotalCost: '预估总成本',
+            youWillNeed: '您需要：',
+            bags: '袋',
+            each: '每袋',
+            totalWeight: '总重量',
         }
     };
 
@@ -118,6 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const riserHeightInput = document.getElementById('riser-height');
     const treadDepthInput = document.getElementById('tread-depth');
     const landingDepthInput = document.getElementById('landing-depth');
+
+    // New elements for Cost Estimation
+    const costPerUnitInput = document.getElementById('cost-per-unit');
+    const costUnitLabel = document.getElementById('cost-unit-label');
+    const costPerBagInput = document.getElementById('cost-per-bag');
 
 
     // --- STATE ---
@@ -225,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.unit-label-dist').forEach(el => el.textContent = unit === 'metric' ? 'm' : 'ft');
         document.querySelectorAll('.unit-label-mass').forEach(el => el.textContent = unit === 'metric' ? 'kg' : 'lb');
         document.querySelectorAll('.unit-label-small-dist').forEach(el => el.textContent = unit === 'metric' ? 'mm' : 'in');
+        if (costUnitLabel) {
+            costUnitLabel.textContent = unit === 'metric' ? '/ m³' : '/ yd³';
+        }
     }
 
     function updateRebarOptions(unit) {
@@ -320,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayMaterialResults() {
         const currentUnitSystem = unitSystemDiv ? unitSystemDiv.querySelector('.bg-white').dataset.value : 'imperial';
         const currentShape = shapeSelectorDiv ? shapeSelectorDiv.querySelector('.bg-white').dataset.value : 'rectangle';
+        const costPerUnit = costPerUnitInput ? parseFloat(costPerUnitInput.value) : 0;
 
         const results = calculate({
             shape: currentShape,
@@ -339,8 +358,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const smallVolUnit = isMetric ? 'm³' : 'ft³';
         const volume = isMetric ? results.volume_m3 : results.volume_yd3;
 
+        let costHtml = '';
+        if (costPerUnit > 0) {
+            const totalCost = volume * costPerUnit;
+            const currencySymbol = getLang() === 'zh' ? '¥' : '$';
+            costHtml = `
+            <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
+                <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+            </div>
+            `;
+        }
+
         resultsOutput.innerHTML = `
-            <div class="text-center">
+            ${costHtml}
+            <div class="text-center w-full">
                 <p class="text-sm text-slate-500">${t('totalVolume')}</p>
                 <p class="text-4xl font-bold text-brand-primary my-2">${volume.toFixed(2)} <span class="text-3xl">${volumeUnit}</span></p>
             </div>
@@ -369,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentUnitSystem = unitSystemDiv.querySelector('.bg-white').dataset.value;
         const currentShape = shapeSelectorDiv.querySelector('.bg-white').dataset.value;
         const bagSize = bagSizeSelect.value;
+        const costPerBag = costPerBagInput ? parseFloat(costPerBagInput.value) : 0;
 
         let length_ft = currentUnitSystem === 'imperial' ? parseFloat(lengthInput.value) : parseFloat(lengthInput.value) * 3.28084;
         let width_ft = currentUnitSystem === 'imperial' ? parseFloat(widthInput.value) : parseFloat(widthInput.value) * 3.28084;
@@ -413,19 +446,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const weightUnit = currentUnitSystem === 'metric' ? 'kg' : 'lbs';
         const displayTotalWeight = currentUnitSystem === 'metric' ? (totalWeight * 0.453592).toFixed(1) : totalWeight.toFixed(1);
 
+        let costHtml = '';
+        if (costPerBag > 0) {
+            const totalCost = bagsNeeded * costPerBag;
+            const currencySymbol = getLang() === 'zh' ? '¥' : '$';
+            costHtml = `
+            <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
+                <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+            </div>
+            `;
+        }
+
         resultsOutput.innerHTML = `
-            <div class="text-center">
-                <p class="text-lg text-slate-600">You will need:</p>
+            ${costHtml}
+            <div class="text-center w-full">
+                <p class="text-lg text-slate-600">${t('youWillNeed')}</p>
                 <p class="text-5xl font-extrabold text-brand-primary my-2">${bagsNeeded}</p>
-                <p class="text-lg text-slate-600">bags (${bagWeight} ${weightUnit} each)</p>
+                <p class="text-lg text-slate-600">${t('bags')} (${bagWeight} ${weightUnit} ${t('each')})</p>
             </div>
             <div class="mt-4 pt-4 border-t border-slate-200 w-full text-sm">
                  <div class="flex justify-between">
-                    <dt class="text-slate-600">Total Volume:</dt>
+                    <dt class="text-slate-600">${t('totalVolume')}:</dt>
                     <dd class="font-medium text-slate-800">${volume_ft3.toFixed(2)} ft³</dd>
                 </div>
                  <div class="flex justify-between mt-1">
-                    <dt class="text-slate-600">Total Weight:</dt>
+                    <dt class="text-slate-600">${t('totalWeight')}:</dt>
                     <dd class="font-medium text-slate-800">~${displayTotalWeight} ${weightUnit}</dd>
                 </div>
             </div>
@@ -768,4 +814,4 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
     loadHistory();
     setupEventListeners();
     updateInputsForShape('rectangle');
-}); 
+});

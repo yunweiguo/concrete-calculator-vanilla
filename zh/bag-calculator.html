@@ -170,6 +170,28 @@
                             </div>
                         </div>
 
+                        <!-- Bag Size Selection -->
+                         <div>
+                            <label for="bag-size" class="text-sm font-medium text-slate-700">选择包装袋尺寸（或自定义）</label>
+                            <select id="bag-size" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <option value="80">80 磅/袋 (~0.60 ft³)</option>
+                                <option value="60">60 磅/袋 (~0.45 ft³)</option>
+                                <option value="50">50 磅/袋 (~0.38 ft³)</option>
+                                <option value="40">40 磅/袋 (~0.30 ft³)</option>
+                                <option value="custom">自定义</option>
+                            </select>
+                        </div>
+                        <div id="custom-bag-inputs" class="hidden space-y-4">
+                             <div>
+                                <label for="custom-bag-weight" class="text-sm font-medium text-slate-700">自定义袋重 (<span class="unit-label-mass">lb</span>)</label>
+                                <input type="number" id="custom-bag-weight" placeholder="25" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="custom-bag-yield" class="text-sm font-medium text-slate-700">自定义产量 (<span class="unit-label-vol">ft³</span>)</label>
+                                <input type="number" id="custom-bag-yield" placeholder="0.015" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </div>
+
                         <!-- Grade (Hidden) -->
                          <div class="hidden">
                             <label for="grade" class="text-sm font-medium text-slate-700">混凝土强度等级</label>
@@ -182,7 +204,7 @@
                     <!-- Right Side: Results -->
                     <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
                         <div class="flex justify-between items-center">
-                            <h2 class="text-2xl font-bold text-slate-900">2. 所需袋数</h2>
+                            <h2 class="text-2xl font-bold text-slate-900">计算结果</h2>
                              <div class="flex gap-2">
                                 <button id="copy-btn" title="复制结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
@@ -198,6 +220,21 @@
                                  </button>
                             </div>
                         </div>
+
+                        <!-- Cost Estimation -->
+                        <div class="space-y-2">
+                            <label for="cost-per-bag" class="text-sm font-medium text-slate-700">估算成本 (<span class="text-xs">可选</span>)</label>
+                            <div class="relative">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <span class="text-slate-500 sm:text-sm">¥</span>
+                                </div>
+                                <input type="number" id="cost-per-bag" placeholder="45" class="block w-full rounded-lg border border-slate-300 bg-white py-2 pl-7 pr-12 focus:border-brand-secondary focus:ring-brand-secondary">
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <span class="text-slate-500 sm:text-sm">/ 袋</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
                            <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
                            <p class="font-semibold text-slate-500">您的结果将显示在这里。</p>
