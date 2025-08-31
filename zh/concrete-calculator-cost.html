@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
+         crossorigin="anonymous"></script>
+
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>混凝土计算器成本与价格 - 估算混凝土项目成本</title>
+    <meta name="description" content="计算混凝土项目成本，包括材料、人工和运输费用。免费的混凝土成本计算器，提供2024年当前价格估算，适用于板、基础等。">
+    <meta name="keywords" content="混凝土计算器成本, 混凝土计算器价格, 混凝土成本计算器, 混凝土价格计算器, 混凝土项目成本, 混凝土材料成本">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/concrete-calculator-cost.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="混凝土计算器成本与价格 - 估算混凝土项目成本">
+    <meta property="og:description" content="计算混凝土项目成本，包括材料、人工和运输费用。免费的混凝土成本计算器，提供2024年当前价格估算。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/concrete-calculator-cost.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="混凝土计算器成本与价格 - 估算混凝土项目成本">
+    <meta name="twitter:description" content="计算混凝土项目成本，包括材料、人工和运输费用。免费的混凝土成本计算器，提供2024年当前价格估算。">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "混凝土计算器成本",
+      "description": "计算混凝土项目成本和价格",
+      "url": "https://concrete-calculator.pro/zh/concrete-calculator-cost.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/zh/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                混凝土计算器成本与价格
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                计算您的混凝土项目的总成本，包括材料、人工和运输费用。
+            </p>
+        </section>
+        
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 项目详情</h2>
+                            <p class="text-slate-500 mt-1">输入您的项目规格和位置。</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="shape" class="block text-sm font-medium text-slate-700 mb-2">项目类型</label>
+                                <select id="shape" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                    <option value="slab">板/基础</option>
+                                    <option value="footing">基脚</option>
+                                    <option value="column">柱/圆柱</option>
+                                    <option value="wall">墙</option>
+                                    <option value="driveway">车道</option>
+                                    <option value="patio">露台</option>
+                                </select>
+                            </div>
+                            
+                            <div id="slab-inputs" class="space-y-4">
+                                <div>
+                                    <label for="length" class="block text-sm font-medium text-slate-700 mb-2">长度（英尺）</label>
+                                    <input type="number" id="length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入长度">
+                                </div>
+                                <div>
+                                    <label for="width" class="block text-sm font-medium text-slate-700 mb-2">宽度（英尺）</label>
+                                    <input type="number" id="width" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入宽度">
+                                </div>
+                                <div>
+                                    <label for="thickness" class="block text-sm font-medium text-slate-700 mb-2">厚度（英寸）</label>
+                                    <input type="number" id="thickness" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入厚度">
+                                </div>
+                            </div>
+                            
+                            <div id="column-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="diameter" class="block text-sm font-medium text-slate-700 mb-2">直径（英寸）</label>
+                                    <input type="number" id="diameter" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入直径">
+                                </div>
+                                <div>
+                                    <label for="height" class="block text-sm font-medium text-slate-700 mb-2">高度（英尺）</label>
+                                    <input type="number" id="height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入高度">
+                                </div>
+                                <div>
+                                    <label for="quantity" class="block text-sm font-medium text-slate-700 mb-2">柱子数量</label>
+                                    <input type="number" id="quantity" step="1" min="1" value="1" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入数量">
+                                </div>
+                            </div>
+                            
+                            <div id="footing-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="footing-length" class="block text-sm font-medium text-slate-700 mb-2">长度（英尺）</label>
+                                    <input type="number" id="footing-length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入长度">
+                                </div>
+                                <div>
+                                    <label for="footing-width" class="block text-sm font-medium text-slate-700 mb-2">宽度（英尺）</label>
+                                    <input type="number" id="footing-width" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入宽度">
+                                </div>
+                                <div>
+                                    <label for="footing-depth" class="block text-sm font-medium text-slate-700 mb-2">深度（英寸）</label>
+                                    <input type="number" id="footing-depth" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入深度">
+                                </div>
+                            </div>
+                            
+                            <div id="wall-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="wall-length" class="block text-sm font-medium text-slate-700 mb-2">长度（英尺）</label>
+                                    <input type="number" id="wall-length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入长度">
+                                </div>
+                                <div>
+                                    <label for="wall-height" class="block text-sm font-medium text-slate-700 mb-2">高度（英尺）</label>
+                                    <input type="number" id="wall-height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入高度">
+                                </div>
+                                <div>
+                                    <label for="wall-thickness" class="block text-sm font-medium text-slate-700 mb-2">厚度（英寸）</label>
+                                    <input type="number" id="wall-thickness" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入厚度">
+                                </div>
+                            </div>
+                            
+                            <div class="border-t pt-4">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-3">成本因素</h3>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="region" class="block text-sm font-medium text-slate-700 mb-2">地区</label>
+                                        <select id="region" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                            <option value="northeast">东北部</option>
+                                            <option value="southeast">东南部</option>
+                                            <option value="midwest">中西部</option>
+                                            <option value="southwest">西南部</option>
+                                            <option value="west">西海岸</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="concrete-type" class="block text-sm font-medium text-slate-700 mb-2">混凝土类型</label>
+                                        <select id="concrete-type" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                            <option value="standard">标准（3000 PSI）</option>
+                                            <option value="high-strength">高强度（4000 PSI）</option>
+                                            <option value="premium">优质（5000 PSI）</option>
+                                            <option value="decorative">装饰/压花</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="finish" class="block text-sm font-medium text-slate-700 mb-2">饰面类型</label>
+                                        <select id="finish" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                            <option value="basic">基础（扫帚饰面）</option>
+                                            <option value="smooth">光滑饰面</option>
+                                            <option value="stamped">压花混凝土</option>
+                                            <option value="colored">彩色混凝土</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="access" class="block text-sm font-medium text-slate-700 mb-2">场地访问</label>
+                                        <select id="access" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                            <option value="easy">容易访问</option>
+                                            <option value="moderate">中等难度</option>
+                                            <option value="difficult">困难访问</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">2. 成本明细</h2>
+                            <p class="text-slate-500 mt-1">您的详细成本估算。</p>
+                        </div>
+                        
+                        <div id="results" class="space-y-4 hidden">
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">项目摘要</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">体积：</span>
+                                        <span id="volume-yards" class="font-semibold text-slate-900">0 立方码</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">面积：</span>
+                                        <span id="area-sqft" class="font-semibold text-slate-900">0 平方英尺</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">混凝土类型：</span>
+                                        <span id="concrete-type-display" class="font-semibold text-slate-900">标准</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">材料成本</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">预拌混凝土：</span>
+                                        <span id="concrete-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">运输费：</span>
+                                        <span id="delivery-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">加固（钢筋）：</span>
+                                        <span id="rebar-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">模板：</span>
+                                        <span id="formwork-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="border-t pt-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-800 font-medium">小计（材料）：</span>
+                                            <span id="materials-total" class="font-semibold text-slate-900">¥0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">人工成本</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">场地准备：</span>
+                                        <span id="prep-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">模板安装：</span>
+                                        <span id="formwork-labor" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">混凝土浇筑：</span>
+                                        <span id="placement-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">饰面：</span>
+                                        <span id="finishing-cost" class="font-semibold text-slate-900">¥0</span>
+                                    </div>
+                                    <div class="border-t pt-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-800 font-medium">小计（人工）：</span>
+                                            <span id="labor-total" class="font-semibold text-slate-900">¥0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-blue-900 mb-4">项目总成本</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-blue-800">材料：</span>
+                                        <span id="materials-summary" class="font-semibold text-blue-900">¥0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-blue-800">人工：</span>
+                                        <span id="labor-summary" class="font-semibold text-blue-900">¥0</span>
+                                    </div>
+                                    <div class="border-t border-blue-200 pt-2">
+                                        <div class="flex justify-between text-lg">
+                                            <span class="text-blue-900 font-bold">总成本：</span>
+                                            <span id="total-cost" class="font-bold text-blue-900 text-xl">¥0</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-blue-700">每平方英尺成本：</span>
+                                        <span id="cost-per-sqft" class="font-semibold text-blue-700">¥0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-results" class="text-center py-12">
+                            <div class="text-slate-400">
+                                <svg class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                                </svg>
+                                <p class="text-lg font-medium">输入项目详情</p>
+                                <p class="text-sm">填写上方的尺寸和选项以查看您的成本估算。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">关于混凝土计算器成本</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p class="text-lg text-slate-700 mb-4">
+                        我们的混凝土计算器成本工具为混凝土项目提供全面的成本估算，包括材料、人工和运输费用。这有助于您准确预算建筑项目。
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">成本估算包含的内容</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-slate-900 mb-2">材料</h4>
+                            <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+                                <li>预拌混凝土</li>
+                                <li>运输费用</li>
+                                <li>加固（钢筋）</li>
+                                <li>模板材料</li>
+                                <li>饰面材料</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 mb-2">人工</h4>
+                            <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+                                <li>场地准备</li>
+                                <li>模板安装</li>
+                                <li>混凝土浇筑</li>
+                                <li>饰面工作</li>
+                                <li>清理</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">影响价格的成本因素</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 mb-6">
+                        <li><strong>地区：</strong> 由于材料可用性和人工成本，不同地区的价格差异很大</li>
+                        <li><strong>混凝土类型：</strong> 高强度混凝土每立方码成本更高</li>
+                        <li><strong>饰面类型：</strong> 压花或着色等装饰饰面会显著增加成本</li>
+                        <li><strong>场地访问：</strong> 困难访问可能需要特殊设备或更长的人工时间</li>
+                        <li><strong>项目规模：</strong> 大型项目通常具有更好的规模经济</li>
+                        <li><strong>季节：</strong> 冬季工作可能因加热要求而成本更高</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">平均成本范围（2024年）</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">按项目类型</h4>
+                            <ul class="text-sm text-slate-700 space-y-1">
+                                <li>车道：每平方英尺 ¥28-56</li>
+                                <li>露台：每平方英尺 ¥42-84</li>
+                                <li>基础：每平方英尺 ¥56-105</li>
+                                <li>挡土墙：每平方英尺 ¥140-245</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">按饰面类型</h4>
+                            <ul class="text-sm text-slate-700 space-y-1">
+                                <li>基础饰面：每平方英尺 ¥28-56</li>
+                                <li>光滑饰面：每平方英尺 ¥42-70</li>
+                                <li>压花混凝土：每平方英尺 ¥84-140</li>
+                                <li>彩色混凝土：每平方英尺 ¥56-105</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">降低混凝土成本的技巧</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>从当地承包商获得多个报价</li>
+                        <li>考虑小型项目（50平方英尺以下）的DIY</li>
+                        <li>在淡季规划您的项目</li>
+                        <li>除非需要高强度，否则使用标准混凝土</li>
+                        <li>自己准备场地以降低人工成本</li>
+                        <li>为大型项目批量订购材料</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-include"></div>
+    <script>
+      fetch('/zh/footer.html').then(r=>r.text()).then(html=>{
+        document.getElementById('footer-include').outerHTML=html;
+      });
+    </script>
+    
+    <script>
+        // Concrete Calculator Cost Logic
+        const shapeSelect = document.getElementById('shape');
+        const slabInputs = document.getElementById('slab-inputs');
+        const columnInputs = document.getElementById('column-inputs');
+        const footingInputs = document.getElementById('footing-inputs');
+        const wallInputs = document.getElementById('wall-inputs');
+        const results = document.getElementById('results');
+        const noResults = document.getElementById('no-results');
+        
+        // Cost multipliers by region
+        const regionMultipliers = {
+            'northeast': 1.2,
+            'southeast': 0.9,
+            'midwest': 1.0,
+            'southwest': 0.95,
+            'west': 1.3
+        };
+        
+        // Concrete type costs per cubic yard
+        const concreteCosts = {
+            'standard': 120,
+            'high-strength': 140,
+            'premium': 160,
+            'decorative': 200
+        };
+        
+        // Finish type multipliers
+        const finishMultipliers = {
+            'basic': 1.0,
+            'smooth': 1.2,
+            'stamped': 1.8,
+            'colored': 1.4
+        };
+        
+        // Access difficulty multipliers
+        const accessMultipliers = {
+            'easy': 1.0,
+            'moderate': 1.15,
+            'difficult': 1.35
+        };
+        
+        // Show/hide input sections based on shape
+        shapeSelect.addEventListener('change', function() {
+            slabInputs.classList.add('hidden');
+            columnInputs.classList.add('hidden');
+            footingInputs.classList.add('hidden');
+            wallInputs.classList.add('hidden');
+            
+            switch(this.value) {
+                case 'slab':
+                case 'driveway':
+                case 'patio':
+                    slabInputs.classList.remove('hidden');
+                    break;
+                case 'column':
+                    columnInputs.classList.remove('hidden');
+                    break;
+                case 'footing':
+                    footingInputs.classList.remove('hidden');
+                    break;
+                case 'wall':
+                    wallInputs.classList.remove('hidden');
+                    break;
+            }
+            calculateCost();
+        });
+        
+        // Add event listeners to all inputs
+        const inputs = document.querySelectorAll('input[type="number"], select');
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateCost);
+            input.addEventListener('change', calculateCost);
+        });
+        
+        function calculateCost() {
+            const shape = shapeSelect.value;
+            let volumeCubicFeet = 0;
+            let areaSqFt = 0;
+            
+            switch(shape) {
+                case 'slab':
+                case 'driveway':
+                case 'patio':
+                    const length = parseFloat(document.getElementById('length').value) || 0;
+                    const width = parseFloat(document.getElementById('width').value) || 0;
+                    const thickness = parseFloat(document.getElementById('thickness').value) || 0;
+                    volumeCubicFeet = length * width * (thickness / 12);
+                    areaSqFt = length * width;
+                    break;
+                    
+                case 'column':
+                    const diameter = parseFloat(document.getElementById('diameter').value) || 0;
+                    const height = parseFloat(document.getElementById('height').value) || 0;
+                    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                    const radius = diameter / 2;
+                    volumeCubicFeet = Math.PI * Math.pow(radius / 12, 2) * height * quantity;
+                    areaSqFt = Math.PI * Math.pow(radius / 12, 2) * quantity;
+                    break;
+                    
+                case 'footing':
+                    const footingLength = parseFloat(document.getElementById('footing-length').value) || 0;
+                    const footingWidth = parseFloat(document.getElementById('footing-width').value) || 0;
+                    const footingDepth = parseFloat(document.getElementById('footing-depth').value) || 0;
+                    volumeCubicFeet = footingLength * footingWidth * (footingDepth / 12);
+                    areaSqFt = footingLength * footingWidth;
+                    break;
+                    
+                case 'wall':
+                    const wallLength = parseFloat(document.getElementById('wall-length').value) || 0;
+                    const wallHeight = parseFloat(document.getElementById('wall-height').value) || 0;
+                    const wallThickness = parseFloat(document.getElementById('wall-thickness').value) || 0;
+                    volumeCubicFeet = wallLength * wallHeight * (wallThickness / 12);
+                    areaSqFt = wallLength * wallHeight;
+                    break;
+            }
+            
+            if (volumeCubicFeet > 0) {
+                const volumeCubicYards = volumeCubicFeet / 27;
+                const region = document.getElementById('region').value;
+                const concreteType = document.getElementById('concrete-type').value;
+                const finish = document.getElementById('finish').value;
+                const access = document.getElementById('access').value;
+                
+                // Calculate costs
+                const baseConcreteCost = concreteCosts[concreteType] * volumeCubicYards;
+                const deliveryCost = volumeCubicYards > 10 ? 0 : 150; // Free delivery for large orders
+                const rebarCost = areaSqFt * 2; // $2 per sq ft for rebar
+                const formworkCost = areaSqFt * 3; // $3 per sq ft for formwork
+                
+                const materialsTotal = baseConcreteCost + deliveryCost + rebarCost + formworkCost;
+                
+                // Labor costs
+                const prepCost = areaSqFt * 1.5; // $1.50 per sq ft
+                const formworkLabor = areaSqFt * 2.5; // $2.50 per sq ft
+                const placementCost = volumeCubicYards * 45; // $45 per cubic yard
+                const finishingCost = areaSqFt * 3.5; // $3.50 per sq ft
+                
+                const laborTotal = prepCost + formworkLabor + placementCost + finishingCost;
+                
+                // Apply multipliers
+                const regionMultiplier = regionMultipliers[region];
+                const finishMultiplier = finishMultipliers[finish];
+                const accessMultiplier = accessMultipliers[access];
+                const totalMultiplier = regionMultiplier * finishMultiplier * accessMultiplier;
+                
+                const adjustedMaterialsTotal = materialsTotal * totalMultiplier;
+                const adjustedLaborTotal = laborTotal * totalMultiplier;
+                const totalCost = adjustedMaterialsTotal + adjustedLaborTotal;
+                const costPerSqFt = areaSqFt > 0 ? totalCost / areaSqFt : 0;
+                
+                // Update results
+                document.getElementById('volume-yards').textContent = volumeCubicYards.toFixed(2) + ' 立方码';
+                document.getElementById('area-sqft').textContent = areaSqFt.toFixed(1) + ' 平方英尺';
+                document.getElementById('concrete-type-display').textContent = concreteType.charAt(0).toUpperCase() + concreteType.slice(1);
+                
+                document.getElementById('concrete-cost').textContent = '¥' + baseConcreteCost.toFixed(0);
+                document.getElementById('delivery-cost').textContent = '¥' + deliveryCost.toFixed(0);
+                document.getElementById('rebar-cost').textContent = '¥' + rebarCost.toFixed(0);
+                document.getElementById('formwork-cost').textContent = '¥' + formworkCost.toFixed(0);
+                document.getElementById('materials-total').textContent = '¥' + adjustedMaterialsTotal.toFixed(0);
+                
+                document.getElementById('prep-cost').textContent = '¥' + prepCost.toFixed(0);
+                document.getElementById('formwork-labor').textContent = '¥' + formworkLabor.toFixed(0);
+                document.getElementById('placement-cost').textContent = '¥' + placementCost.toFixed(0);
+                document.getElementById('finishing-cost').textContent = '¥' + finishingCost.toFixed(0);
+                document.getElementById('labor-total').textContent = '¥' + adjustedLaborTotal.toFixed(0);
+                
+                document.getElementById('materials-summary').textContent = '¥' + adjustedMaterialsTotal.toFixed(0);
+                document.getElementById('labor-summary').textContent = '¥' + adjustedLaborTotal.toFixed(0);
+                document.getElementById('total-cost').textContent = '¥' + totalCost.toFixed(0);
+                document.getElementById('cost-per-sqft').textContent = '¥' + costPerSqFt.toFixed(2);
+                
+                results.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

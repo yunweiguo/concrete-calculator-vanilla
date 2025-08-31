@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
+         crossorigin="anonymous"></script>
+
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>混凝土计算器圆柱 - 计算圆柱形混凝土体积</title>
+    <meta name="description" content="计算圆柱形结构如柱子、立柱和sonotube基脚的混凝土体积。免费的圆柱混凝土计算器，提供准确的体积和材料估算。">
+    <meta name="keywords" content="混凝土计算器圆柱, 圆柱形混凝土计算器, 混凝土柱计算器, sonotube混凝土计算器, 桩孔混凝土计算器, 混凝土圆柱体积">
+    <link rel="canonical" href="https://concrete-calculator.pro/zh/concrete-calculator-cylinder.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="混凝土计算器圆柱 - 计算圆柱形混凝土体积">
+    <meta property="og:description" content="计算圆柱形结构如柱子、立柱和sonotube基脚的混凝土体积。免费的圆柱混凝土计算器。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/zh/concrete-calculator-cylinder.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="混凝土计算器圆柱 - 计算圆柱形混凝土体积">
+    <meta name="twitter:description" content="计算圆柱形结构如柱子、立柱和sonotube基脚的混凝土体积。免费的圆柱混凝土计算器。">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "混凝土计算器圆柱",
+      "description": "计算圆柱形结构的混凝土体积",
+      "url": "https://concrete-calculator.pro/zh/concrete-calculator-cylinder.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/zh/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                混凝土计算器圆柱
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                计算圆柱形结构如柱子、立柱和sonotube基脚的混凝土体积。
+            </p>
+        </section>
+        
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入圆柱尺寸</h2>
+                            <p class="text-slate-500 mt-1">测量圆柱的直径和高度。</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="diameter" class="block text-sm font-medium text-slate-700 mb-2">直径（英寸）</label>
+                                <input type="number" id="diameter" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入直径">
+                                <p class="text-xs text-slate-500 mt-1">常见尺寸：8", 10", 12", 16", 18", 24"</p>
+                            </div>
+                            
+                            <div>
+                                <label for="height" class="block text-sm font-medium text-slate-700 mb-2">高度（英尺）</label>
+                                <input type="number" id="height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入高度">
+                            </div>
+                            
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-slate-700 mb-2">圆柱数量</label>
+                                <input type="number" id="quantity" step="1" min="1" value="1" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="输入数量">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-blue-900 mb-2">💡 快速参考</h3>
+                            <div class="text-xs text-blue-800 space-y-1">
+                                <p><strong>Sonotube尺寸：</strong> 8", 10", 12", 16", 18", 24" 直径</p>
+                                <p><strong>典型深度：</strong> 甲板柱3-4英尺，结构柱6-8英尺</p>
+                                <p><strong>常见应用：</strong> 甲板柱、围栏柱、结构柱、路灯杆</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">2. 结果</h2>
+                            <p class="text-slate-500 mt-1">您的圆柱形混凝土计算结果。</p>
+                        </div>
+                        
+                        <div id="results" class="space-y-4 hidden">
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">混凝土体积</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">每个圆柱体积：</span>
+                                        <span id="volume-per" class="font-semibold text-slate-900">0 立方英尺</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">总体积：</span>
+                                        <span id="volume-total" class="font-semibold text-slate-900">0 立方英尺</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">总计（立方码）：</span>
+                                        <span id="volume-yards" class="font-semibold text-slate-900">0 立方码</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">总计（立方米）：</span>
+                                        <span id="volume-meters" class="font-semibold text-slate-900">0 立方米</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">预拌混凝土</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">包含10%损耗：</span>
+                                        <span id="volume-waste" class="font-semibold text-slate-900">0 立方码</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">卡车装载量（10 立方码）：</span>
+                                        <span id="truck-loads" class="font-semibold text-slate-900">0 车</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">混凝土袋</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">需要60磅袋：</span>
+                                        <span id="bags-60" class="font-semibold text-slate-900">0 袋</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">需要80磅袋：</span>
+                                        <span id="bags-80" class="font-semibold text-slate-900">0 袋</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">包含10%损耗：</span>
+                                        <span id="bags-waste" class="font-semibold text-slate-900">0 袋</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">材料（如果自己搅拌）</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">水泥（94磅袋）：</span>
+                                        <span id="cement-bags" class="font-semibold text-slate-900">0 袋</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">砂（吨）：</span>
+                                        <span id="sand-tons" class="font-semibold text-slate-900">0 吨</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">石子（吨）：</span>
+                                        <span id="gravel-tons" class="font-semibold text-slate-900">0 吨</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-results" class="text-center py-12">
+                            <div class="text-slate-400">
+                                <svg class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-lg font-medium">输入圆柱尺寸</p>
+                                <p class="text-sm">填写直径和高度以计算混凝土体积。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">关于混凝土计算器圆柱</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p class="text-lg text-slate-700 mb-4">
+                        我们的混凝土计算器圆柱工具专门用于计算圆柱形结构中的混凝土体积。这非常适合柱子、立柱、sonotube基脚和其他圆形混凝土元素。
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">常见圆柱形应用</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 mb-6">
+                        <li><strong>甲板柱：</strong> 甲板和门廊的支撑柱</li>
+                        <li><strong>围栏柱：</strong> 围栏安装的混凝土基脚</li>
+                        <li><strong>结构柱：</strong> 建筑物中的承重柱</li>
+                        <li><strong>Sonotube基脚：</strong> 基础的圆形混凝土模板</li>
+                        <li><strong>路灯杆：</strong> 街道灯和停车场灯的基础</li>
+                        <li><strong>旗杆：</strong> 旗杆安装的混凝土基础</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">如何测量您的圆柱</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-700 mb-6">
+                        <li><strong>直径：</strong> 测量圆柱最宽部分的宽度（模板的内径）</li>
+                        <li><strong>高度：</strong> 测量从底部到顶部的混凝土结构高度</li>
+                        <li><strong>数量：</strong> 计算您需要的相同圆柱数量</li>
+                    </ol>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">标准Sonotube尺寸</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">小型项目</h4>
+                            <ul class="text-sm text-slate-700 space-y-1">
+                                <li>8" 直径 - 小柱子、灯具</li>
+                                <li>10" 直径 - 甲板柱、小围栏</li>
+                                <li>12" 直径 - 标准甲板柱</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">大型项目</h4>
+                            <ul class="text-sm text-slate-700 space-y-1">
+                                <li>16" 直径 - 大型甲板柱、结构柱</li>
+                                <li>18" 直径 - 重型结构支撑</li>
+                                <li>24" 直径 - 大型结构柱</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">圆柱形混凝土提示</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>始终添加10%损耗以应对溢出和不平整地面</li>
+                        <li>对于sonotube基脚，测量模板的内径</li>
+                        <li>考虑对小数量（1立方码以下）使用混凝土袋</li>
+                        <li>为大型项目或多个圆柱订购预拌混凝土</li>
+                        <li>确保结构应用有适当的加固（钢筋）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-include"></div>
+    <script>
+      fetch('/zh/footer.html').then(r=>r.text()).then(html=>{
+        document.getElementById('footer-include').outerHTML=html;
+      });
+    </script>
+    
+    <script>
+        // Concrete Calculator Cylinder Logic
+        const diameterInput = document.getElementById('diameter');
+        const heightInput = document.getElementById('height');
+        const quantityInput = document.getElementById('quantity');
+        const results = document.getElementById('results');
+        const noResults = document.getElementById('no-results');
+        
+        // Add event listeners to all inputs
+        [diameterInput, heightInput, quantityInput].forEach(input => {
+            input.addEventListener('input', calculateCylinder);
+        });
+        
+        function calculateCylinder() {
+            const diameter = parseFloat(diameterInput.value) || 0;
+            const height = parseFloat(heightInput.value) || 0;
+            const quantity = parseInt(quantityInput.value) || 1;
+            
+            if (diameter > 0 && height > 0) {
+                const radius = diameter / 2;
+                const volumePerCylinder = Math.PI * Math.pow(radius / 12, 2) * height; // Convert inches to feet
+                const totalVolume = volumePerCylinder * quantity;
+                const totalCubicYards = totalVolume / 27;
+                const totalCubicMeters = totalVolume * 0.0283168;
+                const volumeWithWaste = totalCubicYards * 1.1;
+                const truckLoads = Math.ceil(volumeWithWaste / 10);
+                
+                // Bag calculations
+                const bags60 = Math.ceil(totalVolume / 0.45); // 60lb bag = 0.45 cubic feet
+                const bags80 = Math.ceil(totalVolume / 0.6); // 80lb bag = 0.6 cubic feet
+                const bagsWithWaste = Math.ceil(bags60 * 1.1);
+                
+                // Materials calculation (1:2:3 mix ratio)
+                const cementBags = Math.ceil(totalCubicYards * 6.5); // 6.5 bags per cubic yard
+                const sandTons = (totalCubicYards * 1.35).toFixed(1); // 1.35 tons per cubic yard
+                const gravelTons = (totalCubicYards * 2.7).toFixed(1); // 2.7 tons per cubic yard
+                
+                // Update results
+                document.getElementById('volume-per').textContent = volumePerCylinder.toFixed(2) + ' 立方英尺';
+                document.getElementById('volume-total').textContent = totalVolume.toFixed(2) + ' 立方英尺';
+                document.getElementById('volume-yards').textContent = totalCubicYards.toFixed(2) + ' 立方码';
+                document.getElementById('volume-meters').textContent = totalCubicMeters.toFixed(2) + ' 立方米';
+                document.getElementById('volume-waste').textContent = volumeWithWaste.toFixed(2) + ' 立方码';
+                document.getElementById('truck-loads').textContent = truckLoads + ' 车';
+                document.getElementById('bags-60').textContent = bags60 + ' 袋';
+                document.getElementById('bags-80').textContent = bags80 + ' 袋';
+                document.getElementById('bags-waste').textContent = bagsWithWaste + ' 袋 (60磅)';
+                document.getElementById('cement-bags').textContent = cementBags + ' 袋';
+                document.getElementById('sand-tons').textContent = sandTons + ' 吨';
+                document.getElementById('gravel-tons').textContent = gravelTons + ' 吨';
+                
+                results.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
