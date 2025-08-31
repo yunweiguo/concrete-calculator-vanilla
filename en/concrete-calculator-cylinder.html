@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
+         crossorigin="anonymous"></script>
+
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>Concrete Calculator Cylinder - Calculate Cylindrical Concrete Volume</title>
+    <meta name="description" content="Calculate concrete volume for cylindrical structures like columns, posts, and sonotube footings. Free cylinder concrete calculator with accurate volume and material estimates.">
+    <meta name="keywords" content="concrete calculator cylinder, cylindrical concrete calculator, concrete column calculator, sonotube concrete calculator, post hole concrete calculator, concrete cylinder volume">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/concrete-calculator-cylinder.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="Concrete Calculator Cylinder - Calculate Cylindrical Concrete Volume">
+    <meta property="og:description" content="Calculate concrete volume for cylindrical structures like columns, posts, and sonotube footings. Free cylinder concrete calculator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/concrete-calculator-cylinder.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Concrete Calculator Cylinder - Calculate Cylindrical Concrete Volume">
+    <meta name="twitter:description" content="Calculate concrete volume for cylindrical structures like columns, posts, and sonotube footings. Free cylinder concrete calculator.">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Concrete Calculator Cylinder",
+      "description": "Calculate concrete volume for cylindrical structures",
+      "url": "https://concrete-calculator.pro/en/concrete-calculator-cylinder.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/en/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Concrete Calculator Cylinder
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Calculate concrete volume for cylindrical structures like columns, posts, and sonotube footings.
+            </p>
+        </section>
+        
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Cylinder Dimensions</h2>
+                            <p class="text-slate-500 mt-1">Measure the diameter and height of your cylinder.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="diameter" class="block text-sm font-medium text-slate-700 mb-2">Diameter (inches)</label>
+                                <input type="number" id="diameter" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter diameter">
+                                <p class="text-xs text-slate-500 mt-1">Common sizes: 8", 10", 12", 16", 18", 24"</p>
+                            </div>
+                            
+                            <div>
+                                <label for="height" class="block text-sm font-medium text-slate-700 mb-2">Height (feet)</label>
+                                <input type="number" id="height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter height">
+                            </div>
+                            
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-slate-700 mb-2">Number of Cylinders</label>
+                                <input type="number" id="quantity" step="1" min="1" value="1" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter quantity">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-blue-900 mb-2">💡 Quick Reference</h3>
+                            <div class="text-xs text-blue-800 space-y-1">
+                                <p><strong>Sonotube sizes:</strong> 8", 10", 12", 16", 18", 24" diameter</p>
+                                <p><strong>Typical depths:</strong> 3-4 feet for deck posts, 6-8 feet for structural columns</p>
+                                <p><strong>Common applications:</strong> Deck posts, fence posts, structural columns, light poles</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">2. Results</h2>
+                            <p class="text-slate-500 mt-1">Your cylindrical concrete calculation.</p>
+                        </div>
+                        
+                        <div id="results" class="space-y-4 hidden">
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Concrete Volume</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Volume per cylinder:</span>
+                                        <span id="volume-per" class="font-semibold text-slate-900">0 cubic feet</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Total volume:</span>
+                                        <span id="volume-total" class="font-semibold text-slate-900">0 cubic feet</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Total (cubic yards):</span>
+                                        <span id="volume-yards" class="font-semibold text-slate-900">0 cubic yards</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Total (cubic meters):</span>
+                                        <span id="volume-meters" class="font-semibold text-slate-900">0 cubic meters</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Ready-Mix Concrete</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">With 10% waste factor:</span>
+                                        <span id="volume-waste" class="font-semibold text-slate-900">0 cubic yards</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Truck loads (10 yd³):</span>
+                                        <span id="truck-loads" class="font-semibold text-slate-900">0 loads</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Concrete Bags</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">60lb bags needed:</span>
+                                        <span id="bags-60" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">80lb bags needed:</span>
+                                        <span id="bags-80" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">With 10% waste factor:</span>
+                                        <span id="bags-waste" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Materials (if mixing yourself)</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Cement (94lb bags):</span>
+                                        <span id="cement-bags" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Sand (tons):</span>
+                                        <span id="sand-tons" class="font-semibold text-slate-900">0 tons</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Gravel (tons):</span>
+                                        <span id="gravel-tons" class="font-semibold text-slate-900">0 tons</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-results" class="text-center py-12">
+                            <div class="text-slate-400">
+                                <svg class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-lg font-medium">Enter cylinder dimensions</p>
+                                <p class="text-sm">Fill in the diameter and height to calculate concrete volume.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">About Concrete Calculator Cylinder</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p class="text-lg text-slate-700 mb-4">
+                        Our concrete calculator cylinder tool is specifically designed for calculating concrete volume in cylindrical structures. This is perfect for columns, posts, sonotube footings, and other round concrete elements.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Common Cylindrical Applications</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 mb-6">
+                        <li><strong>Deck Posts:</strong> Support columns for decks and porches</li>
+                        <li><strong>Fence Posts:</strong> Concrete footings for fence installations</li>
+                        <li><strong>Structural Columns:</strong> Load-bearing columns in buildings</li>
+                        <li><strong>Sonotube Footings:</strong> Round concrete forms for foundations</li>
+                        <li><strong>Light Poles:</strong> Street light and parking lot light foundations</li>
+                        <li><strong>Flag Poles:</strong> Concrete bases for flag pole installations</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">How to Measure Your Cylinder</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-700 mb-6">
+                        <li><strong>Diameter:</strong> Measure across the widest part of the cylinder (inside diameter for forms)</li>
+                        <li><strong>Height:</strong> Measure from bottom to top of the concrete structure</li>
+                        <li><strong>Quantity:</strong> Count how many identical cylinders you need</li>
+                    </ol>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Standard Sonotube Sizes</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">Small Projects</h4>
+                            <ul class="text-sm text-slate-700 space-y-1">
+                                <li>8" diameter - Small posts, light fixtures</li>
+                                <li>10" diameter - Deck posts, small fences</li>
+                                <li>12" diameter - Standard deck posts</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">Large Projects</h4>
+                            <ul class="text-sm text-slate-700 space-y-1">
+                                <li>16" diameter - Large deck posts, structural columns</li>
+                                <li>18" diameter - Heavy structural support</li>
+                                <li>24" diameter - Large structural columns</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Tips for Cylindrical Concrete</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Always add 10% waste factor for spillage and uneven ground</li>
+                        <li>For sonotube footings, measure the inside diameter of the form</li>
+                        <li>Consider using concrete bags for small quantities (under 1 cubic yard)</li>
+                        <li>Order ready-mix concrete for larger projects or multiple cylinders</li>
+                        <li>Ensure proper reinforcement (rebar) for structural applications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-include"></div>
+    <script>
+      fetch('/en/footer.html').then(r=>r.text()).then(html=>{
+        document.getElementById('footer-include').outerHTML=html;
+      });
+    </script>
+    
+    <script>
+        // Concrete Calculator Cylinder Logic
+        const diameterInput = document.getElementById('diameter');
+        const heightInput = document.getElementById('height');
+        const quantityInput = document.getElementById('quantity');
+        const results = document.getElementById('results');
+        const noResults = document.getElementById('no-results');
+        
+        // Add event listeners to all inputs
+        [diameterInput, heightInput, quantityInput].forEach(input => {
+            input.addEventListener('input', calculateCylinder);
+        });
+        
+        function calculateCylinder() {
+            const diameter = parseFloat(diameterInput.value) || 0;
+            const height = parseFloat(heightInput.value) || 0;
+            const quantity = parseInt(quantityInput.value) || 1;
+            
+            if (diameter > 0 && height > 0) {
+                const radius = diameter / 2;
+                const volumePerCylinder = Math.PI * Math.pow(radius / 12, 2) * height; // Convert inches to feet
+                const totalVolume = volumePerCylinder * quantity;
+                const totalCubicYards = totalVolume / 27;
+                const totalCubicMeters = totalVolume * 0.0283168;
+                const volumeWithWaste = totalCubicYards * 1.1;
+                const truckLoads = Math.ceil(volumeWithWaste / 10);
+                
+                // Bag calculations
+                const bags60 = Math.ceil(totalVolume / 0.45); // 60lb bag = 0.45 cubic feet
+                const bags80 = Math.ceil(totalVolume / 0.6); // 80lb bag = 0.6 cubic feet
+                const bagsWithWaste = Math.ceil(bags60 * 1.1);
+                
+                // Materials calculation (1:2:3 mix ratio)
+                const cementBags = Math.ceil(totalCubicYards * 6.5); // 6.5 bags per cubic yard
+                const sandTons = (totalCubicYards * 1.35).toFixed(1); // 1.35 tons per cubic yard
+                const gravelTons = (totalCubicYards * 2.7).toFixed(1); // 2.7 tons per cubic yard
+                
+                // Update results
+                document.getElementById('volume-per').textContent = volumePerCylinder.toFixed(2) + ' cubic feet';
+                document.getElementById('volume-total').textContent = totalVolume.toFixed(2) + ' cubic feet';
+                document.getElementById('volume-yards').textContent = totalCubicYards.toFixed(2) + ' cubic yards';
+                document.getElementById('volume-meters').textContent = totalCubicMeters.toFixed(2) + ' cubic meters';
+                document.getElementById('volume-waste').textContent = volumeWithWaste.toFixed(2) + ' cubic yards';
+                document.getElementById('truck-loads').textContent = truckLoads + ' loads';
+                document.getElementById('bags-60').textContent = bags60 + ' bags';
+                document.getElementById('bags-80').textContent = bags80 + ' bags';
+                document.getElementById('bags-waste').textContent = bagsWithWaste + ' bags (60lb)';
+                document.getElementById('cement-bags').textContent = cementBags + ' bags';
+                document.getElementById('sand-tons').textContent = sandTons + ' tons';
+                document.getElementById('gravel-tons').textContent = gravelTons + ' tons';
+                
+                results.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
