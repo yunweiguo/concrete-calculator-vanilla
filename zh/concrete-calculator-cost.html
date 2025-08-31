@@ -75,6 +75,46 @@
       "operatingSystem": "Web Browser"
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "混凝土每平方英尺多少钱？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "混凝土成本通常为基本项目每平方英尺¥28-56，装饰饰面¥42-84，压花混凝土¥56-140。成本因地区和项目复杂性而异。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "影响混凝土价格的因素有哪些？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "关键因素包括：混凝土类型（标准vs高强度）、饰面类型（基础vs装饰）、地区/位置、场地访问性、项目规模和季节性需求。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "混凝土车道多少钱？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "混凝土车道通常每平方英尺安装成本¥28-56。20x20车道（400平方英尺）包括材料和人工大约需要¥1,600-3,200。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "DIY混凝土还是雇佣承包商更便宜？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DIY可以节省40-60%的人工成本，但需要适当的工具、技能和时间。对于大型项目或复杂饰面，建议雇佣专业人员以确保质量和保修。"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -114,6 +154,25 @@
       });
     </script>
     <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/zh/" class="hover:text-brand-primary transition-colors">首页</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/zh/#calculators" class="hover:text-brand-primary transition-colors">计算器</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">成本计算器</span>
+                </li>
+            </ol>
+        </nav>
+        
         <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 混凝土计算器成本与价格

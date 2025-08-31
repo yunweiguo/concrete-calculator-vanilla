@@ -75,6 +75,46 @@
       "operatingSystem": "Web Browser"
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "如何计算混凝土立方码？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "使用我们的立方码计算器，输入项目的长度、宽度和厚度。计算器会自动转换为立方码并提供材料估算。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "一辆混凝土卡车能装多少立方码？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大多数混凝土卡车可装载10立方码混凝土。对于大型项目，可能需要多车次运输。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "立方英尺和立方码有什么区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1立方码等于27立方英尺。立方码是从供应商订购预拌混凝土的标准单位。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "20x20的板需要多少混凝土？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "对于20x20、4英寸厚的板：20 × 20 × (4/12) = 133.33立方英尺 = 4.94立方码。加上10%损耗 = 5.43立方码。"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -114,6 +154,25 @@
       });
     </script>
     <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/zh/" class="hover:text-brand-primary transition-colors">首页</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/zh/#calculators" class="hover:text-brand-primary transition-colors">计算器</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">立方码计算器</span>
+                </li>
+            </ol>
+        </nav>
+        
         <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 混凝土计算器立方码

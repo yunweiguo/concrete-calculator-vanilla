@@ -75,6 +75,46 @@
       "operatingSystem": "Web Browser"
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does concrete cost per square foot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Concrete costs typically range from $4-8 per square foot for basic projects, $6-12 for decorative finishes, and $8-18 for stamped concrete. Costs vary by region and project complexity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What factors affect concrete pricing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Key factors include: concrete type (standard vs. high-strength), finish type (basic vs. decorative), region/location, site accessibility, project size, and seasonal demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a concrete driveway cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A concrete driveway typically costs $4-8 per square foot installed. A 20x20 driveway (400 sq ft) would cost approximately $1,600-3,200 including materials and labor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it cheaper to DIY concrete or hire a contractor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DIY can save 40-60% on labor costs, but requires proper tools, skills, and time. For large projects or complex finishes, hiring a professional is recommended for quality and warranty."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -114,6 +154,25 @@
       });
     </script>
     <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Cost Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
         <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Concrete Calculator Cost & Pricing

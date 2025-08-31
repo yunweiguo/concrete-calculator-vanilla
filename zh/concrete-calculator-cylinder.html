@@ -75,6 +75,46 @@
       "operatingSystem": "Web Browser"
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "如何计算圆柱形柱子的混凝土？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "测量圆柱的直径和高度。使用我们的计算器输入这些测量值，它将使用公式 π × (半径)² × 高度 计算体积。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "常见的sonotube尺寸有哪些？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "常见的sonotube尺寸有8\"、10\"、12\"、16\"、18\"和24\"直径。根据项目要求和承重需求选择。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "12\" sonotube需要多少混凝土？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "对于4英尺深的12\" sonotube：体积 = π × (6/12)² × 4 = 3.14立方英尺 = 0.12立方码。加上10%损耗 = 0.13立方码。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "混凝土柱子需要钢筋吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "是的，建议在结构柱中使用钢筋以提供抗拉强度。大多数住宅应用使用#4或#5钢筋。"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -114,6 +154,25 @@
       });
     </script>
     <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/zh/" class="hover:text-brand-primary transition-colors">首页</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/zh/#calculators" class="hover:text-brand-primary transition-colors">计算器</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">圆柱计算器</span>
+                </li>
+            </ol>
+        </nav>
+        
         <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 混凝土计算器圆柱

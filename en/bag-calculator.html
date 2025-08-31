@@ -64,7 +64,10 @@
             outline-offset: 2px;
         }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of concrete do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Use our bag calculator by entering your project dimensions. The calculator will determine the exact number of 60lb or 80lb bags needed for your project."}}, {"@type": "Question", "name": "What is the difference between 60lb and 80lb bags?", "acceptedAnswer": {"@type": "Answer", "text": "60lb bags cover about 0.45 cubic feet, while 80lb bags cover about 0.6 cubic feet. 80lb bags are more cost-effective for larger projects."}}, {"@type": "Question", "name": "How much does a bag of concrete cost?", "acceptedAnswer": {"@type": "Answer", "text": "60lb bags typically cost $3-5, while 80lb bags cost $4-7. Prices vary by location and brand. Quikrete and Sakrete are popular brands."}}, {"@type": "Question", "name": "Can I mix concrete bags by hand?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can mix concrete bags by hand for small projects. Use a wheelbarrow or mixing tub, add water gradually, and mix thoroughly until uniform."}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
     <script>
@@ -114,7 +117,26 @@
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Bag Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Concrete Bag Calculator
             </h1>
