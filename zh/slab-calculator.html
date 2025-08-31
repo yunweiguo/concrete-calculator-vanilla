@@ -23,8 +23,9 @@
     </script>
 
     <!-- SEO Meta Tags -->
-    <title>混凝土板/垫计算器 - 体积与成本</title>
-    <meta name="description" content="精确计算混凝土板或垫的体积、混凝土袋数和总成本。适用于露台、车道和地基。">
+    <title>混凝土板计算器 & 成本估算器</title>
+    <meta name="description" content="使用我们的免费混凝土板计算器和成本估算器，精确计算混凝土板或垫方的体积、袋数和总成本。">
+    <meta name="keywords" content="混凝土计算器, 水泥计算器, 混凝土板计算器, 混凝土方量计算, 成本估算, concrete calculator, concrete calculatro, concrete calculater">
     <link rel="canonical" href="https://concrete-calculator.pro/zh/slab-calculator.html">
 
     <link rel="alternate" hreflang="en" href="https://concrete-calculator.pro/en/slab-calculator.html">
@@ -32,16 +33,16 @@
     <link rel="alternate" hreflang="x-default" href="https://concrete-calculator.pro/en/slab-calculator.html">
 
     <!-- Social Media Meta Tags (Open Graph) -->
-    <meta property="og:title" content="混凝土板/垫计算器 - 体积与成本">
-    <meta property="og:description" content="精确计算混凝土板或垫的体积、混凝土袋数和总成本。适用于露台、车道和地基。">
+    <meta property="og:title" content="混凝土板计算器 & 成本估算器">
+    <meta property="og:description" content="使用我们的免费混凝土板计算器和成本估算器，精确计算混凝土板或垫方的体积、袋数和总成本。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://concrete-calculator.pro/zh/slab-calculator.html">
     <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="混凝土板/垫计算器 - 体积与成本">
-    <meta name="twitter:description" content="精确计算混凝土板或垫的体积、混凝土袋数和总成本。适用于露台、车道和地基。">
+    <meta name="twitter:title" content="混凝土板计算器 & 成本估算器">
+    <meta name="twitter:description" content="使用我们的免费混凝土板计算器和成本估算器，精确计算混凝土板或垫方的体积、袋数和总成本。">
     <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -142,7 +143,7 @@
                     <!-- Left Side: Inputs -->
                     <div class="space-y-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-slate-900">1. 输入混凝土板尺寸</h2>
+                            <h2 class="text-2xl font-bold text-slate-900">输入尺寸</h2>
                             <p class="text-slate-500 mt-1">选择您的单位系统开始。</p>
                         </div>
 
@@ -193,7 +194,7 @@
                     <!-- Right Side: Results -->
                     <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
                         <div class="flex justify-between items-center">
-                            <h2 class="text-2xl font-bold text-slate-900">2. 获取结果</h2>
+                            <h2 class="text-2xl font-bold text-slate-900">计算结果</h2>
                              <div class="flex gap-2">
                                 <button id="copy-btn" title="复制结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
@@ -209,6 +210,21 @@
                                  </button>
                             </div>
                         </div>
+                        
+                        <!-- Cost Estimation -->
+                        <div class="space-y-2">
+                            <label for="cost-per-unit" class="text-sm font-medium text-slate-700">估算成本 (<span class="text-xs">可选</span>)</label>
+                            <div class="relative">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <span class="text-slate-500 sm:text-sm">¥</span>
+                                </div>
+                                <input type="number" id="cost-per-unit" placeholder="500" class="block w-full rounded-lg border border-slate-300 bg-white py-2 pl-7 pr-12 focus:border-brand-secondary focus:ring-brand-secondary">
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <span class="text-slate-500 sm:text-sm" id="cost-unit-label">/ m³</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
                            <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3.333A3.333 3.333 0 0012.667 11H11.333A3.333 3.333 0 008 13.667V17m0-10a3 3 0 013-3h2a3 3 0 013 3v1.333A3.333 3.333 0 0117.333 11H6.667A3.333 3.333 0 014.333 8.333V7a3 3 0 013-3z"></path></svg>
                            <p class="font-semibold text-slate-500">您的结果将显示在这里。</p>
