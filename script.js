@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const slabWidthInput = document.getElementById('slab-width');
     const rebarSpacingInput = document.getElementById('rebar-spacing');
     const rebarSizeSelect = document.getElementById('rebar-size');
+    const costPerLengthInput = document.getElementById('cost-per-length');
+    const costPerPieceInput = document.getElementById('cost-per-piece');
 
     // New elements for Stairs Calculator
     const stairsWidthInput = document.getElementById('stairs-width');
@@ -485,6 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const width = parseFloat(slabWidthInput.value);
         let spacing = parseFloat(rebarSpacingInput.value);
         const rebarSize = rebarSizeSelect.value;
+        const costPerLength = costPerLengthInput ? parseFloat(costPerLengthInput.value) : 0;
+        const costPerPiece = costPerPieceInput ? parseFloat(costPerPieceInput.value) : 0;
         
         if (isNaN(length) || isNaN(width) || isNaN(spacing) || length <= 0 || width <= 0 || spacing <= 0) {
             resultsOutput.innerHTML = `<p class="text-red-500">Please enter valid dimensions and spacing.</p>`;
@@ -513,7 +517,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const lengthUnit = unit === 'metric' ? 'm' : 'ft';
         const weightUnit = unit === 'metric' ? 'kg' : 'lbs';
 
+        let costHtml = '';
+        if (costPerPiece > 0) {
+            const totalCost = totalPieces * costPerPiece;
+            const currencySymbol = getLang() === 'zh' ? '¥' : '$';
+            costHtml = `
+            <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
+                <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+            </div>
+            `;
+        } else if (costPerLength > 0) {
+            const totalLength = unit === 'metric' ? totalLength_m : totalLength_ft;
+            const totalCost = totalLength * costPerLength;
+            const currencySymbol = getLang() === 'zh' ? '¥' : '$';
+            costHtml = `
+            <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
+                <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+            </div>
+            `;
+        }
+
         resultsOutput.innerHTML = `
+            ${costHtml}
             <div class="space-y-4 w-full">
                 <div class="text-center">
                     <p class="text-lg text-slate-600">Total Rebar Length</p>
