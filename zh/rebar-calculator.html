@@ -22,21 +22,22 @@
     </script>
 
     <!-- SEO Meta Tags -->
-    <title>钢筋计算器 - 计算混凝土板中的钢筋用量</title>
-    <meta name="description" content="快速计算您的混凝土板项目所需的钢筋总长度、根数和重量。支持多种钢筋尺寸和间距。">
+    <title>钢筋计算器 & 混凝土板成本估算</title>
+    <meta name="description" content="使用我们的免费钢筋计算器和成本估算器，计算您的混凝土板项目所需的钢筋总长度、重量和成本。">
+    <meta name="keywords" content="钢筋计算器, 钢筋估算器, 混凝土钢筋计算器, 钢筋成本计算器, 板配筋">
     <link rel="canonical" href="https://concrete-calculator.pro/zh/rebar-calculator.html">
 
     <!-- Social Media Meta Tags -->
-    <meta property="og:title" content="钢筋计算器 - 计算混凝土板中的钢筋用量">
-    <meta property="og:description" content="根据您的尺寸计算混凝土板所需的钢筋，包括总长度、重量和钢筋根数。">
+    <meta property="og:title" content="钢筋计算器 & 混凝土板成本估算">
+    <meta property="og:description" content="使用我们的免费钢筋计算器和成本估算器，计算您的混凝土板项目所需的钢筋总长度、重量和成本。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://concrete-calculator.pro/zh/rebar-calculator.html">
     <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="钢筋计算器 - 计算混凝土板中的钢筋用量">
-    <meta name="twitter:description" content="根据您的尺寸计算混凝土板所需的钢筋，包括总长度、重量和钢筋根数。">
+    <meta name="twitter:title" content="钢筋计算器 & 混凝土板成本估算">
+    <meta name="twitter:description" content="使用我们的免费钢筋计算器和成本估算器，计算您的混凝土板项目所需的钢筋总长度、重量和成本。">
     <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -95,7 +96,7 @@
                 钢筋计算器
             </h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-                估算混凝土板网格中所需的钢筋用量。
+                估算混凝土板网格所需的钢筋数量。
             </p>
         </section>
 
@@ -105,7 +106,7 @@
                     <!-- Left Side: Inputs -->
                     <div class="space-y-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-slate-900">1. 输入板坯和钢筋详情</h2>
+                            <h2 class="text-2xl font-bold text-slate-900">1. 输入板和钢筋的详细信息</h2>
                             <p class="text-slate-500 mt-1">选择单位并输入您的项目规格。</p>
                         </div>
 
@@ -124,22 +125,22 @@
                                 <input type="number" id="slab-width" value="6" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                             <div>
-                                <label for="rebar-spacing" class="text-sm font-medium text-slate-700">钢筋间距 (中到中) (<span class="unit-label-small-dist">mm</span>)</label>
-                                <input type="number" id="rebar-spacing" value="300" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                                <label for="rebar-spacing" class="text-sm font-medium text-slate-700">钢筋间距，中心到中心 (<span class="unit-label-small-dist">mm</span>)</label>
+                                <input type="number" id="rebar-spacing" value="450" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
                             </div>
                              <div>
                                 <label for="rebar-size" class="text-sm font-medium text-slate-700">钢筋尺寸</label>
                                 <select id="rebar-size" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                                    <optgroup label="公制">
-                                        <option value="10M">10M (11.3mm)</option>
-                                        <option value="15M" selected>15M (16.0mm)</option>
-                                        <option value="20M">20M (19.5mm)</option>
-                                    </optgroup>
                                     <optgroup label="英制 (US)" class="hidden">
                                         <option value="3">#3 (3/8")</option>
                                         <option value="4">#4 (1/2")</option>
                                         <option value="5">#5 (5/8")</option>
                                         <option value="6">#6 (3/4")</option>
+                                    </optgroup>
+                                    <optgroup label="公制">
+                                        <option value="10M">10M (11.3mm)</option>
+                                        <option value="15M" selected>15M (16.0mm)</option>
+                                        <option value="20M">20M (19.5mm)</option>
                                     </optgroup>
                                 </select>
                             </div>
@@ -149,7 +150,7 @@
                     <!-- Right Side: Results -->
                     <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
                         <div class="flex justify-between items-center">
-                            <h2 class="text-2xl font-bold text-slate-900">2. 钢筋估算结果</h2>
+                            <h2 class="text-2xl font-bold text-slate-900">2. 钢筋估算</h2>
                              <div class="flex gap-2">
                                 <button id="copy-btn" title="复制结果" class="text-slate-500 hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
@@ -162,6 +163,30 @@
                                  </button>
                             </div>
                         </div>
+
+                        <!-- Cost Estimation -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="space-y-2">
+                                <label for="cost-per-length" class="text-sm font-medium text-slate-700">每米成本 <span class="text-xs">(可选)</span></label>
+                                <div class="relative">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span class="text-slate-500 sm:text-sm">¥</span>
+                                    </div>
+                                    <input type="number" id="cost-per-length" placeholder="4.00" class="block w-full rounded-lg border border-slate-300 bg-white py-2 pl-7 focus:border-brand-secondary focus:ring-brand-secondary">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="cost-per-piece" class="text-sm font-medium text-slate-700">每根成本 <span class="text-xs">(可选)</span></label>
+                                 <div class="relative">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span class="text-slate-500 sm:text-sm">¥</span>
+                                    </div>
+                                    <input type="number" id="cost-per-piece" placeholder="30.00" class="block w-full rounded-lg border border-slate-300 bg-white py-2 pl-7 focus:border-brand-secondary focus:ring-brand-secondary">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 -mt-3">只需填写一个。如果两项都填写，将优先使用“每根成本”进行计算。</p>
+
                         <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
                            <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" /></svg>
                            <p class="font-semibold text-slate-500">您的结果将显示在这里。</p>
@@ -174,27 +199,27 @@
                         计算
                     </button>
                 </div>
-                <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto">* 估算值为单层网格，不包括搭接长度或损耗。对于结构性项目，请务必咨询工程师。</p>
+                <p class="text-xs text-slate-400 mt-4 text-center max-w-md mx-auto">* 估算基于单层网格，不包括搭接长度或损耗。结构性项目请务必咨询工程师。</p>
             </div>
         </section>
 
         <section class="mt-16 prose max-w-4xl mx-auto">
-            <h2>如何计算板坯的钢筋</h2>
-            <p>钢筋（Rebar）对于增加混凝土的抗拉强度、防止裂缝和结构失效至关重要。本计算器可帮助您估算混凝土板中标准网格布局所需的钢筋总量。</p>
+            <h2>如何计算板坯钢筋</h2>
+            <p>钢筋（Rebar）对于增加混凝土的抗拉强度、防止裂缝和结构破坏至关重要。本计算器可帮助您估算混凝土板中标准网格模式所需的钢筋总量。</p>
             
             <h3>计算步骤：</h3>
             <ol>
-                <li><strong>确定网格面积：</strong> 输入您的混凝土板的总长度和宽度。</li>
-                <li><strong>设置间距：</strong> 输入钢筋网格的中心间距（例如 300 毫米）。这是从一根钢筋的中心到下一根钢筋中心的距离。</li>
-                <li><strong>计算钢筋数量：</strong> 计算器确定网格每个方向需要多少根钢筋。例如，对于一个 6 米的板，间距为 300 毫米，您需要 `6000mm / 300mm = 20` 根。通常会额外增加一根，所以我们计算 `floor(尺寸 / 间距) + 1`。</li>
-                <li><strong>总长度和重量：</strong> 它将钢筋数量乘以每次运行的长度，以得出总线性长度。然后使用所选钢筋尺寸的标准每米重量计算总重量。</li>
+                <li><strong>确定网格面积：</strong>输入混凝土板的总长度和宽度。</li>
+                <li><strong>设置间距：</strong>输入钢筋网格的中心间距（例如 450 毫米）。这是从一根钢筋的中心到下一根钢筋中心的距离。</li>
+                <li><strong>计算钢筋数量：</strong>计算器确定网格的每个方向需要多少根钢筋。例如，对于一个6米长的板，间距为450毫米，您需要 `6000mm / 450mm = 13.33`，向上取整为14根。通常会额外增加一根，所以我们计算 `floor(尺寸 / 间距) + 1`。</li>
+                <li><strong>总长度和重量：</strong>将钢筋数量乘以每次铺设的长度，得出总线性长度。然后使用所选钢筋尺寸的标准每米重量计算总重量。</li>
             </ol>
 
             <h3>关键注意事项：</h3>
             <ul>
-                <li><strong>搭接：</strong> 钢筋有标准长度（例如 9米或 12 米）。如果您的板尺寸超过此长度，您必须重叠或“搭接”钢筋。所需的搭接长度（通常是钢筋直径的40-60倍）应加到您的总数中。本计算器目前假设是连续运行。</li>
-                <li><strong>保护层：</strong> 确保钢筋网格由“马凳”抬高，使其四周（顶部、底部和边缘）至少有40-75毫米的混凝土。不要将其直接放在地面上。</li>
-                <li><strong>结构要求：</strong> 对于承重结构，如地基或车库板，请始终遵循结构工程师指定的图纸。</li>
+                <li><strong>搭接：</strong>钢筋有标准长度（例如9米或12米）。如果您的板坯尺寸超过此长度，您必须重叠或“搭接”钢筋。所需的搭接长度（通常是钢筋直径的40-60倍）应加到您的总数中。本计算器目前假设是连续铺设。</li>
+                <li><strong>保护层：</strong>确保钢筋网格由“垫块”抬高，使其四周（顶部、底部和边缘）至少有40-75毫米的混凝土包裹。不要将其直接铺在地面上。</li>
+                <li><strong>结构要求：</strong>对于承重结构，如地基或车库楼板，请始终遵循结构工程师指定的图纸。</li>
             </ul>
 
         </section>
@@ -209,4 +234,4 @@
     <script src="/script.js"></script>
 
 </body>
-</html> 
+</html>

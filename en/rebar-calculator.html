@@ -22,13 +22,14 @@
     </script>
 
     <!-- SEO Meta Tags -->
-    <title>Rebar Calculator for Concrete Slabs</title>
-    <meta name="description" content="Quickly calculate the total length, number of pieces, and weight of rebar needed for your concrete slab project. Supports various rebar sizes and spacing.">
+    <title>Rebar Calculator & Cost Estimator for Concrete Slabs</title>
+    <meta name="description" content="Use our free rebar calculator and cost estimator to calculate the total length, weight, and cost of rebar needed for your concrete slab project.">
+    <meta name="keywords" content="rebar calculator, rebar estimator, concrete rebar calculator, rebar cost calculator, rebar for slab">
     <link rel="canonical" href="https://concrete-calculator.pro/en/rebar-calculator.html">
 
     <!-- Social Media Meta Tags -->
-    <meta property="og:title" content="Rebar Calculator for Concrete Slabs">
-    <meta property="og:description" content="Calculate the rebar needed for concrete slabs, including total length, weight, and number of bars based on your dimensions.">
+    <meta property="og:title" content="Rebar Calculator & Cost Estimator for Concrete Slabs">
+    <meta property="og:description" content="Use our free rebar calculator and cost estimator to calculate the total length, weight, and cost of rebar needed for your concrete slab project.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://concrete-calculator.pro/en/rebar-calculator.html">
     <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
@@ -164,6 +165,30 @@
                                 </button>
                             </div>
                         </div>
+
+                        <!-- Cost Estimation -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="space-y-2">
+                                <label for="cost-per-length" class="text-sm font-medium text-slate-700">Cost per <span class="unit-label-dist">ft</span> <span class="text-xs">(Opt.)</span></label>
+                                <div class="relative">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span class="text-slate-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="cost-per-length" placeholder="0.50" class="block w-full rounded-lg border border-slate-300 bg-white py-2 pl-7 focus:border-brand-secondary focus:ring-brand-secondary">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="cost-per-piece" class="text-sm font-medium text-slate-700">Cost per Piece <span class="text-xs">(Opt.)</span></label>
+                                 <div class="relative">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span class="text-slate-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="number" id="cost-per-piece" placeholder="12.00" class="block w-full rounded-lg border border-slate-300 bg-white py-2 pl-7 focus:border-brand-secondary focus:ring-brand-secondary">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 -mt-3">Enter either value. If both are entered, "Cost per Piece" will be used.</p>
+
                         <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
                            <svg class="w-16 h-16 text-slate-300 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" /></svg>
                            <p class="font-semibold text-slate-500">Your results will appear here.</p>
