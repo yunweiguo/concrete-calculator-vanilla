@@ -56,8 +56,7 @@
     <style>
         *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
     </style>
-
-    <script type="application/ld+json">
+    <link rel="stylesheet" href="/mobile-optimization.css"><script type="application/ld+json">
     {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much rebar do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Use our rebar calculator by entering your project dimensions and rebar spacing. The calculator will determine the total length and weight needed."}}, {"@type": "Question", "name": "What size rebar should I use?", "acceptedAnswer": {"@type": "Answer", "text": "#3 rebar (3/8") for light loads, #4 rebar (1/2") for most residential projects, #5 rebar (5/8") for heavy loads. Consult local codes."}}, {"@type": "Question", "name": "How far apart should rebar be spaced?", "acceptedAnswer": {"@type": "Answer", "text": "Typical spacing is 12-18 inches for slabs, 6-12 inches for footings. Closer spacing provides more strength but costs more."}}, {"@type": "Question", "name": "How much does rebar cost?", "acceptedAnswer": {"@type": "Answer", "text": "Rebar costs $0.50-1.50 per linear foot depending on size. #4 rebar (1/2") typically costs $0.75-1.00 per foot."}}]}
     </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -248,7 +247,41 @@
 
         </section>
 
-    </main>
+    
+        <!-- Related Calculators Section -->
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Related Calculators</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="/en/slab-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Slab Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate concrete for slabs and pads</p>
+                    </a>
+                    <a href="/en/footing-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Footing Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate concrete for foundations</p>
+                    </a>
+                    <a href="/en/column-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Column Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate for columns and piers</p>
+                    </a>
+                    <a href="/en/concrete-calculator-cost.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Cost Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Estimate total project costs</p>
+                    </a>
+                    <a href="/en/concrete-calculator-yards.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Yards Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate in cubic yards</p>
+                    </a>
+                    <a href="/en/bag-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Bag Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Determine bags of concrete needed</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+</main>
     
     <div id="footer-include"></div>
     <script>

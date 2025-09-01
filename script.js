@@ -178,6 +178,46 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
+    // --- MOBILE OPTIMIZATION ---
+    function setupMobileOptimizations() {
+        // Prevent zoom on input focus for iOS
+        const inputs = document.querySelectorAll('input[type="number"], input[type="text"], select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                if (window.innerWidth <= 768) {
+                    input.style.fontSize = '16px';
+                }
+            });
+        });
+        
+        // Add touch feedback for buttons
+        const buttons = document.querySelectorAll('button, .btn, [role="button"]');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', () => {
+                button.style.transform = 'scale(0.98)';
+            });
+            
+            button.addEventListener('touchend', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Optimize scroll performance
+        let ticking = false;
+        function updateScroll() {
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+    }
+
     // --- EVENT LISTENERS & SETUP ---
     function setupEventListeners() {
         if (unitSystemDiv) {
@@ -203,7 +243,37 @@ document.addEventListener('DOMContentLoaded', () => {
         if(calculateBtn) calculateBtn.addEventListener('click', displayResults);
         if(resetBtn) resetBtn.addEventListener('click', resetCalculator);
         if(clearHistoryBtn) clearHistoryBtn.addEventListener('click', clearHistory);
-        if(mobileMenuButton) mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        if(mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Add smooth animation for mobile menu
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.style.transform = 'translateY(0)';
+                    mobileMenu.style.opacity = '1';
+                } else {
+                    mobileMenu.style.transform = 'translateY(-10px)';
+                    mobileMenu.style.opacity = '0';
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.style.transform = 'translateY(-10px)';
+                    mobileMenu.style.opacity = '0';
+                }
+            });
+            
+            // Close mobile menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.style.transform = 'translateY(-10px)';
+                    mobileMenu.style.opacity = '0';
+                }
+            });
+        }
         if(languageMenuButton) languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
         if(calculatorsMenuButton) calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
         if(shareBtn) shareBtn.addEventListener('click', shareResults);
@@ -840,5 +910,6 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
     resetCalculator(); // Display initial message
     loadHistory();
     setupEventListeners();
+    setupMobileOptimizations(); // Setup mobile optimizations
     updateInputsForShape('rectangle');
 });
