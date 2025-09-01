@@ -1,0 +1,520 @@
+/* Mobile Optimization Styles */
+
+/* ===== 面包屑导航修复样式 ===== */
+
+/* 基础面包屑样式 */
+.breadcrumb ol {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.breadcrumb li:not(:last-child) {
+    margin-right: 0;
+}
+
+.breadcrumb li svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+}
+
+.breadcrumb li a,
+.breadcrumb li span {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.breadcrumb li a:hover {
+    color: #3b82f6;
+}
+
+.breadcrumb li span[aria-current="page"] {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+/* 确保图标和文本完美对齐 */
+.breadcrumb li svg {
+    vertical-align: middle;
+}
+
+.breadcrumb li a,
+.breadcrumb li span {
+    vertical-align: middle;
+}
+
+/* 修复可能的基线对齐问题 */
+.breadcrumb li {
+    vertical-align: baseline;
+}
+
+/* 确保所有元素在同一水平线上 */
+.breadcrumb ol,
+.breadcrumb li,
+.breadcrumb li a,
+.breadcrumb li span,
+.breadcrumb li svg {
+    box-sizing: border-box;
+}
+
+/* 防止字体渲染差异导致的对齐问题 */
+.breadcrumb li a,
+.breadcrumb li span {
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== 移动端优化样式 ===== */
+
+/* Prevent zoom on input focus for iOS */
+@media (max-width: 768px) {
+    input[type="number"],
+    input[type="text"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Touch-friendly button sizes */
+@media (max-width: 768px) {
+    button,
+    .btn,
+    [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px;
+    }
+    
+    /* Calculator buttons */
+    #calculate-btn {
+        min-height: 48px;
+        font-size: 18px;
+        padding: 14px 24px;
+    }
+}
+
+/* 移动端面包屑优化 */
+@media (max-width: 768px) {
+    .breadcrumb ol {
+        gap: 6px;
+        padding: 8px 0;
+    }
+    
+    .breadcrumb li {
+        font-size: 13px;
+    }
+    
+    .breadcrumb li svg {
+        width: 14px;
+        height: 14px;
+        margin: 0 6px;
+    }
+    
+    /* 确保文本和图标垂直居中 */
+    .breadcrumb li a,
+    .breadcrumb li span {
+        min-height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 防止文本换行导致的对齐问题 */
+    .breadcrumb li {
+        flex-shrink: 0;
+    }
+    
+    /* 如果内容过长，允许换行但保持对齐 */
+    .breadcrumb ol {
+        align-items: flex-start;
+    }
+    
+    .breadcrumb li {
+        align-items: flex-start;
+    }
+}
+
+/* 超小屏幕面包屑优化 */
+@media (max-width: 480px) {
+    .breadcrumb ol {
+        gap: 4px;
+    }
+    
+    .breadcrumb li {
+        font-size: 12px;
+    }
+    
+    .breadcrumb li svg {
+        width: 12px;
+        height: 12px;
+        margin: 0 4px;
+    }
+    
+    .breadcrumb li a,
+    .breadcrumb li span {
+        min-height: 18px;
+    }
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+    /* Calculator grid optimization */
+    .calculator-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    /* Input spacing */
+    .input-group {
+        margin-bottom: 20px;
+    }
+    
+    /* Results section */
+    .results-section {
+        margin-top: 24px;
+    }
+    
+    /* Related calculators */
+    .related-calculators {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* Enhanced mobile typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2 {
+        font-size: 1.875rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h3 {
+        font-size: 1.5rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    p {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+}
+
+/* Mobile-friendly spacing */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    
+    .section-padding {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+    }
+    
+    .card-padding {
+        padding: 16px !important;
+    }
+}
+
+/* Improved mobile forms */
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+    }
+    
+    .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.2s;
+    }
+    
+    .form-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+}
+
+/* Mobile-optimized results display */
+@media (max-width: 768px) {
+    .results-card {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    
+    .result-item:last-child {
+        border-bottom: none;
+    }
+    
+    .result-label {
+        font-size: 14px;
+        color: #64748b;
+    }
+    
+    .result-value {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1e293b;
+    }
+}
+
+/* Enhanced mobile accessibility */
+@media (max-width: 768px) {
+    /* Larger touch targets */
+    a, button, [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Better focus indicators */
+    *:focus-visible {
+        outline: 3px solid #3b82f6;
+        outline-offset: 2px;
+    }
+    
+    /* Improved contrast for small text */
+    .text-sm {
+        font-size: 14px !important;
+    }
+    
+    .text-xs {
+        font-size: 12px !important;
+    }
+}
+
+/* Mobile-specific calculator optimizations */
+@media (max-width: 768px) {
+    /* Calculator layout */
+    .calculator-container {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+    
+    /* Input sections */
+    .input-section {
+        order: 1;
+    }
+    
+    .results-section {
+        order: 2;
+    }
+    
+    /* Unit selector */
+    .unit-selector {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .unit-selector button {
+        flex: 1;
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    /* Shape selector */
+    .shape-selector {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .shape-selector button {
+        flex: 1;
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+    /* Reduce animations for better performance */
+    * {
+        animation-duration: 0.2s !important;
+        transition-duration: 0.2s !important;
+    }
+    
+    /* Optimize images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Reduce box shadows for better performance */
+    .shadow-md {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    }
+    
+    .shadow-lg {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    }
+}
+
+/* Mobile-specific navigation improvements */
+@media (max-width: 768px) {
+    /* Header optimization */
+    .header {
+        padding: 12px 16px;
+    }
+    
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 50;
+    }
+    
+    .mobile-menu-content {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 280px;
+        background: white;
+        padding: 24px;
+        overflow-y: auto;
+    }
+    
+    /* Mobile menu items */
+    .mobile-menu-item {
+        display: block;
+        padding: 16px 0;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .mobile-menu-item:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Mobile-specific content improvements */
+@media (max-width: 768px) {
+    /* Better content hierarchy */
+    .content-section {
+        margin-bottom: 32px;
+    }
+    
+    /* Improved readability */
+    .prose {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    
+    .prose h1, .prose h2, .prose h3 {
+        margin-top: 32px;
+        margin-bottom: 16px;
+    }
+    
+    .prose p {
+        margin-bottom: 16px;
+    }
+    
+    .prose ul, .prose ol {
+        margin-bottom: 16px;
+        padding-left: 24px;
+    }
+    
+    .prose li {
+        margin-bottom: 8px;
+    }
+}
+
+/* Mobile-specific interactive elements */
+@media (max-width: 768px) {
+    /* Better hover states for touch devices */
+    .hover\:bg-brand-primary:hover {
+        background-color: #1e40af !important;
+    }
+    
+    .hover\:text-brand-primary:hover {
+        color: #1e40af !important;
+    }
+    
+    /* Improved button states */
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    /* Better form feedback */
+    .form-input:invalid {
+        border-color: #ef4444;
+    }
+    
+    .form-input:valid {
+        border-color: #10b981;
+    }
+}
+
+/* Mobile-specific loading states */
+@media (max-width: 768px) {
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+    
+    .loading-spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid #f1f5f9;
+        border-top: 3px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}
