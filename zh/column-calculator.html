@@ -51,14 +51,36 @@
             outline-offset: 2px;
         }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "如何计算柱子的混凝土？", "acceptedAnswer": {"@type": "Answer", "text": "测量柱子的长度、宽度和高度。使用我们的计算器输入这些测量值以获得准确的体积计算。"}}, {"@type": "Question", "name": "我需要什么尺寸的柱子？", "acceptedAnswer": {"@type": "Answer", "text": "柱子尺寸取决于荷载要求。典型的住宅柱子为8x8、10x10或12x12英寸。咨询工程师了解结构要求。"}}, {"@type": "Question", "name": "12x12柱子需要多少混凝土？", "acceptedAnswer": {"@type": "Answer", "text": "对于8英尺高的12x12柱子：1 × 1 × 8 = 8立方英尺 = 0.3立方码。加上10%损耗 = 0.33立方码。"}}, {"@type": "Question", "name": "柱子需要钢筋吗？", "acceptedAnswer": {"@type": "Answer", "text": "是的，结构柱需要钢筋以提供强度。使用#4或#5钢筋网格图案。始终遵循当地建筑规范。"}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
     <div id="header-include"></div>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/zh/" class="hover:text-brand-primary transition-colors">首页</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/zh/#calculators" class="hover:text-brand-primary transition-colors">计算器</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Column Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="columnCalculatorTitle">混凝土圆柱、桥墩 & Sonotube 计算器</h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="columnCalculatorDescription">您的必备工具，用于计算圆形立柱、桥墩和Sonotube的混凝土体积和材料需求。</p>
         </section>

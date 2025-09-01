@@ -64,6 +64,57 @@
             outline-offset: 2px;
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Concrete Footing Calculator",
+      "description": "Calculate concrete volume and cost for footings",
+      "url": "https://concrete-calculator.pro/en/footing-calculator.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate concrete for footings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure the length, width, and depth of your footing. Use our calculator to input these measurements, and it will calculate the volume and provide material estimates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How deep should concrete footings be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Footings should extend below the frost line, typically 12-48 inches deep depending on your location. Check local building codes for specific requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How wide should a footing be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Footing width depends on soil bearing capacity and load. Typically 12-24 inches wide for residential projects. Consult an engineer for structural requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do footings need rebar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, footings typically require rebar for structural integrity. Use #4 or #5 rebar in a grid pattern. Always follow local building codes and engineering specifications."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -113,6 +164,24 @@
     </script>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Footing Calculator</span>
+                </li>
+            </ol>
+        </nav>
         
         <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">

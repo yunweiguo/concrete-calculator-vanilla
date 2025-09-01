@@ -64,6 +64,57 @@
             outline-offset: 2px;
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Concrete Slab Calculator",
+      "description": "Calculate concrete volume and cost for slabs",
+      "url": "https://concrete-calculator.pro/en/slab-calculator.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate concrete for a slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure the length, width, and thickness of your slab. Use our calculator to input these measurements, and it will calculate the volume and provide material estimates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How thick should a concrete slab be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Residential slabs are typically 4-6 inches thick. Driveways need 4-6 inches, patios 4 inches, and garage floors 4-6 inches. Commercial slabs may be 6-8 inches thick."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many bags of concrete do I need for a 10x10 slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a 10x10 slab with 4-inch thickness: 10 × 10 × (4/12) = 33.33 cubic feet. You'll need about 74 bags of 60lb concrete or 56 bags of 80lb concrete."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need rebar in a concrete slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rebar is recommended for structural slabs and areas with heavy loads. For patios and walkways, wire mesh is often sufficient. Always follow local building codes."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -113,6 +164,24 @@
     </script>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Slab Calculator</span>
+                </li>
+            </ol>
+        </nav>
         
         <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">

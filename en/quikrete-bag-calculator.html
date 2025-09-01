@@ -43,7 +43,10 @@
             outline-offset: 2px;
         }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many Quikrete bags do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Use our Quikrete calculator by entering your project dimensions. The calculator will determine the exact number of Quikrete bags needed."}}, {"@type": "Question", "name": "What is the difference between Quikrete and regular concrete?", "acceptedAnswer": {"@type": "Answer", "text": "Quikrete is a pre-mixed concrete product that includes cement, sand, and gravel. It"s convenient for small projects and DIY use."}}, {"@type": "Question", "name": "How much does Quikrete cost?", "acceptedAnswer": {"@type": "Answer", "text": "Quikrete bags typically cost $4-7 for 60lb bags and $5-9 for 80lb bags. Prices vary by location and retailer."}}, {"@type": "Question", "name": "How do I mix Quikrete?", "acceptedAnswer": {"@type": "Answer", "text": "Add water gradually to the dry mix, stirring until uniform. Use about 3 quarts of water per 60lb bag. Don"t over-water."}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
     <script>
@@ -82,7 +85,26 @@
       });
     </script>
     <main class="container mx-auto px-4 lg:px-6 py-12">
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Quikrete Bag Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Quikrete Bag Estimator
             </h1>

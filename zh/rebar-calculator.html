@@ -56,7 +56,10 @@
     <style>
         *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "我需要多少钢筋？", "acceptedAnswer": {"@type": "Answer", "text": "使用我们的钢筋计算器，输入项目尺寸和钢筋间距。计算器将确定所需的总长度和重量。"}}, {"@type": "Question", "name": "我应该使用什么尺寸的钢筋？", "acceptedAnswer": {"@type": "Answer", "text": "#3钢筋（3/8"）用于轻荷载，#4钢筋（1/2"）用于大多数住宅项目，#5钢筋（5/8"）用于重荷载。咨询当地规范。"}}, {"@type": "Question", "name": "钢筋应该间隔多远？", "acceptedAnswer": {"@type": "Answer", "text": "板的典型间距为12-18英寸，基础的间距为6-12英寸。更近的间距提供更多强度但成本更高。"}}, {"@type": "Question", "name": "钢筋多少钱？", "acceptedAnswer": {"@type": "Answer", "text": "钢筋成本为每线性英尺¥3.5-10.5，取决于尺寸。#4钢筋（1/2"）通常每英尺成本¥5.25-7。"}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
     <script>
@@ -91,7 +94,26 @@
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/zh/" class="hover:text-brand-primary transition-colors">首页</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/zh/#calculators" class="hover:text-brand-primary transition-colors">计算器</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Rebar Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 钢筋计算器
             </h1>

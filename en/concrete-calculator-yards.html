@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
+         crossorigin="anonymous"></script>
+
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>Concrete Calculator Yards - Calculate Cubic Yards of Concrete</title>
+    <meta name="description" content="Calculate concrete in cubic yards for your construction project. Free concrete yard calculator for slabs, footings, columns, and more. Get accurate yardage estimates instantly.">
+    <meta name="keywords" content="concrete calculator yards, cubic yards concrete calculator, concrete yard calculator, yards of concrete calculator, concrete volume calculator yards">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/concrete-calculator-yards.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="Concrete Calculator Yards - Calculate Cubic Yards of Concrete">
+    <meta property="og:description" content="Calculate concrete in cubic yards for your construction project. Free concrete yard calculator for slabs, footings, columns, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/concrete-calculator-yards.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Concrete Calculator Yards - Calculate Cubic Yards of Concrete">
+    <meta name="twitter:description" content="Calculate concrete in cubic yards for your construction project. Free concrete yard calculator for slabs, footings, columns, and more.">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Concrete Calculator Yards",
+      "description": "Calculate concrete in cubic yards for construction projects",
+      "url": "https://concrete-calculator.pro/en/concrete-calculator-yards.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate concrete in cubic yards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use our cubic yards calculator by entering the length, width, and thickness of your project. The calculator will automatically convert to cubic yards and provide material estimates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many cubic yards are in a concrete truck?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most concrete trucks carry 10 cubic yards of concrete. For larger projects, multiple truck loads may be required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between cubic feet and cubic yards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1 cubic yard equals 27 cubic feet. Cubic yards are the standard unit for ordering ready-mix concrete from suppliers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much concrete do I need for a 20x20 slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a 20x20 slab with 4-inch thickness: 20 × 20 × (4/12) = 133.33 cubic feet = 4.94 cubic yards. Add 10% for waste = 5.43 cubic yards."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+    <script>
+      fetch('/en/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        // 重新绑定下拉、语言、移动菜单事件
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Yards Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Concrete Calculator Yards
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Calculate concrete volume in cubic yards for your construction project. Perfect for ordering ready-mix concrete.
+            </p>
+        </section>
+        
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Dimensions</h2>
+                            <p class="text-slate-500 mt-1">All measurements will be converted to yards.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="shape" class="block text-sm font-medium text-slate-700 mb-2">Shape Type</label>
+                                <select id="shape" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent">
+                                    <option value="slab">Slab/Foundation</option>
+                                    <option value="column">Column/Cylinder</option>
+                                    <option value="footing">Footing</option>
+                                    <option value="wall">Wall</option>
+                                </select>
+                            </div>
+                            
+                            <div id="slab-inputs" class="space-y-4">
+                                <div>
+                                    <label for="length" class="block text-sm font-medium text-slate-700 mb-2">Length (feet)</label>
+                                    <input type="number" id="length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter length">
+                                </div>
+                                <div>
+                                    <label for="width" class="block text-sm font-medium text-slate-700 mb-2">Width (feet)</label>
+                                    <input type="number" id="width" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter width">
+                                </div>
+                                <div>
+                                    <label for="thickness" class="block text-sm font-medium text-slate-700 mb-2">Thickness (inches)</label>
+                                    <input type="number" id="thickness" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter thickness">
+                                </div>
+                            </div>
+                            
+                            <div id="column-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="diameter" class="block text-sm font-medium text-slate-700 mb-2">Diameter (inches)</label>
+                                    <input type="number" id="diameter" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter diameter">
+                                </div>
+                                <div>
+                                    <label for="height" class="block text-sm font-medium text-slate-700 mb-2">Height (feet)</label>
+                                    <input type="number" id="height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter height">
+                                </div>
+                            </div>
+                            
+                            <div id="footing-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="footing-length" class="block text-sm font-medium text-slate-700 mb-2">Length (feet)</label>
+                                    <input type="number" id="footing-length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter length">
+                                </div>
+                                <div>
+                                    <label for="footing-width" class="block text-sm font-medium text-slate-700 mb-2">Width (feet)</label>
+                                    <input type="number" id="footing-width" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter width">
+                                </div>
+                                <div>
+                                    <label for="footing-depth" class="block text-sm font-medium text-slate-700 mb-2">Depth (inches)</label>
+                                    <input type="number" id="footing-depth" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter depth">
+                                </div>
+                            </div>
+                            
+                            <div id="wall-inputs" class="space-y-4 hidden">
+                                <div>
+                                    <label for="wall-length" class="block text-sm font-medium text-slate-700 mb-2">Length (feet)</label>
+                                    <input type="number" id="wall-length" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter length">
+                                </div>
+                                <div>
+                                    <label for="wall-height" class="block text-sm font-medium text-slate-700 mb-2">Height (feet)</label>
+                                    <input type="number" id="wall-height" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter height">
+                                </div>
+                                <div>
+                                    <label for="wall-thickness" class="block text-sm font-medium text-slate-700 mb-2">Thickness (inches)</label>
+                                    <input type="number" id="wall-thickness" step="0.1" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter thickness">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">2. Results</h2>
+                            <p class="text-slate-500 mt-1">Your concrete calculation in cubic yards.</p>
+                        </div>
+                        
+                        <div id="results" class="space-y-4 hidden">
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Concrete Volume</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Volume:</span>
+                                        <span id="volume-yards" class="font-semibold text-slate-900">0 cubic yards</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Volume (cubic feet):</span>
+                                        <span id="volume-feet" class="font-semibold text-slate-900">0 cubic feet</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Volume (cubic meters):</span>
+                                        <span id="volume-meters" class="font-semibold text-slate-900">0 cubic meters</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Ready-Mix Concrete</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Truck loads (10 yd³):</span>
+                                        <span id="truck-loads" class="font-semibold text-slate-900">0 loads</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">With 10% waste factor:</span>
+                                        <span id="volume-waste" class="font-semibold text-slate-900">0 cubic yards</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Materials (if mixing yourself)</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Cement (94lb bags):</span>
+                                        <span id="cement-bags" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Sand (tons):</span>
+                                        <span id="sand-tons" class="font-semibold text-slate-900">0 tons</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Gravel (tons):</span>
+                                        <span id="gravel-tons" class="font-semibold text-slate-900">0 tons</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="no-results" class="text-center py-12">
+                            <div class="text-slate-400">
+                                <svg class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-lg font-medium">Enter dimensions to calculate</p>
+                                <p class="text-sm">Fill in the measurements above to see your concrete calculation in cubic yards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">About Concrete Calculator Yards</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p class="text-lg text-slate-700 mb-4">
+                        Our concrete calculator yards tool helps you determine the exact amount of concrete needed for your project in cubic yards. This is the standard unit used by ready-mix concrete suppliers in the United States.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Why Calculate in Cubic Yards?</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 mb-6">
+                        <li>Ready-mix concrete is typically ordered in cubic yards</li>
+                        <li>Concrete trucks usually carry 8-10 cubic yards per load</li>
+                        <li>Pricing is often quoted per cubic yard</li>
+                        <li>Standard unit for construction industry in the US</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">How to Use This Calculator</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-700 mb-6">
+                        <li>Select the shape of your concrete structure</li>
+                        <li>Enter the dimensions in feet and inches</li>
+                        <li>Get instant results in cubic yards</li>
+                        <li>Add 10% waste factor for ordering</li>
+                    </ol>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Common Applications</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li><strong>Slabs:</strong> Driveways, patios, garage floors</li>
+                        <li><strong>Footings:</strong> Foundation footings, deck posts</li>
+                        <li><strong>Columns:</strong> Support columns, sonotube footings</li>
+                        <li><strong>Walls:</strong> Retaining walls, basement walls</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-include"></div>
+    <script>
+      fetch('/en/footer.html').then(r=>r.text()).then(html=>{
+        document.getElementById('footer-include').outerHTML=html;
+      });
+    </script>
+    
+    <script>
+        // Concrete Calculator Yards Logic
+        const shapeSelect = document.getElementById('shape');
+        const slabInputs = document.getElementById('slab-inputs');
+        const columnInputs = document.getElementById('column-inputs');
+        const footingInputs = document.getElementById('footing-inputs');
+        const wallInputs = document.getElementById('wall-inputs');
+        const results = document.getElementById('results');
+        const noResults = document.getElementById('no-results');
+        
+        // Show/hide input sections based on shape
+        shapeSelect.addEventListener('change', function() {
+            slabInputs.classList.add('hidden');
+            columnInputs.classList.add('hidden');
+            footingInputs.classList.add('hidden');
+            wallInputs.classList.add('hidden');
+            
+            switch(this.value) {
+                case 'slab':
+                    slabInputs.classList.remove('hidden');
+                    break;
+                case 'column':
+                    columnInputs.classList.remove('hidden');
+                    break;
+                case 'footing':
+                    footingInputs.classList.remove('hidden');
+                    break;
+                case 'wall':
+                    wallInputs.classList.remove('hidden');
+                    break;
+            }
+            calculateConcrete();
+        });
+        
+        // Add event listeners to all inputs
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateConcrete);
+        });
+        
+        function calculateConcrete() {
+            const shape = shapeSelect.value;
+            let volumeCubicFeet = 0;
+            
+            switch(shape) {
+                case 'slab':
+                    const length = parseFloat(document.getElementById('length').value) || 0;
+                    const width = parseFloat(document.getElementById('width').value) || 0;
+                    const thickness = parseFloat(document.getElementById('thickness').value) || 0;
+                    volumeCubicFeet = length * width * (thickness / 12);
+                    break;
+                    
+                case 'column':
+                    const diameter = parseFloat(document.getElementById('diameter').value) || 0;
+                    const height = parseFloat(document.getElementById('height').value) || 0;
+                    const radius = diameter / 2;
+                    volumeCubicFeet = Math.PI * Math.pow(radius / 12, 2) * height;
+                    break;
+                    
+                case 'footing':
+                    const footingLength = parseFloat(document.getElementById('footing-length').value) || 0;
+                    const footingWidth = parseFloat(document.getElementById('footing-width').value) || 0;
+                    const footingDepth = parseFloat(document.getElementById('footing-depth').value) || 0;
+                    volumeCubicFeet = footingLength * footingWidth * (footingDepth / 12);
+                    break;
+                    
+                case 'wall':
+                    const wallLength = parseFloat(document.getElementById('wall-length').value) || 0;
+                    const wallHeight = parseFloat(document.getElementById('wall-height').value) || 0;
+                    const wallThickness = parseFloat(document.getElementById('wall-thickness').value) || 0;
+                    volumeCubicFeet = wallLength * wallHeight * (wallThickness / 12);
+                    break;
+            }
+            
+            if (volumeCubicFeet > 0) {
+                const volumeCubicYards = volumeCubicFeet / 27;
+                const volumeCubicMeters = volumeCubicFeet * 0.0283168;
+                const volumeWithWaste = volumeCubicYards * 1.1;
+                const truckLoads = Math.ceil(volumeWithWaste / 10);
+                
+                // Materials calculation (1:2:3 mix ratio)
+                const cementBags = Math.ceil(volumeCubicYards * 6.5); // 6.5 bags per cubic yard
+                const sandTons = (volumeCubicYards * 1.35).toFixed(1); // 1.35 tons per cubic yard
+                const gravelTons = (volumeCubicYards * 2.7).toFixed(1); // 2.7 tons per cubic yard
+                
+                // Update results
+                document.getElementById('volume-yards').textContent = volumeCubicYards.toFixed(2) + ' cubic yards';
+                document.getElementById('volume-feet').textContent = volumeCubicFeet.toFixed(2) + ' cubic feet';
+                document.getElementById('volume-meters').textContent = volumeCubicMeters.toFixed(2) + ' cubic meters';
+                document.getElementById('truck-loads').textContent = truckLoads + ' loads';
+                document.getElementById('volume-waste').textContent = volumeWithWaste.toFixed(2) + ' cubic yards';
+                document.getElementById('cement-bags').textContent = cementBags + ' bags';
+                document.getElementById('sand-tons').textContent = sandTons + ' tons';
+                document.getElementById('gravel-tons').textContent = gravelTons + ' tons';
+                
+                results.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

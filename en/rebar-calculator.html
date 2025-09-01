@@ -56,7 +56,10 @@
     <style>
         *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much rebar do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Use our rebar calculator by entering your project dimensions and rebar spacing. The calculator will determine the total length and weight needed."}}, {"@type": "Question", "name": "What size rebar should I use?", "acceptedAnswer": {"@type": "Answer", "text": "#3 rebar (3/8") for light loads, #4 rebar (1/2") for most residential projects, #5 rebar (5/8") for heavy loads. Consult local codes."}}, {"@type": "Question", "name": "How far apart should rebar be spaced?", "acceptedAnswer": {"@type": "Answer", "text": "Typical spacing is 12-18 inches for slabs, 6-12 inches for footings. Closer spacing provides more strength but costs more."}}, {"@type": "Question", "name": "How much does rebar cost?", "acceptedAnswer": {"@type": "Answer", "text": "Rebar costs $0.50-1.50 per linear foot depending on size. #4 rebar (1/2") typically costs $0.75-1.00 per foot."}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
     <script>
@@ -91,7 +94,26 @@
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Rebar Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Rebar Calculator
             </h1>

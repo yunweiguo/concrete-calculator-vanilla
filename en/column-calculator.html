@@ -51,14 +51,36 @@
             outline-offset: 2px;
         }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate concrete for columns?", "acceptedAnswer": {"@type": "Answer", "text": "Measure the length, width, and height of your column. Use our calculator to input these measurements for accurate volume calculations."}}, {"@type": "Question", "name": "What size columns do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Column size depends on load requirements. Typical residential columns are 8x8, 10x10, or 12x12 inches. Consult an engineer for structural requirements."}}, {"@type": "Question", "name": "How much concrete for a 12x12 column?", "acceptedAnswer": {"@type": "Answer", "text": "For a 12x12 column that"s 8 feet tall: 1 × 1 × 8 = 8 cubic feet = 0.3 cubic yards. Add 10% for waste = 0.33 cubic yards."}}, {"@type": "Question", "name": "Do columns need rebar?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, structural columns require rebar for strength. Use #4 or #5 rebar in a grid pattern. Always follow local building codes."}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
     <div id="header-include"></div>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Column Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="columnCalculatorTitle">Concrete Column, Pier & Sonotube Calculator</h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="columnCalculatorDescription">Your essential tool for calculating concrete volume and material needs for round columns, piers, and Sonotubes.</p>
         </section>

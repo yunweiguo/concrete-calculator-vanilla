@@ -50,14 +50,36 @@
             outline-offset: 2px;
         }
     </style>
-</head>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "如何计算楼梯的混凝土？", "acceptedAnswer": {"@type": "Answer", "text": "测量楼梯的总高度、总长度和宽度。我们的计算器将确定所需的体积和材料。"}}, {"@type": "Question", "name": "混凝土楼梯应该多厚？", "acceptedAnswer": {"@type": "Answer", "text": "住宅用混凝土楼梯应为4-6英寸厚。商业楼梯可能需要6-8英寸，取决于荷载要求。"}}, {"@type": "Question", "name": "没有平台我可以有多少级台阶？", "acceptedAnswer": {"@type": "Answer", "text": "大多数建筑规范允许在要求平台之前最多12-15级台阶。检查当地建筑规范了解具体要求。"}}, {"@type": "Question", "name": "混凝土楼梯需要钢筋吗？", "acceptedAnswer": {"@type": "Answer", "text": "是的，混凝土楼梯需要钢筋以确保结构完整性。在整个楼梯结构中使用#4钢筋网格图案。"}}]}
+    </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
     <div id="header-include"></div>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
-        <section class="text-center">
+                <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/zh/" class="hover:text-brand-primary transition-colors">首页</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/zh/#calculators" class="hover:text-brand-primary transition-colors">计算器</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Stairs Calculator</span>
+                </li>
+            </ol>
+        </nav>
+        
+<section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="stairsCalculatorTitle">混凝土台阶计算器</h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="stairsCalculatorDescription">估算台阶所需的混凝土体积和材料。</p>
         </section>
