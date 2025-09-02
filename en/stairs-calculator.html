@@ -10,8 +10,8 @@
 
 
     <!-- SEO Meta Tags -->
-    <title>Concrete Stairs Calculator: Estimate Volume, Bags, & Cost for Steps</title>
-    <meta name="description" content="Use our free concrete stairs calculator to accurately estimate the concrete volume, number of bags, and total cost for your steps. Supports imperial and metric units.">
+    <title>Concrete Stair Calculator - How to Calculate Concrete for Stairs | Free Tool</title>
+    <meta name="description" content="Free concrete stair calculator! Calculate exact concrete volume, bags needed, and cost for steps. Easy concrete stairs calculator for DIY and professional builders.">
     <link rel="canonical" href="https://concrete-calculator.pro/en/stairs-calculator.html">
 
     <!-- Language Alternates -->
@@ -79,8 +79,8 @@
         </nav>
         
 <section class="text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="stairsCalculatorTitle">Concrete Stairs Calculator</h1>
-            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="stairsCalculatorDescription">Estimate the concrete volume and material needed for your steps.</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" data-translate="stairsCalculatorTitle">Concrete Stair Calculator - Calculate Concrete for Stairs</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="stairsCalculatorDescription">Free concrete stairs calculator to estimate exact concrete volume, bags needed, and cost for your steps and staircases.</p>
         </section>
 
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
@@ -232,6 +232,15 @@
                 calculatorsMenuButton.addEventListener('click', (e) => {
                     e.stopPropagation();
                     calculatorsMenu.classList.toggle('hidden');
+                });
+            }
+            
+            const guidesMenuButton = document.getElementById('guides-menu-button');
+            const guidesMenu = document.getElementById('guides-menu');
+            if (guidesMenuButton) {
+                guidesMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    guidesMenu.classList.toggle('hidden');
                 });
             }
 

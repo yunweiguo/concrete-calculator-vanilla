@@ -108,6 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageMenu = document.getElementById('language-menu');
     const calculatorsMenuButton = document.getElementById('calculators-menu-button');
     const calculatorsMenu = document.getElementById('calculators-menu');
+    const guidesMenuButton = document.getElementById('guides-menu-button');
+    const guidesMenu = document.getElementById('guides-menu');
     const shareBtn = document.getElementById('share-btn');
 
     // New elements for Bag Calculator
@@ -276,11 +278,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if(languageMenuButton) languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
         if(calculatorsMenuButton) calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
+        if(guidesMenuButton) guidesMenuButton.addEventListener('click', (e) => { e.stopPropagation(); guidesMenu.classList.toggle('hidden'); });
         if(shareBtn) shareBtn.addEventListener('click', shareResults);
         
         document.addEventListener('click', () => {
             if(languageMenu) languageMenu.classList.add('hidden');
             if(calculatorsMenu) calculatorsMenu.classList.add('hidden');
+            if(guidesMenu) guidesMenu.classList.add('hidden');
         });
 
         // Event listener for bag size dropdown

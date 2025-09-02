@@ -8,9 +8,9 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
          crossorigin="anonymous"></script>
 
-    <title>Quikrete Bag Estimator - How Many Quikrete Bags Do I Need?</title>
-    <meta name="description" content="Estimate how many Quikrete concrete bags (40lb, 60lb, 80lb) you need for your slab, footing, or post. Fast, accurate Quikrete bag calculator for DIY and pros.">
-    <meta name="keywords" content="quikrete bag estimator, quikrete calculator, quikrete bag calculator, concrete bag estimator, quikrete, concrete calculator, slab, footing, post, DIY">
+    <title>Quikrete Bag Calculator - How Many Quikrete Bags Do I Need? | Free Tool</title>
+    <meta name="description" content="Free Quikrete bag calculator! Instantly calculate how many Quikrete bags (40lb, 60lb, 80lb) you need for slabs, footings, posts. Accurate quikrete estimator for DIY projects.">
+    <meta name="keywords" content="quikrete bag calculator, how many quikrete bags do i need, quikrete calculator, quikrete estimator, quikrete bag estimator, concrete bag calculator, quikrete concrete mix calculator, how much quikrete do i need">
     <link rel="canonical" href="https://concrete-calculator.pro/en/quikrete-bag-calculator.html">
     <meta property="og:title" content="Quikrete Bag Estimator - How Many Quikrete Bags Do I Need?">
     <meta property="og:description" content="Estimate how many Quikrete concrete bags (40lb, 60lb, 80lb) you need for your slab, footing, or post. Fast, accurate Quikrete bag calculator for DIY and pros.">
@@ -63,6 +63,18 @@
             calculatorsMenu.classList.add('hidden');
           });
         }
+        
+        const guidesMenuButton = document.getElementById('guides-menu-button');
+        const guidesMenu = document.getElementById('guides-menu');
+        if (guidesMenuButton && guidesMenu) {
+          guidesMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            guidesMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            guidesMenu.classList.add('hidden');
+          });
+        }
         const languageMenuButton = document.getElementById('language-menu-button');
         const languageMenu = document.getElementById('language-menu');
         if (languageMenuButton && languageMenu) {
@@ -105,10 +117,10 @@
         
 <section class="text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
-                Quikrete Bag Estimator
+                Quikrete Bag Calculator - How Many Quikrete Bags Do I Need?
             </h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-                Instantly estimate how many Quikrete concrete bags (40lb, 60lb, 80lb) you need for your slab, footing, or post project.
+                Free Quikrete calculator to instantly estimate how many Quikrete bags (40lb, 60lb, 80lb) you need for slabs, footings, posts, and concrete projects.
             </p>
         </section>
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
@@ -183,16 +195,57 @@
                 </div>
             </div>
         </section>
+        <!-- Quick Reference Section -->
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-gradient-to-r from-blue-50 to-slate-50 p-8 rounded-2xl border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Quick Quikrete Reference Guide</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4">Common Project Examples</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
+                                <span class="text-slate-700">Small patio (8'×8'×4")</span>
+                                <span class="font-semibold text-brand-primary">48 × 60lb bags</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
+                                <span class="text-slate-700">Fence post hole (1'×1'×2')</span>
+                                <span class="font-semibold text-brand-primary">5 × 60lb bags</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
+                                <span class="text-slate-700">Sidewalk section (10'×3'×4")</span>
+                                <span class="font-semibold text-brand-primary">27 × 60lb bags</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4">Quikrete Bag Specifications</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
+                                <span class="text-slate-700">40 lb bag yield</span>
+                                <span class="font-semibold text-slate-800">0.30 cubic feet</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
+                                <span class="text-slate-700">60 lb bag yield</span>
+                                <span class="font-semibold text-slate-800">0.45 cubic feet</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
+                                <span class="text-slate-700">80 lb bag yield</span>
+                                <span class="font-semibold text-slate-800">0.60 cubic feet</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm text-slate-600">
+                            💡 <strong>Pro Tip:</strong> Always buy 5-10% extra bags to account for spillage and waste.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="mt-16 max-w-3xl mx-auto text-slate-700">
             <h2 class="text-xl font-bold mb-2">About Quikrete Bags</h2>
             <p>
                 Quikrete is a leading brand of pre-mixed concrete. Their bags come in standard sizes (40lb, 60lb, 80lb), each yielding a specific volume of mixed concrete. This calculator helps you estimate exactly how many bags you need for your project.
             </p>
-            <ul class="list-disc ml-6 mt-2">
-                <li>40 lb bag ≈ 0.30 cubic feet</li>
-                <li>60 lb bag ≈ 0.45 cubic feet</li>
-                <li>80 lb bag ≈ 0.60 cubic feet</li>
-            </ul>
             <p class="mt-2 text-sm text-slate-500">
                 Always buy a little extra to account for spillage and variations.
             </p>

@@ -229,6 +229,15 @@
                     calculatorsMenu.classList.toggle('hidden');
                 });
             }
+            
+            const guidesMenuButton = document.getElementById('guides-menu-button');
+            const guidesMenu = document.getElementById('guides-menu');
+            if (guidesMenuButton) {
+                guidesMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    guidesMenu.classList.toggle('hidden');
+                });
+            }
 
             const languageMenuButton = document.getElementById('language-menu-button');
             const languageMenu = document.getElementById('language-menu');
@@ -247,6 +256,7 @@
 
             document.addEventListener('click', () => {
                 if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
+                if (guidesMenu) guidesMenu.classList.add('hidden');
                 if (languageMenu) languageMenu.classList.add('hidden');
             });
         }
