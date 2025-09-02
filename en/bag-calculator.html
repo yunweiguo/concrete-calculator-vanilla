@@ -25,7 +25,7 @@
     <!-- SEO Meta Tags -->
     <title>Concrete Bag Calculator & Estimator (Quikrete, Sakrete)</title>
     <meta name="description" content="Estimate the number of concrete bags needed for your project. Works as a Quikrete bag calculator, Sakrete estimator, and for any brand of pre-mixed concrete.">
-    <meta name="keywords" content="quikrete bag calculator, quikrete bag estimator, concrete bag calculator, sakrete calculator, concrete bag estimator">
+    <meta name="keywords" content="concrete bag calculator, quikrete bag calculator, quikrete bag estimator, sakrete calculator, concrete bag estimator, how many bags of concrete do i need, concrete estimator bags, bags of concrete calculator">
     <link rel="canonical" href="https://concrete-calculator.pro/en/bag-calculator.html">
 
     <!-- Social Media Meta Tags (Open Graph) -->
@@ -82,6 +82,18 @@
           });
           document.addEventListener('click', () => {
             calculatorsMenu.classList.add('hidden');
+          });
+        }
+        
+        const guidesMenuButton = document.getElementById('guides-menu-button');
+        const guidesMenu = document.getElementById('guides-menu');
+        if (guidesMenuButton && guidesMenu) {
+          guidesMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            guidesMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            guidesMenu.classList.add('hidden');
           });
         }
         const languageMenuButton = document.getElementById('language-menu-button');

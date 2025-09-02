@@ -27,7 +27,18 @@
                         <a href="/en/quikrete-bag-calculator.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Quikrete Bag Calculator</a>
                     </div>
                 </div>
-                <a href="/en/guides/how-to-calculate-concrete.html" class="font-semibold text-slate-600 hover:text-brand-primary">Guides</a>
+                <!-- Guides Dropdown -->
+                <div class="relative" id="guides-dropdown">
+                    <button id="guides-menu-button" class="flex items-center gap-1 font-semibold text-slate-600 hover:text-brand-primary">
+                        <span>Guides</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <div id="guides-menu" class="hidden absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-200 py-1">
+                        <a href="/en/guides/how-to-calculate-concrete.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">How to Calculate Concrete</a>
+                        <a href="/en/guides/concrete-bag-guide.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Concrete Bag Guide</a>
+                        <a href="/en/concrete-calculator-formula.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">Calculation Formulas</a>
+                    </div>
+                </div>
                 <a href="/en/faq.html" class="font-semibold text-slate-600 hover:text-brand-primary">FAQ</a>
                 <a href="/en/glossary.html" class="font-semibold text-slate-600 hover:text-brand-primary">Glossary</a>
                 <a href="/en/case-studies.html" class="font-semibold text-slate-600 hover:text-brand-primary">Case Studies</a>
@@ -75,9 +86,14 @@
                 </div>
             </div>
             <div class="border-t border-slate-200 pt-4">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Guides</h3>
+                <div class="space-y-1 mb-4">
+                    <a href="/en/guides/how-to-calculate-concrete.html" class="mobile-menu-item">How to Calculate Concrete</a>
+                    <a href="/en/guides/concrete-bag-guide.html" class="mobile-menu-item">Concrete Bag Guide</a>
+                    <a href="/en/concrete-calculator-formula.html" class="mobile-menu-item">Calculation Formulas</a>
+                </div>
                 <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Resources</h3>
                 <div class="space-y-1">
-                    <a href="/en/guides/how-to-calculate-concrete.html" class="mobile-menu-item">Guides</a>
                     <a href="/en/faq.html" class="mobile-menu-item">FAQ</a>
                     <a href="/en/glossary.html" class="mobile-menu-item">Glossary</a>
                     <a href="/en/case-studies.html" class="mobile-menu-item">Case Studies</a>

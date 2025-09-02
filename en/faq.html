@@ -198,6 +198,18 @@
                 calculatorsMenu.classList.add('hidden');
               });
             }
+            
+            const guidesMenuButton = document.getElementById('guides-menu-button');
+            const guidesMenu = document.getElementById('guides-menu');
+            if (guidesMenuButton && guidesMenu) {
+              guidesMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                guidesMenu.classList.toggle('hidden');
+              });
+              document.addEventListener('click', () => {
+                guidesMenu.classList.add('hidden');
+              });
+            }
             const languageMenuButton = document.getElementById('language-menu-button');
             const languageMenu = document.getElementById('language-menu');
             if (languageMenuButton && languageMenu) {
