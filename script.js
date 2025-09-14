@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- TRANSLATIONS ---
     const translations = {
         en: {
+            // Basic UI
             totalVolume: 'Total Volume',
             materialBreakdown: 'Material Breakdown:',
             cement: 'Cement:',
@@ -13,20 +14,31 @@ document.addEventListener('DOMContentLoaded', () => {
             enterDimensions: 'Your results will appear here.',
             pressCalculate: 'Enter dimensions and press Calculate.',
             calculation: 'Calculation',
+            calculator: 'Calculator',
+            results: 'Results',
+            calculate: 'Calculate',
+            unit: 'Unit',
+            imperial: 'Imperial',
+            metric: 'Metric',
+            share: 'Share',
+            quantity: 'Quantity',
+            
+            // Column Calculator
             columnCalculatorTitle: 'Concrete Column Calculator',
             columnCalculatorDescription: 'Calculate the concrete volume and material needed for round columns, piers, or Sonotubes.',
             columnDiameter: 'Diameter',
             columnHeight: 'Height',
-            quantity: 'Quantity',
-            calculator: 'Calculator',
-            results: 'Results',
             requiredVolume: 'Required Concrete Volume',
+            
+            // Bag Calculator
             concreteBagCalculator: 'Concrete Bag Calculator',
-            unit: 'Unit',
-            imperial: 'Imperial',
-            metric: 'Metric',
-            calculate: 'Calculate',
             bagEstimation: 'Bag Estimation',
+            youWillNeed: 'You will need:',
+            bags: 'bags',
+            each: 'each',
+            totalWeight: 'Total Weight',
+            
+            // Stairs Calculator
             stairsCalculatorTitle: 'Concrete Stairs Calculator',
             stairsCalculatorDescription: 'Estimate the concrete volume and material needed for your steps.',
             stairsWidth: 'Stairs Width',
@@ -34,14 +46,115 @@ document.addEventListener('DOMContentLoaded', () => {
             riserHeight: 'Riser Height',
             treadDepth: 'Tread Depth',
             landingDepth: 'Landing Depth (Optional)',
-            share: 'Share',
+            
+            // Cost Calculator
             estimatedTotalCost: 'Estimated Total Cost',
-            youWillNeed: 'You will need:',
-            bags: 'bags',
-            each: 'each',
-            totalWeight: 'Total Weight',
+            
+            // Main Page Content
+            mainTitle: 'Concrete Calculator',
+            mainSubtitle: 'Estimate Volume, Materials & Cost',
+            mainDescription: 'The ultimate concrete calculator for your construction projects. Instantly estimate concrete volume (slabs, footings, columns), material quantities (cement, sand, gravel), and total cost.',
+            
+            // Features Section
+            saveTime: 'Save Time',
+            saveTimeDesc: 'Get instant estimates for volume, materials, and cost without complex manual calculations. Plan your project schedule more effectively.',
+            planAccurately: 'Plan Accurately',
+            planAccuratelyDesc: 'Whether you\'re pouring a simple slab or need to figure out the correct size and volume for structural supports, our tools can help. Check out our specialized concrete footing calculator for detailed foundation planning.',
+            saveMoney: 'Save Money',
+            saveMoneyDesc: 'Avoid over-ordering materials and reduce waste. Our calculator helps you buy exactly what you need, saving you money on your construction projects.',
+            
+            // Calculators Section
+            exploreCalculators: 'Explore Our Specialized Calculators',
+            exploreCalculatorsDesc: 'Find the perfect tool for your specific project needs.',
+            
+            // Individual Calculator Names
+            slabCalculator: 'Slab Calculator',
+            slabCalculatorDesc: 'Perfect for patios, floors, and foundations. Calculate volume and materials for any rectangular concrete slab.',
+            footingCalculator: 'Footing Calculator',
+            footingCalculatorDesc: 'Estimate concrete for wall footings or foundation pads. Ensures a stable and secure base for your structures.',
+            columnCalculatorDesc: 'Calculate concrete volume and material needs for round columns, piers, and Sonotubes.',
+            yardsCalculator: 'Yards Calculator',
+            yardsCalculatorDesc: 'Calculate concrete in cubic yards for ready-mix ordering. Perfect for large projects and professional contractors.',
+            cylinderCalculator: 'Cylinder Calculator',
+            cylinderCalculatorDesc: 'Specialized calculator for cylindrical structures like posts, columns, and sonotube footings.',
+            costCalculator: 'Cost Calculator',
+            costCalculatorDesc: 'Get detailed cost estimates including materials, labor, and delivery fees for your concrete project.',
+            rebarCalculator: 'Rebar Calculator',
+            rebarCalculatorDesc: 'Determine the amount of rebar needed for your concrete slabs and footings.',
+            stairsCalculatorDesc: 'Estimate concrete volume for your concrete steps and staircases.',
+            bagCalculatorDesc: 'Working with pre-mixed bags? Calculate exactly how many bags of concrete mix you\'ll need for your project.',
+            quikreteBagCalculator: 'Quikrete Bag Calculator',
+            quikreteBagCalculatorDesc: 'Specifically for Quikrete products. Calculate the number of Quikrete bags needed for your project.',
+            
+            // Guide Section
+            learnMore: 'Learn More About Concrete',
+            learnMoreDesc: 'Check out our guides to help you plan and execute your project perfectly.',
+            howToGuide: 'How to Calculate Concrete: A Step-by-Step Guide',
+            bagGuide: 'Complete Concrete Bag Guide: How Many Bags Do I Need?',
+            formulas: 'View Our Calculation Formulas',
+            
+            // How It Works
+            howItWorks: 'How It Works in 3 Simple Steps',
+            step1Title: 'Select Units & Shape',
+            step1Desc: 'Choose between Imperial (ft, lb) and Metric (m, kg) systems. Then, select the shape of your pour—a rectangular slab or a circular column.',
+            step2Title: 'Enter Dimensions',
+            step2Desc: 'Input the required measurements (length, width, height/thickness, or diameter) for your selected shape. The calculator handles unit conversions automatically.',
+            step3Title: 'Get Results',
+            step3Desc: 'Instantly receive your concrete volume, material breakdown, cost estimate, and bag requirements. Save or share your calculations for future reference.',
+            
+            // Units
+            feet: 'feet',
+            meters: 'meters',
+            inches: 'inches',
+            centimeters: 'centimeters',
+            cubicFeet: 'cubic feet',
+            cubicMeters: 'cubic meters',
+            cubicYards: 'cubic yards',
+            pounds: 'pounds',
+            kilograms: 'kilograms',
+            
+            // Form Fields
+            length: 'Length',
+            width: 'Width',
+            height: 'Height',
+            thickness: 'Thickness',
+            diameter: 'Diameter',
+            depth: 'Depth',
+            grade: 'Grade',
+            bagSize: 'Bag Size',
+            customBagSize: 'Custom Bag Size',
+            bagWeight: 'Bag Weight (lbs)',
+            bagYield: 'Bag Yield (ft³)',
+            costPerUnit: 'Cost per Unit',
+            costPerBag: 'Cost per Bag',
+            
+            // Actions
+            clearHistory: 'Clear History',
+            copyResults: 'Copy Results',
+            deleteItem: 'Delete',
+            viewHistory: 'View History',
+            reset: 'Reset',
+            
+            // Navigation
+            home: 'Home',
+            calculators: 'Calculators',
+            guides: 'Guides',
+            glossary: 'Glossary',
+            faq: 'FAQ',
+            contact: 'Contact',
+            
+            // Footer
+            allRightsReserved: 'All Rights Reserved.',
+            privacyPolicy: 'Privacy Policy',
+            termsOfService: 'Terms of Service',
+            
+            // Error messages
+            invalidInput: 'Please enter valid numbers',
+            positiveNumber: 'Please enter positive numbers',
+            missingFields: 'Please fill in all required fields'
         },
         zh: {
+            // Basic UI
             totalVolume: '总体积',
             materialBreakdown: '材料明细：',
             cement: '水泥：',
@@ -52,20 +165,31 @@ document.addEventListener('DOMContentLoaded', () => {
             enterDimensions: '您的结果将显示在这里。',
             pressCalculate: '输入尺寸并按计算。',
             calculation: '计算结果',
+            calculator: '计算器',
+            results: '计算结果',
+            calculate: '计算',
+            unit: '单位',
+            imperial: '英制',
+            metric: '公制',
+            share: '分享',
+            quantity: '数量',
+            
+            // Column Calculator
             columnCalculatorTitle: '混凝土圆柱计算器',
             columnCalculatorDescription: '计算圆形立柱、桥墩或 Sonotube 所需的混凝土体积和材料。',
             columnDiameter: '直径',
             columnHeight: '高度',
-            quantity: '数量',
-            calculator: '计算器',
-            results: '计算结果',
             requiredVolume: '所需混凝土体积',
+            
+            // Bag Calculator
             concreteBagCalculator: '预拌混凝土袋计算器',
-            unit: '单位',
-            imperial: '英制',
-            metric: '公制',
-            calculate: '计算',
             bagEstimation: '袋数估算',
+            youWillNeed: '您需要：',
+            bags: '袋',
+            each: '每袋',
+            totalWeight: '总重量',
+            
+            // Stairs Calculator
             stairsCalculatorTitle: '混凝土台阶计算器',
             stairsCalculatorDescription: '估算台阶所需的混凝土体积和材料。',
             stairsWidth: '台阶宽度',
@@ -73,17 +197,153 @@ document.addEventListener('DOMContentLoaded', () => {
             riserHeight: '踢面高度',
             treadDepth: '踏步深度',
             landingDepth: '平台深度 (可选)',
+            
+            // Cost Calculator
             estimatedTotalCost: '预估总成本',
-            youWillNeed: '您需要：',
-            bags: '袋',
-            each: '每袋',
-            totalWeight: '总重量',
+            
+            // Main Page Content
+            mainTitle: '混凝土计算器',
+            mainSubtitle: '估算体积、材料和成本',
+            mainDescription: '终极混凝土计算器，专为您的建筑项目设计。立即估算混凝土体积（平板、地基、柱子）、材料数量（水泥、沙子、砾石）和总成本。',
+            
+            // Features Section
+            saveTime: '节省时间',
+            saveTimeDesc: '无需复杂的手动计算，即可获得体积、材料和成本的即时估算。更有效地规划您的项目时间表。',
+            planAccurately: '精准规划',
+            planAccuratelyDesc: '无论您是浇筑简单的平板，还是需要计算结构支撑的正确尺寸和体积，我们的工具都能帮助您。查看我们专业的混凝土地基计算器，获得详细的基础规划。',
+            saveMoney: '节省资金',
+            saveMoneyDesc: '避免过度订购材料并减少浪费。我们的计算器帮助您精确购买所需材料，为您的建筑项目节省资金。',
+            
+            // Calculators Section
+            exploreCalculators: '探索我们的专业计算器',
+            exploreCalculatorsDesc: '为您特定的项目需求找到完美工具。',
+            
+            // Individual Calculator Names
+            slabCalculator: '平板计算器',
+            slabCalculatorDesc: '完美适用于露台、地板和地基。计算任何矩形混凝土平板的体积和材料。',
+            footingCalculator: '地基计算器',
+            footingCalculatorDesc: '估算墙基或地基垫层的混凝土用量。确保您结构的稳定和安全基础。',
+            columnCalculatorDesc: '计算圆形立柱、桥墩和 Sonotube 所需的混凝土体积和材料。',
+            yardsCalculator: '立方码计算器',
+            yardsCalculatorDesc: '以立方码计算混凝土，用于预拌订购。完美适用于大型项目和专业承包商。',
+            cylinderCalculator: '圆柱计算器',
+            cylinderCalculatorDesc: '适用于柱子、立柱和 sonotube 地基等圆柱形结构的专业计算器。',
+            costCalculator: '成本计算器',
+            costCalculatorDesc: '获得包括材料、人工和运输费用在内的详细成本估算，用于您的混凝土项目。',
+            rebarCalculator: '钢筋计算器',
+            rebarCalculatorDesc: '确定您的混凝土平板和地基所需的钢筋数量。',
+            stairsCalculatorDesc: '估算您的混凝土台阶和楼梯的混凝土体积。',
+            bagCalculatorDesc: '使用预拌袋装混凝土？精确计算您的项目需要多少袋混凝土拌合物。',
+            quikreteBagCalculator: 'Quikrete 袋装计算器',
+            quikreteBagCalculatorDesc: '专门用于 Quikrete 产品。计算您的项目所需的 Quikrete 袋数。',
+            
+            // Guide Section
+            learnMore: '了解更多混凝土知识',
+            learnMoreDesc: '查看我们的指南，帮助您完美规划和执行项目。',
+            howToGuide: '如何计算混凝土：逐步指南',
+            bagGuide: '完整混凝土袋装指南：我需要多少袋？',
+            formulas: '查看我们的计算公式',
+            
+            // How It Works
+            howItWorks: '简单三步工作原理',
+            step1Title: '选择单位和形状',
+            step1Desc: '在英制（英尺、磅）和公制（米、千克）系统之间选择。然后选择您浇筑的形状——矩形平板或圆形立柱。',
+            step2Title: '输入尺寸',
+            step2Desc: '为您选择的形状输入所需的测量值（长度、宽度、高度/厚度或直径）。计算器会自动处理单位转换。',
+            step3Title: '获得结果',
+            step3Desc: '立即接收您的混凝土体积、材料明细、成本估算和袋装需求。保存或分享您的计算结果以备将来参考。',
+            
+            // Units
+            feet: '英尺',
+            meters: '米',
+            inches: '英寸',
+            centimeters: '厘米',
+            cubicFeet: '立方英尺',
+            cubicMeters: '立方米',
+            cubicYards: '立方码',
+            pounds: '磅',
+            kilograms: '千克',
+            
+            // Form Fields
+            length: '长度',
+            width: '宽度',
+            height: '高度',
+            thickness: '厚度',
+            diameter: '直径',
+            depth: '深度',
+            grade: '等级',
+            bagSize: '袋装尺寸',
+            customBagSize: '自定义袋装尺寸',
+            bagWeight: '袋装重量 (磅)',
+            bagYield: '袋装产量 (立方英尺)',
+            costPerUnit: '每单位成本',
+            costPerBag: '每袋成本',
+            
+            // Actions
+            clearHistory: '清除历史',
+            copyResults: '复制结果',
+            deleteItem: '删除',
+            viewHistory: '查看历史',
+            reset: '重置',
+            
+            // Navigation
+            home: '首页',
+            calculators: '计算器',
+            guides: '指南',
+            glossary: '术语表',
+            faq: '常见问题',
+            contact: '联系我们',
+            
+            // Footer
+            allRightsReserved: '版权所有。',
+            privacyPolicy: '隐私政策',
+            termsOfService: '服务条款',
+            
+            // Error messages
+            invalidInput: '请输入有效数字',
+            positiveNumber: '请输入正数',
+            missingFields: '请填写所有必填字段'
         }
     };
 
     // --- UTILS ---
-    const getLang = () => document.documentElement.lang || 'en';
-    const t = (key) => (translations[getLang()] && translations[getLang()][key]) || translations['en'][key];
+    // Cache current language to avoid repeated DOM access
+    let currentLang = document.documentElement.lang || 'en';
+    let currentTranslations = translations[currentLang] || translations['en'];
+    
+    const getLang = () => currentLang;
+    const t = (key) => currentTranslations[key] || translations['en'][key];
+    
+    // Update language cache when language changes
+    const updateLanguage = (lang) => {
+        currentLang = lang;
+        currentTranslations = translations[lang] || translations['en'];
+        document.documentElement.lang = lang;
+        translatePage();
+    };
+    
+    // Optimized translation function with caching
+    const translateElement = (element, key) => {
+        const translation = t(key);
+        if (translation && element && element.textContent !== translation) {
+            element.textContent = translation;
+        }
+    };
+    
+    // Performance-optimized page translation
+    const translatePage = () => {
+        // Use requestAnimationFrame for better performance
+        requestAnimationFrame(() => {
+            const elements = document.querySelectorAll('[data-translate]');
+            const elementsArray = Array.from(elements);
+            
+            // Batch process translations for better performance
+            elementsArray.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                translateElement(element, key);
+            });
+        });
+    };
 
 
     // --- DOM ELEMENTS ---
@@ -911,6 +1171,7 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
     }
 
     // --- INITIALIZATION ---
+    translatePage(); // Translate all elements with data-translate attribute
     resetCalculator(); // Display initial message
     loadHistory();
     setupEventListeners();
