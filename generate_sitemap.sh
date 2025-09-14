@@ -17,8 +17,12 @@ cat > "$TEMP_SITEMAP_FILE" << EOL
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 EOL
 
-# 查找由 git 跟踪的所有 html 文件
+# 查找由 git 跟踪的所有 html 文件，排除 header.html 和 footer.html 组件文件
 git ls-files | grep '\.html$' | while read -r file; do
+  # 跳过组件文件
+  if [[ "$file" == *"header.html" ]] || [[ "$file" == *"footer.html" ]]; then
+    continue
+  fi
   # 清理 URL 的文件路径。
   url_path=${file#./}
 

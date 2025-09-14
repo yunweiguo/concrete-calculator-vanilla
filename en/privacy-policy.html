@@ -57,6 +57,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
+        <noscript>
+            <div class="bg-yellow-50 border-b border-yellow-200 p-2 text-center text-sm text-yellow-800">
+                For the best experience, please enable JavaScript. Some features may be limited.
+            </div>
+        </noscript>
     <script>
       fetch('/en/header.html').then(r=>r.text()).then(html=>{
         document.getElementById('header-include').outerHTML=html;
@@ -166,4 +171,3 @@
     </footer>
     <script src="/script.js"></script>
 </body>
-</html> 
