@@ -142,7 +142,23 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     
-    <div id="header-include"></div>
+    <div id="header-include">
+        <!-- Minimal header for SEO and users without JavaScript -->
+        <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 border-b border-slate-200">
+            <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+                <a href="/" class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-white bg-brand-primary p-1 rounded-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span class="font-bold text-xl text-slate-900">Concrete Calculator</span>
+                </a>
+                <a href="/zh/" class="text-slate-600 hover:text-brand-primary font-semibold">中文</a>
+            </nav>
+        </header>
+        <noscript>
+            <div class="bg-yellow-50 border-b border-yellow-200 p-2 text-center text-sm text-yellow-800">
+                For the best experience, please enable JavaScript. Some features may be limited.
+            </div>
+        </noscript>
+    </div>
     <script>
       fetch('/en/header.html').then(r=>r.text()).then(html=>{
         document.getElementById('header-include').outerHTML=html;
@@ -581,7 +597,25 @@
 
     </main>
     
-    <div id="footer-include"></div>
+    <div id="footer-include">
+        <!-- Minimal footer for SEO and users without JavaScript -->
+        <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
+            <div class="container mx-auto px-4 lg:px-6 py-8">
+                <div class="text-center">
+                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
+                    <p class="text-sm text-slate-400 mt-1">Free online concrete calculator for construction projects</p>
+                    <div class="mt-4">
+                        <a href="/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
+                        <span class="text-slate-500">|</span>
+                        <a href="/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
+                    </div>
+                    <div class="border-t border-slate-700 mt-6 pt-6">
+                        <p class="text-sm text-slate-500">&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
     <script>
         fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').outerHTML=html);
     </script>
