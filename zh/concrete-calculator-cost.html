@@ -445,7 +445,64 @@
                 </div>
             </div>
         </section>
-        
+
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">成本计算器使用步骤</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-slate-900">操作流程</h3>
+                        <ol class="list-decimal list-inside space-y-2 text-slate-700 text-sm">
+                            <li><strong>选择结构类型：</strong> 根据项目选择板、柱、基脚或墙体模板。</li>
+                            <li><strong>输入尺寸：</strong> 填写长度、宽度、厚度（柱体使用直径和高度），保持单位一致。</li>
+                            <li><strong>调整成本因子：</strong> 选择所在地区、混凝土强度、表面处理方式和场地条件，获得贴近实际的报价。</li>
+                            <li><strong>查看成本拆分：</strong> 对比材料与人工小计、每平方英尺成本以及损耗预留。</li>
+                            <li><strong>保存或分享：</strong> 导出结果面板或截图，与团队或业主沟通预算。</li>
+                        </ol>
+                        <p class="text-xs text-slate-500">小贴士：收到供应商报价后再回到此工具更新单价，保持预算最新。</p>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-slate-900">造价师提示</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm">
+                            <li>遵循预拌站建议的损耗系数（通常为 5–10%）。</li>
+                            <li>小于 3 立方码的订单可能会额外收取“短运费”，务必确认。</li>
+                            <li>若需安装钢筋、钢丝网或纤维，请在人工费用中体现。</li>
+                            <li>许可费、泵车费等软成本可写入“项目总成本”备注栏。</li>
+                            <li>不同季节的加热或早强措施会影响单价，注意及时更新。</li>
+                        </ul>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900">
+                            <h4 class="font-semibold">快速核对范围</h4>
+                            <p>多数美国市场的混凝土平面工程在每平方英尺 6–12 美元之间。如果估算结果超出区间，请检查输入参数。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 space-y-3">
+                    <h3 class="text-xl font-semibold text-slate-900">常见问题</h3>
+                    <details class="bg-slate-50 border border-slate-200 rounded-lg p-4 group" open>
+                        <summary class="font-medium cursor-pointer list-none flex justify-between items-center">
+                            <span>默认成本有多准确？</span>
+                            <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <p class="text-slate-600 mt-2 text-sm">区域系数基于美国当前平均价格。正式报价仍需结合供应商和分包方的最新单价。</p>
+                    </details>
+                    <details class="bg-slate-50 border border-slate-200 rounded-lg p-4 group">
+                        <summary class="font-medium cursor-pointer list-none flex justify-between items-center">
+                            <span>可以估算分阶段浇筑吗？</span>
+                            <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <p class="text-slate-600 mt-2 text-sm">可以。先输入单次浇筑的尺寸并记录结果，再调整为下一阶段尺寸，最后将各阶段的结果相加即可。</p>
+                    </details>
+                    <details class="bg-slate-50 border border-slate-200 rounded-lg p-4 group">
+                        <summary class="font-medium cursor-pointer list-none flex justify-between items-center">
+                            <span>如何加入利润或预备费？</span>
+                            <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <p class="text-slate-600 mt-2 text-sm">可以对材料或人工小计按比例加价，或在提交方案时追加固定额度的不可预见费。</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
         <section class="mt-16 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <h2 class="text-3xl font-bold text-slate-900 mb-6">关于混凝土计算器成本</h2>
