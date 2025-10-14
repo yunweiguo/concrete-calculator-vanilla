@@ -346,6 +346,78 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
+    const safeGetItem = (storage, key) => {
+        try {
+            return storage.getItem(key);
+        } catch (err) {
+            return null;
+        }
+    };
+
+    const safeSetItem = (storage, key, value) => {
+        try {
+            storage.setItem(key, value);
+        } catch (err) {
+            // no-op when storage is unavailable
+        }
+    };
+
+    const handleLocaleRedirect = () => {
+        const path = window.location.pathname;
+        const isRoot = path === '/' || path === '/index.html';
+        if (!isRoot) {
+            return;
+        }
+
+        const redirectedFlag = safeGetItem(sessionStorage, 'localeRedirectSuppressed');
+        if (redirectedFlag === '1') {
+            return;
+        }
+
+        let preferredLocale = safeGetItem(localStorage, 'preferredLocale');
+        if (!preferredLocale) {
+            const browserLocale = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            preferredLocale = browserLocale.startsWith('zh') ? 'zh' : 'en';
+        }
+
+        if (preferredLocale === 'zh') {
+            safeSetItem(sessionStorage, 'localeRedirectSuppressed', '1');
+            window.location.replace('/zh/');
+        }
+    };
+
+    const highlightActiveNavigation = () => {
+        const currentPath = window.location.pathname.replace(/index\.html$/, '');
+        const highlightClasses = ['text-brand-primary', 'font-bold', 'bg-slate-100'];
+        const selectors = ['#calculators-menu a', '#guides-menu a', '#mobile-menu a'];
+
+        selectors.forEach((selector) => {
+            document.querySelectorAll(selector).forEach((link) => {
+                const href = link.getAttribute('href');
+                if (!href) {
+                    return;
+                }
+
+                let normalizedHref = href;
+                try {
+                    normalizedHref = new URL(href, window.location.origin).pathname.replace(/index\.html$/, '');
+                } catch (err) {
+                    normalizedHref = href.replace(/index\.html$/, '');
+                }
+
+                if (normalizedHref === currentPath) {
+                    highlightClasses.forEach((cls) => link.classList.add(cls));
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    highlightClasses.forEach((cls) => link.classList.remove(cls));
+                    link.removeAttribute('aria-current');
+                }
+            });
+        });
+    };
+
+    handleLocaleRedirect();
+
     // --- DOM ELEMENTS ---
     const unitSystemDiv = document.getElementById('unit-system');
     const shapeSelectorDiv = document.getElementById('shape-selector');
@@ -545,6 +617,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if(languageMenu) languageMenu.classList.add('hidden');
             if(calculatorsMenu) calculatorsMenu.classList.add('hidden');
             if(guidesMenu) guidesMenu.classList.add('hidden');
+        });
+
+        document.querySelectorAll('[data-set-locale]').forEach((link) => {
+            link.addEventListener('click', () => {
+                const locale = link.getAttribute('data-set-locale');
+                if (!locale) {
+                    return;
+                }
+                safeSetItem(localStorage, 'preferredLocale', locale);
+                safeSetItem(sessionStorage, 'localeRedirectSuppressed', '1');
+            });
         });
 
         // Event listener for bag size dropdown
@@ -1175,6 +1258,7 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
     resetCalculator(); // Display initial message
     loadHistory();
     setupEventListeners();
+    highlightActiveNavigation();
     setupMobileOptimizations(); // Setup mobile optimizations
     updateInputsForShape('rectangle');
 });

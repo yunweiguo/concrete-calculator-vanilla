@@ -7,7 +7,7 @@ A simple, fast, and responsive web application for calculating concrete volume, 
 - **Volume Calculation:** Calculate concrete needed for slabs, footings, and columns.
 - **Material Estimation:** Provides a breakdown of required cement, sand, and gravel.
 - **Unit System:** Seamlessly switch between Imperial (feet, pounds) and Metric (meters, kilograms) systems.
-- **Multi-language Support:** Available in English, Chinese, and Spanish.
+- **Multi-language Support:** Available in English and Chinese, with additional locales evaluated based on demand.
 - **Calculation History:** Saves recent calculations in the browser's local storage.
 - **Responsive Design:** Fully usable on desktop, tablet, and mobile devices.
 - **No Dependencies:** Runs directly in the browser without any build steps.

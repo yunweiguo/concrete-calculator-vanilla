@@ -19,8 +19,18 @@ EOL
 
 # 查找由 git 跟踪的所有 html 文件，排除 header.html 和 footer.html 组件文件
 git ls-files | grep '\.html$' | while read -r file; do
-  # 跳过组件文件
+  # 跳过组件文件和不需要的页面
   if [[ "$file" == *"header.html" ]] || [[ "$file" == *"footer.html" ]]; then
+    continue
+  fi
+
+  # 跳过 404 页面
+  if [[ $(basename "$file") == "404.html" ]]; then
+    continue
+  fi
+
+  # 跳过与根路径重复的 /en/ 首页
+  if [[ "$file" == "./en/index.html" ]] || [[ "$file" == "en/index.html" ]]; then
     continue
   fi
   # 清理 URL 的文件路径。
