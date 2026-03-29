@@ -620,6 +620,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saveBtn) saveBtn.disabled = disabled;
     }
 
+    function updateDecisionEnhancement(metrics) {
+        const section = document.querySelector('[data-decision-page]');
+        if (!section || !window.ConcretePageCore) {
+            return;
+        }
+
+        window.ConcretePageCore.updateDecisionBlock(section.dataset.decisionPage, metrics);
+    }
+
 
     // --- CALCULATION LOGIC ---
     function calculate(inputs) {
@@ -731,6 +740,18 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+
+        const volumeFt3 = results.volume_m3 * constants.m3ToFt3;
+        const bags80 = Math.ceil(volumeFt3 / bagYields["80"]);
+        updateDecisionEnhancement({
+            yd3: results.volume_yd3,
+            yd3Waste: results.volume_yd3 * 1.1,
+            bags80: bags80,
+            bags80Waste: Math.ceil(bags80 * 1.1),
+            readyMixCost: Math.ceil(results.volume_yd3) * 140,
+            bagCost: bags80 * 6,
+            projectLabel: currentShape === 'circle' ? 'This column pour' : 'This slab pour'
+        });
     }
 
     function displayBagResults() {
@@ -813,6 +834,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+        updateDecisionEnhancement({
+            bagsNeeded: bagsNeeded,
+            bagWeight: bagWeight,
+            volumeFt3: volume_ft3,
+            volumeYd3: volume_ft3 / 27,
+            totalCost: costPerBag > 0 ? bagsNeeded * costPerBag : 0,
+            costPerBag: costPerBag
+        });
     }
 
     function displayRebarResults() {
