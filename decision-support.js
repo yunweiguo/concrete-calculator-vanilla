@@ -211,6 +211,19 @@
                 "If multiple curb runs will pour together, price them as one material order."
             ]
         },
+        "stairs-calculator": {
+            title: "Stair pour buying decision",
+            mistakes: [
+                "Stopping at one-step math instead of the whole stair run and landing.",
+                "Ignoring how a landing pushes the order past a comfortable bag mix.",
+                "Treating stair geometry as flexible when code and finish quality are already tight."
+            ],
+            nextSteps: [
+                "Lock the stair count, riser, tread, and landing before pricing the pour.",
+                "Use the waste-adjusted volume when you compare bags against ready-mix.",
+                "If the stair run must be poured cleanly in one go, bias toward simpler logistics."
+            ]
+        },
         "bag-calculator": {
             title: "Decide if bags are still the right move",
             mistakes: [

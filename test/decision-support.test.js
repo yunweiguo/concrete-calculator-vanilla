@@ -236,6 +236,22 @@ test("curb calculator payload keeps curb and gutter ordering concrete-specific",
     assert.match(payload.budget, /1\.38 yd³/);
 });
 
+test("stairs calculator payload turns stair volume into a pour plan", function () {
+    const payload = support.getDecisionPayload("stairs-calculator", {
+        yd3: 0.82,
+        yd3Waste: 0.9,
+        bags80: 37,
+        bags80Waste: 41,
+        readyMixCost: 140,
+        bagCost: 222,
+        projectLabel: "This stair run"
+    });
+
+    assert.match(payload.title, /stair/i);
+    assert.match(payload.summary, /stair run/i);
+    assert.match(payload.budget, /0\.90 yd³/);
+});
+
 test("unknown page key returns null", function () {
     assert.equal(support.getDecisionPayload("missing-page", {}), null);
 });

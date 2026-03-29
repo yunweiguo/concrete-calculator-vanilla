@@ -1069,7 +1069,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bags80Waste: Math.ceil(bags80 * 1.1),
             readyMixCost: Math.ceil(total_volume_yd3) * 140,
             bagCost: bags80 * 6,
-            projectLabel: quantity > 1 ? 'These round columns' : 'This column pour'
+            projectLabel: numberOfSteps > 1 ? 'This stair run' : 'This stair pour'
         });
     }
 

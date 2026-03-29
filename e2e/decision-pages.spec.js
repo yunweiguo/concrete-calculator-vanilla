@@ -160,3 +160,15 @@ test("curb calculator updates curb ordering guidance after input changes", async
     await page.fill("#curb-qty", "1");
     await expect(page.locator('[data-decision-page="curb-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
 });
+
+test("stairs calculator updates stair pour guidance after estimate", async ({ page }) => {
+    await page.goto("/en/stairs-calculator.html");
+    await expect(page.locator('[data-decision-page="stairs-calculator"]')).toBeVisible();
+    await page.fill("#stairs-width", "4");
+    await page.fill("#number-of-steps", "5");
+    await page.fill("#riser-height", "7");
+    await page.fill("#tread-depth", "11");
+    await page.fill("#landing-depth", "4");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="stairs-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
+});
