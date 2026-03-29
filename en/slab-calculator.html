@@ -132,62 +132,6 @@
                 For the best experience, please enable JavaScript. Some features may be limited.
             </div>
         </noscript>
-    <script>
-      fetch('/en/header.html').then(r=>r.text()).then(html=>{
-        document.getElementById('header-include').outerHTML=html;
-        // 重新绑定下拉、语言、移动菜单事件
-        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
-        const calculatorsMenu = document.getElementById('calculators-menu');
-        if (calculatorsMenuButton && calculatorsMenu) {
-          calculatorsMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            calculatorsMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            calculatorsMenu.classList.add('hidden');
-          });
-        }
-        
-        const guidesMenuButton = document.getElementById('guides-menu-button');
-        const guidesMenu = document.getElementById('guides-menu');
-        if (guidesMenuButton && guidesMenu) {
-          guidesMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            guidesMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            guidesMenu.classList.add('hidden');
-          });
-        }
-        const languageMenuButton = document.getElementById('language-menu-button');
-        const languageMenu = document.getElementById('language-menu');
-        if (languageMenuButton && languageMenu) {
-          languageMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            languageMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            languageMenu.classList.add('hidden');
-          });
-        }
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-          });
-        }
-      });
-      // 动态高亮当前菜单项
-      const currentPath = window.location.pathname;
-      document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-          link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
-        } else {
-          link.classList.remove('text-brand-primary', 'font-bold', 'bg-slate-100');
-        }
-      });
-    </script>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         <!-- Breadcrumb Navigation -->
@@ -216,6 +160,55 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
                 Estimate the exact amount of concrete you need for any rectangular or square slab project, including volume, bags, and cost.
             </p>
+        </section>
+
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="slab-calculator">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn slab volume into a buying plan</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">For slabs, the useful decision is not just total yards. You need to decide whether the slab is still practical in bags, what waste does to the order, and whether thickness makes ready-mix the safer choice.</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Best default</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Ready-mix is the safer default</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Budget check</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Plan around 2.44 yd³ with waste before you compare truck pricing with bag cost.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Logistics</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Large slabs get painful fast if you are still hauling and mixing bags by hand.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Waste-adjusted slab volume is the real buying number.</li>
+                            <li data-decision-item>Thickness changes the labor plan as much as the ticket price.</li>
+                            <li data-decision-item>Bags can be mathematically possible and still operationally dumb.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Using patio thickness for heavier slab loads.</li>
+                            <li data-decision-item>Comparing bag cost without counting labor and trips.</li>
+                            <li data-decision-item>Ordering the raw volume instead of the waste-adjusted slab number.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Lock thickness before you buy.</li>
+                            <li data-decision-item>Price the waste-adjusted volume, not the clean formula.</li>
+                            <li data-decision-item>If labor matters, bias toward ready-mix sooner.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this slab guide for planning. Local delivery, site access, and reinforcement details can change the final order.</p>
+            </div>
         </section>
 
         <!-- Main Calculator Section -->
@@ -387,26 +380,16 @@
         
     </main>
     
-    <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
-        <div class="container mx-auto px-4 lg:px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div>
-                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
-                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
-                    <span class="text-slate-500">|</span>
-                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
-                </div>
+    <div id="footer-include"></div>
+        <noscript>
+            <div class="bg-yellow-50 border-t border-yellow-200 p-2 text-center text-sm text-yellow-800">
+                For the best experience, please enable JavaScript. Some footer features may be limited.
             </div>
-            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
-                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+        </noscript>
+    <script src="/decision-support.js"></script>
+    <script src="/page-core.js"></script>
+    <script>
+        window.ConcretePageCore.initStandardChrome("en");
+    </script>
     <script src="/script.js"></script>
 </body>
-

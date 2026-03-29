@@ -61,53 +61,6 @@
                 For the best experience, please enable JavaScript. Some features may be limited.
             </div>
         </noscript>
-    <script>
-      fetch('/en/header.html').then(r=>r.text()).then(html=>{
-        document.getElementById('header-include').outerHTML=html;
-        // 重新绑定下拉、语言、移动菜单事件
-        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
-        const calculatorsMenu = document.getElementById('calculators-menu');
-        if (calculatorsMenuButton && calculatorsMenu) {
-          calculatorsMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            calculatorsMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            calculatorsMenu.classList.add('hidden');
-          });
-        }
-        
-        const guidesMenuButton = document.getElementById('guides-menu-button');
-        const guidesMenu = document.getElementById('guides-menu');
-        if (guidesMenuButton && guidesMenu) {
-          guidesMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            guidesMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            guidesMenu.classList.add('hidden');
-          });
-        }
-        const languageMenuButton = document.getElementById('language-menu-button');
-        const languageMenu = document.getElementById('language-menu');
-        if (languageMenuButton && languageMenu) {
-          languageMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            languageMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            languageMenu.classList.add('hidden');
-          });
-        }
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-          });
-        }
-      });
-    </script>
     <main class="container mx-auto px-4 lg:px-6 py-12">
                 <!-- Breadcrumb Navigation -->
         <nav aria-label="Breadcrumb" class="mb-8">
@@ -135,6 +88,55 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
                 Free Quikrete calculator to instantly estimate how many Quikrete bags (40lb, 60lb, 80lb) you need for slabs, footings, posts, and concrete projects.
             </p>
+        </section>
+
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="quikrete-bag-calculator">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Quikrete buying decision</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">The real question is not only how many Quikrete bags the math returns. You need to know whether that bag count is still practical to haul, mix, and pay for in one run.</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Best default</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Bagged mix is still realistic</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Budget check</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Use the full bag count and cart total before you commit to a Quikrete run.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Logistics</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Once bag count climbs, the store trip and mixing labor become the real constraint.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Bag yield matters more than label weight alone.</li>
+                            <li data-decision-item>Total bag count should drive the haul plan.</li>
+                            <li data-decision-item>Price the full cart, not one example bag.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Using weight without checking yield.</li>
+                            <li data-decision-item>Treating a large weekend pour like a quick store run.</li>
+                            <li data-decision-item>Ignoring the full cart total until checkout.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Confirm the bag size you can buy locally.</li>
+                            <li data-decision-item>Check haul weight and mixing time before checkout.</li>
+                            <li data-decision-item>Compare with ready-mix if the count looks ugly.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this guide for planning only. Store pricing, stock, and local delivery options can move the real decision.</p>
+            </div>
         </section>
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
@@ -298,25 +300,17 @@
         </section>
         
 </main>
-    <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 mt-20 md:mt-32">
-        <div class="container mx-auto px-4 lg:px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div>
-                    <p class="font-bold text-lg text-white">Concrete Calculator</p>
-                    <p class="text-sm text-slate-400 mt-1">A lightweight, fast, and accurate tool for all your concrete estimation needs.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <a href="/en/privacy-policy.html" class="text-slate-400 hover:text-white transition-colors px-3">Privacy Policy</a>
-                    <span class="text-slate-500">|</span>
-                    <a href="/en/terms-of-service.html" class="text-slate-400 hover:text-white transition-colors px-3">Terms of Service</a>
-                </div>
-            </div>
-            <div class="border-t border-slate-700 mt-6 pt-6 text-center text-sm text-slate-500">
-                 <p>&copy; 2024 Concrete Calculator. All Rights Reserved.</p>
-            </div>
+    <div id="footer-include"></div>
+    <noscript>
+        <div class="bg-yellow-50 border-t border-yellow-200 p-2 text-center text-sm text-yellow-800">
+            For the best experience, please enable JavaScript. Some footer features may be limited.
         </div>
-    </footer>
+    </noscript>
+    <script src="/decision-support.js"></script>
+    <script src="/page-core.js"></script>
+    <script>
+        window.ConcretePageCore.initStandardChrome("en");
+    </script>
     <script src="/script.js"></script>
     <script>
     // --- Quikrete Bag Calculator Patch ---
@@ -387,21 +381,21 @@
         }
         function displayBagResults() {
             const inputs = getInputs();
-            let volume, volumeLabel, bagYield, bags;
+            let volume, volumeLabel, bagYield, bags, volumeFt3;
             if(inputs.unit === 'imperial') {
                 volume = calcVolume(inputs); // ft³
                 volumeLabel = 'ft³';
                 bagYield = bagSizeMap[inputs.bagSize];
                 bags = Math.ceil(volume / bagYield);
+                volumeFt3 = volume;
             } else {
                 volume = calcVolume(inputs); // m³
                 volumeLabel = 'm³';
-                // 袋规格仍用英制，需将m³转ft³再算袋数
-                const volumeFt3 = volume * 35.3147;
+                volumeFt3 = volume * 35.3147;
                 bagYield = bagSizeMap[inputs.bagSize];
                 bags = Math.ceil(volumeFt3 / bagYield);
             }
-            lastBagResult = { ...inputs, volume, bags, bagYield };
+            lastBagResult = { ...inputs, volume, bags, bagYield, volumeFt3 };
             resultsOutput.innerHTML = `
                 <div class="text-center">
                     <p class="text-sm text-slate-500">Total Volume</p>
@@ -421,6 +415,16 @@
                     </dl>
                 </div>
             `;
+            if (window.ConcretePageCore) {
+                window.ConcretePageCore.updateDecisionBlock("quikrete-bag-calculator", {
+                    pageKey: "quikrete-bag-calculator",
+                    bagsNeeded: bags,
+                    bagWeight: parseInt(inputs.bagSize, 10),
+                    volumeFt3: volumeFt3,
+                    volumeYd3: volumeFt3 / 27,
+                    totalCost: bags * ({ "40": 4, "60": 6.5, "80": 8 }[inputs.bagSize] || 0)
+                });
+            }
         }
         // 先移除全局绑定的所有事件
         if (calculateBtn) {

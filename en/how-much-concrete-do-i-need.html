@@ -169,52 +169,6 @@
                 For the best experience, please enable JavaScript. Some features may be limited.
             </div>
         </noscript>
-    <script>
-      fetch('/en/header.html').then(r=>r.text()).then(html=>{
-        document.getElementById('header-include').outerHTML=html;
-        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
-        const calculatorsMenu = document.getElementById('calculators-menu');
-        if (calculatorsMenuButton && calculatorsMenu) {
-          calculatorsMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            calculatorsMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            calculatorsMenu.classList.add('hidden');
-          });
-        }
-        const guidesMenuButton = document.getElementById('guides-menu-button');
-        const guidesMenu = document.getElementById('guides-menu');
-        if (guidesMenuButton && guidesMenu) {
-          guidesMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            guidesMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            guidesMenu.classList.add('hidden');
-          });
-        }
-        const languageMenuButton = document.getElementById('language-menu-button');
-        const languageMenu = document.getElementById('language-menu');
-        if (languageMenuButton && languageMenu) {
-          languageMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            languageMenu.classList.toggle('hidden');
-          });
-          document.addEventListener('click', () => {
-            languageMenu.classList.add('hidden');
-          });
-        }
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-          });
-        }
-      });
-    </script>
-
     <main class="container mx-auto px-4 lg:px-6 py-12">
         <!-- Breadcrumb -->
         <nav aria-label="Breadcrumb" class="mb-8">
@@ -237,6 +191,55 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
                 Calculate the exact amount of concrete for any project. Enter your dimensions below to get cubic yards, bag counts, and cost estimates.
             </p>
+        </section>
+
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="how-much-concrete">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">What to buy after you know the volume</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">Once the result is over about 1 cubic yard, a truck order is usually easier than hauling bags. Under that line, bags can still be practical if the transport and mixing work are manageable.</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Best default</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Ready-mix is the safer default</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Budget check</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Plan around 1.36 yd³ with waste, or about 62 bags if you mix it yourself.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Logistics</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Small truck orders often carry delivery fees, so compare that against bag hauling and mixing time.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Waste-adjusted order size matters more than the raw cubic-yard number.</li>
+                            <li data-decision-item>Bag count becomes a labor problem before it becomes a math problem.</li>
+                            <li data-decision-item>National price averages are planning inputs, not a quote.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Using the exact math result without a waste allowance.</li>
+                            <li data-decision-item>Choosing bags for a pour that is already truck-sized.</li>
+                            <li data-decision-item>Using the same thickness for every job type.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Confirm thickness before you buy.</li>
+                            <li data-decision-item>Compare waste-adjusted yards against real bag count.</li>
+                            <li data-decision-item>If the bag count sounds miserable, call a supplier now.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this page to plan the purchase, then confirm local pricing and delivery minimums before ordering.</p>
+            </div>
         </section>
 
         <!-- Calculator -->
@@ -547,12 +550,11 @@
                 For the best experience, please enable JavaScript. Some footer features may be limited.
             </div>
         </noscript>
+    <script src="/decision-support.js"></script>
+    <script src="/page-core.js"></script>
     <script>
-      fetch('/en/footer.html').then(r=>r.text()).then(html=>{
-        document.getElementById('footer-include').outerHTML=html;
-      });
+        ConcretePageCore.initStandardChrome("en");
     </script>
-
     <script>
         // How Much Concrete Do I Need - Self-contained calculator
         const hmdinLength = document.getElementById('hmdin-length');
@@ -600,11 +602,23 @@
 
                 hmdinResults.classList.remove('hidden');
                 hmdinNoResults.classList.add('hidden');
+                ConcretePageCore.updateDecisionBlock('how-much-concrete', {
+                    yd3: yd3,
+                    yd3Waste: yd3Waste,
+                    bags80: bags80,
+                    bags80Waste: bags80Waste,
+                    readyMixCost: readyMixCost,
+                    bagCost: bagCost,
+                    costPerYd3: costPerYd3,
+                    projectLabel: length + 'x' + width + ' slab'
+                });
             } else {
                 hmdinResults.classList.add('hidden');
                 hmdinNoResults.classList.remove('hidden');
             }
         }
+
+        hmdinCalculate();
     </script>
 </body>
 </html>

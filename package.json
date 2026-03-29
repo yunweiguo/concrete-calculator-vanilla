@@ -1,0 +1,12 @@
+{
+  "name": "concrete-calculator-vanilla",
+  "private": true,
+  "scripts": {
+    "test:contract": "node --test test/decision-support.test.js",
+    "test:e2e": "playwright test",
+    "test": "npm run test:contract && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0"
+  }
+}

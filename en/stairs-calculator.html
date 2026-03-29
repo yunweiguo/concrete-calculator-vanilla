@@ -96,6 +96,55 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="stairsCalculatorDescription">Free concrete stairs calculator to estimate exact concrete volume, bags needed, and cost for your steps and staircases.</p>
         </section>
 
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="stairs-calculator">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Stair pour buying decision</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">The useful decision here is not just stair volume. You need the full stair run, landing, and waste-adjusted order size before deciding whether bags are still practical.</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Best default</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Bagged mix is still realistic</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Budget check</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Use the full stair run with waste before you compare truck pricing against bags.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Logistics</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Landings and extra steps push a stair pour into a bigger staging problem fast.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Landing depth changes the material order more than expected.</li>
+                            <li data-decision-item>Waste-adjusted volume is the real buying number.</li>
+                            <li data-decision-item>Clean one-pour stairs usually reward simpler logistics.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Using one-step math instead of the whole run.</li>
+                            <li data-decision-item>Forgetting how a landing changes the order.</li>
+                            <li data-decision-item>Using flexible geometry where code already constrains the pour.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Lock stair count, riser, tread, and landing first.</li>
+                            <li data-decision-item>Price the waste-adjusted volume, not the clean formula.</li>
+                            <li data-decision-item>Bias toward easier logistics if the stairs must pour cleanly in one go.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this guide for planning only. Formwork, code, reinforcement, and finish requirements can still change the final stair order.</p>
+            </div>
+        </section>
+
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
@@ -235,53 +284,12 @@
             </div>
         </noscript>
 
+    <script src="/decision-support.js"></script>
+    <script src="/page-core.js"></script>
     <script src="/script.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Load Header & Footer
-        fetch('/en/header.html').then(r=>r.text()).then(html=>document.getElementById('header-include').innerHTML=html).then(() => setupNav());
-        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').innerHTML=html);
-
-        // Setup navigation events
-        function setupNav() {
-            const calculatorsMenuButton = document.getElementById('calculators-menu-button');
-            const calculatorsMenu = document.getElementById('calculators-menu');
-            if (calculatorsMenuButton) {
-                calculatorsMenuButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    calculatorsMenu.classList.toggle('hidden');
-                });
-            }
-            
-            const guidesMenuButton = document.getElementById('guides-menu-button');
-            const guidesMenu = document.getElementById('guides-menu');
-            if (guidesMenuButton) {
-                guidesMenuButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    guidesMenu.classList.toggle('hidden');
-                });
-            }
-
-            const languageMenuButton = document.getElementById('language-menu-button');
-            const languageMenu = document.getElementById('language-menu');
-            if (languageMenuButton) {
-                languageMenuButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    languageMenu.classList.toggle('hidden');
-                });
-            }
-
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            }
-
-            document.addEventListener('click', () => {
-                if (calculatorsMenu) calculatorsMenu.classList.add('hidden');
-                if (languageMenu) languageMenu.classList.add('hidden');
-            });
-        }
+        window.ConcretePageCore.initStandardChrome("en");
       });
     </script>
 </body>

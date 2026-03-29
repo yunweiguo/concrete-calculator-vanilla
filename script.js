@@ -620,6 +620,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saveBtn) saveBtn.disabled = disabled;
     }
 
+    function updateDecisionEnhancement(metrics) {
+        const section = document.querySelector('[data-decision-page]');
+        if (!section || !window.ConcretePageCore) {
+            return;
+        }
+
+        window.ConcretePageCore.updateDecisionBlock(section.dataset.decisionPage, metrics);
+    }
+
 
     // --- CALCULATION LOGIC ---
     function calculate(inputs) {
@@ -731,6 +740,27 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+
+        const volumeFt3 = results.volume_m3 * constants.m3ToFt3;
+        const bags80 = Math.ceil(volumeFt3 / bagYields["80"]);
+        const decisionPage = document.querySelector('[data-decision-page]')?.dataset.decisionPage || "";
+        let projectLabel = currentShape === 'circle' ? 'This column pour' : 'This slab pour';
+
+        if (decisionPage === "footing-calculator") {
+            projectLabel = currentShape === "circle" ? "This pier footing pour" : "This footing pour";
+        } else if (decisionPage === "slab-calculator") {
+            projectLabel = "This slab pour";
+        }
+
+        updateDecisionEnhancement({
+            yd3: results.volume_yd3,
+            yd3Waste: results.volume_yd3 * 1.1,
+            bags80: bags80,
+            bags80Waste: Math.ceil(bags80 * 1.1),
+            readyMixCost: Math.ceil(results.volume_yd3) * 140,
+            bagCost: bags80 * 6,
+            projectLabel: projectLabel
+        });
     }
 
     function displayBagResults() {
@@ -813,6 +843,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+        updateDecisionEnhancement({
+            bagsNeeded: bagsNeeded,
+            bagWeight: bagWeight,
+            volumeFt3: volume_ft3,
+            volumeYd3: volume_ft3 / 27,
+            totalCost: costPerBag > 0 ? bagsNeeded * costPerBag : 0,
+            costPerBag: costPerBag
+        });
     }
 
     function displayRebarResults() {
@@ -850,25 +888,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const displayWeight = totalWeight.toFixed(1);
         const lengthUnit = unit === 'metric' ? 'm' : 'ft';
         const weightUnit = unit === 'metric' ? 'kg' : 'lbs';
+        const resolvedCost = costPerPiece > 0
+            ? totalPieces * costPerPiece
+            : (costPerLength > 0 ? (unit === 'metric' ? totalLength_m : totalLength_ft) * costPerLength : 0);
 
         let costHtml = '';
         if (costPerPiece > 0) {
-            const totalCost = totalPieces * costPerPiece;
             const currencySymbol = getLang() === 'zh' ? '¥' : '$';
             costHtml = `
             <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
                 <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
-                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${resolvedCost.toFixed(2)}</p>
             </div>
             `;
         } else if (costPerLength > 0) {
-            const totalLength = unit === 'metric' ? totalLength_m : totalLength_ft;
-            const totalCost = totalLength * costPerLength;
             const currencySymbol = getLang() === 'zh' ? '¥' : '$';
             costHtml = `
             <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
                 <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
-                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${resolvedCost.toFixed(2)}</p>
             </div>
             `;
         }
@@ -903,6 +941,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+        updateDecisionEnhancement({
+            totalLength: unit === 'metric' ? totalLength_m : totalLength_ft,
+            lengthUnit: lengthUnit,
+            totalWeight: totalWeight,
+            weightUnit: weightUnit,
+            totalPieces: totalPieces,
+            spacing: parseFloat(rebarSpacingInput.value),
+            spacingUnit: unit === 'metric' ? 'mm' : 'in',
+            costTotal: resolvedCost
+        });
     }
 
     function displayColumnResults() {
@@ -1012,6 +1060,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+
+        const bags80 = Math.ceil(total_volume_ft3 / bagYields["80"]);
+        updateDecisionEnhancement({
+            yd3: total_volume_yd3,
+            yd3Waste: total_volume_yd3 * 1.1,
+            bags80: bags80,
+            bags80Waste: Math.ceil(bags80 * 1.1),
+            readyMixCost: Math.ceil(total_volume_yd3) * 140,
+            bagCost: bags80 * 6,
+            projectLabel: numberOfSteps > 1 ? 'This stair run' : 'This stair pour'
+        });
     }
 
 

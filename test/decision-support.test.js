@@ -1,0 +1,257 @@
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const support = require("../decision-support.js");
+
+test("home payload recommends ready-mix for 1+ yard pours", function () {
+    const payload = support.getDecisionPayload("home", {
+        yd3: 1.23,
+        yd3Waste: 1.36,
+        bags80: 56,
+        bags80Waste: 62,
+        readyMixCost: 280,
+        bagCost: 336,
+        projectLabel: "A 10x10 slab"
+    });
+
+    assert.equal(payload.method, "Ready-mix is the safer default");
+    assert.match(payload.summary, /10x10 slab/i);
+    assert.match(payload.budget, /1\.36 yd³/);
+});
+
+test("volume payload uses two-decimal waste rounding in budget copy", function () {
+    const payload = support.getDecisionPayload("how-much-concrete", {
+        yd3: 1.234567,
+        bags80: 56,
+        bags80Waste: 62
+    });
+
+    assert.match(payload.budget, /1\.36 yd³/);
+});
+
+test("bag payload warns when bag counts become impractical", function () {
+    const payload = support.getDecisionPayload("bag-calculator", {
+        bagsNeeded: 72,
+        bagWeight: 80,
+        volumeFt3: 43.2,
+        volumeYd3: 1.6,
+        totalCost: 468
+    });
+
+    assert.match(payload.summary, /lot of bagged concrete/i);
+    assert.equal(payload.method, "Ready-mix is the safer default");
+    assert.match(payload.budget, /\$468/);
+});
+
+test("cost payload stays in estimate language", function () {
+    const payload = support.getDecisionPayload("cost-calculator", {
+        projectType: "patio",
+        totalCost: 1850,
+        materialsCost: 920,
+        laborCost: 930,
+        volumeYd3: 2.5,
+        costPerSqFt: 8.45,
+        deliveryCost: 150
+    });
+
+    assert.match(payload.summary, /planning number/i);
+    assert.match(payload.budget, /\$8\.45/);
+    assert.match(payload.disclaimer, /Regional presets are averages/);
+});
+
+test("slab calculator payload turns yardage into a buying plan", function () {
+    const payload = support.getDecisionPayload("slab-calculator", {
+        yd3: 2.0,
+        yd3Waste: 2.2,
+        bags80: 90,
+        bags80Waste: 99,
+        readyMixCost: 420,
+        bagCost: 540,
+        projectLabel: "This slab pour"
+    });
+
+    assert.match(payload.title, /slab/i);
+    assert.match(payload.budget, /2\.20 yd³/);
+});
+
+test("footing calculator payload keeps footing-specific procurement advice", function () {
+    const payload = support.getDecisionPayload("footing-calculator", {
+        yd3: 2.22,
+        yd3Waste: 2.44,
+        bags80: 100,
+        bags80Waste: 110,
+        readyMixCost: 420,
+        bagCost: 600,
+        projectLabel: "This footing pour"
+    });
+
+    assert.match(payload.title, /footing/i);
+    assert.match(payload.summary, /footing/i);
+});
+
+test("sono tube payload stays bag-aware for post and pier pours", function () {
+    const payload = support.getDecisionPayload("sono-tube-calculator", {
+        yd3: 0.52,
+        yd3Waste: 0.57,
+        bags80: 24,
+        bags80Waste: 27,
+        readyMixCost: 140,
+        bagCost: 144,
+        projectLabel: "These sonotube piers"
+    });
+
+    assert.match(payload.title, /sono|pier|tube/i);
+    assert.match(payload.budget, /0\.57 yd³/);
+});
+
+test("12x12 slab payload reflects truck-sized slab guidance", function () {
+    const payload = support.getDecisionPayload("slab-12x12", {
+        yd3: 1.78,
+        yd3Waste: 1.96,
+        bags80: 80,
+        bags80Waste: 88,
+        readyMixCost: 280,
+        bagCost: 480,
+        projectLabel: "This 12x12 slab"
+    });
+
+    assert.match(payload.title, /12x12/i);
+    assert.match(payload.budget, /1\.96 yd³/);
+});
+
+test("20x20 slab payload stays explicitly ready-mix oriented", function () {
+    const payload = support.getDecisionPayload("slab-20x20", {
+        yd3: 4.94,
+        yd3Waste: 5.43,
+        bags80: 223,
+        bags80Waste: 246,
+        readyMixCost: 700,
+        bagCost: 1338,
+        projectLabel: "This 20x20 slab"
+    });
+
+    assert.match(payload.title, /20x20/i);
+    assert.match(payload.method, /Ready-mix/i);
+});
+
+test("yards calculator payload focuses on ordering in yards", function () {
+    const payload = support.getDecisionPayload("yards-calculator", {
+        yd3: 4.94,
+        yd3Waste: 5.43,
+        bags80: 223,
+        bags80Waste: 246,
+        readyMixCost: 700,
+        bagCost: 1338,
+        projectLabel: "This ready-mix order"
+    });
+
+    assert.match(payload.title, /yards/i);
+    assert.match(payload.highlights[0], /5\.43 yd³/);
+});
+
+test("column calculator payload stays focused on round-column procurement", function () {
+    const payload = support.getDecisionPayload("column-calculator", {
+        yd3: 0.34,
+        yd3Waste: 0.37,
+        bags80: 16,
+        bags80Waste: 18,
+        readyMixCost: 140,
+        bagCost: 96,
+        projectLabel: "This column pour"
+    });
+
+    assert.match(payload.title, /column/i);
+    assert.match(payload.budget, /0\.37 yd³/);
+});
+
+test("pier calculator payload keeps belled and drilled-shaft pours bag-aware", function () {
+    const payload = support.getDecisionPayload("pier-calculator", {
+        yd3: 0.58,
+        yd3Waste: 0.64,
+        bags80: 27,
+        bags80Waste: 30,
+        readyMixCost: 140,
+        bagCost: 162,
+        projectLabel: "These concrete piers"
+    });
+
+    assert.match(payload.title, /pier/i);
+    assert.match(payload.summary, /piers/i);
+});
+
+test("cylinder calculator payload turns cylindrical volume into an order plan", function () {
+    const payload = support.getDecisionPayload("cylinder-calculator", {
+        yd3: 0.58,
+        yd3Waste: 0.64,
+        bags80: 27,
+        bags80Waste: 30,
+        readyMixCost: 140,
+        bagCost: 162,
+        projectLabel: "These cylinders"
+    });
+
+    assert.match(payload.title, /cylinder/i);
+    assert.match(payload.budget, /0\.64 yd³/);
+});
+
+test("quikrete calculator payload stays focused on bag-buying decisions", function () {
+    const payload = support.getDecisionPayload("quikrete-bag-calculator", {
+        bagsNeeded: 48,
+        bagWeight: 60,
+        volumeFt3: 21.6,
+        volumeYd3: 0.8,
+        totalCost: 312
+    });
+
+    assert.match(payload.title, /quikrete/i);
+    assert.match(payload.budget, /\$312/);
+});
+
+test("rebar calculator payload turns layout into a procurement summary", function () {
+    const payload = support.getDecisionPayload("rebar-calculator", {
+        totalLength: 308,
+        lengthUnit: "ft",
+        totalWeight: 205,
+        weightUnit: "lbs",
+        totalPieces: 28,
+        spacing: 18,
+        costTotal: 280
+    });
+
+    assert.match(payload.title, /rebar/i);
+    assert.match(payload.method, /28/);
+});
+
+test("curb calculator payload keeps curb and gutter ordering concrete-specific", function () {
+    const payload = support.getDecisionPayload("curb-calculator", {
+        yd3: 1.25,
+        yd3Waste: 1.38,
+        bags80: 57,
+        bags80Waste: 63,
+        readyMixCost: 280,
+        bagCost: 342,
+        projectLabel: "This curb run"
+    });
+
+    assert.match(payload.title, /curb/i);
+    assert.match(payload.budget, /1\.38 yd³/);
+});
+
+test("stairs calculator payload turns stair volume into a pour plan", function () {
+    const payload = support.getDecisionPayload("stairs-calculator", {
+        yd3: 0.82,
+        yd3Waste: 0.9,
+        bags80: 37,
+        bags80Waste: 41,
+        readyMixCost: 140,
+        bagCost: 222,
+        projectLabel: "This stair run"
+    });
+
+    assert.match(payload.title, /stair/i);
+    assert.match(payload.summary, /stair run/i);
+    assert.match(payload.budget, /0\.90 yd³/);
+});
+
+test("unknown page key returns null", function () {
+    assert.equal(support.getDecisionPayload("missing-page", {}), null);
+});

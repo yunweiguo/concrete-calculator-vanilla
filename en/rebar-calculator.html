@@ -75,41 +75,6 @@
                 For the best experience, please enable JavaScript. Some features may be limited.
             </div>
         </noscript>
-    <script>
-      fetch('/en/header.html').then(r=>r.text()).then(html=>{
-        document.getElementById('header-include').outerHTML=html;
-        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
-        const calculatorsMenu = document.getElementById('calculators-menu');
-        if (calculatorsMenuButton) {
-          calculatorsMenuButton.addEventListener('click', (e) => { e.stopPropagation(); calculatorsMenu.classList.toggle('hidden'); });
-          document.addEventListener('click', () => calculatorsMenu.classList.add('hidden'));
-        }
-        const guidesMenuButton = document.getElementById('guides-menu-button');
-        const guidesMenu = document.getElementById('guides-menu');
-        if (guidesMenuButton) {
-          guidesMenuButton.addEventListener('click', (e) => { e.stopPropagation(); guidesMenu.classList.toggle('hidden'); });
-          document.addEventListener('click', () => guidesMenu.classList.add('hidden'));
-        }
-        const languageMenuButton = document.getElementById('language-menu-button');
-        const languageMenu = document.getElementById('language-menu');
-        if (languageMenuButton) {
-          languageMenuButton.addEventListener('click', (e) => { e.stopPropagation(); languageMenu.classList.toggle('hidden'); });
-          document.addEventListener('click', () => languageMenu.classList.add('hidden'));
-        }
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton) {
-          mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        }
-        // Highlight current page link
-        const currentPath = window.location.pathname;
-        document.querySelectorAll('#calculators-menu a, #mobile-menu a').forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
-                link.classList.add('text-brand-primary', 'font-bold', 'bg-slate-100');
-            }
-        });
-      });
-    </script>
 
     <main class="container mx-auto px-4 lg:px-6 py-12">
         
@@ -139,6 +104,55 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
                 Estimate the amount of steel rebar needed for a concrete slab grid.
             </p>
+        </section>
+
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="rebar-calculator">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn the slab grid into a buy list</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">The useful decision here is not just total rebar length. You need piece count, spacing, and a clear buying plan before this turns into a supplier order.</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Best default</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Buy by full stick count first, then sanity-check linear footage.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Budget check</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">If the yard only sells full pieces, price this layout as a buy list, not just a length estimate.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Logistics</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Spacing and lap waste decide whether this is one store run or a real supplier quote.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Total pieces matter as much as total linear footage.</li>
+                            <li data-decision-item>Spacing is part of the structural decision, not just cost control.</li>
+                            <li data-decision-item>Full-stick buying rules can change the real price quickly.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Stopping at total length and forgetting piece count.</li>
+                            <li data-decision-item>Using random example spacing instead of project requirements.</li>
+                            <li data-decision-item>Pricing by length when the supplier sells full sticks.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Confirm bar size and spacing before buying.</li>
+                            <li data-decision-item>Get a per-piece quote if the supplier cuts nothing.</li>
+                            <li data-decision-item>Add lap splice, chairs, and tie wire before checkout.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this guide for planning only. Structural spacing, bar size, and lap details still need code or engineering review.</p>
+            </div>
         </section>
 
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
@@ -309,10 +323,11 @@
                 For the best experience, please enable JavaScript. Some footer features may be limited.
             </div>
         </noscript>
+    <script src="/decision-support.js"></script>
+    <script src="/page-core.js"></script>
     <script>
-        fetch('/en/footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-include').outerHTML=html);
+        window.ConcretePageCore.initStandardChrome("en");
     </script>
-
     <script src="/script.js"></script>
 
 </body>
