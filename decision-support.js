@@ -55,6 +55,45 @@
                 "If you are mixing bags, plan labor and transport before checkout."
             ]
         },
+        "slab-calculator": {
+            title: "Turn slab volume into a buying plan",
+            mistakes: [
+                "Using patio thickness for a driveway or garage slab.",
+                "Comparing bag cost without counting trips, haul weight, and mixing time.",
+                "Ordering the clean math result instead of the waste-adjusted slab number."
+            ],
+            nextSteps: [
+                "Lock thickness before you compare ready-mix and bags.",
+                "Use the waste-adjusted slab volume when you price the order.",
+                "If labor matters more than ticket price, bias toward ready-mix sooner."
+            ]
+        },
+        "footing-calculator": {
+            title: "Footing pour buying decision",
+            mistakes: [
+                "Forgetting that footing depth and width are structural choices, not price levers.",
+                "Using bag math without thinking about repeated footing pours and staging.",
+                "Treating one footing estimate like the total job when multiple footings are planned."
+            ],
+            nextSteps: [
+                "Confirm the footing dimensions against local code or engineering notes.",
+                "Multiply the footing plan across the real footing count before ordering.",
+                "If access is tight, compare truck delivery against mixing in stages."
+            ]
+        },
+        "sono-tube-calculator": {
+            title: "Plan the sonotube pour before you buy",
+            mistakes: [
+                "Guessing tube diameter instead of using the actual form size.",
+                "Ignoring tube count and only pricing one pier.",
+                "Buying the exact bag count with no extra for depth variation or spill."
+            ],
+            nextSteps: [
+                "Confirm diameter, depth, and quantity before you price anything.",
+                "Use the total yards if multiple piers make the pour feel truck-sized.",
+                "Add extra bags if hole depth or tube cut length may vary in the field."
+            ]
+        },
         "bag-calculator": {
             title: "Decide if bags are still the right move",
             mistakes: [

@@ -743,6 +743,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const volumeFt3 = results.volume_m3 * constants.m3ToFt3;
         const bags80 = Math.ceil(volumeFt3 / bagYields["80"]);
+        const decisionPage = document.querySelector('[data-decision-page]')?.dataset.decisionPage || "";
+        let projectLabel = currentShape === 'circle' ? 'This column pour' : 'This slab pour';
+
+        if (decisionPage === "footing-calculator") {
+            projectLabel = currentShape === "circle" ? "This pier footing pour" : "This footing pour";
+        } else if (decisionPage === "slab-calculator") {
+            projectLabel = "This slab pour";
+        }
+
         updateDecisionEnhancement({
             yd3: results.volume_yd3,
             yd3Waste: results.volume_yd3 * 1.1,
@@ -750,7 +759,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bags80Waste: Math.ceil(bags80 * 1.1),
             readyMixCost: Math.ceil(results.volume_yd3) * 140,
             bagCost: bags80 * 6,
-            projectLabel: currentShape === 'circle' ? 'This column pour' : 'This slab pour'
+            projectLabel: projectLabel
         });
     }
 

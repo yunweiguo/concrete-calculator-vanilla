@@ -58,6 +58,51 @@ test("cost payload stays in estimate language", function () {
     assert.match(payload.disclaimer, /Regional presets are averages/);
 });
 
+test("slab calculator payload turns yardage into a buying plan", function () {
+    const payload = support.getDecisionPayload("slab-calculator", {
+        yd3: 2.0,
+        yd3Waste: 2.2,
+        bags80: 90,
+        bags80Waste: 99,
+        readyMixCost: 420,
+        bagCost: 540,
+        projectLabel: "This slab pour"
+    });
+
+    assert.match(payload.title, /slab/i);
+    assert.match(payload.budget, /2\.20 yd³/);
+});
+
+test("footing calculator payload keeps footing-specific procurement advice", function () {
+    const payload = support.getDecisionPayload("footing-calculator", {
+        yd3: 2.22,
+        yd3Waste: 2.44,
+        bags80: 100,
+        bags80Waste: 110,
+        readyMixCost: 420,
+        bagCost: 600,
+        projectLabel: "This footing pour"
+    });
+
+    assert.match(payload.title, /footing/i);
+    assert.match(payload.summary, /footing/i);
+});
+
+test("sono tube payload stays bag-aware for post and pier pours", function () {
+    const payload = support.getDecisionPayload("sono-tube-calculator", {
+        yd3: 0.52,
+        yd3Waste: 0.57,
+        bags80: 24,
+        bags80Waste: 27,
+        readyMixCost: 140,
+        bagCost: 144,
+        projectLabel: "These sonotube piers"
+    });
+
+    assert.match(payload.title, /sono|pier|tube/i);
+    assert.match(payload.budget, /0\.57 yd³/);
+});
+
 test("unknown page key returns null", function () {
     assert.equal(support.getDecisionPayload("missing-page", {}), null);
 });

@@ -46,3 +46,33 @@ test("cost calculator updates estimate decision block", async ({ page }) => {
     await expect(page.locator("#results")).toBeVisible();
     await expect(page.locator('[data-decision-page="cost-calculator"] [data-decision-slot="method"]')).toContainText("Budget range");
 });
+
+test("slab calculator shows decision guidance after calculation", async ({ page }) => {
+    await page.goto("/en/slab-calculator.html");
+    await expect(page.locator('[data-decision-page="slab-calculator"]')).toBeVisible();
+    await page.fill("#length", "10");
+    await page.fill("#width", "12");
+    await page.fill("#height", "0.5");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="slab-calculator"] [data-decision-slot="budget"]')).toContainText("2.44 yd³");
+});
+
+test("footing calculator keeps footing procurement advice in sync", async ({ page }) => {
+    await page.goto("/en/footing-calculator.html");
+    await expect(page.locator('[data-decision-page="footing-calculator"]')).toBeVisible();
+    await page.fill("#length", "40");
+    await page.fill("#width", "1.5");
+    await page.fill("#height", "1");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="footing-calculator"] [data-decision-slot="method"]')).toContainText("Ready-mix");
+});
+
+test("sono tube calculator shows decision guidance for multiple piers", async ({ page }) => {
+    await page.goto("/en/sono-tube-calculator.html");
+    await expect(page.locator('[data-decision-page="sono-tube-calculator"]')).toBeVisible();
+    await page.selectOption("#sono-diameter", "12");
+    await page.fill("#sono-depth", "4");
+    await page.fill("#sono-quantity", "4");
+    await expect(page.locator("#results")).toBeVisible();
+    await expect(page.locator('[data-decision-page="sono-tube-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
+});
