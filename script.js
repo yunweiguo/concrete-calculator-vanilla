@@ -1050,6 +1050,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+
+        const bags80 = Math.ceil(total_volume_ft3 / bagYields["80"]);
+        updateDecisionEnhancement({
+            yd3: total_volume_yd3,
+            yd3Waste: total_volume_yd3 * 1.1,
+            bags80: bags80,
+            bags80Waste: Math.ceil(bags80 * 1.1),
+            readyMixCost: Math.ceil(total_volume_yd3) * 140,
+            bagCost: bags80 * 6,
+            projectLabel: quantity > 1 ? 'These round columns' : 'This column pour'
+        });
     }
 
 

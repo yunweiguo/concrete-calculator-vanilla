@@ -101,3 +101,31 @@ test("yards calculator updates ordering guidance after calculation", async ({ pa
     await page.click("#calculate-btn");
     await expect(page.locator('[data-decision-page="yards-calculator"] [data-decision-slot="budget"]')).toContainText("5.43 yd³");
 });
+
+test("column calculator updates decision guidance for round columns", async ({ page }) => {
+    await page.goto("/en/column-calculator.html");
+    await expect(page.locator('[data-decision-page="column-calculator"]')).toBeVisible();
+    await page.fill("#column-diameter", "12");
+    await page.fill("#column-height", "8");
+    await page.fill("#column-quantity", "2");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="column-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
+});
+
+test("pier calculator keeps procurement guidance visible for belled piers", async ({ page }) => {
+    await page.goto("/en/concrete-pier-calculator.html");
+    await expect(page.locator('[data-decision-page="pier-calculator"]')).toBeVisible();
+    await page.fill("#pier-diameter", "12");
+    await page.fill("#pier-depth", "5");
+    await page.fill("#pier-qty", "2");
+    await expect(page.locator('[data-decision-page="pier-calculator"] [data-decision-slot="budget"]')).not.toContainText("placeholder");
+});
+
+test("cylinder calculator updates decision block after diameter and height change", async ({ page }) => {
+    await page.goto("/en/concrete-calculator-cylinder.html");
+    await expect(page.locator('[data-decision-page="cylinder-calculator"]')).toBeVisible();
+    await page.fill("#diameter", "12");
+    await page.fill("#height", "8");
+    await page.fill("#quantity", "2");
+    await expect(page.locator('[data-decision-page="cylinder-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
+});

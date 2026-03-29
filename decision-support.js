@@ -133,6 +133,45 @@
                 "If the total is close to a truck threshold, sanity-check the dimensions one more time."
             ]
         },
+        "column-calculator": {
+            title: "Round column buying decision",
+            mistakes: [
+                "Ordering for one column and forgetting the full column count.",
+                "Treating a round-column pour like a generic slab order without checking bag practicality.",
+                "Using diameter and height from the form label instead of the real inside dimensions."
+            ],
+            nextSteps: [
+                "Confirm inside diameter, height, and quantity before pricing the pour.",
+                "Use the total with waste when you compare ready-mix against bag count.",
+                "If several columns land in the same pour window, price them as one order."
+            ]
+        },
+        "pier-calculator": {
+            title: "Pier and drilled-shaft buying decision",
+            mistakes: [
+                "Ignoring bell volume when the pier has an enlarged base.",
+                "Pricing one pier and forgetting the total pier count.",
+                "Buying the exact shaft math with no field margin for irregular holes."
+            ],
+            nextSteps: [
+                "Confirm whether the job includes a belled base before ordering.",
+                "Price the total waste-adjusted volume across all piers together.",
+                "If the pier count grows, compare bag hauling against one coordinated truck order."
+            ]
+        },
+        "cylinder-calculator": {
+            title: "Cylinder pour buying decision",
+            mistakes: [
+                "Using outside diameter instead of the real inside diameter of the form.",
+                "Forgetting that quantity multiplies the bag count faster than expected.",
+                "Stopping at volume without checking how many bags that volume actually means."
+            ],
+            nextSteps: [
+                "Confirm diameter, height, and quantity from the actual forms or holes.",
+                "Use the waste-adjusted yards when you compare delivery with bags.",
+                "If several cylinders are being poured together, treat them as one procurement decision."
+            ]
+        },
         "bag-calculator": {
             title: "Decide if bags are still the right move",
             mistakes: [

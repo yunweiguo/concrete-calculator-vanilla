@@ -148,6 +148,51 @@ test("yards calculator payload focuses on ordering in yards", function () {
     assert.match(payload.highlights[0], /5\.43 yd³/);
 });
 
+test("column calculator payload stays focused on round-column procurement", function () {
+    const payload = support.getDecisionPayload("column-calculator", {
+        yd3: 0.34,
+        yd3Waste: 0.37,
+        bags80: 16,
+        bags80Waste: 18,
+        readyMixCost: 140,
+        bagCost: 96,
+        projectLabel: "This column pour"
+    });
+
+    assert.match(payload.title, /column/i);
+    assert.match(payload.budget, /0\.37 yd³/);
+});
+
+test("pier calculator payload keeps belled and drilled-shaft pours bag-aware", function () {
+    const payload = support.getDecisionPayload("pier-calculator", {
+        yd3: 0.58,
+        yd3Waste: 0.64,
+        bags80: 27,
+        bags80Waste: 30,
+        readyMixCost: 140,
+        bagCost: 162,
+        projectLabel: "These concrete piers"
+    });
+
+    assert.match(payload.title, /pier/i);
+    assert.match(payload.summary, /piers/i);
+});
+
+test("cylinder calculator payload turns cylindrical volume into an order plan", function () {
+    const payload = support.getDecisionPayload("cylinder-calculator", {
+        yd3: 0.58,
+        yd3Waste: 0.64,
+        bags80: 27,
+        bags80Waste: 30,
+        readyMixCost: 140,
+        bagCost: 162,
+        projectLabel: "These cylinders"
+    });
+
+    assert.match(payload.title, /cylinder/i);
+    assert.match(payload.budget, /0\.64 yd³/);
+});
+
 test("unknown page key returns null", function () {
     assert.equal(support.getDecisionPayload("missing-page", {}), null);
 });
