@@ -627,6 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         window.ConcretePageCore.updateDecisionBlock(section.dataset.decisionPage, metrics);
+        window.ConcretePageCore.trackCalculatorRun(section.dataset.decisionPage, metrics || {});
     }
 
 
@@ -759,7 +760,9 @@ document.addEventListener('DOMContentLoaded', () => {
             bags80Waste: Math.ceil(bags80 * 1.1),
             readyMixCost: Math.ceil(results.volume_yd3) * 140,
             bagCost: bags80 * 6,
-            projectLabel: projectLabel
+            projectLabel: projectLabel,
+            shape: currentShape,
+            unitSystem: currentUnitSystem
         });
     }
 
@@ -849,7 +852,9 @@ document.addEventListener('DOMContentLoaded', () => {
             volumeFt3: volume_ft3,
             volumeYd3: volume_ft3 / 27,
             totalCost: costPerBag > 0 ? bagsNeeded * costPerBag : 0,
-            costPerBag: costPerBag
+            costPerBag: costPerBag,
+            shape: currentShape,
+            unitSystem: currentUnitSystem
         });
     }
 
@@ -949,7 +954,8 @@ document.addEventListener('DOMContentLoaded', () => {
             totalPieces: totalPieces,
             spacing: parseFloat(rebarSpacingInput.value),
             spacingUnit: unit === 'metric' ? 'mm' : 'in',
-            costTotal: resolvedCost
+            costTotal: resolvedCost,
+            unitSystem: unit
         });
     }
 
@@ -1069,7 +1075,8 @@ document.addEventListener('DOMContentLoaded', () => {
             bags80Waste: Math.ceil(bags80 * 1.1),
             readyMixCost: Math.ceil(total_volume_yd3) * 140,
             bagCost: bags80 * 6,
-            projectLabel: numberOfSteps > 1 ? 'This stair run' : 'This stair pour'
+            projectLabel: numberOfSteps > 1 ? 'This stair run' : 'This stair pour',
+            unitSystem: unit
         });
     }
 
@@ -1193,6 +1200,12 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
             if (lastCalculation) {
                 navigator.clipboard.writeText(getResultsAsText(lastCalculation));
                 showTooltip(copyBtn, 'copied');
+                if (window.ConcretePageCore) {
+                    window.ConcretePageCore.trackEvent('result_copy_or_save', {
+                        page_key: document.querySelector('[data-decision-page]')?.dataset.decisionPage || '',
+                        action: 'copy'
+                    });
+                }
             }
         });
     }
@@ -1203,6 +1216,12 @@ ${t('gravel')}: ${item.gravel.toFixed(2)} ${smallVolUnit}
                 saveCalculation(lastCalculation);
                 showTooltip(saveBtn, 'saved');
                 loadHistory();
+                if (window.ConcretePageCore) {
+                    window.ConcretePageCore.trackEvent('result_copy_or_save', {
+                        page_key: document.querySelector('[data-decision-page]')?.dataset.decisionPage || '',
+                        action: 'save'
+                    });
+                }
             }
         });
     }
