@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T1C6ZTJJY"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7940770394935866"
+         crossorigin="anonymous"></script>
+
+    <script>
+      // Only run Google Analytics on the production domain
+      if (window.location.hostname === 'concrete-calculator.pro') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3T1C6ZTJJY');
+      }
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "tiouacdbcq");
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>Sono Tube Concrete Calculator - How Much Concrete for Sonotubes</title>
+    <meta name="description" content="Calculate exactly how much concrete you need for sono tubes and sonotube footings. Free sono tube calculator for deck posts, fence posts, and structural columns.">
+    <meta name="keywords" content="sono tube calculator, sonotube concrete calculator, sonotube calculator, concrete for sonotube, sono tube concrete, how much concrete for sonotube">
+    <link rel="canonical" href="https://concrete-calculator.pro/en/sono-tube-calculator.html">
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="Sono Tube Concrete Calculator - How Much Concrete for Sonotubes">
+    <meta property="og:description" content="Calculate exactly how much concrete you need for sono tubes and sonotube footings. Free sono tube calculator for deck posts, fence posts, and structural columns.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concrete-calculator.pro/en/sono-tube-calculator.html">
+    <meta property="og:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sono Tube Concrete Calculator - How Much Concrete for Sonotubes">
+    <meta name="twitter:description" content="Calculate exactly how much concrete you need for sono tubes and sonotube footings. Free sono tube calculator for deck posts, fence posts, and structural columns.">
+    <meta name="twitter:image" content="https://concrete-calculator.pro/social-preview.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            'primary': '#1e40af', // blue-800
+                            'secondary': '#3b82f6', // blue-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+    <link rel="stylesheet" href="/mobile-optimization.css"><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Sono Tube Concrete Calculator",
+      "description": "Calculate exactly how much concrete you need for sono tubes and sonotube footings.",
+      "url": "https://concrete-calculator.pro/en/sono-tube-calculator.html",
+      "applicationCategory": "Calculator",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much concrete do I need for an 8-inch sono tube?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An 8-inch sono tube that is 4 feet deep requires about 1.4 cubic feet or 0.05 cubic yards of concrete. For a 60lb bag mix, you would need about 4 bags per tube."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What sono tube sizes are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common sono tube sizes include 6-inch, 8-inch, 10-inch, 12-inch, 14-inch, 16-inch, 18-inch, 24-inch, 30-inch, and 36-inch diameters. The most popular sizes for residential projects are 8-inch, 10-inch, and 12-inch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How deep should sono tube footings be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sono tube footings should extend below the frost line in your area, which is typically 3 to 4 feet in most regions. For structural columns, depths of 4 to 6 feet are common. Always check local building codes for minimum depth requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many bags of concrete do I need for a 12-inch sono tube?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 12-inch sono tube that is 4 feet deep requires about 3.14 cubic feet of concrete. This equals approximately 7 bags of 60lb concrete or 6 bags of 80lb concrete per tube."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div id="header-include"></div>
+        <noscript>
+            <div class="bg-yellow-50 border-b border-yellow-200 p-2 text-center text-sm text-yellow-800">
+                For the best experience, please enable JavaScript. Some features may be limited.
+            </div>
+        </noscript>
+    <script>
+      fetch('/en/header.html').then(r=>r.text()).then(html=>{
+        document.getElementById('header-include').outerHTML=html;
+        const calculatorsMenuButton = document.getElementById('calculators-menu-button');
+        const calculatorsMenu = document.getElementById('calculators-menu');
+        if (calculatorsMenuButton && calculatorsMenu) {
+          calculatorsMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calculatorsMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            calculatorsMenu.classList.add('hidden');
+          });
+        }
+
+        const guidesMenuButton = document.getElementById('guides-menu-button');
+        const guidesMenu = document.getElementById('guides-menu');
+        if (guidesMenuButton && guidesMenu) {
+          guidesMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            guidesMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            guidesMenu.classList.add('hidden');
+          });
+        }
+        const languageMenuButton = document.getElementById('language-menu-button');
+        const languageMenu = document.getElementById('language-menu');
+        if (languageMenuButton && languageMenu) {
+          languageMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageMenu.classList.toggle('hidden');
+          });
+          document.addEventListener('click', () => {
+            languageMenu.classList.add('hidden');
+          });
+        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center space-x-2 text-sm text-slate-600">
+                <li><a href="/en/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/en/#calculators" class="hover:text-brand-primary transition-colors">Calculators</a>
+                </li>
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span aria-current="page" class="text-slate-900 font-medium">Sono Tube Calculator</span>
+                </li>
+            </ol>
+        </nav>
+
+        <section class="text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
+                Sono Tube Concrete Calculator
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Calculate exactly how much concrete you need for sono tubes and sonotube footings.
+            </p>
+        </section>
+
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Sono Tube Details</h2>
+                            <p class="text-slate-500 mt-1">Select the tube size, depth, and quantity.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label for="sono-diameter" class="block text-sm font-medium text-slate-700 mb-2">Tube Diameter</label>
+                                <select id="sono-diameter" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent bg-white">
+                                    <option value="">Select diameter</option>
+                                    <option value="6">6 inches</option>
+                                    <option value="8">8 inches</option>
+                                    <option value="10">10 inches</option>
+                                    <option value="12">12 inches</option>
+                                    <option value="14">14 inches</option>
+                                    <option value="16">16 inches</option>
+                                    <option value="18">18 inches</option>
+                                    <option value="24">24 inches</option>
+                                    <option value="30">30 inches</option>
+                                    <option value="36">36 inches</option>
+                                </select>
+                                <p class="text-xs text-slate-500 mt-1">Standard sonotube diameters for residential and commercial use</p>
+                            </div>
+
+                            <div>
+                                <label for="sono-depth" class="block text-sm font-medium text-slate-700 mb-2">Depth (feet)</label>
+                                <input type="number" id="sono-depth" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter depth in feet">
+                                <p class="text-xs text-slate-500 mt-1">Measure from bottom of hole to top of tube</p>
+                            </div>
+
+                            <div>
+                                <label for="sono-quantity" class="block text-sm font-medium text-slate-700 mb-2">Number of Tubes</label>
+                                <input type="number" id="sono-quantity" step="1" min="1" value="1" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="Enter quantity">
+                            </div>
+
+                            <div>
+                                <label for="sono-cost" class="block text-sm font-medium text-slate-700 mb-2">Cost per Cubic Yard (optional)</label>
+                                <input type="number" id="sono-cost" step="0.01" min="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-secondary focus:border-transparent" placeholder="e.g. 150">
+                                <p class="text-xs text-slate-500 mt-1">Enter cost to estimate total project cost</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-blue-900 mb-2">Quick Reference - Common Sono Tube Sizes</h3>
+                            <div class="text-xs text-blue-800 space-y-1">
+                                <p><strong>8" x 4' deep:</strong> ~1.4 ft³ per tube (~3 bags of 60lb)</p>
+                                <p><strong>10" x 4' deep:</strong> ~2.2 ft³ per tube (~5 bags of 60lb)</p>
+                                <p><strong>12" x 4' deep:</strong> ~3.1 ft³ per tube (~7 bags of 60lb)</p>
+                                <p><strong>Typical depths:</strong> 3-4 ft for deck posts, 4-6 ft for structural columns</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">2. Results</h2>
+                            <p class="text-slate-500 mt-1">Your sono tube concrete calculation.</p>
+                        </div>
+
+                        <div id="results" class="space-y-4 hidden">
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Concrete Volume</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Volume per tube:</span>
+                                        <span id="volume-per" class="font-semibold text-slate-900">0 cubic feet</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Total volume:</span>
+                                        <span id="volume-total" class="font-semibold text-slate-900">0 cubic feet</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Total (cubic yards):</span>
+                                        <span id="volume-yards" class="font-semibold text-slate-900">0 cubic yards</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Concrete Bags</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">60lb bags needed:</span>
+                                        <span id="bags-60" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">80lb bags needed:</span>
+                                        <span id="bags-80" class="font-semibold text-slate-900">0 bags</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4">Estimated Cost</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Cost per cubic yard:</span>
+                                        <span id="cost-per-yard" class="font-semibold text-slate-900">--</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Estimated total cost:</span>
+                                        <span id="cost-total" class="font-semibold text-slate-900">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="no-results" class="text-center py-12">
+                            <div class="text-slate-400">
+                                <svg class="mx-auto h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-lg font-medium">Select sono tube size and depth</p>
+                                <p class="text-sm">Choose a diameter and enter the depth to calculate concrete volume.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Sono Tube Concrete Guide</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p class="text-lg text-slate-700 mb-4">
+                        Our sono tube concrete calculator helps you determine the exact amount of concrete needed for your sonotube footing projects. Whether you are building a deck, installing fence posts, or setting structural columns, this tool provides accurate material estimates.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">What Are Sono Tubes?</h3>
+                    <p class="text-slate-700 mb-4">
+                        Sono tubes (also known as Sonotubes or concrete form tubes) are cylindrical cardboard forms used to create round concrete footings and columns. They are made from layers of strong, wax-impregnated paper that holds wet concrete in place while it cures. Sono tubes keep the concrete contained in a neat cylindrical shape and protect it from surrounding soil, ensuring a clean, smooth finish. Once the concrete sets, the tube can be left in place or removed depending on project requirements.
+                    </p>
+                    <p class="text-slate-700 mb-6">
+                        Sono tubes are widely used because they are inexpensive, easy to cut to length, and available in many standard diameters. They eliminate the need for building wooden forms and produce consistent, professional-looking results for both DIY and commercial construction projects.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Common Sono Tube Projects</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 mb-6">
+                        <li><strong>Deck Posts:</strong> The most common residential use. Sono tubes provide stable footings for deck support posts, typically using 10-inch or 12-inch diameters at depths below the frost line.</li>
+                        <li><strong>Fence Posts:</strong> For heavy or tall fences, sono tube footings provide superior anchoring compared to direct-pour methods. Common sizes are 8-inch or 10-inch diameters.</li>
+                        <li><strong>Light Poles:</strong> Street lights, parking lot lights, and landscape lighting require sturdy cylindrical bases. Sizes typically range from 12-inch to 18-inch diameters with depths of 3 to 5 feet.</li>
+                        <li><strong>Flagpoles:</strong> Flagpole foundations use sono tubes to create a solid concrete base that resists wind loads. Typically 12-inch to 16-inch diameters are used.</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Sono Tube Size Chart</h3>
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse border border-slate-300 text-sm">
+                            <thead>
+                                <tr class="bg-slate-100">
+                                    <th class="border border-slate-300 px-4 py-2 text-left font-semibold text-slate-900">Diameter</th>
+                                    <th class="border border-slate-300 px-4 py-2 text-left font-semibold text-slate-900">Recommended Uses</th>
+                                    <th class="border border-slate-300 px-4 py-2 text-left font-semibold text-slate-900">Typical Depth</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">6 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Small fence posts, mailboxes, signs</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">2 - 3 feet</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">8 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Fence posts, small deck posts</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">3 - 4 feet</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">10 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Standard deck posts, pergola posts</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">3 - 4 feet</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">12 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Large deck posts, porch columns</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">4 - 5 feet</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">14 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Heavy deck posts, small structures</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">4 - 5 feet</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">16 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Structural columns, light poles</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">4 - 6 feet</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">18 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Heavy structural columns, signs</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">5 - 6 feet</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">24 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Large structural columns, commercial</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">5 - 8 feet</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">30 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Commercial columns, bridge piers</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">6 - 10 feet</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">36 inches</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">Large commercial and industrial use</td>
+                                    <td class="border border-slate-300 px-4 py-2 text-slate-700">8 - 12 feet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">How to Use Sono Tubes</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-slate-700 mb-6">
+                        <li><strong>Dig the hole:</strong> Use a post hole digger or power auger to create a hole that is wider and deeper than your sono tube. The hole should be at least 6 inches deeper than the frost line in your area.</li>
+                        <li><strong>Cut the tube:</strong> Measure and cut the sono tube to the desired length using a handsaw or utility knife. Allow a few inches above ground level if needed.</li>
+                        <li><strong>Position the tube:</strong> Place the sono tube in the hole and backfill around the outside with soil or gravel to hold it plumb and stable. Use a level to ensure it is straight.</li>
+                        <li><strong>Add reinforcement:</strong> Insert rebar or wire mesh into the tube for structural reinforcement. For most residential footings, two to four pieces of #4 rebar are sufficient.</li>
+                        <li><strong>Pour the concrete:</strong> Fill the tube with concrete, vibrating or tamping as you go to remove air pockets. Fill slightly above the top of the tube and trowel smooth.</li>
+                        <li><strong>Cure and finish:</strong> Allow the concrete to cure for at least 24 to 48 hours before applying any load. Full strength is typically reached in 28 days.</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Tips for Sono Tube Projects</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Always check local building codes for minimum footing depth requirements.</li>
+                        <li>Order 10% more concrete than calculated to account for spillage and variations in hole depth.</li>
+                        <li>For multiple tubes, consider ordering ready-mix concrete instead of individual bags to save time.</li>
+                        <li>Place a gravel base at the bottom of each hole for drainage before setting the tube.</li>
+                        <li>Use a concrete anchor bolt or J-bolt embedded in the wet concrete for attaching post bases.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <details class="border border-slate-200 rounded-lg p-4">
+                        <summary class="font-semibold text-slate-900 cursor-pointer">How much concrete do I need for an 8-inch sono tube?</summary>
+                        <p class="mt-3 text-slate-700">An 8-inch sono tube that is 4 feet deep requires about 1.4 cubic feet of concrete, which equals approximately 0.05 cubic yards. You would need about 3 bags of 60lb concrete or 3 bags of 80lb concrete per tube. Always round up and buy a few extra bags to account for waste.</p>
+                    </details>
+                    <details class="border border-slate-200 rounded-lg p-4">
+                        <summary class="font-semibold text-slate-900 cursor-pointer">What sono tube sizes are available?</summary>
+                        <p class="mt-3 text-slate-700">Standard sono tube diameters include 6-inch, 8-inch, 10-inch, 12-inch, 14-inch, 16-inch, 18-inch, 24-inch, 30-inch, and 36-inch. For most residential deck and fence projects, 8-inch, 10-inch, and 12-inch diameters are the most commonly used. Larger sizes are typically used for commercial and structural applications.</p>
+                    </details>
+                    <details class="border border-slate-200 rounded-lg p-4">
+                        <summary class="font-semibold text-slate-900 cursor-pointer">How deep should sono tube footings be?</summary>
+                        <p class="mt-3 text-slate-700">Sono tube footings should extend below the frost line in your area. In most US regions, this is between 3 and 4 feet deep. In colder northern climates, frost lines can be 4 to 6 feet deep. For structural columns and heavy loads, deeper footings of 5 to 8 feet may be required. Always check your local building codes for specific requirements.</p>
+                    </details>
+                    <details class="border border-slate-200 rounded-lg p-4">
+                        <summary class="font-semibold text-slate-900 cursor-pointer">How many bags of concrete do I need for a 12-inch sono tube?</summary>
+                        <p class="mt-3 text-slate-700">A 12-inch sono tube that is 4 feet deep requires about 3.14 cubic feet of concrete. This equals approximately 7 bags of 60lb concrete or 6 bags of 80lb concrete per tube. If you have multiple tubes, multiply the per-tube amount by your total quantity and add 10% for waste.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Calculators Section -->
+        <section class="mt-16 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Related Calculators</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="/en/concrete-calculator-cylinder.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Cylinder Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate for any cylindrical concrete form</p>
+                    </a>
+                    <a href="/en/column-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Column Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate for rectangular columns</p>
+                    </a>
+                    <a href="/en/footing-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Footing Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate concrete for foundations</p>
+                    </a>
+                    <a href="/en/slab-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Slab Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate concrete for slabs and pads</p>
+                    </a>
+                    <a href="/en/concrete-calculator-cost.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Cost Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Estimate total project costs</p>
+                    </a>
+                    <a href="/en/pier-calculator.html" class="block p-4 rounded-lg border border-slate-200 hover:border-brand-primary hover:shadow-md transition-all">
+                        <h3 class="font-semibold text-slate-900">Pier Calculator</h3>
+                        <p class="text-sm text-slate-600 mt-1">Calculate concrete for piers</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-include"></div>
+        <noscript>
+            <div class="bg-yellow-50 border-t border-yellow-200 p-2 text-center text-sm text-yellow-800">
+                For the best experience, please enable JavaScript. Some footer features may be limited.
+            </div>
+        </noscript>
+    <script>
+      fetch('/en/footer.html').then(r=>r.text()).then(html=>{
+        document.getElementById('footer-include').outerHTML=html;
+      });
+    </script>
+
+    <script>
+        // Sono Tube Concrete Calculator Logic
+        const diameterSelect = document.getElementById('sono-diameter');
+        const depthInput = document.getElementById('sono-depth');
+        const quantityInput = document.getElementById('sono-quantity');
+        const costInput = document.getElementById('sono-cost');
+        const results = document.getElementById('results');
+        const noResults = document.getElementById('no-results');
+
+        // Add event listeners to all inputs
+        [diameterSelect, depthInput, quantityInput, costInput].forEach(input => {
+            input.addEventListener('input', calculateSonoTube);
+        });
+
+        function calculateSonoTube() {
+            const diameter = parseFloat(diameterSelect.value) || 0;
+            const depth = parseFloat(depthInput.value) || 0;
+            const quantity = parseInt(quantityInput.value) || 1;
+            const costPerYard = parseFloat(costInput.value) || 0;
+
+            if (diameter > 0 && depth > 0) {
+                const radius = diameter / 2;
+                const volumePerTube = Math.PI * Math.pow(radius / 12, 2) * depth; // cubic feet
+                const totalVolume = volumePerTube * quantity;
+                const totalCubicYards = totalVolume / 27;
+
+                // Bag calculations
+                const bags60 = Math.ceil(totalVolume / 0.45); // 60lb bag = 0.45 cubic feet
+                const bags80 = Math.ceil(totalVolume / 0.6);  // 80lb bag = 0.6 cubic feet
+
+                // Cost calculation
+                const totalCost = costPerYard > 0 ? (totalCubicYards * costPerYard) : 0;
+
+                // Update results
+                document.getElementById('volume-per').textContent = volumePerTube.toFixed(2) + ' cubic feet';
+                document.getElementById('volume-total').textContent = totalVolume.toFixed(2) + ' cubic feet';
+                document.getElementById('volume-yards').textContent = totalCubicYards.toFixed(2) + ' cubic yards';
+                document.getElementById('bags-60').textContent = bags60 + ' bags';
+                document.getElementById('bags-80').textContent = bags80 + ' bags';
+
+                if (costPerYard > 0) {
+                    document.getElementById('cost-per-yard').textContent = '$' + costPerYard.toFixed(2);
+                    document.getElementById('cost-total').textContent = '$' + totalCost.toFixed(2);
+                } else {
+                    document.getElementById('cost-per-yard').textContent = '--';
+                    document.getElementById('cost-total').textContent = 'Enter cost per yard to estimate';
+                }
+
+                results.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                results.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
