@@ -103,6 +103,51 @@ test("sono tube payload stays bag-aware for post and pier pours", function () {
     assert.match(payload.budget, /0\.57 yd³/);
 });
 
+test("12x12 slab payload reflects truck-sized slab guidance", function () {
+    const payload = support.getDecisionPayload("slab-12x12", {
+        yd3: 1.78,
+        yd3Waste: 1.96,
+        bags80: 80,
+        bags80Waste: 88,
+        readyMixCost: 280,
+        bagCost: 480,
+        projectLabel: "This 12x12 slab"
+    });
+
+    assert.match(payload.title, /12x12/i);
+    assert.match(payload.budget, /1\.96 yd³/);
+});
+
+test("20x20 slab payload stays explicitly ready-mix oriented", function () {
+    const payload = support.getDecisionPayload("slab-20x20", {
+        yd3: 4.94,
+        yd3Waste: 5.43,
+        bags80: 223,
+        bags80Waste: 246,
+        readyMixCost: 700,
+        bagCost: 1338,
+        projectLabel: "This 20x20 slab"
+    });
+
+    assert.match(payload.title, /20x20/i);
+    assert.match(payload.method, /Ready-mix/i);
+});
+
+test("yards calculator payload focuses on ordering in yards", function () {
+    const payload = support.getDecisionPayload("yards-calculator", {
+        yd3: 4.94,
+        yd3Waste: 5.43,
+        bags80: 223,
+        bags80Waste: 246,
+        readyMixCost: 700,
+        bagCost: 1338,
+        projectLabel: "This ready-mix order"
+    });
+
+    assert.match(payload.title, /yards/i);
+    assert.match(payload.highlights[0], /5\.43 yd³/);
+});
+
 test("unknown page key returns null", function () {
     assert.equal(support.getDecisionPayload("missing-page", {}), null);
 });

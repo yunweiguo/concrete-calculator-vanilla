@@ -55,6 +55,32 @@
                 "If you are mixing bags, plan labor and transport before checkout."
             ]
         },
+        "slab-12x12": {
+            title: "12x12 slab buying decision",
+            mistakes: [
+                "Treating a 12x12 slab like a small hand-mix job once waste is included.",
+                "Choosing 4 inches for every use case, including heavier pads.",
+                "Comparing bag cost without pricing the wasted time and hauling effort."
+            ],
+            nextSteps: [
+                "Confirm whether the slab is patio-grade or load-bearing before ordering.",
+                "Use the waste-adjusted volume when you compare ready-mix and bags.",
+                "If the bag count is already above a comfortable weekend mix, switch methods now."
+            ]
+        },
+        "slab-20x20": {
+            title: "20x20 slab truck-order decision",
+            mistakes: [
+                "Pretending a 20x20 slab is still a bag job because bags look cheaper per unit.",
+                "Ignoring how quickly extra thickness pushes the order into multiple truck considerations.",
+                "Using a copied small-slab budget range for a much larger pour."
+            ],
+            nextSteps: [
+                "Lock thickness and reinforcement assumptions before pricing anything.",
+                "Use the total with waste to discuss delivery and sequencing with suppliers.",
+                "Treat bag calculations as a sanity check, not the default plan."
+            ]
+        },
         "slab-calculator": {
             title: "Turn slab volume into a buying plan",
             mistakes: [
@@ -92,6 +118,19 @@
                 "Confirm diameter, depth, and quantity before you price anything.",
                 "Use the total yards if multiple piers make the pour feel truck-sized.",
                 "Add extra bags if hole depth or tube cut length may vary in the field."
+            ]
+        },
+        "yards-calculator": {
+            title: "Turn cubic yards into an order plan",
+            mistakes: [
+                "Stopping at net yards and forgetting the waste-adjusted order size.",
+                "Treating truck count as the whole logistics plan when access and short-load fees also matter.",
+                "Using a yardage number without checking whether the shape and dimensions were entered correctly."
+            ],
+            nextSteps: [
+                "Use the total yards with waste when you call a supplier.",
+                "Ask about delivery minimums, short-load fees, and access before you lock the order.",
+                "If the total is close to a truck threshold, sanity-check the dimensions one more time."
             ]
         },
         "bag-calculator": {

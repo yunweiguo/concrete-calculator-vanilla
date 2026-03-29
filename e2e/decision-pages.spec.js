@@ -76,3 +76,28 @@ test("sono tube calculator shows decision guidance for multiple piers", async ({
     await expect(page.locator("#results")).toBeVisible();
     await expect(page.locator('[data-decision-page="sono-tube-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
 });
+
+test("12x12 slab page syncs decision block with slab thickness", async ({ page }) => {
+    await page.goto("/en/how-much-concrete-for-12x12-slab.html");
+    await expect(page.locator('[data-decision-page="slab-12x12"]')).toBeVisible();
+    await page.fill("#s10x-thick", "4");
+    await expect(page.locator('[data-decision-page="slab-12x12"] [data-decision-slot="budget"]')).toContainText("1.96 yd³");
+});
+
+test("20x20 slab page keeps ready-mix guidance visible", async ({ page }) => {
+    await page.goto("/en/how-much-concrete-for-20x20-slab.html");
+    await expect(page.locator('[data-decision-page="slab-20x20"]')).toBeVisible();
+    await page.fill("#s10x-thick", "4");
+    await expect(page.locator('[data-decision-page="slab-20x20"] [data-decision-slot="method"]')).toContainText("Ready-mix");
+});
+
+test("yards calculator updates ordering guidance after calculation", async ({ page }) => {
+    await page.goto("/en/concrete-calculator-yards.html");
+    await expect(page.locator('[data-decision-page="yards-calculator"]')).toBeVisible();
+    await page.selectOption("#shape", "slab");
+    await page.fill("#length", "20");
+    await page.fill("#width", "20");
+    await page.fill("#thickness", "4");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="yards-calculator"] [data-decision-slot="budget"]')).toContainText("5.43 yd³");
+});
