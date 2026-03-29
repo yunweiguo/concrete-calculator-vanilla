@@ -888,25 +888,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const displayWeight = totalWeight.toFixed(1);
         const lengthUnit = unit === 'metric' ? 'm' : 'ft';
         const weightUnit = unit === 'metric' ? 'kg' : 'lbs';
+        const resolvedCost = costPerPiece > 0
+            ? totalPieces * costPerPiece
+            : (costPerLength > 0 ? (unit === 'metric' ? totalLength_m : totalLength_ft) * costPerLength : 0);
 
         let costHtml = '';
         if (costPerPiece > 0) {
-            const totalCost = totalPieces * costPerPiece;
             const currencySymbol = getLang() === 'zh' ? '¥' : '$';
             costHtml = `
             <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
                 <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
-                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${resolvedCost.toFixed(2)}</p>
             </div>
             `;
         } else if (costPerLength > 0) {
-            const totalLength = unit === 'metric' ? totalLength_m : totalLength_ft;
-            const totalCost = totalLength * costPerLength;
             const currencySymbol = getLang() === 'zh' ? '¥' : '$';
             costHtml = `
             <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
                 <p class="text-sm text-slate-500">${t('estimatedTotalCost')}</p>
-                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${totalCost.toFixed(2)}</p>
+                <p class="text-4xl font-bold text-green-600 my-2">${currencySymbol}${resolvedCost.toFixed(2)}</p>
             </div>
             `;
         }
@@ -941,6 +941,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         updateActionButtons(false);
+        updateDecisionEnhancement({
+            totalLength: unit === 'metric' ? totalLength_m : totalLength_ft,
+            lengthUnit: lengthUnit,
+            totalWeight: totalWeight,
+            weightUnit: weightUnit,
+            totalPieces: totalPieces,
+            spacing: parseFloat(rebarSpacingInput.value),
+            spacingUnit: unit === 'metric' ? 'mm' : 'in',
+            costTotal: resolvedCost
+        });
     }
 
     function displayColumnResults() {

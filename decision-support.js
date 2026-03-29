@@ -172,6 +172,45 @@
                 "If several cylinders are being poured together, treat them as one procurement decision."
             ]
         },
+        "quikrete-bag-calculator": {
+            title: "Quikrete buying decision",
+            mistakes: [
+                "Using the label weight without checking the actual bag yield.",
+                "Treating a 40-plus bag weekend pour like a quick store run.",
+                "Comparing bag count without pricing the full cart total first."
+            ],
+            nextSteps: [
+                "Confirm the exact Quikrete bag size you can actually buy locally.",
+                "Use the bag count to plan haul weight, mixing time, and cleanup before checkout.",
+                "If the count feels ugly, compare it with a small ready-mix quote before buying."
+            ]
+        },
+        "rebar-calculator": {
+            title: "Turn the rebar grid into a buy list",
+            mistakes: [
+                "Stopping at total length and forgetting piece count and lap waste.",
+                "Using spacing from a random online example instead of the project notes or code.",
+                "Pricing reinforcement by length when the yard only sells full sticks."
+            ],
+            nextSteps: [
+                "Confirm the rebar size and spacing against the actual slab requirement.",
+                "Price the layout as pieces if the supplier sells full lengths only.",
+                "Add chairs, tie wire, and lap waste before turning this into a purchase run."
+            ]
+        },
+        "curb-calculator": {
+            title: "Curb pour ordering decision",
+            mistakes: [
+                "Forgetting that the gutter pan changes the order more than expected.",
+                "Using the clean yardage instead of the waste-adjusted curb run total.",
+                "Planning bags for a long curb run without checking labor and staging."
+            ],
+            nextSteps: [
+                "Confirm curb, gutter, and total run length before ordering.",
+                "Use the waste-adjusted yards when you compare delivery against bag hauling.",
+                "If multiple curb runs will pour together, price them as one material order."
+            ]
+        },
         "bag-calculator": {
             title: "Decide if bags are still the right move",
             mistakes: [
@@ -253,7 +292,8 @@
     }
 
     function buildBagPayload(metrics) {
-        const page = pages["bag-calculator"];
+        const pageKey = metrics.pageKey || "bag-calculator";
+        const page = pages[pageKey] || pages["bag-calculator"];
         const bagsNeeded = Number(metrics.bagsNeeded || 0);
         const bagWeight = Number(metrics.bagWeight || 80);
         const volumeFt3 = Number(metrics.volumeFt3 || 0);
@@ -279,6 +319,39 @@
             mistakes: page.mistakes,
             nextSteps: page.nextSteps,
             disclaimer: "For large bag counts, compare this plan against a ready-mix quote before you buy."
+        };
+    }
+
+    function buildRebarPayload(metrics) {
+        const page = pages["rebar-calculator"];
+        const totalLength = Number(metrics.totalLength || 0);
+        const totalWeight = Number(metrics.totalWeight || 0);
+        const totalPieces = Number(metrics.totalPieces || 0);
+        const spacing = Number(metrics.spacing || 0);
+        const costTotal = Number(metrics.costTotal || 0);
+        const lengthUnit = metrics.lengthUnit || "ft";
+        const weightUnit = metrics.weightUnit || "lbs";
+        const spacingUnit = metrics.spacingUnit || (lengthUnit === "m" ? "mm" : "in");
+        const method = totalPieces >= 25
+            ? "Buy around " + totalPieces + " full pieces first, then sanity-check linear footage."
+            : "A small slab grid can still be bought as " + totalPieces + " pieces without turning into a yard trip.";
+
+        return {
+            title: page.title,
+            summary: "This slab grid needs " + totalPieces + " pieces across both directions. Turn that layout into a buy list before you price anything.",
+            method: method,
+            budget: costTotal > 0
+                ? "Current reinforcement budget is about " + asMoney(costTotal) + "."
+                : "Price both per-piece and per-length if your supplier quotes them differently.",
+            logistics: "Current layout: " + totalLength.toFixed(1) + " " + lengthUnit + " of rebar, about " + totalWeight.toFixed(1) + " " + weightUnit + ", spaced at " + spacing + " " + spacingUnit + ".",
+            highlights: [
+                "Procurement summary: " + totalPieces + " pieces across the grid",
+                "Total steel: " + totalLength.toFixed(1) + " " + lengthUnit + " and " + totalWeight.toFixed(1) + " " + weightUnit,
+                "Spacing check: " + spacing + " " + spacingUnit + " on center"
+            ],
+            mistakes: page.mistakes,
+            nextSteps: page.nextSteps,
+            disclaimer: "This is a planning layout only. Structural rebar size, spacing, lap splice, and cover still need code or engineering review."
         };
     }
 
@@ -318,11 +391,14 @@
             return null;
         }
 
-        if (pageKey === "bag-calculator") {
-            return buildBagPayload(metrics || {});
+        if (pageKey === "bag-calculator" || pageKey === "quikrete-bag-calculator") {
+            return buildBagPayload(Object.assign({}, metrics || {}, { pageKey: pageKey }));
         }
         if (pageKey === "cost-calculator") {
             return buildCostPayload(metrics || {});
+        }
+        if (pageKey === "rebar-calculator") {
+            return buildRebarPayload(metrics || {});
         }
         return buildVolumePayload(pageKey, metrics || {});
     }

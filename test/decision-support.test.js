@@ -193,6 +193,49 @@ test("cylinder calculator payload turns cylindrical volume into an order plan", 
     assert.match(payload.budget, /0\.64 yd³/);
 });
 
+test("quikrete calculator payload stays focused on bag-buying decisions", function () {
+    const payload = support.getDecisionPayload("quikrete-bag-calculator", {
+        bagsNeeded: 48,
+        bagWeight: 60,
+        volumeFt3: 21.6,
+        volumeYd3: 0.8,
+        totalCost: 312
+    });
+
+    assert.match(payload.title, /quikrete/i);
+    assert.match(payload.budget, /\$312/);
+});
+
+test("rebar calculator payload turns layout into a procurement summary", function () {
+    const payload = support.getDecisionPayload("rebar-calculator", {
+        totalLength: 308,
+        lengthUnit: "ft",
+        totalWeight: 205,
+        weightUnit: "lbs",
+        totalPieces: 28,
+        spacing: 18,
+        costTotal: 280
+    });
+
+    assert.match(payload.title, /rebar/i);
+    assert.match(payload.method, /28/);
+});
+
+test("curb calculator payload keeps curb and gutter ordering concrete-specific", function () {
+    const payload = support.getDecisionPayload("curb-calculator", {
+        yd3: 1.25,
+        yd3Waste: 1.38,
+        bags80: 57,
+        bags80Waste: 63,
+        readyMixCost: 280,
+        bagCost: 342,
+        projectLabel: "This curb run"
+    });
+
+    assert.match(payload.title, /curb/i);
+    assert.match(payload.budget, /1\.38 yd³/);
+});
+
 test("unknown page key returns null", function () {
     assert.equal(support.getDecisionPayload("missing-page", {}), null);
 });

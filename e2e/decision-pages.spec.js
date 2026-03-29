@@ -129,3 +129,34 @@ test("cylinder calculator updates decision block after diameter and height chang
     await page.fill("#quantity", "2");
     await expect(page.locator('[data-decision-page="cylinder-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
 });
+
+test("quikrete calculator keeps bag-buying guidance visible", async ({ page }) => {
+    await page.goto("/en/quikrete-bag-calculator.html");
+    await expect(page.locator('[data-decision-page="quikrete-bag-calculator"]')).toBeVisible();
+    await page.fill("#length", "8");
+    await page.fill("#width", "8");
+    await page.fill("#height", "0.3333");
+    await page.selectOption("#bag-size", "60");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="quikrete-bag-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
+});
+
+test("rebar calculator updates reinforcement guidance after estimate", async ({ page }) => {
+    await page.goto("/en/rebar-calculator.html");
+    await expect(page.locator('[data-decision-page="rebar-calculator"]')).toBeVisible();
+    await page.fill("#slab-length", "20");
+    await page.fill("#slab-width", "20");
+    await page.fill("#rebar-spacing", "18");
+    await page.click("#calculate-btn");
+    await expect(page.locator('[data-decision-page="rebar-calculator"] [data-decision-slot="method"]')).not.toContainText("placeholder");
+});
+
+test("curb calculator updates curb ordering guidance after input changes", async ({ page }) => {
+    await page.goto("/en/concrete-curb-calculator.html");
+    await expect(page.locator('[data-decision-page="curb-calculator"]')).toBeVisible();
+    await page.fill("#curb-height", "6");
+    await page.fill("#curb-width", "6");
+    await page.fill("#curb-length", "100");
+    await page.fill("#curb-qty", "1");
+    await expect(page.locator('[data-decision-page="curb-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
+});
