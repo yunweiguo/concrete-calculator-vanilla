@@ -172,3 +172,19 @@ test("stairs calculator updates stair pour guidance after estimate", async ({ pa
     await page.click("#calculate-btn");
     await expect(page.locator('[data-decision-page="stairs-calculator"] [data-decision-slot="summary"]')).not.toContainText("placeholder");
 });
+
+test("core decision pages expose primary and secondary CTA links", async ({ page }) => {
+    const pages = [
+        "/en/",
+        "/en/how-much-concrete-do-i-need.html",
+        "/en/slab-calculator.html",
+        "/en/bag-calculator.html",
+        "/en/concrete-calculator-cost.html"
+    ];
+
+    for (const path of pages) {
+        await page.goto(path);
+        await expect(page.locator('[data-cta-role="primary"]')).toHaveCount(1);
+        await expect(page.locator('[data-cta-role="secondary"]')).toHaveCount(1);
+    }
+});

@@ -2,6 +2,8 @@
     const api = factory(root);
     root.ConcretePageCore = api;
 }(typeof globalThis !== "undefined" ? globalThis : this, function (root) {
+    const onceKeys = {};
+
     function runWhenReady(callback) {
         if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", callback, { once: true });
@@ -78,6 +80,105 @@
         });
     }
 
+    function compactParams(params) {
+        const next = {};
+        Object.keys(params || {}).forEach(function (key) {
+            if (params[key] !== undefined && params[key] !== null && params[key] !== "") {
+                next[key] = params[key];
+            }
+        });
+        return next;
+    }
+
+    function trackEvent(name, params) {
+        if (typeof root.gtag !== "function") {
+            return;
+        }
+        root.gtag("event", name, compactParams(params));
+    }
+
+    function trackOnce(key, name, params) {
+        if (onceKeys[key]) {
+            return;
+        }
+        onceKeys[key] = true;
+        trackEvent(name, params);
+    }
+
+    function inferCalculatorType(pageKey) {
+        if (pageKey.indexOf("bag") !== -1) return "bag";
+        if (pageKey.indexOf("cost") !== -1) return "cost";
+        if (pageKey.indexOf("rebar") !== -1) return "rebar";
+        if (pageKey.indexOf("yard") !== -1) return "yards";
+        return "volume";
+    }
+
+    function trackCalculatorRun(pageKey, metrics) {
+        trackOnce("calculator_run:" + pageKey, "calculator_run", {
+            page_key: pageKey,
+            calculator_type: inferCalculatorType(pageKey),
+            shape: metrics && (metrics.shape || metrics.projectType),
+            unit_system: metrics && (metrics.unitSystem || metrics.unit_system)
+        });
+    }
+
+    function setupDecisionVisibilityTracking() {
+        const sections = Array.from(document.querySelectorAll("[data-decision-page]"));
+        if (!sections.length || typeof IntersectionObserver !== "function") {
+            return;
+        }
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                const pageKey = entry.target.dataset.decisionPage;
+                trackOnce("decision_block_seen:" + pageKey, "decision_block_seen", {
+                    page_key: pageKey
+                });
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.4 });
+
+        sections.forEach(function (section) {
+            observer.observe(section);
+        });
+    }
+
+    function setupDecisionCtaTracking() {
+        document.addEventListener("click", function (event) {
+            const link = event.target.closest("[data-cta-role]");
+            if (!link) {
+                return;
+            }
+
+            const section = link.closest("[data-decision-page]");
+            const pageKey = section ? section.dataset.decisionPage : "";
+            const href = link.getAttribute("href") || "";
+
+            trackEvent(link.dataset.ctaRole === "primary" ? "decision_cta_click" : "secondary_cta_click", {
+                page_key: pageKey,
+                cta_id: link.dataset.ctaId || link.dataset.ctaRole,
+                cta_label: (link.textContent || "").trim(),
+                target_path: href
+            });
+
+            if (/calculator|how-much-concrete/i.test(href)) {
+                trackEvent("related_calc_click", {
+                    page_key: pageKey,
+                    target_page: href
+                });
+            }
+        });
+    }
+
+    runWhenReady(function () {
+        setupDecisionVisibilityTracking();
+        setupDecisionCtaTracking();
+    });
+
     function updateTextNode(section, slot, value) {
         const node = section.querySelector('[data-decision-slot="' + slot + '"]');
         if (node && typeof value === "string") {
@@ -134,6 +235,8 @@
     return {
         initStandardChrome: initStandardChrome,
         bindNavigationMenus: bindNavigationMenus,
-        updateDecisionBlock: updateDecisionBlock
+        updateDecisionBlock: updateDecisionBlock,
+        trackEvent: trackEvent,
+        trackCalculatorRun: trackCalculatorRun
     };
 }));
