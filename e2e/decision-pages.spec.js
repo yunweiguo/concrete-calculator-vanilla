@@ -188,3 +188,44 @@ test("core decision pages expose primary and secondary CTA links", async ({ page
         await expect(page.locator('[data-cta-role="secondary"]')).toHaveCount(1);
     }
 });
+
+test("second-batch decision pages expose primary and secondary CTA links", async ({ page }) => {
+    const pages = [
+        "/en/column-calculator.html",
+        "/en/footing-calculator.html",
+        "/en/rebar-calculator.html",
+        "/en/concrete-calculator-yards.html",
+        "/en/concrete-calculator-cylinder.html",
+        "/en/concrete-curb-calculator.html",
+        "/en/concrete-pier-calculator.html",
+        "/en/how-much-concrete-for-10x10-slab.html",
+        "/en/how-much-concrete-for-12x12-slab.html",
+        "/en/how-much-concrete-for-20x20-slab.html",
+        "/en/quikrete-bag-calculator.html",
+        "/en/sono-tube-calculator.html",
+        "/en/stairs-calculator.html"
+    ];
+
+    for (const path of pages) {
+        await page.goto(path);
+        await expect(page.locator('[data-cta-role="primary"]')).toHaveCount(1);
+        await expect(page.locator('[data-cta-role="secondary"]')).toHaveCount(1);
+    }
+});
+
+test("decision block and calculator coexist on page", async ({ page }) => {
+    const pages = [
+        "/en/slab-calculator.html",
+        "/en/bag-calculator.html",
+        "/en/concrete-calculator-cost.html",
+        "/en/stairs-calculator.html",
+        "/en/footing-calculator.html",
+        "/en/rebar-calculator.html"
+    ];
+
+    for (const path of pages) {
+        await page.goto(path);
+        await expect(page.locator('#calculator')).toHaveCount(1);
+        await expect(page.locator('[data-decision-page]')).toHaveCount(1);
+    }
+});
