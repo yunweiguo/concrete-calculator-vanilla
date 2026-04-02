@@ -124,6 +124,35 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Estimate Concrete Cost",
+      "description": "Step-by-step guide to estimating concrete cost using this free online calculator.",
+      "totalTime": "PT2M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter dimensions",
+          "text": "Enter dimensions and select shape type in feet or meters.",
+          "url": "https://concrete-calculator.pro/en/concrete-calculator-cost.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose units",
+          "text": "Select imperial (feet, inches) or metric (meters, cm) units.",
+          "url": "https://concrete-calculator.pro/en/concrete-calculator-cost.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate",
+          "text": "Press the Calculate button to get volume, bag count, and cost estimates.",
+          "url": "https://concrete-calculator.pro/en/concrete-calculator-cost.html#calculator"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -161,60 +190,9 @@
             </p>
         </section>
 
-        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="cost-calculator">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
-                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
-                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn the estimate into a real quote plan</h2>
-                <p class="mt-4 text-slate-700" data-decision-slot="summary">This estimate is useful when it helps you decide whether the project is affordable, whether you need supplier quotes, and which inputs are making the price jump.</p>
-                <div class="mt-6 grid gap-4 md:grid-cols-3">
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Best default</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Budget range is waiting for a complete estimate</p>
-                    </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Budget check</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Complete the dimensions first, then sanity-check cost per square foot before you trust the number.</p>
-                    </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Logistics</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Small pours often hide the ugliest delivery and mobilization fees.</p>
-                    </div>
-                </div>
-                <div class="mt-6 grid gap-6 md:grid-cols-3">
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
-                            <li data-decision-item>Materials and labor should be read separately.</li>
-                            <li data-decision-item>Delivery can dominate small pours.</li>
-                            <li data-decision-item>Finish and access multipliers move the total fast.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
-                            <li data-decision-item>Treating an average as a contract price.</li>
-                            <li data-decision-item>Ignoring access and small-load surcharges.</li>
-                            <li data-decision-item>Leaving stale values after changing project type.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
-                            <li data-decision-item>Use the estimate to set a budget range.</li>
-                            <li data-decision-item>Swap in supplier quotes before you promise a total.</li>
-                            <li data-decision-item>Break phased pours into separate estimates when needed.</li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">These are planning numbers. Replace averages with live local pricing before you share the estimate outside your team.</p>
-                <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-                    <a href="/en/how-much-concrete-do-i-need.html" data-cta-role="primary" data-cta-id="compare_material_quantity" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Compare material quantity first</a>
-                    <a href="/en/slab-calculator.html" data-cta-role="secondary" data-cta-id="check_slab_volume" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Check slab volume before pricing</a>
-                </div>
-            </div>
-        </section>
         
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <p class="mb-4 text-sm text-slate-500">Fill in the fields and press <strong>Calculate</strong>.</p>
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="space-y-6">
@@ -463,6 +441,58 @@
                 </div>
             </div>
         </section>
+
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="cost-calculator">
+    <div class="bg-white role="region" aria-label="Decision guide" p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn the estimate into a real quote plan</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">This estimate is useful when it helps you decide whether the project is affordable, whether you need supplier quotes, and which inputs are making the price jump.</p>
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-brand-primary p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-primary shrink-0 mt-0.5">Best default</span>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Budget range is waiting for a complete estimate</p>
+                    </div>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-amber-500 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 shrink-0 mt-0.5">Budget check</span>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Complete the dimensions first, then sanity-check cost per square foot before you trust the number.</p>
+                    </div>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-slate-400 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 shrink-0 mt-0.5">Logistics</span>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Small pours often hide the ugliest delivery and mobilization fees.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-2">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Before you order</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Materials and labor should be read separately.</li>
+                            <li data-decision-item>Delivery can dominate small pours.</li>
+                            <li data-decision-item>Finish and access multipliers move the total fast.</li>
+                        </ul>
+                        <h3 class="mt-4 text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Use the estimate to set a budget range.</li>
+                            <li data-decision-item>Swap in supplier quotes before you promise a total.</li>
+                            <li data-decision-item>Break phased pours into separate estimates when needed.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Treating an average as a contract price.</li>
+                            <li data-decision-item>Ignoring access and small-load surcharges.</li>
+                            <li data-decision-item>Leaving stale values after changing project type.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">These are planning numbers. Replace averages with live local pricing before you share the estimate outside your team.</p>
+            </div>
+        </section>
+
+                <div class="mt-12 pt-8 border-t border-slate-200 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
+                    <a href="/en/slab-calculator.html" data-cta-role="primary" data-cta-id="check_slab_volume" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Check the volume behind this estimate</a>
+                    <a href="/en/bag-calculator.html" data-cta-role="secondary" data-cta-id="check_bag_count" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Double-check with the bag calculator</a>
+                </div>
 
         <section class="mt-16 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">

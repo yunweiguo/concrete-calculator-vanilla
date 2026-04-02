@@ -663,22 +663,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // --- VALIDATION ---
+    function clearInputErrors() {
+        document.querySelectorAll('#calculator input[type="number"]').forEach(function(input) {
+            input.classList.remove('ring-2', 'ring-red-500');
+            var existingError = input.parentNode.querySelector('.input-error-msg');
+            if (existingError) existingError.remove();
+        });
+    }
+
+    function showInputError(input) {
+        input.classList.add('ring-2', 'ring-red-500');
+        var existingError = input.parentNode.querySelector('.input-error-msg');
+        if (!existingError) {
+            var errorMsg = document.createElement('p');
+            errorMsg.className = 'input-error-msg text-xs text-red-500 mt-1';
+            errorMsg.textContent = 'Please enter a value greater than 0';
+            input.parentNode.appendChild(errorMsg);
+        }
+    }
+
+    function validateNumericInputs() {
+        clearInputErrors();
+        var inputs = document.querySelectorAll('#calculator input[type="number"]');
+        var valid = true;
+        inputs.forEach(function(input) {
+            var val = parseFloat(input.value);
+            if (input.value === '' || isNaN(val) || val <= 0) {
+                showInputError(input);
+                valid = false;
+            }
+        });
+        return valid;
+    }
+
+    // Clear error styling when user focuses on an input
+    document.addEventListener('focusin', function(e) {
+        if (e.target.matches && e.target.matches('#calculator input[type="number"]')) {
+            e.target.classList.remove('ring-2', 'ring-red-500');
+            var existingError = e.target.parentNode.querySelector('.input-error-msg');
+            if (existingError) existingError.remove();
+        }
+    });
+
     // --- DISPLAY & HISTORY ---
     function displayResults() {
         if (!resultsOutput) return;
 
-        // Page-specific logic
-        if (document.getElementById('bag-size')) {
-            displayBagResults();
-        } else if (document.getElementById('rebar-size')) {
-            displayRebarResults();
-        } else if (document.getElementById('column-calculator-form')) {
-            displayColumnResults();
-        } else if (document.getElementById('stairs-calculator-form')) {
-            displayStairsResults();
-        } else {
-            displayMaterialResults();
-        }
+        // Validate inputs first
+        if (!validateNumericInputs()) return;
+
+        // Loading state
+        var originalBtnText = calculateBtn.innerHTML;
+        calculateBtn.innerHTML = 'Calculating...';
+        calculateBtn.classList.add('opacity-50', 'pointer-events-none');
+
+        // Allow UI to update before running calculation
+        setTimeout(function() {
+            // Page-specific logic
+            if (document.getElementById('bag-size')) {
+                displayBagResults();
+            } else if (document.getElementById('rebar-size')) {
+                displayRebarResults();
+            } else if (document.getElementById('column-calculator-form')) {
+                displayColumnResults();
+            } else if (document.getElementById('stairs-calculator-form')) {
+                displayStairsResults();
+            } else {
+                displayMaterialResults();
+            }
+
+            // Restore button state
+            calculateBtn.innerHTML = originalBtnText;
+            calculateBtn.classList.remove('opacity-50', 'pointer-events-none');
+        }, 50);
     }
 
     function displayMaterialResults() {
