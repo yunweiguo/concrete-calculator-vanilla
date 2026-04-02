@@ -67,6 +67,35 @@
     </style>
     <link rel="stylesheet" href="/mobile-optimization.css"><script type="application/ld+json">
     {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much rebar do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Use our rebar calculator by entering your project dimensions and rebar spacing. The calculator will determine the total length and weight needed."}}, {"@type": "Question", "name": "What size rebar should I use?", "acceptedAnswer": {"@type": "Answer", "text": "#3 rebar (3/8") for light loads, #4 rebar (1/2") for most residential projects, #5 rebar (5/8") for heavy loads. Consult local codes."}}, {"@type": "Question", "name": "How far apart should rebar be spaced?", "acceptedAnswer": {"@type": "Answer", "text": "Typical spacing is 12-18 inches for slabs, 6-12 inches for footings. Closer spacing provides more strength but costs more."}}, {"@type": "Question", "name": "How much does rebar cost?", "acceptedAnswer": {"@type": "Answer", "text": "Rebar costs $0.50-1.50 per linear foot depending on size. #4 rebar (1/2") typically costs $0.75-1.00 per foot."}}]}
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Rebar for a Slab",
+      "description": "Step-by-step guide to calculating rebar for a slab using this free online calculator.",
+      "totalTime": "PT2M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter dimensions",
+          "text": "Input slab length, width, and rebar spacing in feet or meters.",
+          "url": "https://concrete-calculator.pro/en/rebar-calculator.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose units",
+          "text": "Select imperial (feet, inches) or metric (meters, cm) units.",
+          "url": "https://concrete-calculator.pro/en/rebar-calculator.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate",
+          "text": "Press the Calculate button to get volume, bag count, and cost estimates.",
+          "url": "https://concrete-calculator.pro/en/rebar-calculator.html#calculator"
+        }
+      ]
+    }
     </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -107,6 +136,7 @@
         </section>
 
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <p class="mb-4 text-sm text-slate-500">Fill in the fields and press <strong>Calculate</strong>.</p>
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Side: Inputs -->
@@ -216,27 +246,33 @@
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
                 <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn the slab grid into a buy list</h2>
                 <p class="mt-4 text-slate-700" data-decision-slot="summary">The useful decision here is not just total rebar length. You need piece count, spacing, and a clear buying plan before this turns into a supplier order.</p>
-                <div class="mt-6 grid gap-4 md:grid-cols-3">
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Best default</p>
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-brand-primary p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-primary shrink-0 mt-0.5">Best default</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Buy by full stick count first, then sanity-check linear footage.</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Budget check</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-amber-500 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 shrink-0 mt-0.5">Budget check</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">If the yard only sells full pieces, price this layout as a buy list, not just a length estimate.</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Logistics</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-slate-400 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 shrink-0 mt-0.5">Logistics</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Spacing and lap waste decide whether this is one store run or a real supplier quote.</p>
                     </div>
                 </div>
-                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                <div class="mt-6 grid gap-6 md:grid-cols-2">
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <h3 class="text-lg font-semibold text-slate-900">Before you order</h3>
                         <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
                             <li data-decision-item>Total pieces matter as much as total linear footage.</li>
                             <li data-decision-item>Spacing is part of the structural decision, not just cost control.</li>
                             <li data-decision-item>Full-stick buying rules can change the real price quickly.</li>
+                        </ul>
+                        <h3 class="mt-4 text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Confirm bar size and spacing before buying.</li>
+                            <li data-decision-item>Get a per-piece quote if the supplier cuts nothing.</li>
+                            <li data-decision-item>Add lap splice, chairs, and tie wire before checkout.</li>
                         </ul>
                     </div>
                     <div>
@@ -247,23 +283,15 @@
                             <li data-decision-item>Pricing by length when the supplier sells full sticks.</li>
                         </ul>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
-                            <li data-decision-item>Confirm bar size and spacing before buying.</li>
-                            <li data-decision-item>Get a per-piece quote if the supplier cuts nothing.</li>
-                            <li data-decision-item>Add lap splice, chairs, and tie wire before checkout.</li>
-                        </ul>
-                    </div>
                 </div>
                 <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this guide for planning only. Structural spacing, bar size, and lap details still need code or engineering review.</p>
             </div>
         </section>
 
 
-                <div class="mt-6 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
-                    <a href="/en/slab-calculator.html" data-cta-role="primary" data-cta-id="calc_slab_for_rebar" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Calculate the slab for this rebar layout</a>
-                    <a href="/en/concrete-calculator-cost.html" data-cta-role="secondary" data-cta-id="estimate_rebar_project_cost" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Estimate total project cost</a>
+                <div class="mt-12 pt-8 border-t border-slate-200 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
+                    <a href="/en/slab-calculator.html" data-cta-role="primary" data-cta-id="calc_slab_for_rebar" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Size the slab under this rebar grid</a>
+                    <a href="/en/concrete-calculator-cost.html" data-cta-role="secondary" data-cta-id="estimate_rebar_project_cost" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Price the full pour with this rebar</a>
                 </div>
 
         <section class="mt-16 prose max-w-4xl mx-auto">

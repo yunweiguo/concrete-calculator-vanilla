@@ -75,6 +75,35 @@
     </style>
     <link rel="stylesheet" href="/mobile-optimization.css"><script type="application/ld+json">
     {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of concrete do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Use our bag calculator by entering your project dimensions. The calculator will determine the exact number of 60lb or 80lb bags needed for your project."}}, {"@type": "Question", "name": "What is the difference between 60lb and 80lb bags?", "acceptedAnswer": {"@type": "Answer", "text": "60lb bags cover about 0.45 cubic feet, while 80lb bags cover about 0.6 cubic feet. 80lb bags are more cost-effective for larger projects."}}, {"@type": "Question", "name": "How much does a bag of concrete cost?", "acceptedAnswer": {"@type": "Answer", "text": "60lb bags typically cost $3-5, while 80lb bags cost $4-7. Prices vary by location and brand. Quikrete and Sakrete are popular brands."}}, {"@type": "Question", "name": "Can I mix concrete bags by hand?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can mix concrete bags by hand for small projects. Use a wheelbarrow or mixing tub, add water gradually, and mix thoroughly until uniform."}}]}
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Concrete Bag Count",
+      "description": "Step-by-step guide to calculating concrete bag count using this free online calculator.",
+      "totalTime": "PT2M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter dimensions",
+          "text": "Enter the total volume and select bag size in feet or meters.",
+          "url": "https://concrete-calculator.pro/en/bag-calculator.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose units",
+          "text": "Select imperial (feet, inches) or metric (meters, cm) units.",
+          "url": "https://concrete-calculator.pro/en/bag-calculator.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate",
+          "text": "Press the Calculate button to get volume, bag count, and cost estimates.",
+          "url": "https://concrete-calculator.pro/en/bag-calculator.html#calculator"
+        }
+      ]
+    }
     </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     <div id="header-include"></div>
@@ -115,6 +144,7 @@
 
         <!-- Main Calculator Section -->
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <p class="mb-4 text-sm text-slate-500">Fill in the fields and press <strong>Calculate</strong>.</p>
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Side: Inputs -->
@@ -243,27 +273,33 @@
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
                 <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Decide if bags are still the right move</h2>
                 <p class="mt-4 text-slate-700" data-decision-slot="summary">Bagged concrete is great for smaller pours. Once the bag count gets high, the real problem is transport and mixing effort, not the math.</p>
-                <div class="mt-6 grid gap-4 md:grid-cols-3">
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Best default</p>
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-brand-primary p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-primary shrink-0 mt-0.5">Best default</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Bagged mix is still realistic</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Budget check</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-amber-500 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 shrink-0 mt-0.5">Budget check</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Count the bags, then sanity-check haul weight and total mixing time.</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Logistics</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-slate-400 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 shrink-0 mt-0.5">Logistics</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Custom bag yields should come from the label, not memory.</p>
                     </div>
                 </div>
-                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                <div class="mt-6 grid gap-6 md:grid-cols-2">
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <h3 class="text-lg font-semibold text-slate-900">Before you order</h3>
                         <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
                             <li data-decision-item>Bag count tells you transport effort.</li>
                             <li data-decision-item>Total volume tells you if a truck quote is worth checking.</li>
                             <li data-decision-item>Custom yield mistakes create fake confidence fast.</li>
+                        </ul>
+                        <h3 class="mt-4 text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Check the exact yield on the product you will buy.</li>
+                            <li data-decision-item>Compare bag count against a supplier quote when the volume gets large.</li>
+                            <li data-decision-item>Plan labor before you commit to a big bag pour.</li>
                         </ul>
                     </div>
                     <div>
@@ -274,23 +310,15 @@
                             <li data-decision-item>Using bags long after the pour is truck-sized.</li>
                         </ul>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
-                            <li data-decision-item>Check the exact yield on the product you will buy.</li>
-                            <li data-decision-item>Compare bag count against a supplier quote when the volume gets large.</li>
-                            <li data-decision-item>Plan labor before you commit to a big bag pour.</li>
-                        </ul>
-                    </div>
                 </div>
                 <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">This calculator tells you bag count. It does not tell you whether that count is still sane for one person to haul and mix.</p>
             </div>
         </section>
 
 
-                <div class="mt-6 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
-                    <a href="/en/concrete-calculator-cost.html" data-cta-role="primary" data-cta-id="estimate_bag_cost" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Estimate total cost for these bags</a>
-                    <a href="/en/how-much-concrete-do-i-need.html" data-cta-role="secondary" data-cta-id="ready_mix_threshold" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">See when ready-mix becomes easier</a>
+                <div class="mt-12 pt-8 border-t border-slate-200 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
+                    <a href="/en/concrete-calculator-cost.html" data-cta-role="primary" data-cta-id="estimate_bag_cost" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">See the full price before you buy bags</a>
+                    <a href="/en/how-much-concrete-do-i-need.html" data-cta-role="secondary" data-cta-id="ready_mix_threshold" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Check if ready-mix beats your bag count</a>
                 </div>
 
         <!-- History Section (hidden on this page but present for JS) -->

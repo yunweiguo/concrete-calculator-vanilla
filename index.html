@@ -148,6 +148,35 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Concrete Calculator",
+      "description": "Step-by-step guide to using the concrete calculator using this free online calculator.",
+      "totalTime": "PT2M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter dimensions",
+          "text": "Enter your project dimensions and select shape in feet or meters.",
+          "url": "https://concrete-calculator.pro/#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose units",
+          "text": "Select imperial (feet, inches) or metric (meters, cm) units.",
+          "url": "https://concrete-calculator.pro/#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate",
+          "text": "Press the Calculate button to get volume, bag count, and cost estimates.",
+          "url": "https://concrete-calculator.pro/#calculator"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
     
@@ -185,6 +214,7 @@
 
         <!-- Main Calculator Section -->
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <p class="mb-4 text-sm text-slate-500">Fill in the fields and press <strong>Calculate</strong>.</p>
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left Side: Inputs -->
@@ -302,27 +332,33 @@
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
                 <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn the result into a buying plan</h2>
                 <p class="mt-4 text-slate-700" data-decision-slot="summary">The calculator result is only the first half of the job. The real decision is how much to buy, whether bags are still practical, and what the likely spend looks like once waste is included.</p>
-                <div class="mt-6 grid gap-4 md:grid-cols-3">
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Best default</p>
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-brand-primary p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-primary shrink-0 mt-0.5">Best default</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Ready-mix is the safer default</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Budget check</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-amber-500 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 shrink-0 mt-0.5">Budget check</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Use the waste-adjusted number when you compare truck pricing with bag cost.</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Logistics</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-slate-400 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 shrink-0 mt-0.5">Logistics</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Small orders can still trigger ugly delivery fees, so compare them against your own hauling effort.</p>
                     </div>
                 </div>
-                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                <div class="mt-6 grid gap-6 md:grid-cols-2">
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <h3 class="text-lg font-semibold text-slate-900">Before you order</h3>
                         <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
                             <li data-decision-item>Waste changes the purchase more than the formula does.</li>
                             <li data-decision-item>Bag counts tell you labor, not just material.</li>
                             <li data-decision-item>Average prices are for planning, not quoting.</li>
+                        </ul>
+                        <h3 class="mt-4 text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Confirm dimensions one more time before you buy.</li>
+                            <li data-decision-item>Compare waste-adjusted yards against real bag count.</li>
+                            <li data-decision-item>If the bag count looks painful, call a supplier now.</li>
                         </ul>
                     </div>
                     <div>
@@ -331,14 +367,6 @@
                             <li data-decision-item>Buying the exact math result with no waste factor.</li>
                             <li data-decision-item>Choosing bags for a pour that is already truck-sized.</li>
                             <li data-decision-item>Using the same thickness for every project type.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
-                            <li data-decision-item>Confirm dimensions one more time before you buy.</li>
-                            <li data-decision-item>Compare waste-adjusted yards against real bag count.</li>
-                            <li data-decision-item>If the bag count looks painful, call a supplier now.</li>
                         </ul>
                     </div>
                 </div>

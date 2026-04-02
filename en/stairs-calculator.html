@@ -60,6 +60,35 @@
     </style>
     <link rel="stylesheet" href="/mobile-optimization.css"><script type="application/ld+json">
     {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I calculate concrete for stairs?", "acceptedAnswer": {"@type": "Answer", "text": "Measure the total rise, total run, and width of your stairs. Our calculator will determine the volume and materials needed."}}, {"@type": "Question", "name": "How thick should concrete stairs be?", "acceptedAnswer": {"@type": "Answer", "text": "Concrete stairs should be 4-6 inches thick for residential use. Commercial stairs may need 6-8 inches depending on load requirements."}}, {"@type": "Question", "name": "How many steps can I have without a landing?", "acceptedAnswer": {"@type": "Answer", "text": "Most building codes allow up to 12-15 steps before requiring a landing. Check your local building codes for specific requirements."}}, {"@type": "Question", "name": "Do concrete stairs need rebar?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, concrete stairs require rebar for structural integrity. Use #4 rebar in a grid pattern throughout the stair structure."}}]}
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Concrete for Stairs",
+      "description": "Step-by-step guide to calculating concrete for stairs using this free online calculator.",
+      "totalTime": "PT2M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter dimensions",
+          "text": "Enter stair dimensions including run, rise, and width in feet or meters.",
+          "url": "https://concrete-calculator.pro/en/stairs-calculator.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose units",
+          "text": "Select imperial (feet, inches) or metric (meters, cm) units.",
+          "url": "https://concrete-calculator.pro/en/stairs-calculator.html#calculator"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate",
+          "text": "Press the Calculate button to get volume, bag count, and cost estimates.",
+          "url": "https://concrete-calculator.pro/en/stairs-calculator.html#calculator"
+        }
+      ]
+    }
     </script></head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
@@ -97,6 +126,7 @@
         </section>
 
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <p class="mb-4 text-sm text-slate-500">Fill in the fields and press <strong>Calculate</strong>.</p>
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Inputs -->
@@ -151,27 +181,33 @@
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
                 <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Stair pour buying decision</h2>
                 <p class="mt-4 text-slate-700" data-decision-slot="summary">The useful decision here is not just stair volume. You need the full stair run, landing, and waste-adjusted order size before deciding whether bags are still practical.</p>
-                <div class="mt-6 grid gap-4 md:grid-cols-3">
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Best default</p>
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-brand-primary p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-primary shrink-0 mt-0.5">Best default</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Bagged mix is still realistic</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Budget check</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-amber-500 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 shrink-0 mt-0.5">Budget check</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Use the full stair run with waste before you compare truck pricing against bags.</p>
                     </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Logistics</p>
+                    <div class="flex items-start gap-3 rounded-lg bg-slate-50 border-l-4 border-slate-400 p-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 shrink-0 mt-0.5">Logistics</span>
                         <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Landings and extra steps push a stair pour into a bigger staging problem fast.</p>
                     </div>
                 </div>
-                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                <div class="mt-6 grid gap-6 md:grid-cols-2">
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <h3 class="text-lg font-semibold text-slate-900">Before you order</h3>
                         <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
                             <li data-decision-item>Landing depth changes the material order more than expected.</li>
                             <li data-decision-item>Waste-adjusted volume is the real buying number.</li>
                             <li data-decision-item>Clean one-pour stairs usually reward simpler logistics.</li>
+                        </ul>
+                        <h3 class="mt-4 text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Lock stair count, riser, tread, and landing first.</li>
+                            <li data-decision-item>Price the waste-adjusted volume, not the clean formula.</li>
+                            <li data-decision-item>Bias toward easier logistics if the stairs must pour cleanly in one go.</li>
                         </ul>
                     </div>
                     <div>
@@ -182,23 +218,15 @@
                             <li data-decision-item>Using flexible geometry where code already constrains the pour.</li>
                         </ul>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
-                            <li data-decision-item>Lock stair count, riser, tread, and landing first.</li>
-                            <li data-decision-item>Price the waste-adjusted volume, not the clean formula.</li>
-                            <li data-decision-item>Bias toward easier logistics if the stairs must pour cleanly in one go.</li>
-                        </ul>
-                    </div>
                 </div>
                 <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this guide for planning only. Formwork, code, reinforcement, and finish requirements can still change the final stair order.</p>
             </div>
         </section>
 
 
-                <div class="mt-6 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
-                    <a href="/en/bag-calculator.html" data-cta-role="primary" data-cta-id="check_stairs_bags" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Check bag count for stairs</a>
-                    <a href="/en/concrete-calculator-cost.html" data-cta-role="secondary" data-cta-id="estimate_stairs_cost" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Estimate stair project cost</a>
+                <div class="mt-12 pt-8 border-t border-slate-200 max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row">
+                    <a href="/en/bag-calculator.html" data-cta-role="primary" data-cta-id="check_stairs_bags" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Count bags for your stair pour</a>
+                    <a href="/en/concrete-calculator-cost.html" data-cta-role="secondary" data-cta-id="estimate_stairs_cost" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-brand-primary hover:text-brand-primary">Price the full stair pour</a>
                 </div>
 
         <section class="mt-16 prose max-w-4xl mx-auto">
