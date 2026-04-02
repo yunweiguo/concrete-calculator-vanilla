@@ -97,6 +97,51 @@
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-translate="columnCalculatorDescription">Your essential tool for calculating concrete volume and material needs for round columns, piers, and Sonotubes.</p>
         </section>
 
+        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Column Dimensions</h2>
+                        </div>
+                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
+                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Imperial (ft, in)</button>
+                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, cm)</button>
+                        </div>
+                        <form id="column-calculator-form" class="space-y-4">
+                            <div>
+                                <label for="column-diameter" class="text-sm font-medium text-slate-700"><span data-translate="columnDiameter">Diameter</span> (<span class="unit-label-small-dist">in</span>)</label>
+                                <input type="number" id="column-diameter" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="column-height" class="text-sm font-medium text-slate-700"><span data-translate="columnHeight">Height</span> (<span class="unit-label-dist">ft</span>)</label>
+                                <input type="number" id="column-height" placeholder="8" value="8" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                            <div>
+                                <label for="column-quantity" class="text-sm font-medium text-slate-700" data-translate="quantity">Quantity</label>
+                                <input type="number" id="column-quantity" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
+                        <h2 class="text-2xl font-bold text-slate-900">2. Get Your Concrete Estimate</h2>
+                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
+                           <!-- Results injected here -->
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-6 text-center">
+                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105" data-translate="calculate">Calculate Concrete</button>
+                </div>
+                <div class="mt-4 text-center">
+                    <button id="share-btn" class="w-full md:w-auto bg-gray-200 text-gray-700 font-bold text-lg px-12 py-3 rounded-lg hover:bg-gray-300 transition-transform transform hover:scale-105" data-translate="share">Share</button>
+                </div>
+            </div>
+        </section>
+
         <section class="mt-12 max-w-4xl mx-auto" data-decision-page="column-calculator">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
                 <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
@@ -146,50 +191,6 @@
             </div>
         </section>
 
-        <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Inputs -->
-                    <div class="space-y-6">
-                        <div>
-                            <h2 class="text-2xl font-bold text-slate-900">1. Enter Column Dimensions</h2>
-                        </div>
-                        <div id="unit-system" class="flex items-center gap-2 rounded-lg bg-slate-100 p-1">
-                            <button data-value="imperial" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors bg-white text-brand-primary shadow">Imperial (ft, in)</button>
-                            <button data-value="metric" class="flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors text-slate-600 hover:text-brand-primary">Metric (m, cm)</button>
-                        </div>
-                        <form id="column-calculator-form" class="space-y-4">
-                            <div>
-                                <label for="column-diameter" class="text-sm font-medium text-slate-700"><span data-translate="columnDiameter">Diameter</span> (<span class="unit-label-small-dist">in</span>)</label>
-                                <input type="number" id="column-diameter" placeholder="12" value="12" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                            </div>
-                            <div>
-                                <label for="column-height" class="text-sm font-medium text-slate-700"><span data-translate="columnHeight">Height</span> (<span class="unit-label-dist">ft</span>)</label>
-                                <input type="number" id="column-height" placeholder="8" value="8" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                            </div>
-                            <div>
-                                <label for="column-quantity" class="text-sm font-medium text-slate-700" data-translate="quantity">Quantity</label>
-                                <input type="number" id="column-quantity" value="1" class="mt-1 block w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-brand-secondary focus:border-brand-secondary">
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Results -->
-                    <div class="bg-slate-100 rounded-xl p-6 space-y-4 flex flex-col">
-                        <h2 class="text-2xl font-bold text-slate-900">2. Get Your Concrete Estimate</h2>
-                        <div id="results-output" class="flex-grow flex flex-col justify-center items-center text-center p-4 bg-white rounded-lg">
-                           <!-- Results injected here -->
-                        </div>
-                    </div>
-                </div>
-                 <div class="mt-6 text-center">
-                    <button id="calculate-btn" class="w-full md:w-auto bg-brand-primary text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-brand-primary/90 transition-transform transform hover:scale-105" data-translate="calculate">Calculate Concrete</button>
-                </div>
-                <div class="mt-4 text-center">
-                    <button id="share-btn" class="w-full md:w-auto bg-gray-200 text-gray-700 font-bold text-lg px-12 py-3 rounded-lg hover:bg-gray-300 transition-transform transform hover:scale-105" data-translate="share">Share</button>
-                </div>
-            </div>
-        </section>
 
                 <div class="mt-6 flex flex-col gap-3 sm:flex-row">
                     <a href="/en/bag-calculator.html" data-cta-role="primary" data-cta-id="check_column_bags" class="inline-flex items-center justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white hover:bg-brand-primary/90">Check bag count for columns</a>

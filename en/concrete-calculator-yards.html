@@ -162,54 +162,6 @@
             </p>
         </section>
 
-        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="yards-calculator">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
-                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
-                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn cubic yards into an order plan</h2>
-                <p class="mt-4 text-slate-700" data-decision-slot="summary">Cubic yards are only useful if they become an order number. Use the total with waste, then decide whether the load is small enough for a short-load fee problem or big enough to think about truck sequencing.</p>
-                <div class="mt-6 grid gap-4 md:grid-cols-3">
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Best default</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Ready-mix is the safer default</p>
-                    </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Budget check</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Use the waste-adjusted total, not just net yards, when you call a supplier.</p>
-                    </div>
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <p class="text-sm text-slate-500">Logistics</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Truck capacity is only part of the plan. Delivery minimums, short-load fees, and access still matter.</p>
-                    </div>
-                </div>
-                <div class="mt-6 grid gap-6 md:grid-cols-3">
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
-                            <li data-decision-item>Always compare net yards and total yards with waste.</li>
-                            <li data-decision-item>Truck count is helpful, but delivery policy can matter more.</li>
-                            <li data-decision-item>Shape selection changes the ordering number, not just the display.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
-                            <li data-decision-item>Stopping at net yards and forgetting the waste margin.</li>
-                            <li data-decision-item>Using truck capacity as the whole logistics plan.</li>
-                            <li data-decision-item>Ordering from a number that came from the wrong shape inputs.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
-                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
-                            <li data-decision-item>Use total yards with waste when you call suppliers.</li>
-                            <li data-decision-item>Ask about short-load fees and access constraints.</li>
-                            <li data-decision-item>Recheck dimensions if the total is near a truck threshold.</li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this yards calculator for planning only. Local delivery rules and site conditions can still change the final order plan.</p>
-            </div>
-        </section>
         
         <section id="calculator" class="mt-20 md:mt-32 max-w-4xl mx-auto">
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
@@ -314,6 +266,55 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="mt-12 max-w-4xl mx-auto" data-decision-page="yards-calculator">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">Decision Guide</p>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900" data-decision-slot="title">Turn cubic yards into an order plan</h2>
+                <p class="mt-4 text-slate-700" data-decision-slot="summary">Cubic yards are only useful if they become an order number. Use the total with waste, then decide whether the load is small enough for a short-load fee problem or big enough to think about truck sequencing.</p>
+                <div class="mt-6 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Best default</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="method">Ready-mix is the safer default</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Budget check</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="budget">Use the waste-adjusted total, not just net yards, when you call a supplier.</p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <p class="text-sm text-slate-500">Logistics</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-900" data-decision-slot="logistics">Truck capacity is only part of the plan. Delivery minimums, short-load fees, and access still matter.</p>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">What to watch</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="highlights">
+                            <li data-decision-item>Always compare net yards and total yards with waste.</li>
+                            <li data-decision-item>Truck count is helpful, but delivery policy can matter more.</li>
+                            <li data-decision-item>Shape selection changes the ordering number, not just the display.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Common mistakes</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="mistakes">
+                            <li data-decision-item>Stopping at net yards and forgetting the waste margin.</li>
+                            <li data-decision-item>Using truck capacity as the whole logistics plan.</li>
+                            <li data-decision-item>Ordering from a number that came from the wrong shape inputs.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Next steps</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-700" data-decision-list="next-steps">
+                            <li data-decision-item>Use total yards with waste when you call suppliers.</li>
+                            <li data-decision-item>Ask about short-load fees and access constraints.</li>
+                            <li data-decision-item>Recheck dimensions if the total is near a truck threshold.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs text-slate-500" data-decision-slot="disclaimer">Use this yards calculator for planning only. Local delivery rules and site conditions can still change the final order plan.</p>
             </div>
         </section>
 
